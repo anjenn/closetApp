@@ -1,4 +1,4 @@
-// fredoka one, concert one, 'Slabo 27px'
+// fredoka one, concert one, 'Neucha'
 <template>
   <q-page class="flex flex-center">
     <div class="container">
@@ -11,52 +11,79 @@
         <q-card-section>
           <div class="text-h6">Tell me what you like!</div>
         </q-card-section>
-
         <q-separator dark inset />
-
-        <q-card-section>
-          <div class="tags" v-for="item in items" :key="item.name">
-            <q-btn color="white" text-color="grey-7" class="btn-tag"
-              >{{ item.name }}
-            </q-btn>
-          </div>
-
+        <q-card-section class="q-px-lg">
           <q-select
-            filled
-            v-model="model"
+            rounded
+            clearable
             multiple
-            :options="items"
-            counter
-            hint="With counter"
-            style="width: 250px"
+            standout
+            bg-color="white"
+            v-model="selected"
+            style="width: 100%"
+            :options="options"
           />
+          <div class="btn-tags">
+            <q-btn
+              v-for="(item, index) in selected"
+              disable
+              rounded
+              unelevated
+              dense
+              size="1rem"
+              padding="0rem 0.3rem"
+              class="btn-tag"
+              :label="item"
+              :key="index"
+            />
+          </div>
         </q-card-section>
       </q-card>
-      <q-btn
-        push
-        color="white"
-        text-color="pink 4"
-        label="Skip & randomise"
-        class="btn-random"
-      />
+      <div class="buttons">
+        <q-btn
+          push
+          color="white"
+          text-color="pink 4"
+          label="Skip"
+          class="btn"
+        />
+        <q-btn
+          push
+          color="white"
+          text-color="pink 4"
+          label="save"
+          class="btn"
+        />
+      </div>
     </div>
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from "vue";
+import { ref } from "vue";
 
 export default defineComponent({
   name: "IndexPage",
   data() {
     return {
-      items: [
-        { name: "feminine" },
-        { name: "preppy" },
-        { name: "casual" },
-        { name: "formal" },
-        { name: "semi-formal" },
-        { name: "monotone" },
+      selected: ref(null),
+      options: [
+        "feminine",
+        "preppy",
+        "girly",
+        "vintage",
+        "bohemian",
+        "chic",
+        "sexy",
+        "casual",
+        "formal",
+        "punk",
+        "rocker",
+        "tomboy",
+        "gothic",
+        "sporty",
+        "ethnic",
       ],
     };
   },
@@ -65,7 +92,8 @@ export default defineComponent({
 
 <style scoped>
 .my-card {
-  width: 50vw;
+  min-width: 0.7rem;
+  width: 60vw;
   height: 50vh;
 }
 .container {
@@ -73,8 +101,23 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
 }
-.btn-random {
-  width: 10rem;
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+.btn {
   margin-top: 2rem;
+  width: 5rem;
+  font-family: fredoka one;
+}
+.btn-tags {
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+.btn-tag {
+  font-family: Neucha;
+  text-transform: lowercase;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-right: 0.5rem;
 }
 </style>

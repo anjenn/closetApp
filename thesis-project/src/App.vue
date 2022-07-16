@@ -11,5 +11,5 @@ export default defineComponent({
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Aclonica&family=Berkshire+Swash&family=Cabin+Sketch:wght@400;700&family=Cantata+One&family=Comfortaa&family=Concert+One&family=El+Messiri:wght@500;700&family=Fredericka+the+Great&family=Fredoka+One&family=Henny+Penny&family=Lobster+Two:wght@400;700&family=Pangolin&family=Philosopher:wght@400;700&family=Prata&family=Reenie+Beanie&family=Slabo+27px&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amaranth:wght@400;700&family=Cabin+Sketch:wght@400;700&family=Concert+One&family=Fredericka+the+Great&family=Fredoka+One&family=Gloria+Hallelujah&family=Hammersmith+One&family=Kosugi+Maru&family=Neucha&family=Pangolin&family=Patrick+Hand&family=Philosopher:wght@400;700&family=Slabo+27px&display=swap");
 </style>
