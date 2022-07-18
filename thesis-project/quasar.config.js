@@ -97,6 +97,7 @@ module.exports = configure(function (ctx) {
 
       // Quasar plugins
       plugins: [],
+      iconSet: "svg-mdi-v6",
     },
 
     // animations: 'all', // --- includes all animations

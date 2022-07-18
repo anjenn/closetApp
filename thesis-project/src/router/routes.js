@@ -2,7 +2,19 @@ const routes = [
   {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{ path: "", component: () => import("pages/Initialise.vue") }],
+    children: [
+      // Initialisation page
+      {
+        path: "",
+        component: () => import("pages/InitialiseTags.vue"),
+      },
+      // Post page
+      { path: "/FeedView", component: () => import("pages/FeedView.vue") },
+      { path: "/LogIn", component: () => import("pages/LogIn.vue") },
+      { path: "/MyPage", component: () => import("pages/MyPage.vue") },
+      { path: "/PostEditor", component: () => import("pages/PostEditor.vue") },
+      { path: "/SignUp", component: () => import("pages/SignUp.vue") },
+    ],
   },
 
   // Always leave this as last one,
