@@ -50,7 +50,7 @@
           text-color="pink 4"
           label="Skip"
           class="btn"
-          :value="selected"
+          v-on:click="redirectTo"
         />
         <q-btn
           push
@@ -103,10 +103,16 @@ export default defineComponent({
   },
 
   methods: {
+    redirectTo() {
+      this.$router.push("/FeedView");
+    },
     saveSelection() {
-      // let selection = this.returnSelection;
-      Tags.saveTags(this.returnSelection);
-      Tags.loadTags();
+      if (this.returnSelection == null) {
+        alert("Select something");
+      } else {
+        Tags.saveTags(this.returnSelection);
+        this.$router.push("/FeedView");
+      }
     },
   },
 });
@@ -115,8 +121,11 @@ export default defineComponent({
 <style scoped>
 .my-card {
   min-width: 0.7rem;
+  min-height: 0.5rem;
+  border-style: dashed;
+  border-color: white;
+  border-width: 0.15rem;
   width: 60vw;
-  height: 50vh;
 }
 .container {
   display: flex;
