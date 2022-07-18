@@ -9,7 +9,9 @@
         style="font-family: 'fredoka one'"
       >
         <q-card-section>
-          <div class="text-h6">Tell me what you like!</div>
+          <div class="text-h6" style="text-align: center">
+            Tell me what you like!
+          </div>
         </q-card-section>
         <q-separator dark inset />
         <q-card-section class="q-px-lg">
@@ -48,6 +50,7 @@
           text-color="pink 4"
           label="Skip"
           class="btn"
+          :value="selected"
         />
         <q-btn
           push
@@ -55,6 +58,8 @@
           text-color="pink 4"
           label="save"
           class="btn"
+          :value="selected"
+          v-on:click="saveSelection"
         />
       </div>
     </div>
@@ -64,6 +69,7 @@
 <script>
 import { defineComponent } from "vue";
 import { ref } from "vue";
+import Tags from "../utils/Tags";
 
 export default defineComponent({
   name: "IndexPage",
@@ -88,6 +94,20 @@ export default defineComponent({
         "ethnic",
       ],
     };
+  },
+  computed: {
+    returnSelection() {
+      return this.selected;
+      // return JSON.stringify(this.selected);
+    },
+  },
+
+  methods: {
+    saveSelection() {
+      // let selection = this.returnSelection;
+      Tags.saveTags(this.returnSelection);
+      Tags.loadTags();
+    },
   },
 });
 </script>

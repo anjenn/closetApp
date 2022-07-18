@@ -1,8 +1,14 @@
-export const tags = {};
+const saveTags = (obj) => {
+  window.localStorage.setItem("myObj", JSON.stringify(obj));
+};
 
-export default saveTags(array) = {
-  for (let elem in array){
+const loadTags = () => {
+  let newObj = window.localStorage.getItem("myObj");
+  console.log(newObj);
+  return newObj;
+};
 
-  }
-
-}
+export default {
+  saveTags,
+  loadTags,
+};
