@@ -125,6 +125,7 @@ export default defineComponent({
   border-style: dashed;
   border-color: white;
   border-width: 0.15rem;
+  border-radius: 10px;
   width: 60vw;
 }
 .container {
