@@ -8,7 +8,14 @@
         style="font-family: 'fredoka one'"
       >
         <q-card-section class="container sub">
-          <div>hi</div>
+          <li v-for="i in maxPage" :key="i">
+            <q-btn>i</q-btn>
+            <PhotoLoader />
+            <PhotoLoader />
+            <PhotoLoader />
+            <PhotoLoader />
+          </li>
+          <q-btn @click="increasePgNum"></q-btn>
         </q-card-section>
       </q-card>
     </div>
@@ -18,9 +25,24 @@
 <script>
 import { defineComponent } from "vue";
 import { ref } from "vue";
+import PhotoLoader from "src/components/PhotoLoader.vue";
 
 export default defineComponent({
   name: "PostEditor",
+  setup() {
+    const url = ref(null);
+    return {
+      url,
+      current: ref(1),
+      maxPage: 1,
+    };
+  },
+  methods: {
+    increasePgNum() {
+      this.maxPage++;
+    },
+  },
+  components: { PhotoLoader, PhotoLoader },
 });
 </script>
 

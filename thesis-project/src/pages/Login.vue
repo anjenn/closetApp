@@ -12,13 +12,10 @@
         <q-card-section class="container sub">
           <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
             <q-input
-              bg-color="white"
-              color="pink"
               filled
               v-model="name"
               class="inputBox--1"
-              label="Your name *"
-              hint="Name and surname"
+              label="ID *"
               lazy-rules
               :rules="[
                 (val) => (val && val.length > 0) || 'Please type something',
@@ -26,14 +23,16 @@
             />
             <q-input
               filled
-              type="number"
-              v-model="age"
+              v-model="pwd"
               class="inputBox--2"
-              label="Your age *"
+              label="Password *"
               lazy-rules
               :rules="[
-                (val) => (val !== null && val !== '') || 'Please type your age',
-                (val) => (val > 0 && val < 100) || 'Please type a real age',
+                (val) =>
+                  (val !== null && val !== '') || 'Please type something',
+                (val) =>
+                  (val.length > 5 && val.length < 13) ||
+                  'Password should be longer than 6 characters',
               ]"
             />
             <q-toggle v-model="accept" label="I accept the license and terms" />
@@ -106,30 +105,27 @@ export default defineComponent({
   width: 60vw;
   border-radius: 10px;
 }
-.container {
+.container.sub {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 .btn {
   margin-top: 1.3rem;
-  width: 80%;
   font-family: fredoka one;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   height: 3rem;
   font-size: 1.15rem;
 }
 .inputBox--1 {
-  width: 80%;
-  align-self: center;
   background-color: white;
   margin-top: 2rem;
   height: 3rem;
   border-radius: 5px;
 }
 .inputBox--2 {
-  width: 80%;
-  align-self: center;
   background-color: white;
   margin-top: 1.3rem;
   height: 3rem;
