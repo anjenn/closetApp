@@ -1,4 +1,3 @@
-// fredoka one, concert one, 'Neucha'
 <template>
   <q-page class="flex flex-center" style="background-color: #fff0f5">
     <div class="container">

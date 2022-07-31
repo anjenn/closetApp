@@ -8,14 +8,24 @@
         style="font-family: 'fredoka one'"
       >
         <q-card-section class="container sub">
-          <li v-for="i in maxPage" :key="i">
-            <q-btn>i</q-btn>
-            <PhotoLoader />
-            <PhotoLoader />
-            <PhotoLoader />
-            <PhotoLoader />
-          </li>
-          <q-btn @click="increasePgNum"></q-btn>
+          <q-tabs
+            v-model="tab"
+            dense
+            class="text-grey"
+            active-color="primary"
+            indicator-color="primary"
+            align="justify"
+            narrow-indicator
+          >
+            <q-tab v-for="i in maxPage" :key="i" :name="i" :label="i" />
+            <q-btn :v-model="maxPage" @click="increasePgNum">+</q-btn>
+          </q-tabs>
+          <q-tab-panels v-model="tab" animated>
+            <q-tab-panel v-for="i in maxPage" :key="i" :name="i">
+              <PhotoLoader />
+            </q-tab-panel>
+          </q-tab-panels>
+          <q-input v-model="postTitle"> </q-input>
         </q-card-section>
       </q-card>
     </div>
@@ -29,17 +39,24 @@ import PhotoLoader from "src/components/PhotoLoader.vue";
 
 export default defineComponent({
   name: "PostEditor",
+  data() {
+    return {
+      maxPage: 1,
+      tab: ref("1"),
+    };
+  },
   setup() {
     const url = ref(null);
     return {
       url,
       current: ref(1),
-      maxPage: 1,
     };
   },
   methods: {
     increasePgNum() {
-      this.maxPage++;
+      if (this.maxPage <= 3) {
+        this.maxPage++;
+      }
     },
   },
   components: { PhotoLoader, PhotoLoader },
@@ -55,5 +72,13 @@ export default defineComponent({
   max-width: 50rem;
   height: 10rem;
   width: 60vw;
+}
+.pagination {
+  display: flex;
+  align-items: center;
+}
+.page-btn {
+  width: 0.3rem;
+  height: 0.3rem;
 }
 </style>
