@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar class="bg-pink-7">
+      <q-toolbar class="bg-pink-4">
         <q-toolbar-title
           class="toolBar"
           style="font-family: 'Neonderthaw'; font-weight: 700"

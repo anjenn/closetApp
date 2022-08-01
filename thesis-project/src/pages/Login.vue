@@ -6,7 +6,7 @@
       <q-card
         dark
         bordered
-        class="bg-pink-4 my-card shadow-10"
+        class="bg-pink-3 my-card shadow-10"
         style="font-family: 'fredoka one'"
       >
         <q-card-section class="container sub">

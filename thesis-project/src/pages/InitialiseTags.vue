@@ -3,8 +3,7 @@
     <div class="container">
       <q-card
         dark
-        bordered
-        class="bg-pink-4 my-card shadow-10"
+        class="bg-pink-3 my-card shadow-10"
         style="font-family: 'fredoka one'"
       >
         <q-card-section>
@@ -19,7 +18,7 @@
             clearable
             multiple
             standout
-            color="grey-5"
+            color="grey-6"
             bg-color="white"
             v-model="selected"
             style="width: 100%"
@@ -121,10 +120,6 @@ export default defineComponent({
 .my-card {
   min-width: 0.7rem;
   min-height: 0.5rem;
-  border-style: dashed;
-  border-color: white;
-  border-width: 0.15rem;
-  border-radius: 10px;
   width: 60vw;
 }
 .container {
