@@ -1,10 +1,27 @@
 <template>
-  <q-page class="flex flex-center" style="background-color: #fff0f5">
-    <q-btn push color="pink-3" round icon="refresh" />
+  <q-page class="container flex flex-center" style="background-color: #fff0f5">
     <div class="row">
       <postView />
       <postView />
       <postView />
+    </div>
+    <div class="row justify-between" style="width: 9rem">
+      <q-btn
+        push
+        class="btn-bottom"
+        size="lg"
+        color="pink-3"
+        round
+        icon="refresh"
+      />
+      <q-btn
+        push
+        class="btn-bottom"
+        size="lg"
+        color="pink-3"
+        round
+        icon="add"
+      />
     </div>
   </q-page>
 </template>
@@ -20,4 +37,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.btn-bottom {
+  margin-top: 3rem;
+}
+</style>

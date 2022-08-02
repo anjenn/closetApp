@@ -35,7 +35,7 @@
                   'Password should be longer than 6 characters',
               ]"
             />
-            <q-toggle v-model="accept" label="I accept the license and terms" />
+            <q-toggle v-model="accept" label="Reveal password" />
             <q-btn
               push
               color="white"

@@ -35,7 +35,7 @@
 <script>
 import { defineComponent } from "vue";
 import { ref } from "vue";
-import PhotoLoader from "src/components/PhotoLoader.vue";
+import collageLoader from "src/components/CollageLoader.vue";
 
 export default defineComponent({
   name: "PostEditor",
