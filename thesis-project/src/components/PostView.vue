@@ -1,6 +1,6 @@
 <template>
-  <div class="container q-pa-sm" wrap>
-    <q-card class="post-card">
+  <div class="container q-pa-md" wrap>
+    <q-card class="post-card wrap">
       <div class="col"><collageLoader /></div>
       <div class="buttons">
         <q-btn
@@ -62,8 +62,8 @@ export default defineComponent({
 
 <style scoped>
 .post-card {
-  height: 30vh;
-  width: 25vw;
+  height: 20rem;
+  width: 15rem;
   border-radius: 15px;
 }
 .buttons {

@@ -1,16 +1,21 @@
 <template>
-  <div class="container row wrap">
-    <div class="col-2 container-img-btn">
-      <q-img
-        class="placeHolder"
-        :src="image"
-        spinner-color="white"
-        spinner-size="0.3rem"
-      >
-        <q-btn class="plus-btn" @click="clickBtn"> + </q-btn>
-      </q-img>
-    </div>
-    </div>
+  <div class="container">
+    <q-img
+      class="image"
+      :src="image"
+      spinner-color="white"
+      spinner-size="0.3rem"
+    >
+    </q-img>
+    <q-btn
+      class="button"
+      flat
+      unelevated
+      dense
+      color="grey-6"
+      :ripple="false"
+      icon="add"
+    />
   </div>
 </template>
 
@@ -34,14 +39,6 @@ export default defineComponent({
     };
   },
   methods: {
-    // clickBtnn(order) {
-    //   this.isBtnClicked[`${order}`] = true;
-
-    //   //
-    //   // <q-img v-if="`isBtnClicked.first`" />
-    //   //
-    //   // <div v-if="`isBtnClicked.first`"></div>
-    // },
     clickBtn() {
       this.isClicked = true;
     },
@@ -50,21 +47,20 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.container-img-btn {
-  display: flex;
+.container {
   position: relative;
 }
-.placeHolder {
+.image {
   position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 15px;
+  bottom: 0;
+  right: 0;
+  width: 1rem;
 }
-.plus-btn {
+.button {
   position: absolute;
-  top: 0;
-  left: 0;
-  margin: auto auto;
+  bottom: 0;
+  right: 0;
+  width: 1rem;
   z-index: 1;
 }
 </style>

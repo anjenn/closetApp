@@ -38,6 +38,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.container {
+  margin: 5vh auto;
+}
 .btn-bottom {
   margin-top: 3rem;
 }

@@ -10,10 +10,13 @@
 <script>
 import { defineComponent } from "vue";
 import { ref } from "vue";
-import photoLoader from "/src/components/Photoloader";
+import photoLoader from "/src/components/PhotoLoader";
 
 export default defineComponent({
   name: "CollageLoader",
+  components: {
+    photoLoader,
+  },
   data() {
     return {
       isBtnClicked: {
