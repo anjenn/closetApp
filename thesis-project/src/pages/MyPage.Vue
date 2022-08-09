@@ -17,10 +17,10 @@
         </q-tabs>
         <q-separator />
         <q-tab-panels v-model="tab" animated>
-          <q-tab-panel name="myPosts">
+          <q-tab-panel name="myPosts" class="panel">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </q-tab-panel>
-          <q-tab-panel name="savedPosts">
+          <q-tab-panel name="savedPosts" class="panel">
             ipsum dolor sit amet consectetur adipisicing elit.
           </q-tab-panel>
         </q-tab-panels>
@@ -48,5 +48,8 @@ export default defineComponent({
   min-width: 0.7rem;
   min-height: 0.5rem;
   width: 60vw;
+}
+.panel {
+  background-color: purple;
 }
 </style>
