@@ -50,6 +50,6 @@ export default defineComponent({
   width: 60vw;
 }
 .panel {
-  background-color: purple;
+  background-color: #fff0f5;
 }
 </style>

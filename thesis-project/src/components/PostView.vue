@@ -1,7 +1,14 @@
 <template>
-  <div class="container q-pa-md" wrap>
+  <div class="container q-px-sm q-py-xl" wrap>
     <q-card class="post-card outer">
       <q-card class="post-card wrap">
+        <div class="profile">
+          <q-img
+            :src="image"
+            style="height: 2.5rem; max-width: 2.5rem; border-radius: 50%"
+          />
+          <span style="margin-left: 1rem; font-size: 1rem">User ID</span>
+        </div>
         <div class="col"><collageLoader /></div>
         <div class="buttons">
           <q-btn
@@ -31,6 +38,38 @@
             icon="share"
           />
         </div>
+        <div class="btn-tags">
+          <q-btn
+            disable
+            rounded
+            unelevated
+            dense
+            size="0.8rem"
+            padding="0rem 0.3rem"
+            class="btn-tag"
+            label="tag1"
+          />
+          <q-btn
+            disable
+            rounded
+            unelevated
+            dense
+            size="0.8rem"
+            padding="0rem 0.3rem"
+            class="btn-tag"
+            label="tag2"
+          />
+          <q-btn
+            disable
+            rounded
+            unelevated
+            dense
+            size="0.8rem"
+            padding="0rem 0.3rem"
+            class="btn-tag"
+            label="tag3"
+          />
+        </div>
       </q-card>
     </q-card>
   </div>
@@ -39,6 +78,7 @@
 <script>
 import { defineComponent } from "vue";
 import collageLoader from "/src/components/CollageLoader";
+import placeholder from "/public/placeholder.png";
 
 import { ref } from "vue";
 
@@ -50,6 +90,12 @@ export default defineComponent({
   data() {
     return {
       heartBorder: true,
+      image: placeholder,
+      tags: {
+        text: "cute",
+        text: "preppy",
+        text: "modern",
+      },
     };
   },
   methods: {
@@ -69,15 +115,24 @@ export default defineComponent({
   border-radius: 15px;
 }
 .post-card.outer {
+  display: flex;
+  justify-content: center;
   height: 23rem;
-  width: 17rem;
+  width: 18rem;
   display: flex;
   align-items: center;
-  border: 0.5rem solid;
   border-radius: 20px;
 }
 .buttons {
-  margin-top: 10.5rem;
-  margin-left: 0.5rem;
+  margin-top: 3rem;
+}
+.btn-tags {
+  margin: 0.1rem auto;
+}
+.btn-tag {
+  font-family: Neucha;
+  text-transform: lowercase;
+  background-color: #e6e6fa;
+  margin: 0.25rem;
 }
 </style>

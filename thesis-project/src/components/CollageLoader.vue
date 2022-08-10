@@ -104,6 +104,7 @@ export default defineComponent({
 <style scoped>
 .container {
   display: flex;
+  margin-top: 1rem;
 }
 .container-sub {
   position: relative;
