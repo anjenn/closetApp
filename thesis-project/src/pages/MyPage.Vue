@@ -1,7 +1,7 @@
 <template>
-  <q-page class="flex flex-center" style="background-color: #fff0f5">
+  <q-page class="flex flex-center" padding style="background-color: #fff0f5">
     <div class="container">
-      <q-card>
+      <q-card class="cardView">
         <q-tabs
           v-model="tab"
           dense
@@ -18,10 +18,24 @@
         <q-separator />
         <q-tab-panels v-model="tab" animated>
           <q-tab-panel name="myPosts" class="panel">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="row">
+              <postView />
+              <postView />
+              <postView />
+              <postView />
+              <postView />
+              <postView />
+            </div>
           </q-tab-panel>
           <q-tab-panel name="savedPosts" class="panel">
-            ipsum dolor sit amet consectetur adipisicing elit.
+            <div class="row">
+              <postView />
+              <postView />
+              <postView />
+              <postView />
+              <postView />
+              <postView />
+            </div>
           </q-tab-panel>
         </q-tab-panels>
       </q-card>
@@ -32,9 +46,13 @@
 <script>
 import { defineComponent } from "vue";
 import { ref } from "vue";
+import postView from "/src/components/PostView";
 
 export default defineComponent({
   name: "MyPage",
+  components: {
+    postView,
+  },
   setup() {
     return {
       tab: ref("myPosts"),
@@ -47,9 +65,11 @@ export default defineComponent({
 .my-card {
   min-width: 0.7rem;
   min-height: 0.5rem;
-  width: 60vw;
+}
+.cardView {
+  margin: 5rem 5rem;
 }
 .panel {
-  background-color: #fff0f5;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 </style>

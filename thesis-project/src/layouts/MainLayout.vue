@@ -108,9 +108,9 @@ export default defineComponent({
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
+      // toggleLeftDrawer() {
+      //   leftDrawerOpen.value = !leftDrawerOpen.value;
+      // },
     };
   },
 });

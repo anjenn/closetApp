@@ -101,6 +101,7 @@ export default defineComponent({
 <style scoped>
 .my-card {
   min-width: 0.7rem;
+  max-width: 25rem;
   min-height: 0.5rem;
   width: 60vw;
   border-radius: 10px;

@@ -9,15 +9,7 @@
         style="border-top-left-radius: 15px"
       >
       </q-img>
-      <q-btn
-        class="button"
-        flat
-        unelevated
-        dense
-        color="grey-6"
-        :ripple="false"
-        icon="add"
-      />
+      <q-btn class="button" unelevated size="md" color="grey-6" icon="add" />
     </div>
     <div class="container-sub">
       <q-img
@@ -28,15 +20,7 @@
         style="border-top-right-radius: 15px"
       >
       </q-img>
-      <q-btn
-        class="button"
-        flat
-        unelevated
-        dense
-        color="grey-6"
-        :ripple="false"
-        icon="add"
-      />
+      <q-btn class="button" unelevated size="md" color="grey-6" icon="add" />
     </div>
     <div class="container-sub">
       <q-img
@@ -47,15 +31,7 @@
         style="border-bottom-left-radius: 15px"
       >
       </q-img>
-      <q-btn
-        class="button"
-        flat
-        unelevated
-        dense
-        color="grey-6"
-        :ripple="false"
-        icon="add"
-      />
+      <q-btn class="button" unelevated size="md" color="grey-6" icon="add" />
     </div>
     <div class="container-sub">
       <q-img
@@ -66,15 +42,7 @@
         style="border-bottom-right-radius: 15px"
       >
       </q-img>
-      <q-btn
-        class="button"
-        flat
-        unelevated
-        dense
-        color="grey-6"
-        :ripple="false"
-        icon="add"
-      />
+      <q-btn class="button" unelevated size="md" color="grey-6" icon="add" />
     </div>
   </div>
 </template>
@@ -122,8 +90,9 @@ export default defineComponent({
 }
 .button {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  left: 50%;
+  margin-left: -0.5rem;
+  top: 50%;
   width: 1rem;
   z-index: 1;
 }
