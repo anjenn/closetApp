@@ -28,6 +28,7 @@
             color="grey-6"
             :ripple="false"
             icon="edit"
+            v-on:click="redirectToEdit"
           />
           <q-btn
             flat
@@ -103,6 +104,9 @@ export default defineComponent({
       this.heartBorder == true
         ? (this.heartBorder = false)
         : (this.heartBorder = true);
+    },
+    redirectToEdit() {
+      this.$router.push("/PostEditor");
     },
   },
 });

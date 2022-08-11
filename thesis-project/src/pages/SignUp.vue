@@ -7,22 +7,53 @@
         class="bg-pink-3 my-card shadow-10"
         style="font-family: 'fredoka one'"
       >
-        <q-card-section class="container sub">
+        <q-card-section class="container q-gutter-md sub flex flex-center">
           <div class="text-h6" style="text-align: center">Sign Up</div>
-          <div class="names q-gutter-md row items-start">
-            <q-input rounded outlined dense v-model="text" label="First Name" />
-            <q-input rounded outlined dense v-model="text" label="Last Name" />
+          <div class="names row justify-around items-start">
+            <q-input
+              rounded
+              standout
+              dense
+              v-model="text"
+              style="width: 45%"
+              label="First Name"
+            />
+            <q-input
+              rounded
+              standout
+              dense
+              v-model="text"
+              style="width: 45%"
+              label="Last Name"
+            />
           </div>
-
-          <q-input rounded outlined dense v-model="text" label="Email" />
-          <q-input rounded outlined dense v-model="text" label="Password" />
 
           <q-input
             rounded
-            outlined
+            standout
             dense
             v-model="text"
-            label="Rounded outlined"
+            style="width: 90%"
+            label="Email"
+          />
+          <q-input
+            rounded
+            standout
+            dense
+            v-model="text"
+            style="width: 90%"
+            label="Password"
+          />
+          <q-btn
+            push
+            rounded
+            outline
+            unelevated
+            color="white"
+            text-color="white"
+            style="width: 90%"
+            label="Send"
+            v-on:click="redirectToSignUp"
           />
         </q-card-section>
       </q-card>
@@ -79,10 +110,12 @@ export default defineComponent({
 <style scoped>
 .my-card {
   min-width: 0.7rem;
+  max-width: 25rem;
   min-height: 0.5rem;
   width: 60vw;
   border-radius: 10px;
 }
+
 .container.sub {
   display: flex;
   flex-direction: column;

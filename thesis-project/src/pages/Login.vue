@@ -45,7 +45,18 @@
               class="btn"
               v-on:click="redirectTo"
             />
+            <q-space />
           </q-form>
+          <span style="margin: auto"
+            >Have no account?
+            <q-btn
+              push
+              flat
+              text-color="pink 4"
+              label="Sign Up"
+              v-on:click="redirectToSignUp"
+            />
+          </span>
         </q-card-section>
       </q-card>
     </div>
@@ -64,12 +75,10 @@ export default defineComponent({
     const name = ref(null);
     const age = ref(null);
     const accept = ref(false);
-
     return {
       name,
       age,
       accept,
-
       onSubmit() {
         if (accept.value !== true) {
           $q.notify({
@@ -87,13 +96,17 @@ export default defineComponent({
           });
         }
       },
-
       onReset() {
         name.value = null;
         age.value = null;
         accept.value = false;
       },
     };
+  },
+  methods: {
+    redirectToSignUp() {
+      this.$router.push("/SignUp");
+    },
   },
 });
 </script>

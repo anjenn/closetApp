@@ -17,8 +17,8 @@
         </q-tabs>
         <q-separator />
         <q-tab-panels v-model="tab" animated>
-          <q-tab-panel name="myPosts" class="panel">
-            <div class="row">
+          <q-tab-panel name="myPosts" class="flex-centerpanel">
+            <div class="row wrap">
               <postView />
               <postView />
               <postView />
@@ -27,8 +27,8 @@
               <postView />
             </div>
           </q-tab-panel>
-          <q-tab-panel name="savedPosts" class="panel">
-            <div class="row">
+          <q-tab-panel name="savedPosts" class="flex-center panel">
+            <div class="row wrap">
               <postView />
               <postView />
               <postView />

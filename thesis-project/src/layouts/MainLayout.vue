@@ -29,7 +29,12 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+    <q-drawer
+      v-model="leftDrawerOpen"
+      style="width: 150px"
+      show-if-above
+      bordered
+    >
       <q-list>
         <Navigation
           v-for="link in essentialLinks"
@@ -53,45 +58,33 @@ const linksList = [
   {
     title: "FeedView",
     caption: ".",
-    icon: "school",
     link: "/FeedView",
   },
   {
     title: "LogIn",
     caption: ".",
-    icon: "code",
     link: "/LogIn",
   },
   {
     title: "MyPage",
     caption: ".",
-    icon: "chat",
     link: "/MyPage",
   },
   {
     title: "PostEditor",
     caption: ".",
-    icon: "record_voice_over",
     link: "/PostEditor",
   },
   {
     title: "SignUp",
     caption: ".",
-    icon: "rss_feed",
     link: "/SignUp",
   },
   {
     title: "Main",
     caption: ".",
-    icon: "public",
     link: "/",
     // href = link
-  },
-  {
-    title: "Quasar Awesome",
-    caption: "Community Quasar projects",
-    icon: "favorite",
-    link: "https://awesome.quasar.dev",
   },
 ];
 
