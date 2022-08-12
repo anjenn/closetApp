@@ -9,7 +9,7 @@
           />
           <span style="margin-left: 1rem; font-size: 1rem">User ID</span>
         </div>
-        <div class="col"><collageLoader /></div>
+        <div class="col"><collageLoaderFeed /></div>
         <div class="buttons">
           <q-btn
             v-model="this.heartBorder"
@@ -78,7 +78,7 @@
 
 <script>
 import { defineComponent } from "vue";
-import collageLoader from "/src/components/CollageLoader";
+import collageLoaderFeed from "/src/components/CollageLoaderFeed";
 import placeholder from "/public/placeholder.png";
 
 import { ref } from "vue";
@@ -86,7 +86,7 @@ import { ref } from "vue";
 export default defineComponent({
   name: "PostView",
   components: {
-    collageLoader,
+    collageLoaderFeed,
   },
   data() {
     return {

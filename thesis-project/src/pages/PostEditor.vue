@@ -22,7 +22,7 @@
           </q-tabs>
           <q-tab-panels v-model="tab" animated>
             <q-tab-panel v-for="i in maxPage" :key="i" :name="i">
-              <PhotoLoader />
+              <collageLoaderEdit />
             </q-tab-panel>
           </q-tab-panels>
           <q-input v-model="postTitle"> </q-input>
@@ -35,7 +35,7 @@
 <script>
 import { defineComponent } from "vue";
 import { ref } from "vue";
-import collageLoader from "src/components/CollageLoader.vue";
+import collageLoaderEdit from "src/components/CollageLoaderEdit.vue";
 
 export default defineComponent({
   name: "PostEditor",
@@ -59,7 +59,7 @@ export default defineComponent({
       }
     },
   },
-  components: { PhotoLoader, PhotoLoader },
+  components: { collageLoaderEdit },
 });
 </script>
 
