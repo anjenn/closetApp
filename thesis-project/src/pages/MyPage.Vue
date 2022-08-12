@@ -17,8 +17,8 @@
         </q-tabs>
         <q-separator />
         <q-tab-panels v-model="tab" animated>
-          <q-tab-panel name="myPosts" class="flex-centerpanel">
-            <div class="row wrap">
+          <q-tab-panel name="myPosts" class="panel">
+            <div class="posts">
               <postView />
               <postView />
               <postView />
@@ -27,8 +27,8 @@
               <postView />
             </div>
           </q-tab-panel>
-          <q-tab-panel name="savedPosts" class="flex-center panel">
-            <div class="row wrap">
+          <q-tab-panel name="savedPosts" class="panel">
+            <div class="posts">
               <postView />
               <postView />
               <postView />
@@ -71,5 +71,11 @@ export default defineComponent({
 }
 .panel {
   background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  min-width: 60vw;
+  width: 80vw;
+}
+.posts {
 }
 </style>
