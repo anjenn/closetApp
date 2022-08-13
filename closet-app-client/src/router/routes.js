@@ -9,11 +9,31 @@ const routes = [
         component: () => import("pages/InitialiseTags.vue"),
       },
       // Post page
-      { path: "/FeedView", component: () => import("pages/FeedView.vue") },
-      { path: "/LogIn", component: () => import("pages/LogIn.vue") },
-      { path: "/MyPage", component: () => import("pages/MyPage.vue") },
-      { path: "/PostEditor", component: () => import("pages/PostEditor.vue") },
-      { path: "/SignUp", component: () => import("pages/SignUp.vue") },
+      {
+        path: "/FeedView",
+        name: "Feed View",
+        component: () => import("pages/FeedView.vue"),
+      },
+      {
+        path: "/LogIn",
+        name: "Log In Page",
+        component: () => import("pages/LogIn.vue"),
+      },
+      {
+        path: "/MyPage",
+        name: "User Page",
+        component: () => import("pages/MyPage.vue"),
+      },
+      {
+        path: "/PostEditor",
+        name: "Post Editor",
+        component: () => import("pages/PostEditor.vue"),
+      },
+      {
+        path: "/SignUp",
+        name: "Sign Up Page",
+        component: () => import("pages/SignUp.vue"),
+      },
     ],
   },
 
