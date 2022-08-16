@@ -1,4 +1,5 @@
-const db = require("../models");
+// const db = require("../models");
+const express = required("express");
 const postManager = db.postManager;
 // Create and Save a new post
 exports.create = (req, res) => {};
