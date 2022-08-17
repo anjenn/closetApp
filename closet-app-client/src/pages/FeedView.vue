@@ -25,6 +25,7 @@
           color="pink-3"
           round
           icon="add"
+          v-on:click="redirectPostEditor"
         />
       </div>
     </div>
@@ -46,6 +47,9 @@ export default defineComponent({
   },
   methods: {
     randomNumGen() {},
+    redirectPostEditor() {
+      this.$router.push("/PostEditor");
+    },
   },
 });
 </script>

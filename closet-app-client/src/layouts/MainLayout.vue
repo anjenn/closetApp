@@ -7,10 +7,7 @@
           style="font-family: 'Neonderthaw'; font-weight: 700"
         >
           <span style="pointer-events: none">🤍 Closet Collage 🤍</span>
-          <div class="toolbar-buttons">
-            <q-btn flat round color="white" icon="tune" @click="showFilter">
-              <q-tooltip> Filter </q-tooltip>
-            </q-btn>
+          <div class="toolbar-btns">
             <router-link
               :to="{ path: '/FeedView' }"
               style="text-decoration: none"
@@ -27,7 +24,6 @@
                 <q-tooltip> MyPage </q-tooltip>
               </q-btn>
             </router-link>
-
             <q-btn
               flat
               round
@@ -37,6 +33,17 @@
             >
               <q-tooltip> Navigation </q-tooltip>
             </q-btn>
+            <q-btn-dropdown
+              class="filter-btn"
+              flat
+              round
+              color="white"
+              icon="tune"
+              @click="showFilter"
+            >
+              <q-tooltip> Filter </q-tooltip>
+              <div class="filter-editor">hi</div>
+            </q-btn-dropdown>
           </div>
         </q-toolbar-title>
       </q-toolbar>
@@ -133,8 +140,11 @@ export default defineComponent({
   justify-content: space-between;
   align-items: center;
 }
-.toolbar-buttons {
+.toolbar-btns {
   display: flex;
   gap: 0.5rem;
+}
+.filter-btn {
+  position: relative;
 }
 </style>
