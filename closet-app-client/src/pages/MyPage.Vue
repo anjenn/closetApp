@@ -6,7 +6,7 @@
           v-model="tab"
           dense
           class="text-grey-7"
-          active-color="bg-pink-4 my-card shadow-10"
+          active-color="bg-pink-4 shadow-10"
           style="font-family: 'fredoka one'"
           indicator-color="pink-4"
           align="justify"
@@ -17,8 +17,8 @@
         </q-tabs>
         <q-separator />
         <q-tab-panels v-model="tab" animated>
-          <q-tab-panel name="myPosts" class="panel">
-            <div class="posts">
+          <q-tab-panel name="myPosts">
+            <div class="row posts wrap justify-around">
               <postView />
               <postView />
               <postView />
@@ -27,8 +27,8 @@
               <postView />
             </div>
           </q-tab-panel>
-          <q-tab-panel name="savedPosts" class="panel">
-            <div class="posts">
+          <q-tab-panel name="savedPosts">
+            <div class="row posts wrap justify-around">
               <postView />
               <postView />
               <postView />
@@ -62,20 +62,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.my-card {
-  min-width: 0.7rem;
-  min-height: 0.5rem;
-}
 .cardView {
   margin: 5rem 5rem;
 }
 .panel {
   background-color: rgba(255, 255, 255, 0.5);
-  display: flex;
-  justify-content: center;
-  min-width: 60vw;
-  width: 80vw;
-}
-.posts {
 }
 </style>

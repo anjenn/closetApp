@@ -1,5 +1,5 @@
 <template>
-  <div class="container q-px-sm q-py-xl" wrap>
+  <div class="container q-px-md q-py-lg" wrap>
     <q-card class="post-card outer">
       <q-card class="post-card wrap">
         <div class="profile">
@@ -37,6 +37,14 @@
             color="grey-6"
             :ripple="false"
             icon="share"
+          />
+          <q-btn
+            flat
+            unelevated
+            dense
+            color="grey-6"
+            :ripple="false"
+            icon="delete"
           />
         </div>
         <div class="btn-tags">

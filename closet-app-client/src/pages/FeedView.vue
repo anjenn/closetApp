@@ -52,7 +52,7 @@ export default defineComponent({
 
 <style scoped>
 .container-sub {
-  margin: 5vh auto;
+  margin: 10vh 15vw;
   flex-direction: column;
   align-items: center;
 }

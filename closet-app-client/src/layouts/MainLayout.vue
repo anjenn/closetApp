@@ -8,6 +8,9 @@
         >
           <span style="pointer-events: none">🤍 Closet Collage 🤍</span>
           <div class="toolbar-buttons">
+            <q-btn flat round color="white" icon="tune" @click="showFilter">
+              <q-tooltip> Filter </q-tooltip>
+            </q-btn>
             <router-link
               :to="{ path: '/FeedView' }"
               style="text-decoration: none"
@@ -24,6 +27,16 @@
                 <q-tooltip> MyPage </q-tooltip>
               </q-btn>
             </router-link>
+
+            <q-btn
+              flat
+              round
+              color="white"
+              icon="navigation"
+              @click="toggleNav"
+            >
+              <q-tooltip> Navigation </q-tooltip>
+            </q-btn>
           </div>
         </q-toolbar-title>
       </q-toolbar>
@@ -101,10 +114,15 @@ export default defineComponent({
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
-      // toggleLeftDrawer() {
-      //   leftDrawerOpen.value = !leftDrawerOpen.value;
-      // },
     };
+  },
+  methods: {
+    toggleNav() {
+      this.leftDrawerOpen = !this.leftDrawerOpen;
+    },
+    showFilter() {
+      // css class with a filter selector
+    },
   },
 });
 </script>
