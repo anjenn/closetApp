@@ -32,7 +32,7 @@
               <span> Model: {{ greenModel }} (0 to 5, step 1) </span>
               <q-slider
                 v-model="greenModel"
-                color="green"
+                color="pink-3"
                 :min="0"
                 :step="1"
                 :max="5"
@@ -40,7 +40,7 @@
               <span> Model: {{ greenModel }} (0 to 5, step 1) </span>
               <q-slider
                 v-model="greenModel"
-                color="green"
+                color="pink-3"
                 :min="0"
                 :step="1"
                 :max="5"
@@ -48,7 +48,7 @@
               <span> Model: {{ greenModel }} (0 to 5, step 1) </span>
               <q-slider
                 v-model="greenModel"
-                color="green"
+                color="pink-3"
                 :min="0"
                 :step="1"
                 :max="5"
@@ -63,10 +63,13 @@
               bg-color="white"
               v-model="selected"
               style="width: 100%"
-              hide-selected
               :options="options"
             />
-            <q-btn>Save</q-btn>
+            <q-btn
+              label="save"
+              color="pink-4"
+              style="width: 100%; margin-top: 1rem"
+            />
           </div>
         </q-card-section>
       </q-card>
@@ -83,6 +86,29 @@ export default defineComponent({
   name: "PostEditor",
   data() {
     return {
+      selected: ref(null),
+      options: [
+        "feminine",
+        "preppy",
+        "girly",
+        "vintage",
+        "bohemian",
+        "chic",
+        "sexy",
+        "casual",
+        "formal",
+        "punk",
+        "rocker",
+        "tomboy",
+        "gothic",
+        "sporty",
+        "ethnic",
+      ],
+      imageEdits: {
+        brightness: 0,
+        scale: 0,
+        filter: 0,
+      },
       maxPage: 1,
       tab: ref("1"),
     };
