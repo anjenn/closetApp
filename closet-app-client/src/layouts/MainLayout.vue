@@ -42,7 +42,9 @@
               @click="showFilter"
             >
               <q-tooltip> Filter </q-tooltip>
-              <div class="filter-editor">hi</div>
+              <div class="filter-editor">
+                <filterEditor />
+              </div>
             </q-btn-dropdown>
           </div>
         </q-toolbar-title>
@@ -56,7 +58,7 @@
       bordered
     >
       <q-list>
-        <Navigation
+        <navigation
           v-for="link in essentialLinks"
           :key="link.title"
           v-bind="link"
@@ -72,7 +74,8 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import Navigation from "components/Navigation.vue";
+import navigation from "components/Navigation.vue";
+import filterEditor from "components/FilterEditor";
 
 const linksList = [
   {
@@ -112,7 +115,8 @@ export default defineComponent({
   name: "MainLayout",
 
   components: {
-    Navigation,
+    navigation,
+    filterEditor,
   },
 
   setup() {
