@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <q-card>
+    <q-card style="width: 5rem">
       <div class="btn-tags">
         <q-btn
           v-for="(item, index) in selected"
@@ -17,15 +17,15 @@
       </div>
       <q-select
         clearable
+        flat
         multiple
-        standout
-        color="grey-6"
-        bg-color="white"
+        color="grey-4"
         v-model="selected"
         style="width: 100%"
         hide-selected
         :options="options"
       />
+      <q-btn>Save & Reload</q-btn>
     </q-card>
   </div>
 </template>

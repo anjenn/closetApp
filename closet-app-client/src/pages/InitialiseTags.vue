@@ -99,7 +99,6 @@ export default defineComponent({
       // return JSON.stringify(this.selected);
     },
   },
-
   methods: {
     redirectTo() {
       this.$router.push("/FeedView");
@@ -109,7 +108,7 @@ export default defineComponent({
         alert("Select something");
       } else {
         Tags.saveTags(this.returnSelection);
-        this.$router.push("/FeedView");
+        this.redirectTo();
       }
     },
   },
