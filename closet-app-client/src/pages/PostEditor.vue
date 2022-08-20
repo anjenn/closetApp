@@ -26,13 +26,14 @@
               >+</q-btn
             >
           </q-tabs>
-          <q-tab-panels v-model="tab" animated>
+          <q-tab-panels keep-alive v-model="tab" animated>
             <q-tab-panel v-for="i in maxPage" :key="i" :name="i">
-              <q-image :src="image" style="width: 5rem; height: 5rem" />
+              <q-img :src="image" style="width: 20rem; height: 20rem" />
             </q-tab-panel>
           </q-tab-panels>
         </div>
-        <div class="post-options">
+        <q-separator color="grey-4" vertical inset />
+        <div class="post-options" style="margin: 0 1.5rem">
           <div class="photo-edits">
             <span class="slider-text"> Brightness </span>
             <q-slider
