@@ -18,13 +18,14 @@
             clearable
             multiple
             standout
-            color="grey-6"
+            color="pink-4"
             bg-color="white"
             v-model="selected"
             style="width: 100%"
             hide-selected
             :options="options"
-          />
+          >
+          </q-select>
           <div class="btn-tags">
             <q-btn
               v-for="(item, index) in selected"
@@ -73,6 +74,7 @@ export default defineComponent({
   name: "IndexPage",
   data() {
     return {
+      selectorModel: ref(null),
       selected: ref(null),
       options: [
         "feminine",

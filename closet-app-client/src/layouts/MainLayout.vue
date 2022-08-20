@@ -33,19 +33,26 @@
             >
               <q-tooltip> Navigation </q-tooltip>
             </q-btn>
-            <q-btn-dropdown
-              class="filter-btn"
-              flat
-              round
-              color="white"
-              icon="tune"
-              @click="showFilter"
+            <q-select
+              behavior="dialog"
+              options-dense
+              borderless
+              dense
+              multiple
+              label-color="white"
+              color="pink-4"
+              autofocus
+              v-model="selected"
+              max-values="5"
+              hide-selected
+              hide-dropdown-icon
+              :options="options"
             >
               <q-tooltip> Filter </q-tooltip>
-              <div class="filter-editor">
-                <filterEditor />
-              </div>
-            </q-btn-dropdown>
+              <template v-slot:prepend>
+                <q-icon name="tune" color="white" />
+              </template>
+            </q-select>
           </div>
         </q-toolbar-title>
       </q-toolbar>
@@ -57,6 +64,9 @@
       show-if-above
       bordered
     >
+      <span wrap style="font-size: 2rem; font-family: fredoka one"
+        >NAVIGATION FOR DEVELOPMENTAL PURPOSE! DELETE LATER!</span
+      >
       <q-list>
         <navigation
           v-for="link in essentialLinks"
@@ -75,7 +85,6 @@
 <script>
 import { defineComponent, ref } from "vue";
 import navigation from "components/Navigation.vue";
-import filterEditor from "components/FilterEditor";
 
 const linksList = [
   {
@@ -113,12 +122,31 @@ const linksList = [
 
 export default defineComponent({
   name: "MainLayout",
-
+  data() {
+    return {
+      selected: ref(null),
+      options: [
+        "feminine",
+        "preppy",
+        "girly",
+        "vintage",
+        "bohemian",
+        "chic",
+        "sexy",
+        "casual",
+        "formal",
+        "punk",
+        "rocker",
+        "tomboy",
+        "gothic",
+        "sporty",
+        "ethnic",
+      ],
+    };
+  },
   components: {
     navigation,
-    filterEditor,
   },
-
   setup() {
     const leftDrawerOpen = ref(false);
 
@@ -126,6 +154,12 @@ export default defineComponent({
       essentialLinks: linksList,
       leftDrawerOpen,
     };
+  },
+  computed: {
+    returnSelection() {
+      return this.selected;
+      // return JSON.stringify(this.selected);
+    },
   },
   methods: {
     toggleNav() {

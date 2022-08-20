@@ -8,6 +8,9 @@
         <postView />
         <postView />
         <postView />
+        <postView />
+        <postView />
+        <postView />
       </div>
       <div class="row justify-between" style="width: 9rem">
         <q-btn

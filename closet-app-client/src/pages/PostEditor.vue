@@ -10,6 +10,7 @@
         <div class="post-contents">
           <q-tabs
             v-model="tab"
+            style="width: 98%"
             dense
             class="text-grey"
             active-color="pink-4"
@@ -23,8 +24,9 @@
               flat
               :v-model="maxPage"
               @click="increasePgNum"
-              >+</q-btn
-            >
+              color="pink-4"
+              icon="add_box"
+            ></q-btn>
           </q-tabs>
           <q-tab-panels keep-alive v-model="tab" animated>
             <q-tab-panel v-for="i in maxPage" :key="i" :name="i">
@@ -116,7 +118,11 @@
             color="pink-4"
             bg-color="white"
             v-model="selected"
-            style="width: 100%"
+            style="width: 100%; font-size: 0.8rem"
+            max-values="5"
+            stack-label
+            label="Select tags up to 5"
+            autofocus
             :options="options"
           />
           <q-btn
@@ -189,7 +195,7 @@ export default defineComponent({
   border: 0.5rem solid #f06292;
   min-width: 45rem;
   min-height: 25rem;
-  height: 60vh;
+  height: 62vh;
   width: 50vw;
   display: flex;
   justify-content: center;
