@@ -1,6 +1,11 @@
 // const db = require("../models");
 const express = required("express");
-const postManager = db.postManager;
+const Post = db.posts;
+
+/*
+CHECK WHERE IT'S SUPPOSED TO BE PLURAL AND WHERE IT'S SUPPOSED TO BE SINGULAR
+*/
+
 // Create and Save a new post
 exports.create = (req, res) => {};
 // Retrieve all posts from the database.

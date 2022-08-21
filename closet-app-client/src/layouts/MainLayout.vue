@@ -43,9 +43,10 @@
               color="pink-4"
               autofocus
               v-model="selected"
-              max-values="5"
               hide-selected
               hide-dropdown-icon
+              @clear="resetSelection"
+              @popup-hide="saveSelection"
               :options="options"
             >
               <q-tooltip> Filter </q-tooltip>
@@ -165,8 +166,13 @@ export default defineComponent({
     toggleNav() {
       this.leftDrawerOpen = !this.leftDrawerOpen;
     },
-    showFilter() {
-      // css class with a filter selector
+    saveSelection() {
+      if (this.returnSelection == null) {
+        alert("Select something");
+      } else {
+        Tags.saveTags(this.returnSelection);
+        this.redirectTo();
+      }
     },
   },
 });

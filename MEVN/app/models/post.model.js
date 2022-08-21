@@ -1,27 +1,4 @@
-const mongoose = require("mongoose");
-
-var postSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: "This field is required",
-  },
-  id: {
-    type: number,
-    required: "this field is required",
-  },
-  author: {
-    type: String,
-    required: "this field is required",
-  },
-  tags: {
-    type: Object,
-    required: "this field is required",
-  },
-});
-
-mongoose.model("Post", postSchema);
-
-/* module.exports = (mongoose) => {
+module.exports = (mongoose) => {
   var schema = mongoose.Schema(
     {
       title: String,
@@ -35,7 +12,6 @@ mongoose.model("Post", postSchema);
     object.id = _id;
     return object;
   });
-  const postManager = mongoose.model("postManager", schema);
-  return postManager;
+  const Post = mongoose.model("post", schema);
+  return Post;
 };
-*/
