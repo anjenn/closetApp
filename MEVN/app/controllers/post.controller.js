@@ -7,7 +7,30 @@ CHECK WHERE IT'S SUPPOSED TO BE PLURAL AND WHERE IT'S SUPPOSED TO BE SINGULAR
 */
 
 // Create and Save a new post
-exports.create = (req, res) => {};
+exports.create = (req, res) => {
+  if (!req.body.title) {
+    res.status(400).send({ message: "Content can not be empty!" });
+    return;
+  }
+  // Create a Tutorial
+  const post = new Post({
+    title: req.body.title,
+    description: req.body.description,
+    published: req.body.published ? req.body.published : false,
+  });
+  // Save Tutorial in the database
+  tutorial
+    .save(tutorial)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Tutorial.",
+      });
+    });
+};
 // Retrieve all posts from the database.
 exports.findAll = (req, res) => {};
 // Find a single post with an id
