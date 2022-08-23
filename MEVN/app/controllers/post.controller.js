@@ -8,7 +8,7 @@ CHECK WHERE IT'S SUPPOSED TO BE PLURAL AND WHERE IT'S SUPPOSED TO BE SINGULAR
 
 // Create and Save a new post
 exports.create = (req, res) => {
-  if (!req.body.title) {
+  if (!req.body.title || !req.body.) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
