@@ -6,6 +6,11 @@ const Post = db.posts;
 CHECK WHERE IT'S SUPPOSED TO BE PLURAL AND WHERE IT'S SUPPOSED TO BE SINGULAR
 */
 
+
+/*
+In the callback, we have a res and a req. res means response, and req means request. We use res for sending responses to our client, like Postman, or any front-end client. And we use req for receiving requests from a client app like Postman, or any front-end client.
+*/
+
 // Create and Save a new post
 exports.create = (req, res) => {
   if (!req.body.title || !req.body.) {
