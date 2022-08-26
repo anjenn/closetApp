@@ -40,13 +40,34 @@ exports.create = (req, res) => {
       });
     });
 };
-// Retrieve all posts from the database.
+// Retrieve all posts from the database, by the same user (myPage)
+// query is used mostly for searching, sorting, filtering, pagination, etc
 exports.findAll = (req, res) => {
   const userName = req.query.userName;
-  var condition = userName ? {userName: {$regex: new RegExp(userName), $options: 'i'}}
+  var condition = userName
+    ? { userName: { $regex: new RegExp(userName), $options: "i" } }
+    : {};
+  Post.find(condition)
+    .then((date) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      message: err.message || "Some error occured while retrieving posts.";
+    });
 };
 // Find a single post with an id
-exports.findOne = (req, res) => {};
+exports.findOne = (req, res) => {
+  const id = req.params.id;
+  Post.findById(id)
+    .then((data) => {
+      if (!data)
+        res.status(404).send({ message: "Not found Post with id" + id });
+      else res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({ message: "Error retrieving Post with id= " + id });
+    });
+};
 // Update a post by the id in the request
 exports.update = (req, res) => {};
 // Delete a post with the specified id in the request
