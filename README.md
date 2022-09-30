@@ -1,4 +1,4 @@
-# closetApp
+# Closet Collage
 
 0. Initial page: displays different categories of styles (via tags).
 Selection of tags can be edited later through the menu panel.
