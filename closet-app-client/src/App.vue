@@ -4,6 +4,8 @@
 
 <script>
 import { defineComponent } from "vue";
+import apiClient from "./http-common";
+
 
 export default defineComponent({
   name: "App",

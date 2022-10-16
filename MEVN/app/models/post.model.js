@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const dataSchema = new mongoose.Schema({
+/*
+var dataSchema = require('mongoose').Schema({
     userId: String,
     url: [{ type: String }],
     tags: [{ type: String }],
@@ -12,3 +12,20 @@ schema.method("toJSON", function () {
     return object;
 });
 module.exports = mongoose.model('Post', dataSchema)
+
+*/
+module.exports = mongoose => {
+    const Post = mongoose.model(
+      "post",
+      mongoose.Schema(
+        {
+          title: String,
+          description: String,
+          published: Boolean
+        },
+        { timestamps: true }
+      )
+    );
+  
+    return Post;
+  };
