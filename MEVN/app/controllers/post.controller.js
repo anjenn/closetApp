@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const Post =  require("../models/post.model.js")(mongoose);
 
 /*
-CHECK WHERE IT'S SUPPOSED TO BE PLURAL AND WHERE IT'S SUPPOSED TO BE SINGULAR
-*/
-
-/*
 In the callback, we have a res and a req. res means response, and req means request. We use res for sending responses to our client, like Postman, or any front-end client. And we use req for receiving requests from a client app like Postman, or any front-end client.
 */
 
@@ -13,13 +9,14 @@ In the callback, we have a res and a req. res means response, and req means requ
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.title) {
-      res.status(400).send({ message: "Content can not be empty!" });
+      res.status(400).send({ message: req.body });
       return;
     }
   
     // Create a Tutorial
     const post = new Post({
       title: req.body.title,
+      userId: req.body.userId,
       description: req.body.description,
       published: req.body.published ? req.body.published : false
     });

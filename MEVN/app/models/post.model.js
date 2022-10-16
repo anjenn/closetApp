@@ -20,6 +20,7 @@ module.exports = mongoose => {
       mongoose.Schema(
         {
           title: String,
+          userId: String,
           description: String,
           published: Boolean
         },
