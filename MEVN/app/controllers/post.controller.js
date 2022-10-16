@@ -8,17 +8,16 @@ In the callback, we have a res and a req. res means response, and req means requ
 // Create and Save a new post
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
-      res.status(400).send({ message: req.body });
-      return;
-    }
+    // if (!req.body.userId) {
+    //   res.status(400).send({ message: "Content cannot be empty" });
+    //   return;
+    // }
   
     // Create a Tutorial
     const post = new Post({
-      title: req.body.title,
       userId: req.body.userId,
-      description: req.body.description,
-      published: req.body.published ? req.body.published : false
+      urls: req.body.urls,
+      tags: req.body.tags
     });
   
     // Save Tutorial in the database
