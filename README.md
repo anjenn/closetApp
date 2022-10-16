@@ -13,3 +13,8 @@ The selection will be saved to local storage.
 
 # Preview:
 https://drive.google.com/file/d/1Wv8KggPDOR9V6ceiAn_LJbCoxIdcxpIe/view?usp=sharing
+
+
+# Database:
+- user: userID, pwd, userName, array of liked posts (ID)
+- post: postID, userID, url, tags, timestamp

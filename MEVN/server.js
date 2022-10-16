@@ -2,12 +2,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const db = require("./app/models");
+app.use(express.json());
+const mongoose = require('mongoose');
+require('dotenv').config();
+const mongoString = process.env.DATABASE_URL
 /*
 Express is for building the Rest apis
 body-parser helps to parse the request and create the req.body object
 cors provides Express middleware to enable CORS with various options.
 */
+const routes = require('./app/routes/routes');
+app.use('/api', routes); //now all endpoints will start from '/api' ex) localhost:3000/api/getAll
 
 var corsOptions = {
   origin: "http://localhost:8000",
@@ -24,31 +29,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to jenn's application." });
 });
+
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-/* Accesing pages */
-const postManager = require("./app/routes/post");
-// any route that goest to /api/postManager will be handled by postManager
-app.use("api/postManager", postManager);
-
-////////////////////////
-db.mongoose
-  .connect(db.url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Connected to the database!");
-  })
-  .catch((err) => {
-    console.log("Cannot connect to the database!", err);
-    process.exit();
-  });
-
-database.on("error", (error) => {
-  console.log(error);
-});
+// calling connect() method
+mongoose.connect(mongoString);
+const database = mongoose.connection;
+database.on('error', (error) => {
+    console.log(error)
+})
+database.once('connected', () => {
+    console.log('Database Connected');
+})
