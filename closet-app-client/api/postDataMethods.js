@@ -5,10 +5,13 @@ class postDataMethods {
   } // get all posts
   getAll() {
     return http.get("/MyPage");
-  } // get all posts
+  } // get all posts by userId
+  getAll(userID) {
+    return http.get("/MyPage?userID=${userID}");
+  } // get all posts user liked
   get(id) {
     return http.get(`/FeedView/${id}`);
-  }
+  } // get posts by id
   get(id) {
     return http.get(`/MyPage/${id}`);
   }

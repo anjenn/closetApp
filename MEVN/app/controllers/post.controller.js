@@ -8,19 +8,17 @@ In the callback, we have a res and a req. res means response, and req means requ
 // Create and Save a new post
 exports.create = (req, res) => {
     // Validate request
-    // if (!req.body.userId) {
-    //   res.status(400).send({ message: "Content cannot be empty" });
-    //   return;
-    // }
-  
-    // Create a Tutorial
+    if (!req.body.userId) {
+      res.status(400).send({ message: "Content cannot be empty" });
+      return;
+    }
+    // Create a Post
     const post = new Post({
       userId: req.body.userId,
       urls: req.body.urls,
       tags: req.body.tags
     });
-  
-    // Save Tutorial in the database
+    // Save Post in the database
     post
       .save(post)
       .then(data => {
@@ -29,45 +27,10 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while creating the Tutorial."
+            err.message || "Some error occurred while creating the Post."
         });
-      });
-  };
-
-
-/*
-exports.create = (req, res) => {
-  if (!req.body.url.length) {
-    console.log(`Checking req.body.url.length: ${req.body.url.length}`);
-    res.status(400).send({ message: "You need to add at least one photo" });
-    return;
-  }
-  if (!req.body.tags.length) {
-    console.log(`Checking req.body.url.length: ${req.body.url.length}`);
-    res.status(400).send({ message: "You need to add at least one url" });
-    return;
-  }
-  // Create a Post
-  const post = new Post({
-    userID: req.body.userID,
-    url: req.body.url,
-    tags: req.body.tags,
-  });
-  // Save Post in the database
-  post
-    .save(post)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the post.",
-      });
     });
 };
-*/
-
-
 
 // Retrieve all posts from the database, by the same user (myPage)
 // query is used mostly for searching, sorting, filtering, pagination, etc

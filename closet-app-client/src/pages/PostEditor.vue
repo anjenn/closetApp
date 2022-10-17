@@ -125,11 +125,20 @@
             autofocus
             :options="options"
           />
-          <q-btn
+          <div class="saveDeleteBtns"
+              style="display:flex; justify-content: space-evenly;"
+          >
+            <q-btn
             label="save"
             color="pink-4"
-            style="width: 100%; margin-top: 1rem"
-          />
+            style="width: 40%; margin-top: 1rem;"
+            />
+            <q-btn
+              label="delete"
+              color="pink-4"
+              style="width: 40%; margin-top: 1rem;"
+            />
+          </div>
         </div>
       </q-card-section>
     </q-card>

@@ -18,3 +18,26 @@ module.exports = mongoose => {
     const Post = mongoose.model("post", schema);
     return Post;
 };
+
+
+// its object looks like:
+/*
+{
+    "userId": "Jenn",
+    "urls": [
+        "http1",
+        "http2",
+        "http3",
+        "http4"
+    ],
+    "tags": [
+        "tag1",
+        "tag2",
+        "tag3",
+        "tag4"
+    ],
+    "createdAt": "2022-10-16T22:44:05.037Z",
+    "updatedAt": "2022-10-16T22:44:05.037Z",
+    "id": "634c893520424c8e5b5c41dc"
+}
+*/

@@ -38,14 +38,6 @@
             :ripple="false"
             icon="share"
           />
-          <q-btn
-            flat
-            unelevated
-            dense
-            color="grey-6"
-            :ripple="false"
-            icon="delete"
-          />
         </div>
         <div class="btn-tags">
           <q-btn
