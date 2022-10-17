@@ -4,10 +4,11 @@ module.exports = app => {
     var router = require("express").Router();
   
     // Create a new Post
-    router.post("/", posts.create);
-  
+    router.post("/PostEditor", posts.create);
     // Retrieve all Posts
-    router.get("/", posts.findAll);
+    router.get("/FeedView", posts.findAll);
+    // Retrieve a single Post with id
+    router.get("PostEditor/:id", posts.findOne);
   
     // Retrieve a single Post with id
     router.get("/:id", posts.findOne);
@@ -21,5 +22,5 @@ module.exports = app => {
     // Delete all Posts
     router.delete("/", posts.deleteAll);
   
-    app.use('/api/posts', router);
+    app.use('/api', router);
   };

@@ -32,21 +32,6 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all posts from the database, by the same user (myPage)
-// query is used mostly for searching, sorting, filtering, pagination, etc
-exports.findAll = (req, res) => {
-  const userID = req.query.userID;
-  var condition = userID
-    ? { userID: { $regex: new RegExp(userID), $options: "i" } }
-    : {};
-  Post.find(condition)
-    .then((date) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      message: err.message || "Some error occured while retrieving posts.";
-    });
-};
 
 /*
 // Find a single post with an id
