@@ -6,7 +6,7 @@
 
 require('dotenv').config();
 const express = require("express");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser"); // apparently body-parser is now deprecated and express does the job
 const cors = require("cors");
 const app = express();
 const mongoose = require('mongoose');
@@ -19,9 +19,11 @@ var corsOptions = {
 /* MiddleWare */
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
-app.use(bodyParser.json()); // app.use(express.json());
+app.use(express.json());
+app.use(bodyParser.json()); // deprecated?
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true })); // deprecated?
 
 /* Simple Route */
 // app.get("/", (req, res) => {

@@ -33,6 +33,16 @@ exports.create = (req, res) => {
 };
 
 
+findByTag
+
+findByPostID
+
+getMyPosts
+
+getLikedPosts
+
+
+
 /*
 // Find a single post with an id
 exports.findOne = (req, res) => {
