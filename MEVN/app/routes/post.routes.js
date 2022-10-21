@@ -4,7 +4,7 @@ module.exports = app => {
     var router = require("express").Router();
   
     // Create a new Post
-    router.post("/PostEditor", posts.create);
+    router.post("/PostEditor", posts.createPost);
     // Retrieve all Posts
     router.get("/FeedView", posts.findAll);
     // Retrieve a single Post with id

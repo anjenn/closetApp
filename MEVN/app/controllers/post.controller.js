@@ -6,9 +6,12 @@ In the callback, we have a res and a req. res means response, and req means requ
 */
 
 /*
+done:
+createOnePost
+
+tba:
 getAllPosts - user filter to check for tags
 filterByTags
-createOnePost
 deleteOnePost
 updateOnePost
 getOnePost
@@ -16,9 +19,8 @@ getUsersPosts
 getLikedPosts
 */
 
-
 // Create and Save a new post
-exports.create = (req, res) => {
+exports.createPost = (req, res) => {
     // Validate request
     if (!req.body.userId) {
       res.status(400).send({ message: "Content cannot be empty" });
@@ -43,3 +45,22 @@ exports.create = (req, res) => {
         });
     });
 };
+
+exports.getAllPosts = (req, res) => {
+  const title = req.query.title;
+  var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
+
+  Tutorial.find(condition)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    });
+};
+
+
+//figure out how to sort the data with tags (from local storage or from other database)
