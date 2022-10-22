@@ -65,7 +65,6 @@ exports.deletePost = (req, res) => {
       });
     });
 }
-
 exports.updatePost = (req, res) => {
   if (!req.body) {
     return res.status(400).send({
@@ -87,7 +86,6 @@ exports.updatePost = (req, res) => {
       });
     });
 }
-
 exports.getOnePost = (req, res) => {
   const id = req.params.id;
   Post.findById(id)

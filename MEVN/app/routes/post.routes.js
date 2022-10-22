@@ -7,20 +7,14 @@ module.exports = app => {
     router.post("/PostEditor", posts.createPost);
     // Retrieve all Posts
     router.get("/FeedView", posts.getAllPosts);
-    // Retrieve a single Post with id
-    router.get("PostEditor/:id", posts.findOne);
-  
-    // Retrieve a single Post with id
-    router.get("/:id", posts.findOne);
-  
-    // Update a Post with id
-    router.put("/:id", posts.update);
-  
     // Delete a Post with id
-    router.delete("/:id", posts.delete);
-  
-    // Delete all Posts
-    router.delete("/", posts.deleteAll);
+    router.delete("/PostEditor/:id", posts.deletePost);
+    // Update a Post with id
+    router.put("/PostEditor/:id", posts.updatePost);
+    // Retrieve a single Post with id
+    router.get("/PostEditor/:id", posts.getOnePost);  
+    // Get users' posts
+    router.get("/MyPage", posts.getUserPosts);
   
     app.use('/api', router);
   };

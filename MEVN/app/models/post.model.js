@@ -3,8 +3,7 @@ module.exports = mongoose => {
       {
         userId: String,
         urls: [{ type: String }],
-        tag: String,
-
+        tag: String
       },
       { timestamps: true }
     );
