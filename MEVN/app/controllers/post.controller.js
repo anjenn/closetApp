@@ -5,20 +5,6 @@ const Post =  require("../models/post.model.js")(mongoose);
 In the callback, we have a res and a req. res means response, and req means request. We use res for sending responses to our client, like Postman, or any front-end client. And we use req for receiving requests from a client app like Postman, or any front-end client.
 */
 
-/*
-done:
-createOnePost
-
-tba:
-getAllPosts - user filter to check for tags
-filterByTags
-deleteOnePost
-updateOnePost
-getOnePost
-getUsersPosts
-getLikedPosts
-*/
-
 // Create and Save a new post
 exports.createPost = (req, res) => {
     // Validate request
@@ -30,7 +16,7 @@ exports.createPost = (req, res) => {
     const post = new Post({
       userId: req.body.userId,
       urls: req.body.urls,
-      tags: req.body.tags
+      tag: req.body.tag
     });
     // Save Post in the database
     post
@@ -45,24 +31,105 @@ exports.createPost = (req, res) => {
         });
     });
 };
-
 exports.getAllPosts = (req, res) => {
   const {tag1, tag2, tag3, tag4, tag5} = req.query;
-  // something like this, but tags is an array, not a single item
-  // also, since there are 5 fields for tags, any given from the parameter, and given from database match via "null"
-  // the search fails.
-  // however, i need a way to make sure the number of slots is constant
-  Post.find({tags: {$in: [`${tag1}, ${tag2}, ${tag3}, ${tag4}, ${tag5}`]}})
+  Post.find({tag: {$in: [`${tag1}, ${tag2}, ${tag3}, ${tag4}, ${tag5}`]}})
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Some error occurred while retrieving posts."
       });
     });
 };
+exports.deletePost = (req, res) => {
+  // if you have the route /student/:id, then the “id” property is available as req.params.id
+  const id = req.params.id;
+  Post.findByIdAndRemove(id)
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot delete Post with id=${id}. Maybe Post was not found!`
+        });
+      } else {
+        res.send({
+          message: "Post was deleted successfully!"
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete Post with id=" + id
+      });
+    });
+}
 
+exports.updatePost = (req, res) => {
+  if (!req.body) {
+    return res.status(400).send({
+      message: "Data to update can not be empty!"
+    });
+  }
+  const id = req.params.id;
+  Post.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot update Post with id=${id}. Maybe Post was not found!`
+        });
+      } else res.send({ message: "Post was updated successfully." });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating Post with id=" + id
+      });
+    });
+}
 
-//figure out how to sort the data with tags (from local storage or from other database)
+exports.getOnePost = (req, res) => {
+  const id = req.params.id;
+  Post.findById(id)
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "Not found Post with id " + id });
+      else res.send(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "Error retrieving Post with id=" + id });
+    });
+}
+
+exports.getUserPosts = (req, res) => {
+  const userID = req.query;
+  Post.find({userId: userID})
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving posts."
+      });
+    });
+}
+
+/*
+exports.findSavedPost = (req, res) => {
+  const id = req.params.id;
+  Post.findById(id)
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "Not found Post with id " + id });
+      else res.send(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "Error retrieving Post with id=" + id });
+    });
+}
+*/

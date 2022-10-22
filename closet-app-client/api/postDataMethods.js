@@ -20,9 +20,14 @@ class postDataMethods {
   get(postID) { // load a post via PostID
     return http.get(`/PostEditor/${postID}`);
   }
-  getUserData() { // retrieve all posts in myPage
-    return http.get(`/MyPage`); // SAVED/LIKED
+  getUserData(id) { // retrieve all posts in myPage
+    return http.get(`/MyPage?userID=${id}`); // SAVED/LIKED
   }
+  
+  //add to liked list, remove from liked list
+
+
+
 }
 export default new postDataMethods();
 

@@ -3,7 +3,7 @@ module.exports = mongoose => {
       {
         userId: String,
         urls: [{ type: String }],
-        tags: [{ type: String }],
+        tag: String,
 
       },
       { timestamps: true }
@@ -30,12 +30,13 @@ module.exports = mongoose => {
         "http3",
         "http4"
     ],
-    "tags": [
-        "tag1",
-        "tag2",
-        "tag3",
-        "tag4"
+    "likedBy": [
+        "user1",
+        "user2",
+        "user3",
+        "user4"
     ],
+    "tags": "Tag",
     "createdAt": "2022-10-16T22:44:05.037Z",
     "updatedAt": "2022-10-16T22:44:05.037Z",
     "id": "634c893520424c8e5b5c41dc"
