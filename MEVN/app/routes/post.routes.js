@@ -6,7 +6,7 @@ module.exports = app => {
     // Create a new Post
     router.post("/PostEditor", posts.createPost);
     // Retrieve all Posts
-    router.get("/FeedView", posts.findAll);
+    router.get("/FeedView", posts.getAllPosts);
     // Retrieve a single Post with id
     router.get("PostEditor/:id", posts.findOne);
   

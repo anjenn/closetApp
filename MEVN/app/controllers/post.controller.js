@@ -47,10 +47,12 @@ exports.createPost = (req, res) => {
 };
 
 exports.getAllPosts = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
-
-  Tutorial.find(condition)
+  const {tag1, tag2, tag3, tag4, tag5} = req.query;
+  // something like this, but tags is an array, not a single item
+  // also, since there are 5 fields for tags, any given from the parameter, and given from database match via "null"
+  // the search fails.
+  // however, i need a way to make sure the number of slots is constant
+  Post.find({tags: {$in: [`${tag1}, ${tag2}, ${tag3}, ${tag4}, ${tag5}`]}})
     .then(data => {
       res.send(data);
     })
