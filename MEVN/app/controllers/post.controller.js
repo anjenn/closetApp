@@ -8,15 +8,15 @@ In the callback, we have a res and a req. res means response, and req means requ
 // Create and Save a new post
 exports.createPost = (req, res) => {
     // Validate request
-    if (!req.body.userId) {
+    if (!req.body.userID) {
       res.status(400).send({ message: "Content cannot be empty" });
       return;
     }
     // Create a Post
     const post = new Post({
-      userId: req.body.userId,
-      urls: req.body.urls,
-      tag: req.body.tag
+      userID: req.body.userID,
+      tag: req.body.tag,
+      photos: req.body.photos
     });
     // Save Post in the database
     post
@@ -121,7 +121,7 @@ exports.getOnePost = (req, res) => {
 exports.getUserPosts = (req, res) => {
   const userID = req.params.id;
   // console.log(userID)
-  Post.find({userId: userID})
+  Post.find({userID: userID})
     .then(data => {
       res.send(data);
     })

@@ -15,10 +15,6 @@ class postDataMethods {
     // return http.get(`/FeedView?tag=${tags[0]},${tags[1]},${tags[2]},${tags[3]},${tags[4]}`)
     // can be multiple tags, but at least one tag should be provided!
   }
-  getSavedPosts(postIDs) { // retrieve all posts saved by a user
-    return http.get(`/MyPage?postIDs=${postIDs}`) // '_id' instead of 'id' in api
-  } // needs to be tested
-  
   deletePost(postID) { // delete a post via PostID
     return http.delete(`/PostEditor/${postID}`);
   }
@@ -28,6 +24,9 @@ class postDataMethods {
   getOnePost(postID) { // load a post via PostID
     return http.get(`/PostEditor/${postID}`);
   }
+  getSavedPosts(postIDs) { // retrieve all posts saved by a user
+    return http.get(`/MyPage?postIDs=${postIDs}`) // '_id' instead of 'id' in api
+  } // needs to be tested
   getUserPosts(userID) { // retrieve all posts in myPage
     return http.get(`/MyPage/${userID}`); // SAVED/LIKED
   }

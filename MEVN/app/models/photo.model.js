@@ -1,10 +1,10 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
       {
-        userName: String,
-        password: String,
-        email: String,
-        savedPosts: [{ type: Number }] // postIDs
+        postID: Number,
+        order: Number,
+        url: String,
+        edits: [{ type: String }]
       }
     );
     schema.method("toJSON", function() {
@@ -13,10 +13,9 @@ module.exports = mongoose => {
       return object;
     });
   
-    const User = mongoose.model("user", schema);
-    return User;
+    const Photo = mongoose.model("photo", schema);
+    return Photo;
 };
-
 
 // its object looks like:
 /*
@@ -31,7 +30,3 @@ module.exports = mongoose => {
     "id": "635586756863c66b3f070053"
 }
 */
-
-// the user id should be saved in the local storage
-// the array of posts that user likes should also be saved in the local storage
-// when user deletes or likes id, user is found by id, and the post id is deleted or appended via update

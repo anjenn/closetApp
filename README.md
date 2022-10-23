@@ -16,9 +16,9 @@ https://drive.google.com/file/d/1Wv8KggPDOR9V6ceiAn_LJbCoxIdcxpIe/view?usp=shari
 
 
 # Database:
-- user: (userID), pwd, userName, email
-- post: (postID), userID, photoIDs, tags, likedBy, timestamp
-- photo: photoId, edits (array), url
+- user: (userID), userName, password, email, savedPosts[] (postIds), 
+- post: (postID), userID, photoIDs[], tag (only one), timestamp
+- photo: (photoId), postID, order, url, edits (array)
 
 # User page:
 - user's own posts: retrieved via post db controller function

@@ -27,9 +27,10 @@ app.use(express.urlencoded({ extended: true }));
 //   res.json({ message: "Welcome to Jenn's application." });
 // });
 
-
+/* linking DBs */
 require("./app/routes/post.routes")(app); // needs it before listen()
 require("./app/routes/user.routes")(app); // needs it before listen()
+require("./app/routes/photo.routes")(app); // needs it before listen()
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

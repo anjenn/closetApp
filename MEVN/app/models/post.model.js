@@ -1,13 +1,19 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
       {
-        userId: String,
-        urls: [{ type: String }],
-        tag: String
+        userID: Number,
+        tag: String,
+        photos: [ // should be checked
+          {
+            order: Number,
+            url: String,
+            edits: [{ type: String }],
+            id: Number
+          }
+        ]
       },
       { timestamps: true }
     );
-  
     schema.method("toJSON", function() {
       const { __v, _id, ...object } = this.toObject();
       object.id = _id;
@@ -22,16 +28,11 @@ module.exports = mongoose => {
 // its object looks like:
 /*
 {
-    "userId": "Jenn",
-    "urls": [
-        "http1",
-        "http2",
-        "http3",
-        "http4"
-    ],
+    "userID": "Jenn",
     "tag": "Tag",
     "createdAt": "2022-10-16T22:44:05.037Z",
     "updatedAt": "2022-10-16T22:44:05.037Z",
     "id": "634c893520424c8e5b5c41dc"
 }
+// id format is "id" in the frontend, "_id" in the backend
 */
