@@ -35,8 +35,7 @@ exports.getAllPosts = (req, res) => {
   const {tag} = req.query;
   const tagArr = tag.split(',');
   if(tagArr[0]!=null){
-    console.log("filter scenario executed");
-    Post.find({tag: {$in: tagArr}})
+    Post.find({"tag": {$in: tagArr}})
       .then(data => {
         res.send(data);
       })
@@ -48,7 +47,7 @@ exports.getAllPosts = (req, res) => {
       });
   }
   else{
-    // must check if this scenario would every work
+    // must check if this scenario would ever work
     console.log("non-filter scenario executed");
     Post.find()
       .then(data => {
@@ -120,8 +119,8 @@ exports.getOnePost = (req, res) => {
 }
 
 exports.getUserPosts = (req, res) => {
-  const {userID} = req.query;
-  console.log(userID)
+  const userID = req.params.id;
+  // console.log(userID)
   Post.find({userId: userID})
     .then(data => {
       res.send(data);
@@ -134,19 +133,24 @@ exports.getUserPosts = (req, res) => {
     });
 }
 
-/*
-exports.findSavedPost = (req, res) => {
-  const id = req.params.id;
-  Post.findById(id)
-    .then(data => {
-      if (!data)
-        res.status(404).send({ message: "Not found Post with id " + id });
-      else res.send(data);
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .send({ message: "Error retrieving Post with id=" + id });
-    });
+exports.getSavedPosts = (req, res) => {
+  const {postIDs} = req.query;
+  const idArr = postIDs.split(',');
+  if(idArr[0]!=null){
+    console.log("filter scenario executed");
+    Post.find({"_id": {$in: [ '63547f02fb78d40d15ab6873', '63547f1bfb78d40d15ab6879' ]}})
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving posts."
+        });
+      });
+  }
+  else{
+    res.status(400).send({ message: "post ID is not valid" });
+      return;
+  }
 }
-*/

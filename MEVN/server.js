@@ -29,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 require("./app/routes/post.routes")(app); // needs it before listen()
+require("./app/routes/user.routes")(app); // needs it before listen()
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

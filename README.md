@@ -16,8 +16,8 @@ https://drive.google.com/file/d/1Wv8KggPDOR9V6ceiAn_LJbCoxIdcxpIe/view?usp=shari
 
 
 # Database:
-- user: userID, pwd, userName, email
-- post: postID, userID, photoIDs, tags, likedBy, timestamp
+- user: (userID), pwd, userName, email
+- post: (postID), userID, photoIDs, tags, likedBy, timestamp
 - photo: photoId, edits (array), url
 
 # User page:
