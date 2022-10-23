@@ -8,7 +8,6 @@ class userDataMethods {
   }
   deleteUserInfo(userID) { // delete a user via user ID
     return http.delete(`/MyPage/${userID}`);
-    
   }
   updateUserInfo(userID, data) { // update user Info (and save to local storage)
     // supposed to work as 'saved post list' updater

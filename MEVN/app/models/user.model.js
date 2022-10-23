@@ -21,16 +21,14 @@ module.exports = mongoose => {
 // its object looks like:
 /*
 {
-    "userName": "Jenn",
-    "password": "abcde",
-    "email": "abcde@gmail.com",
+    "userName": "abc",
+    "password": "abc12345",
+    "email": "abc@gmail.com",
     "savedPosts": [
-        "postId1",
-        "postId2",
-        "postId3",
-        "postId4"
+        "63547f02fb78d40d15ab6873",
+        "63547f1bfb78d40d15ab6879"
     ],
-    "id": "634c893520424c8e5b5c41dc"
+    "id": "635586756863c66b3f070053"
 }
 */
 

@@ -32,8 +32,8 @@ exports.createPost = (req, res) => {
     });
 };
 exports.getAllPosts = (req, res) => {
-  const {tag} = req.query;
-  const tagArr = tag.split(',');
+  const {tags} = req.query;
+  const tagArr = tags.split(',');
   if(tagArr[0]!=null){
     Post.find({"tag": {$in: tagArr}})
       .then(data => {

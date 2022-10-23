@@ -27,7 +27,7 @@ exports.createUser = (req, res) => {
       savedPosts: req.body.savedPosts
     });
     // Save User in the database
-    post
+    user
       .save(user)
       .then(data => {
         res.send(data);
@@ -40,17 +40,18 @@ exports.createUser = (req, res) => {
     });
 };
 exports.getUserInfo = (req, res) => {
-    const id = req.params.id;
-    User.findById(id)
+    const {userID} = req.query;
+    // console.log(userID);
+    User.findById(userID)
     .then(data => {
       if (!data)
-        res.status(404).send({ message: "Not found User with id " + id });
+        res.status(404).send({ message: "Not found User with id " + userID });
       else res.send(data);
     })
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Error retrieving User with id=" + id });
+        .send({ message: "Error retrieving User with id=" + userID });
     });
 };
 exports.deleteUserInfo = (req, res) => {
@@ -79,18 +80,18 @@ exports.updateUserInfo = (req, res) => {
       message: "Data to update can not be empty!"
     });
   }
-  const id = req.params.id;
-  User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+  const {userID} = req.query;
+  User.findByIdAndUpdate(userID, req.body, { useFindAndModify: false })
     .then(data => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update User with id=${id}. Maybe User was not found!`
+          message: `Cannot update User with id=${userID}. Maybe User was not found!`
         });
       } else res.send({ message: "User was updated successfully." });
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating User with id=" + id
+        message: "Error updating User with id=" + userID
       });
     });
 }
@@ -101,18 +102,18 @@ exports.updateUserInfo2 = (req, res) => {
         message: "Data to update can not be empty!"
       });
     }
-    const {userID} = req.query;
-    User.findByIdAndUpdate(userID, req.body, { useFindAndModify: false })
+    const id = req.params.id;
+    User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
       .then(data => {
         if (!data) {
           res.status(404).send({
-            message: `Cannot update User with id=${userID}. Maybe User was not found!`
+            message: `Cannot update User with id=${id}. Maybe User was not found!`
           });
         } else res.send({ message: "User was updated successfully." });
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating User with id=" + userID
+          message: "Error updating User with id=" + id
         });
       });
   }
