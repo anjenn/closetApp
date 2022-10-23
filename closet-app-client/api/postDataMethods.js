@@ -6,11 +6,10 @@ class postDataMethods {
     // which matches the schema
   }
   getAllPosts(tags) { // retrieve all posts
-    return http.get(`/FeedView?tag=${tags[0]},${tags[1]},${tags[2]},${tags[3]},${tags[4]}`)
-  } // `/FeedView?tag=${tags[0]}&tag=${tags[1]}&tag=${tags[2]}&tag=${tags[3]}&tag=${tags[4]}`
-  /* getAll() { // retrieve all posts
-    return http.get(`/FeedView`)
-  } */
+    return http.get(`/FeedView?tag=${tags}`)
+    // return http.get(`/FeedView?tag=${tags[0]},${tags[1]},${tags[2]},${tags[3]},${tags[4]}`)
+    // can be multiple tags, but at least one tag should be provided!
+  }
   deletePost(postID) { // delete a post via PostID
     return http.delete(`/PostEditor/${postID}`);
   }

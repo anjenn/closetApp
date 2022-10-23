@@ -4,17 +4,17 @@ module.exports = app => {
     var router = require("express").Router();
   
     // Create a new Post
-    router.post("/PostEditor", posts.createPost);
+    router.post("/PostEditor", posts.createPost); // works
     // Retrieve all Posts
-    router.get("/FeedView", posts.getAllPosts);
+    router.get("/FeedView", posts.getAllPosts); // works
     // Delete a Post with id
-    router.delete("/PostEditor/:id", posts.deletePost);
+    router.delete("/PostEditor/:id", posts.deletePost); // works
     // Update a Post with id
-    router.put("/PostEditor/:id", posts.updatePost);
+    router.put("/PostEditor/:id", posts.updatePost); // works (sent the entire output object including id & timestampe. All field was modifiable)
     // Retrieve a single Post with id
-    router.get("/PostEditor/:id", posts.getOnePost);  
+    router.get("/PostEditor/:id", posts.getOnePost); // works
     // Get users' posts
-    router.get("/MyPage", posts.getUserPosts);
+    router.get("/MyPage", posts.getUserPosts); // works
   
     app.use('/api', router);
   };

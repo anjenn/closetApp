@@ -32,17 +32,35 @@ exports.createPost = (req, res) => {
     });
 };
 exports.getAllPosts = (req, res) => {
-  const {tag1, tag2, tag3, tag4, tag5} = req.query;
-  Post.find({tag: {$in: [`${tag1}, ${tag2}, ${tag3}, ${tag4}, ${tag5}`]}})
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving posts."
+  const {tag} = req.query;
+  const tagArr = tag.split(',');
+  if(tagArr[0]!=null){
+    console.log("filter scenario executed");
+    Post.find({tag: {$in: tagArr}})
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving posts."
+        });
       });
-    });
+  }
+  else{
+    // must check if this scenario would every work
+    console.log("non-filter scenario executed");
+    Post.find()
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving posts."
+        });
+      });
+  }
 };
 exports.deletePost = (req, res) => {
   // if you have the route /student/:id, then the “id” property is available as req.params.id
@@ -102,7 +120,8 @@ exports.getOnePost = (req, res) => {
 }
 
 exports.getUserPosts = (req, res) => {
-  const userID = req.query;
+  const {userID} = req.query;
+  console.log(userID)
   Post.find({userId: userID})
     .then(data => {
       res.send(data);
