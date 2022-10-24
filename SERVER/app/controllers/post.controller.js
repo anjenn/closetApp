@@ -121,7 +121,7 @@ exports.getOnePost = (req, res) => {
 exports.getUserPosts = (req, res) => {
   const userID = req.params.id;
   // console.log(userID)
-  Post.find({userID: userID})
+  Post.find({"userID": userID})
     .then(data => {
       res.send(data);
     })

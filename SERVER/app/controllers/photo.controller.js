@@ -32,19 +32,18 @@ exports.createPhoto = (req, res) => {
 };
 exports.getPhotos = (req, res) => {
     const postID = req.params.postID;
-    const order = req.params.order;
-    console.log(postID, order);
+    console.log(`checking for postID ${postID}`);
 
-    Photo.findById(photoID)
+    Photo.find({"postID": postID})
     .then(data => {
       if (!data)
-        res.status(404).send({ message: "Not found Photo with id " + photoID });
+        res.status(404).send({ message: "Not found Photos with postID " + postID });
       else res.send(data);
     })
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Error retrieving Photo with id=" + photoID });
+        .send({ message: "Error retrieving Photo with id=" + postID });
     });
 };
 exports.deletePhoto = (req, res) => {
