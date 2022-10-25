@@ -64,7 +64,10 @@ exports.getAllPosts = (req, res) => {
 exports.deletePost = (req, res) => {
   // if you have the route /student/:id, then the “id” property is available as req.params.id
   const id = req.params.id;
-  Post.findByIdAndRemove(id)
+  const {db} = req.query;
+  console.log(`postID: ${id} db: ${db}`);
+  if(db == "post"){
+    Post.findByIdAndRemove(id)
     .then(data => {
       if (!data) {
         res.status(404).send({
@@ -81,6 +84,7 @@ exports.deletePost = (req, res) => {
         message: "Could not delete Post with id=" + id
       });
     });
+  }
 }
 exports.updatePost = (req, res) => {
   if (!req.body) {

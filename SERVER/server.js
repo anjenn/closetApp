@@ -28,9 +28,8 @@ app.use(express.urlencoded({ extended: true }));
 // });
 
 /* linking DBs */
-require("./app/routes/post.routes")(app); // needs it before listen()
-require("./app/routes/user.routes")(app); // needs it before listen()
-require("./app/routes/photo.routes")(app); // needs it before listen()
+require("./app/routes/posts.routes")(app); // needs it before listen()
+require("./app/routes/users.routes")(app); // needs it before listen()
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
