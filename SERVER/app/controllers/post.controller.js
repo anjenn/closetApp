@@ -64,10 +64,7 @@ exports.getAllPosts = (req, res) => {
 exports.deletePost = (req, res) => {
   // if you have the route /student/:id, then the “id” property is available as req.params.id
   const id = req.params.id;
-  const {db} = req.query;
-  console.log(`postID: ${id} db: ${db}`);
-  if(db == "post"){
-    Post.findByIdAndRemove(id)
+  Post.findByIdAndRemove(id)
     .then(data => {
       if (!data) {
         res.status(404).send({
@@ -83,8 +80,7 @@ exports.deletePost = (req, res) => {
       res.status(500).send({
         message: "Could not delete Post with id=" + id
       });
-    });
-  }
+    });    
 }
 exports.updatePost = (req, res) => {
   if (!req.body) {
@@ -142,7 +138,7 @@ exports.getSavedPosts = (req, res) => {
   const idArr = postIDs.split(',');
   if(idArr[0]!=null){
     console.log("filter scenario executed");
-    Post.find({"_id": {$in: [ '63547f02fb78d40d15ab6873', '63547f1bfb78d40d15ab6879' ]}})
+    Post.find({"_id": {$in: idArr}})
       .then(data => {
         res.send(data);
       })

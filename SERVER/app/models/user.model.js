@@ -1,10 +1,11 @@
+
 module.exports = mongoose => {
     var schema = mongoose.Schema(
       {
         userName: String,
         password: String,
         email: String,
-        savedPosts: [{ type: Number }] // postIDs
+        savedPosts: [{ type: String }] // postIDs
       }
     );
     schema.method("toJSON", function() {
@@ -21,14 +22,14 @@ module.exports = mongoose => {
 // its object looks like:
 /*
 {
-    "userName": "abc",
+    "userName": "user01",
     "password": "abc12345",
     "email": "abc@gmail.com",
     "savedPosts": [
-        "63547f02fb78d40d15ab6873",
-        "63547f1bfb78d40d15ab6879"
+        "6357ec9a4f47830e941ed0a6",
+        "6357ff334f47830e941ed0aa"
     ],
-    "id": "635586756863c66b3f070053"
+    "id": "63581b400d967569c559eacf"
 }
 */
 
