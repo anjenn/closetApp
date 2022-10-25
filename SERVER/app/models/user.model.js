@@ -2,9 +2,10 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
       {
-        userName: String,
+        firstName: String,
+        lastName: String,
         password: String,
-        email: String,
+        userName: String,
         savedPosts: [{ type: String }] // postIDs
       }
     );
@@ -22,14 +23,16 @@ module.exports = mongoose => {
 // its object looks like:
 /*
 {
-    "userName": "user01",
+    "firstName": "JeongHyun",
+    "lastName": "An",
     "password": "abc12345",
-    "email": "abc@gmail.com",
+    "userName": "Jenn",
     "savedPosts": [
         "6357ec9a4f47830e941ed0a6",
-        "6357ff334f47830e941ed0aa"
+        "6357ff334f47830e941ed0aa",
+        "6357ff4ef3570dc984b5ec24"
     ],
-    "id": "63581b400d967569c559eacf"
+    "id": "635820a640d88fdcda137cb5"
 }
 */
 

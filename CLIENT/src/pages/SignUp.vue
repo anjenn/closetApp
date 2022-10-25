@@ -12,7 +12,7 @@
           <div class="names row justify-around items-start">
             <q-input
               rounded
-              standout
+              standout="bg-white text-pink-4"
               dense
               v-model="text"
               style="width: 45%"
@@ -20,7 +20,7 @@
             />
             <q-input
               rounded
-              standout
+              standout="bg-white text-pink-4"
               dense
               v-model="text"
               style="width: 45%"
@@ -30,7 +30,7 @@
 
           <q-input
             rounded
-            standout
+            standout="bg-white text-pink-4"
             dense
             v-model="text"
             style="width: 90%"
@@ -38,7 +38,7 @@
           />
           <q-input
             rounded
-            standout
+            standout="bg-white text-pink-4"
             dense
             v-model="text"
             style="width: 90%"
