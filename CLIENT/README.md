@@ -1,4 +1,4 @@
-# closet-app (closet-app)
+# CollageIt (closet collage)
 
 thesis project
 

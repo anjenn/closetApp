@@ -1,8 +1,8 @@
 {
-  "name": "closet-app",
+  "name": "collage_it",
   "version": "0.0.1",
   "description": "thesis project",
-  "productName": "closet-app",
+  "productName": "CollageIt",
   "author": "anjenn <93240896+anjenn@users.noreply.github.com>",
   "private": true,
   "scripts": {

@@ -4,9 +4,8 @@
       <q-toolbar class="bg-pink-4">
         <q-toolbar-title
           class="toolBar"
-          style="font-family: 'Neonderthaw'; font-weight: 700"
         >
-          <span style="pointer-events: none">🤍 Closet Collage 🤍</span>
+          <q-img src="../../public/collageit.svg" style="height: 2rem; width: 11rem; object-fit: contain;"/>
           <div class="toolbar-btns">
             <router-link
               :to="{ path: '/FeedView' }"
@@ -86,6 +85,7 @@
 <script>
 import { defineComponent, ref } from "vue";
 import navigation from "components/Navigation.vue";
+
 
 const linksList = [
   {

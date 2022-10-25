@@ -28,3 +28,15 @@
     linear-gradient(rgba(210, 225, 226, 0.5) 50%, transparent 0);
   background-size: 30px 30px;
 }
+
+
+/* Sign Up page input fields customisation */
+// grey-8
+.q-field--standout.q-field--highlighted .q-field__native{
+  color: #616161;
+  font-weight: 200;
+}
+
+.q-field__marginal {
+  color: #f06292; 
+}

@@ -8,13 +8,13 @@
         style="font-family: 'fredoka one'"
       >
         <q-card-section class="container q-gutter-md sub flex flex-center">
-          <div class="text-h6" style="text-align: center">Sign Up</div>
+          <div class="text-h5" style="text-align: center">Create Your Account!</div>
           <div class="names row justify-around items-start">
             <q-input
               rounded
               standout="bg-white text-pink-4"
               dense
-              v-model="text"
+              v-model="firstName"
               style="width: 45%"
               label="First Name"
             />
@@ -22,25 +22,24 @@
               rounded
               standout="bg-white text-pink-4"
               dense
-              v-model="text"
+              v-model="lastName"
               style="width: 45%"
               label="Last Name"
             />
           </div>
-
           <q-input
             rounded
             standout="bg-white text-pink-4"
             dense
-            v-model="text"
+            v-model="userName"
             style="width: 90%"
-            label="Email"
+            label="User Name"
           />
           <q-input
             rounded
             standout="bg-white text-pink-4"
             dense
-            v-model="text"
+            v-model="passWord"
             style="width: 90%"
             label="Password"
           />
@@ -52,7 +51,7 @@
             color="white"
             text-color="white"
             style="width: 90%"
-            label="Send"
+            label="Next ➜"
             v-on:click="redirectToSignUp"
           />
         </q-card-section>
@@ -68,6 +67,7 @@ import { ref } from "vue";
 
 export default defineComponent({
   name: "SignUp",
+  
   setup() {
     const $q = useQuasar();
     const name = ref(null);
@@ -75,12 +75,14 @@ export default defineComponent({
     const accept = ref(false);
 
     return {
-      name,
-      age,
+      firstName: ref(''),
+      lastName: ref(''),
+      userName: ref(''),
+      passWord: ref(''),
       accept,
 
-      onSubmit() {
-        if (accept.value !== true) {
+      redirectToSignUp() {
+        if (firstName == null) {
           $q.notify({
             color: "red-5",
             textColor: "white",
@@ -121,25 +123,5 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.btn {
-  margin-top: 1.3rem;
-  font-family: fredoka one;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  height: 3rem;
-  font-size: 1.15rem;
-}
-.inputBox--1 {
-  background-color: white;
-  margin-top: 2rem;
-  height: 3rem;
-  border-radius: 5px;
-}
-.inputBox--2 {
-  background-color: white;
-  margin-top: 1.3rem;
-  height: 3rem;
-  border-radius: 5px;
 }
 </style>

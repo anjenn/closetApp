@@ -145,8 +145,8 @@ module.exports = configure(function (ctx) {
       },
 
       manifest: {
-        name: `closet-app`,
-        short_name: `closet-app`,
+        name: `CollageIt`,
+        short_name: `CollageIt`,
         description: `thesis project`,
         display: "standalone",
         orientation: "portrait",
@@ -210,7 +210,7 @@ module.exports = configure(function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: "closet-app",
+        appId: "CollageIt",
       },
 
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
