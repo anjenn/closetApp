@@ -14,7 +14,7 @@
               rounded
               standout="bg-white text-pink-4"
               dense
-              v-model="firstName"
+              v-model="user.firstName"
               style="width: 45%"
               label="First Name"
             />
@@ -22,7 +22,7 @@
               rounded
               standout="bg-white text-pink-4"
               dense
-              v-model="lastName"
+              v-model="user.lastName"
               style="width: 45%"
               label="Last Name"
             />
@@ -31,7 +31,7 @@
             rounded
             standout="bg-white text-pink-4"
             dense
-            v-model="userName"
+            v-model="user.userName"
             style="width: 90%"
             label="User Name"
           />
@@ -39,7 +39,8 @@
             rounded
             standout="bg-white text-pink-4"
             dense
-            v-model="passWord"
+            type="password"
+            v-model="user.passWord"
             style="width: 90%"
             label="Password"
           />
@@ -52,7 +53,7 @@
             text-color="white"
             style="width: 90%"
             label="Next ➜"
-            v-on:click="redirectToSignUp"
+            v-on:click="createUser"
           />
         </q-card-section>
       </q-card>
@@ -61,50 +62,55 @@
 </template>
 
 <script>
-import { useQuasar } from "quasar";
+import userDataMethods from "app/api/userDataMethods";
 import { defineComponent } from "vue";
 import { ref } from "vue";
 
 export default defineComponent({
   name: "SignUp",
-  
-  setup() {
-    const $q = useQuasar();
-    const name = ref(null);
-    const age = ref(null);
-    const accept = ref(false);
-
+  data() {
     return {
-      firstName: ref(''),
-      lastName: ref(''),
-      userName: ref(''),
-      passWord: ref(''),
-      accept,
-
-      redirectToSignUp() {
-        if (firstName == null) {
-          $q.notify({
-            color: "red-5",
-            textColor: "white",
-            icon: "warning",
-            message: "You need to accept the license and terms first",
-          });
-        } else {
-          $q.notify({
-            color: "green-4",
-            textColor: "white",
-            icon: "cloud_done",
-            message: "Submitted",
-          });
-        }
-      },
-
-      onReset() {
-        name.value = null;
-        age.value = null;
-        accept.value = false;
-      },
+      user: {
+        firstName: ref(null),
+        lastName: ref(null),
+        userName: ref(null),
+        passWord: ref(null),
+      }
     };
+  },
+  mounted: {
+    resetFields() {
+      this.firstName = null,
+      this.lastName = null,
+      this.userName = null,
+      this.passWord = null
+    },
+    resetLocalStorage() {
+      
+    }
+    // reset the fields
+    // reset local storage data (add user data to local storage)
+  },
+  methods: {
+    createUser() {
+      var data = {
+        firstName: this.user.firstName,
+        lastName: this.user.lastName,
+        userName: this.user.userName,
+        passWord: this.user.password,
+        savedPosts: "null"
+      };
+      userDataMethods.createUser(data).then(response => {
+          this.user.firstName = response.data.firstName;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+        this.redirecTo();
+    },
+    redirecTo(){
+      this.$router.push("/LogIn");
+    }
   },
 });
 </script>
@@ -117,7 +123,6 @@ export default defineComponent({
   width: 60vw;
   border-radius: 10px;
 }
-
 .container.sub {
   display: flex;
   flex-direction: column;

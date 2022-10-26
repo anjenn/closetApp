@@ -1,4 +1,4 @@
-import http from "../http-common";
+import http from "./http-common";
 class userDataMethods {
   createUser(data) { // create a post
     return http.post("/SignUp", data);

@@ -1,4 +1,4 @@
-import http from "../http-common";
+import http from "./http-common";
 
 // warning!! when using query parameter in the url there should be no whitespace
 // when dealing with 'id' within custom functions in api, stick to '_id'

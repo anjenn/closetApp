@@ -5,14 +5,6 @@ const User =  require("../models/user.model.js")(mongoose);
 In the callback, we have a res and a req. res means response, and req means request. We use res for sending responses to our client, like Userman, or any front-end client. And we use req for receiving requests from a client app like Postman, or any front-end client.
 */
 
-/*
-createUser
-getUserInfo
-deleteUserInfo
-
-updateUserInfo
-updateUserInfo2
-*/
 exports.createUser = (req, res) => {
     // Validate request
     if (!req.body.userName) {
@@ -82,7 +74,8 @@ exports.updateUserInfo = (req, res) => {
     });
   }
   const {userID} = req.query;
-  User.findByIdAndUpdate(userID, req.body, { useFindAndModify: false })
+  // User.findByIdAndUpdate(userID, req.body, { useFindAndModify: false })
+  User.findByIdAndUpdate(userID, { $set: {savedPosts}}, { useFindAndModify: false })
     .then(data => {
       if (!data) {
         res.status(404).send({
@@ -104,7 +97,7 @@ exports.updateUserInfo2 = (req, res) => {
       });
     }
     const id = req.params.id;
-    User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    User.findByIdAndUpdate(id, { $set: {savedPosts}}, { useFindAndModify: false })
       .then(data => {
         if (!data) {
           res.status(404).send({
