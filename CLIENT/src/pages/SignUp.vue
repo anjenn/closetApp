@@ -63,6 +63,7 @@
 
 <script>
 import userDataMethods from "app/api/userDataMethods";
+import UserTemp from "src/utils/UserTemp";
 import { defineComponent } from "vue";
 import { ref } from "vue";
 
@@ -75,7 +76,8 @@ export default defineComponent({
         lastName: ref(null),
         userName: ref(null),
         passWord: ref(null),
-      }
+      },
+      isBtnActive: false
     };
   },
   mounted: {
@@ -86,10 +88,15 @@ export default defineComponent({
       this.passWord = null
     },
     resetLocalStorage() {
-      
+
     }
     // reset the fields
     // reset local storage data (add user data to local storage)
+  },
+  computed: {
+    returnUser() {
+      return this.user;
+    },
   },
   methods: {
     createUser() {
@@ -106,10 +113,17 @@ export default defineComponent({
         .catch(e => {
           console.log(e);
         });
-        this.redirecTo();
+        this.saveTempUserData();
+        this.redirectTo();
     },
-    redirecTo(){
+    saveTempUserData(){
+      UserTemp.saveUserData(this.returnUser, "CurrentUser");
+    },
+    redirectTo(){
       this.$router.push("/LogIn");
+    },
+    toggleBtn(){
+      this.isBtnActive = true;
     }
   },
 });

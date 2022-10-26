@@ -5,7 +5,8 @@ const routes = [
     children: [
       // Initialisation page
       {
-        path: "",
+        path: "/",
+        // path: "/Initialisation",
         component: () => import("pages/InitialiseTags.vue"),
       },
       // Post page

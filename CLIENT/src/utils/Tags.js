@@ -1,5 +1,5 @@
-const saveTags = (obj) => {
-  window.localStorage.setItem("myObj", JSON.stringify(obj));
+const saveTags = (obj, objName) => {
+  window.localStorage.setItem(objName, JSON.stringify(obj));
   alert("saving function called");
   // if (loadTags.length == 0) {
   //   alert("No tag selected");
@@ -8,11 +8,15 @@ const saveTags = (obj) => {
   // or use the checkIfSaved function given below
 };
 
-const loadTags = () => {
-  let newObj = window.localStorage.getItem("myObj");
-  console.log(newObj);
+const loadTags = (objName) => {
+  let newObj = window.localStorage.getItem(objName);
+  //returned as array format
   return newObj;
 };
+
+const deleteTags = (objName) => {
+  localStorage.removeItem(objName);
+}
 
 // const checkIfSaved = (objName) => {
 //   let newObj = window.localStorage.getItem(`${objName}`);

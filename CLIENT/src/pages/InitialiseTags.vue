@@ -109,7 +109,8 @@ export default defineComponent({
       if (this.returnSelection == null) {
         alert("Select something");
       } else {
-        Tags.saveTags(this.returnSelection);
+        Tags.saveTags(this.returnSelection, "tags");
+        Tags.loadTags("tags");
         this.redirectTo();
       }
     },
