@@ -1,9 +1,13 @@
-// app global css in SCSS form
-
+////////////////////////
+/* COMMON */
+////////////////////////
 // pink-4
 // grey-6
 // fredoka one
 // philosopher
+
+// <q-space />
+// <q-separator dark inset />
 
 .my-card-cmn {
   min-width: 0.7rem;
@@ -16,7 +20,6 @@
   flex-direction: column;
   align-items: center;
 }
-
 // background checkered pattern
 .q-page { 
   background: white;
@@ -29,23 +32,31 @@
   background-size: 30px 30px;
 }
 
-// initialisation page button recolored
+////////////////////////
+/* INITIALISATION */
+////////////////////////
+// selector button recolored
 .q-field__marginal { 
   color: #f06292; 
 }
 
-/* Sign Up page input fields customisation */
+////////////////////////
+/* SIGN UP */
+////////////////////////
 // input text when the field is active
 .q-field--standout.q-field--highlighted .q-field__native{ 
   color: #616161;
   font-weight: 200;
 }
-
 // field color when there is error
 .q-field--standout.q-field--highlighted .q-field__control{
   background:rgb(201, 209, 212); 
 }
 
-.q-field__native .q-field__input{
+////////////////////////
+/* LOG IN */
+////////////////////////
+// input text, border highlight when the field is active
+.q-field__control.relative-position{
   color: #616161;
 }

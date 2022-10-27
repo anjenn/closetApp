@@ -40,13 +40,15 @@
               push
               color="white"
               text-color="pink 4"
-              label="LogIn"
+              label="Log In"
               type="submit"
               class="btn"
               v-on:click="redirectTo"
             />
-            <q-space />
           </q-form>
+          </q-card-section>
+          <q-separator dark inset />
+          <q-card-section class="container sub">
           <span style="margin: auto"
             >Have no account?
             <q-btn
