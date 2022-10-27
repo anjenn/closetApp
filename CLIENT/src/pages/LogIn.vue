@@ -1,5 +1,3 @@
-// Implement login, or make it totally anonymous
-//https://quasar.dev/vue-components/form
 <template>
   <q-page class="flex flex-center" style="background-color: #fff0f5">
     <div class="container main">
@@ -56,6 +54,7 @@
               flat
               text-color="pink 4"
               label="Sign Up"
+              style="text-shadow: 0 0 7px white;"
               v-on:click="redirectToSignUp"
             />
           </span>
@@ -128,11 +127,9 @@ export default defineComponent({
   justify-content: center;
 }
 .btn {
-  margin-top: 1.3rem;
   font-family: fredoka one;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  height: 3rem;
+  margin-top: 1.5rem;
+  height: 2rem;
   font-size: 1.15rem;
 }
 .inputBox--1 {

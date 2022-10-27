@@ -22,7 +22,7 @@
               style="width: 40%"
               label="First Name"
               @update:model-value="validateData"
-              :rules="[ val => val.length >= 3 || 'Use min 3 characters']"
+              :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
             />
             <q-input
               ref="lastNameRef"
@@ -33,7 +33,7 @@
               style="width: 40%"
               label="Last Name"
               @update:model-value="validateData"
-              :rules="[ val => val.length >= 3 || 'Use min 3 characters']"
+              :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
             />
           </div>
           <q-input
@@ -45,7 +45,7 @@
             style="width: 90%"
             label="User Name"
             @update:model-value="validateData"
-            :rules="[ val => val.length >= 3 || 'Use min 3 characters']"
+            :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
           />
           <q-input
             ref="passwordRef"
@@ -57,7 +57,7 @@
             style="width: 90%"
             label="Password"
             @update:model-value="validateData"
-            :rules="[ val => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(val) || 'Use at least 8 characters including number and alphabet']"
+            :rules="[ val => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(val) || 'Use min. 8 characters including number and alphabet']"
           />
           <q-btn
             push
@@ -133,7 +133,7 @@ export default defineComponent({
           this.btnLoading = false
           // redirection
           this.$router.push("/LogIn");
-        }, 3000)
+        }, 1700)
     },
     saveTempUserData(){
       UserTemp.saveUserData(this.returnUser, "CurrentUser");
