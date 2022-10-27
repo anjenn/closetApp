@@ -2,7 +2,6 @@
 
 const saveUserData = (obj, objName) => {
     window.localStorage.setItem(objName, JSON.stringify(obj));
-    alert("saving function called");
     // if (loadTags.length == 0) {
     //   alert("No tag selected");
     // }

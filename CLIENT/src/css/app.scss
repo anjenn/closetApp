@@ -4,7 +4,6 @@
 // grey-6
 // fredoka one
 // philosopher
-//
 
 .my-card-cmn {
   min-width: 0.7rem;
@@ -18,7 +17,8 @@
   align-items: center;
 }
 
-.q-page {
+// background checkered pattern
+.q-page { 
   background: white;
   background-image: linear-gradient(
       90deg,
@@ -29,14 +29,23 @@
   background-size: 30px 30px;
 }
 
+// initialisation page button recolored
+.q-field__marginal { 
+  color: #f06292; 
+}
 
 /* Sign Up page input fields customisation */
-// grey-8
-.q-field--standout.q-field--highlighted .q-field__native{
+// input text when the field is active
+.q-field--standout.q-field--highlighted .q-field__native{ 
   color: #616161;
   font-weight: 200;
 }
 
-.q-field__marginal {
-  color: #f06292; 
+// field color when there is error
+.q-field--standout.q-field--highlighted .q-field__control{
+  background:rgb(201, 209, 212); 
+}
+
+.q-field__native .q-field__input{
+  color: #616161;
 }

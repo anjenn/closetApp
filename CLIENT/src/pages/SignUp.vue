@@ -7,35 +7,48 @@
         class="bg-pink-3 my-card shadow-10"
         style="font-family: 'fredoka one'"
       >
-        <q-card-section class="container q-gutter-md sub flex flex-center">
+        <q-card-section >
           <div class="text-h5" style="text-align: center">Create Your Account!</div>
+        </q-card-section>
+        <q-separator dark inset />
+        <q-card-section class="container q-gutter-sm sub flex flex-center">
           <div class="names row justify-around items-start">
             <q-input
+              ref="firstNameRef"
               rounded
               standout="bg-white text-pink-4"
               dense
               v-model="user.firstName"
-              style="width: 45%"
+              style="width: 40%"
               label="First Name"
+              @update:model-value="validateData"
+              :rules="[ val => val.length >= 3 || 'Use min 3 characters']"
             />
             <q-input
+              ref="lastNameRef"
               rounded
               standout="bg-white text-pink-4"
               dense
               v-model="user.lastName"
-              style="width: 45%"
+              style="width: 40%"
               label="Last Name"
+              @update:model-value="validateData"
+              :rules="[ val => val.length >= 3 || 'Use min 3 characters']"
             />
           </div>
           <q-input
+            ref="userNameRef"
             rounded
             standout="bg-white text-pink-4"
             dense
             v-model="user.userName"
             style="width: 90%"
             label="User Name"
+            @update:model-value="validateData"
+            :rules="[ val => val.length >= 3 || 'Use min 3 characters']"
           />
           <q-input
+            ref="passwordRef"
             rounded
             standout="bg-white text-pink-4"
             dense
@@ -43,6 +56,8 @@
             v-model="user.passWord"
             style="width: 90%"
             label="Password"
+            @update:model-value="validateData"
+            :rules="[ val => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(val) || 'Use at least 8 characters including number and alphabet']"
           />
           <q-btn
             push
@@ -51,10 +66,16 @@
             unelevated
             color="white"
             text-color="white"
-            style="width: 90%"
+            style="width: 90%; margin-bottom:0.5rem"
             label="Next ➜"
+            :loading="btnLoading"
+            :disable="btnDisabled"
             v-on:click="createUser"
-          />
+          >
+          <template v-slot:loading>
+            Loading...
+          </template>
+          </q-btn>
         </q-card-section>
       </q-card>
     </div>
@@ -77,30 +98,23 @@ export default defineComponent({
         userName: ref(null),
         passWord: ref(null),
       },
-      isBtnActive: false
+      firstNameRef: ref(null),
+      lastNameRef: ref(null),
+      userNameRef: ref(null),
+      passwordRef: ref(null),
+      btnDisabled: true,
+      btnLoading: ref(null)
     };
-  },
-  mounted: {
-    resetFields() {
-      this.firstName = null,
-      this.lastName = null,
-      this.userName = null,
-      this.passWord = null
-    },
-    resetLocalStorage() {
-
-    }
-    // reset the fields
-    // reset local storage data (add user data to local storage)
   },
   computed: {
     returnUser() {
       return this.user;
-    },
+    }
   },
   methods: {
     createUser() {
-      var data = {
+        this.btnLoading = true;
+        var data = {
         firstName: this.user.firstName,
         lastName: this.user.lastName,
         userName: this.user.userName,
@@ -114,16 +128,27 @@ export default defineComponent({
           console.log(e);
         });
         this.saveTempUserData();
-        this.redirectTo();
+
+        setTimeout(() => {
+          this.btnLoading = false
+          // redirection
+          this.$router.push("/LogIn");
+        }, 3000)
     },
     saveTempUserData(){
       UserTemp.saveUserData(this.returnUser, "CurrentUser");
     },
-    redirectTo(){
-      this.$router.push("/LogIn");
-    },
-    toggleBtn(){
-      this.isBtnActive = true;
+    validateData(){
+      const ref1 = this.$refs.firstNameRef;
+      const ref2 = this.$refs.lastNameRef;
+      const ref3 = this.$refs.userNameRef;
+      const ref4 = this.$refs.passwordRef;
+      if(!ref1.modelValue||!ref2.modelValue||!ref3.modelValue||!ref4.modelValue){
+        console.log("Error");
+      }
+      else{
+        this.btnDisabled = false;
+      }
     }
   },
 });
