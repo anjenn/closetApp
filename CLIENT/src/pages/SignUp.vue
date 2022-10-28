@@ -20,7 +20,7 @@
               dense
               v-model="user.firstName"
               style="width: 40%"
-              label="First Name"
+              label="First Name *"
               @update:model-value="validateData"
               :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
             />
@@ -31,7 +31,7 @@
               dense
               v-model="user.lastName"
               style="width: 40%"
-              label="Last Name"
+              label="Last Name *"
               @update:model-value="validateData"
               :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
             />
@@ -43,7 +43,7 @@
             dense
             v-model="user.userName"
             style="width: 90%"
-            label="User Name"
+            label="User ID *"
             @update:model-value="validateData"
             :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
           />
@@ -55,7 +55,7 @@
             type="password"
             v-model="user.passWord"
             style="width: 90%"
-            label="Password"
+            label="Password *"
             @update:model-value="validateData"
             :rules="[ val => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(val) || 'Use min. 8 characters including number and alphabet']"
           />

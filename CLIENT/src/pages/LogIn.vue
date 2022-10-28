@@ -8,32 +8,38 @@
         style="font-family: 'fredoka one'"
       >
         <q-card-section class="container sub">
-          <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+          <q-form
+            @submit="onSubmit"
+            @reset="onReset"
+            class="q-gutter-md"
+          >
             <q-input
               filled
-              v-model="name"
-              class="inputBox--1"
-              label="ID *"
-              lazy-rules
+              v-model="input.userName"
+              class="input-1"
+              label="User ID *"
               :rules="[
                 (val) => (val && val.length > 0) || 'Please type something',
               ]"
             />
             <q-input
               filled
-              v-model="pwd"
-              class="inputBox--2"
+              v-model="input.passWord"
+              class="input-2"
               label="Password *"
-              lazy-rules
+              :type="revealPwd ? 'password' : 'text'"
               :rules="[
                 (val) =>
                   (val !== null && val !== '') || 'Please type something',
-                (val) =>
-                  (val.length > 5 && val.length < 13) ||
-                  'Password should be longer than 6 characters',
               ]"
             />
-            <q-toggle v-model="accept" label="Reveal password" />
+            <q-toggle
+              v-model="revealPwd"
+              label="Reveal password"
+              color="pink"
+              keep-color
+              @update:model-value="revealPwd =!revealPwd"
+              />
             <q-btn
               push
               color="white"
@@ -71,43 +77,19 @@ import { ref } from "vue";
 
 export default defineComponent({
   name: "LogIn",
-  setup() {
-    const $q = useQuasar();
-    const name = ref(null);
-    const age = ref(null);
-    const accept = ref(false);
+  data() {
     return {
-      name,
-      age,
-      accept,
-      onSubmit() {
-        if (accept.value !== true) {
-          $q.notify({
-            color: "red-5",
-            textColor: "white",
-            icon: "warning",
-            message: "You need to accept the license and terms first",
-          });
-        } else {
-          $q.notify({
-            color: "green-4",
-            textColor: "white",
-            icon: "cloud_done",
-            message: "Submitted",
-          });
-        }
+      input: {
+        userName: ref(null),
+        passWord: ref(null)
       },
-      onReset() {
-        name.value = null;
-        age.value = null;
-        accept.value = false;
-      },
-    };
+      revealPwd: ref(false)
+    }
   },
   methods: {
     redirectToSignUp() {
       this.$router.push("/SignUp");
-    },
+    }
   },
 });
 </script>
@@ -132,13 +114,13 @@ export default defineComponent({
   height: 2rem;
   font-size: 1.15rem;
 }
-.inputBox--1 {
+.input-1 {
   background-color: white;
   margin-top: 2rem;
   height: 3rem;
   border-radius: 5px;
 }
-.inputBox--2 {
+.input-2 {
   background-color: white;
   margin-top: 1.3rem;
   height: 3rem;
