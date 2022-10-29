@@ -10,7 +10,6 @@
         <q-card-section class="container sub">
           <q-form
             @submit="onSubmit"
-            @reset="onReset"
             class="q-gutter-md"
           >
             <q-input
@@ -27,7 +26,7 @@
               v-model="input.passWord"
               class="input-2"
               label="Password *"
-              :type="revealPwd ? 'password' : 'text'"
+              :type="revealPwd ? 'text' : 'password'"
               :rules="[
                 (val) =>
                   (val !== null && val !== '') || 'Please type something',
@@ -38,7 +37,7 @@
               label="Reveal password"
               color="pink"
               keep-color
-              @update:model-value="revealPwd =!revealPwd"
+              @update:model-value="(this.revealPwd) ? (this.revealPwd = true) : (this.revealPwd = false)"
               />
             <q-btn
               push
@@ -47,14 +46,13 @@
               label="Log In"
               type="submit"
               class="btn"
-              v-on:click="redirectTo"
             />
           </q-form>
           </q-card-section>
           <q-separator dark inset />
           <q-card-section class="container sub">
-          <span style="margin: auto"
-            >Have no account?
+          <span style="margin: auto">
+            Have no account?
             <q-btn
               push
               flat
@@ -87,6 +85,9 @@ export default defineComponent({
     }
   },
   methods: {
+    onSubmit(){
+      alert('trying to login');
+    },
     redirectToSignUp() {
       this.$router.push("/SignUp");
     }
