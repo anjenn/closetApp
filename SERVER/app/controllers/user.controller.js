@@ -33,9 +33,9 @@ exports.createUser = (req, res) => {
     });
 };
 exports.getUserInfo = (req, res) => {
-    const {userID} = req.query;
-    // console.log(userID);
-    User.findById(userID)
+    const {userName} = req.query;
+    // console.log(userName);
+    User.find({"userName": {$in: userName}})
     .then(data => {
       if (!data)
         res.status(404).send({ message: "Not found User with id " + userID });

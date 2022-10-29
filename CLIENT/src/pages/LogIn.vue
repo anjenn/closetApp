@@ -46,7 +46,12 @@
               label="Log In"
               type="submit"
               class="btn"
-            />
+              :loading="btnLoading"
+            >
+              <template v-slot:loading>
+                <q-spinner-facebook />
+              </template>
+            </q-btn>
           </q-form>
           </q-card-section>
           <q-separator dark inset />
@@ -69,7 +74,7 @@
 </template>
 
 <script>
-import { useQuasar } from "quasar";
+import userDataMethods from "app/api/userDataMethods";
 import { defineComponent } from "vue";
 import { ref } from "vue";
 
@@ -81,14 +86,64 @@ export default defineComponent({
         userName: ref(null),
         passWord: ref(null)
       },
-      revealPwd: ref(false)
+      userData: ref(null),
+      user: ref(null),
+      revealPwd: ref(false),
+      btnLoading: ref(null)
+    }
+  },
+  computed: {
+    retrieveUserData(userName) {
+        return new Promise(userDataMethods.getUserInfo(userName).then(response => {
+          this.userData = response.data;
+          console.log('test 1');
+          console.log(response.data);
+        }).catch(e => {
+          console.log(e);
+        });
     }
   },
   methods: {
-    onSubmit(){
-      alert('trying to login');
+    async onSubmit(){
+      // this.btnLoading = true;
+      // const id = this.input.userName;
+      // const pw = this.input.passWord;
+      const id = "JeongHyun";
+      const pw = "fslfjdkjflsk";
+      await this.retrieveUserData(id);
+      while(this.userData == null){
+
+      }
+      console.log('test 2');
+      console.log(this.userData);
+      this.userData.forEach(function (arrayItem){
+        console.log('test 3');
+        console.log(arrayItem);
+      })
+      
+
+      
+      
+      for (const curr of this.userData) {
+        console.log('test 2');
+        console.log(curr);
+        if (curr.userName == id && curr.passWord == pw){
+          console.log(curr.userName, curr.passWord);
+          this.user.firstName = curr.firstName;
+          this.user.lastName = curr.lastName;
+          this.user.passWord = curr.passWord;
+          this.user.savedPosts = curr.passWord;
+          this.user.id = curr.id;
+          console.log(this.user);
+        }
+      }
+      // setTimeout(() => {
+      //     this.btnLoading = false
+      //     // redirection
+          
+      //   }, 1000)
     },
-    redirectToSignUp() {
+    redirectToSignUp(){
       this.$router.push("/SignUp");
     }
   },

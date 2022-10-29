@@ -3,8 +3,8 @@ class userDataMethods {
   createUser(data) { // create a post
     return http.post("/SignUp", data);
   }
-  getUserInfo(userID) { // retrieve user Info (and save to local storage)
-    return http.get(`/LogIn?userID=${userID}`)
+  getUserInfo(userName) { // retrieve user Info (and save to local storage)
+    return http.get(`/LogIn?userName=${userName}`)
   }
   deleteUserInfo(userID) { // delete a user via user ID
     return http.delete(`/MyPage/${userID}`);

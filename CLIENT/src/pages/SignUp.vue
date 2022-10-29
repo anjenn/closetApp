@@ -53,7 +53,7 @@
             standout="bg-white text-pink-4"
             dense
             type="password"
-            v-model="user.passWord"
+            v-model="user.password"
             style="width: 90%"
             label="Password *"
             @update:model-value="validateData"
@@ -96,7 +96,7 @@ export default defineComponent({
         firstName: ref(null),
         lastName: ref(null),
         userName: ref(null),
-        passWord: ref(null),
+        password: ref(null),
       },
       firstNameRef: ref(null),
       lastNameRef: ref(null),
@@ -118,7 +118,7 @@ export default defineComponent({
         firstName: this.user.firstName,
         lastName: this.user.lastName,
         userName: this.user.userName,
-        passWord: this.user.password,
+        password: this.user.password,
         savedPosts: "null"
       };
       userDataMethods.createUser(data).then(response => {
@@ -138,7 +138,7 @@ export default defineComponent({
     saveTempUserData(){
       UserTemp.saveUserData(this.returnUser, "CurrentUser");
     },
-    validateData(){
+    validateData(){ // change to q-form for validation
       const ref1 = this.$refs.firstNameRef;
       const ref2 = this.$refs.lastNameRef;
       const ref3 = this.$refs.userNameRef;
