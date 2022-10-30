@@ -23,7 +23,7 @@
             />
             <q-input
               filled
-              v-model="input.passWord"
+              v-model="input.password"
               class="input-2"
               label="Password *"
               :type="revealPwd ? 'text' : 'password'"
@@ -74,9 +74,11 @@
 </template>
 
 <script>
+import { Notify } from 'quasar'
 import userDataMethods from "app/api/userDataMethods";
 import { defineComponent } from "vue";
 import { ref } from "vue";
+import userTemp from "src/utils/UserTemp";
 
 export default defineComponent({
   name: "LogIn",
@@ -84,68 +86,59 @@ export default defineComponent({
     return {
       input: {
         userName: ref(null),
-        passWord: ref(null)
+        password: ref(null)
       },
-      userData: ref(null),
-      user: ref(null),
+      userData: [],
+      currUser: ref(null), // to be used as a container for retrieved data
       revealPwd: ref(false),
       btnLoading: ref(null)
     }
   },
-  computed: {
-    // retrieveUserData(userName) {
-    //   return new Promise(userDataMethods.getUserInfo(userName).then(response => {
-    //       this.userData = response.data;
-    //       console.log('test 1');
-    //       console.log(response.data);
-    //     }).catch(e => {
-    //       console.log(e);
-    //     })
-
-    // }
-  },
   methods: {
-    async onSubmit(){
-      // this.btnLoading = true;
-      // const id = this.input.userName;
-      // const pw = this.input.passWord;
-      const id = "JeongHyun";
-      const pw = "fslfjdkjflsk";
-      await this.retrieveUserData(id);
-      while(this.userData == null){
-
-      }
-      console.log('test 2');
-      console.log(this.userData);
-      this.userData.forEach(function (arrayItem){
-        console.log('test 3');
-        console.log(arrayItem);
-      })
-      
-
-      
-      
-      for (const curr of this.userData) {
-        console.log('test 2');
-        console.log(curr);
-        if (curr.userName == id && curr.passWord == pw){
-          console.log(curr.userName, curr.passWord);
-          this.user.firstName = curr.firstName;
-          this.user.lastName = curr.lastName;
-          this.user.passWord = curr.passWord;
-          this.user.savedPosts = curr.passWord;
-          this.user.id = curr.id;
-          console.log(this.user);
-        }
-      }
-      // setTimeout(() => {
-      //     this.btnLoading = false
-      //     // redirection
-          
-      //   }, 1000)
+    onSubmit(){
+      this.btnLoading = true;
+      const id = this.input.userName;
+      const pw = this.input.password;
+      userDataMethods.getUserInfo(id)
+      .then(response => {
+          this.userData = response.data;
+          for (const curr of this.userData){
+            if (curr.userName == id && curr.password == pw){
+              this.currUser = curr;
+            }
+          }
+          if(this.currUser == null){
+            setTimeout(() => {
+              this.btnLoading = false
+              console.log("Invalid User");
+              Notify.create({
+                message: 'Invalid User',
+                color: 'pink-5',
+                icon: 'warning',
+                textColor: 'white',
+                timeout: 2000,
+                progress: true,
+                position: 'bottom-right',
+                actions: [
+                  { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+                ]
+              })
+            }, 500)
+          }
+          else {
+            setTimeout(() => {
+              this.btnLoading = false
+              userTemp.saveUserData(this.currUser, "currUser");
+              this.redirectToFeedView();
+            }, 500)
+          }
+        })
+        .catch(e => {
+          console.log(e);
+        });
     },
-    redirectToSignUp(){
-      this.$router.push("/SignUp");
+    redirectToFeedView(){
+      this.$router.push("/FeedView");
     }
   },
 });

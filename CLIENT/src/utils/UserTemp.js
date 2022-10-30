@@ -1,17 +1,13 @@
 // Stores the data for a session
 
-const saveUserData = (obj, objName) => {
+const saveUserData = (obj, objName) => { //saved with obj name "currUser"
     window.localStorage.setItem(objName, JSON.stringify(obj));
-    // if (loadTags.length == 0) {
-    //   alert("No tag selected");
-    // }
-    // use lodash library to check whether the object is empty or not
-    // or use the checkIfSaved function given below
+    alert("saving function called");
+    console.log(loadUserData(objName));
   };
   
   const loadUserData = (objName) => {
     let newObj = window.localStorage.getItem(objName);
-    //returned as array format
     return newObj;
   };
   

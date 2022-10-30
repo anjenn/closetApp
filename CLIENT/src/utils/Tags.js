@@ -10,7 +10,7 @@ const saveTags = (obj, objName) => {
 
 const loadTags = (objName) => {
   let newObj = window.localStorage.getItem(objName);
-  //returned as array format
+  //returned as object format
   return newObj;
 };
 

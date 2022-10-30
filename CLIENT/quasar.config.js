@@ -10,6 +10,7 @@
 
 const ESLintPlugin = require("eslint-webpack-plugin");
 const { configure } = require("quasar/wrappers");
+const { callWithErrorHandling } = require("vue");
 
 module.exports = configure(function (ctx) {
   return {
@@ -96,7 +97,7 @@ module.exports = configure(function (ctx) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: ['Notify'],
       iconSet: "svg-mdi-v6",
     },
 
