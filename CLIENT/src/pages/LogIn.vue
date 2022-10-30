@@ -93,15 +93,16 @@ export default defineComponent({
     }
   },
   computed: {
-    retrieveUserData(userName) {
-        return new Promise(userDataMethods.getUserInfo(userName).then(response => {
-          this.userData = response.data;
-          console.log('test 1');
-          console.log(response.data);
-        }).catch(e => {
-          console.log(e);
-        });
-    }
+    // retrieveUserData(userName) {
+    //   return new Promise(userDataMethods.getUserInfo(userName).then(response => {
+    //       this.userData = response.data;
+    //       console.log('test 1');
+    //       console.log(response.data);
+    //     }).catch(e => {
+    //       console.log(e);
+    //     })
+
+    // }
   },
   methods: {
     async onSubmit(){

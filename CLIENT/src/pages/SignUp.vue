@@ -11,71 +11,75 @@
           <div class="text-h5" style="text-align: center">Create Your Account!</div>
         </q-card-section>
         <q-separator dark inset />
-        <q-card-section class="container q-gutter-sm sub flex flex-center">
-          <div class="names row justify-around items-start">
-            <q-input
-              ref="firstNameRef"
-              rounded
-              standout="bg-white text-pink-4"
-              dense
-              v-model="user.firstName"
-              style="width: 40%"
-              label="First Name *"
-              @update:model-value="validateData"
-              :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
-            />
-            <q-input
-              ref="lastNameRef"
-              rounded
-              standout="bg-white text-pink-4"
-              dense
-              v-model="user.lastName"
-              style="width: 40%"
-              label="Last Name *"
-              @update:model-value="validateData"
-              :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
-            />
-          </div>
-          <q-input
-            ref="userNameRef"
-            rounded
-            standout="bg-white text-pink-4"
-            dense
-            v-model="user.userName"
-            style="width: 90%"
-            label="User ID *"
-            @update:model-value="validateData"
-            :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
-          />
-          <q-input
-            ref="passwordRef"
-            rounded
-            standout="bg-white text-pink-4"
-            dense
-            type="password"
-            v-model="user.password"
-            style="width: 90%"
-            label="Password *"
-            @update:model-value="validateData"
-            :rules="[ val => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(val) || 'Use min. 8 characters including number and alphabet']"
-          />
-          <q-btn
-            push
-            rounded
-            outline
-            unelevated
-            color="white"
-            text-color="white"
-            style="width: 90%; margin-bottom:0.5rem"
-            label="Next ➜"
-            :loading="btnLoading"
-            :disable="btnDisabled"
-            v-on:click="createUser"
+        <q-card-section >
+          <q-form 
+            class="container q-gutter-sm sub flex flex-center"
+            @submit="onSubmit"
           >
-          <template v-slot:loading>
-            Loading...
-          </template>
-          </q-btn>
+            <template class="names row justify-around items-start">
+              <q-input
+                ref="firstNameRef"
+                rounded
+                standout="bg-white text-pink-4"
+                dense
+                v-model="user.firstName"
+                style="width: 40%"
+                label="First Name *"
+                @update:model-value="validateData"
+                :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
+              />
+              <q-input
+                ref="lastNameRef"
+                rounded
+                standout="bg-white text-pink-4"
+                dense
+                v-model="user.lastName"
+                style="width: 40%"
+                label="Last Name *"
+                @update:model-value="validateData"
+                :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
+              />
+            </template>
+            <q-input
+              ref="userNameRef"
+              rounded
+              standout="bg-white text-pink-4"
+              dense
+              v-model="user.userName"
+              style="width: 90%"
+              label="User ID *"
+              @update:model-value="validateData"
+              :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
+            />
+            <q-input
+              ref="passwordRef"
+              rounded
+              standout="bg-white text-pink-4"
+              dense
+              type="password"
+              v-model="user.password"
+              style="width: 90%"
+              label="Password *"
+              @update:model-value="validateData"
+              :rules="[ val => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(val) || 'Use min. 8 characters including number and alphabet']"
+            />
+            <q-btn
+              push
+              rounded
+              outline
+              unelevated
+              color="white"
+              text-color="white"
+              style="width: 90%; margin-bottom:0.5rem"
+              label="Next ➜"
+              :loading="btnLoading"
+              type="submit"
+            >
+            <template v-slot:loading>
+              Loading...
+            </template>
+            </q-btn>
+        </q-form>
         </q-card-section>
       </q-card>
     </div>
@@ -102,7 +106,6 @@ export default defineComponent({
       lastNameRef: ref(null),
       userNameRef: ref(null),
       passwordRef: ref(null),
-      btnDisabled: true,
       btnLoading: ref(null)
     };
   },
@@ -112,7 +115,7 @@ export default defineComponent({
     }
   },
   methods: {
-    createUser() {
+    onSubmit() {
         this.btnLoading = true;
         var data = {
         firstName: this.user.firstName,
