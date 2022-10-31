@@ -31,6 +31,16 @@
           <q-tab-panels keep-alive v-model="tab" animated>
             <q-tab-panel v-for="i in maxPage" :key="i" :name="i">
               <q-img :src="image" style="width: 20rem; height: 20rem" />
+              <q-input
+                outlined
+                v-model="text"
+                placeholder="Enter image URL"
+                dense
+              >
+                <template v-slot:append>
+                  <q-btn round dense flat icon="add" />
+                </template>
+              </q-input>
             </q-tab-panel>
           </q-tab-panels>
         </div>
@@ -121,7 +131,7 @@
             style="width: 100%; font-size: 0.8rem"
             max-values="5"
             stack-label
-            label="Select tags up to 5"
+            label="Select a tag"
             autofocus
             :options="options"
           />
