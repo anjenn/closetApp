@@ -10,7 +10,6 @@
         <div class="post-contents">
           <q-tabs
             v-model="tab"
-            style="width: 98%"
             dense
             class="text-grey"
             active-color="pink-4"
@@ -18,137 +17,137 @@
             align="justify"
             narrow-indicator
           >
-            <q-tab v-for="i in maxPage" :key="i" :name="i" :label="i" />
-            <q-btn
-              class="page-btn"
-              flat
-              :v-model="maxPage"
-              @click="increasePgNum"
-              color="pink-4"
-              icon="add_box"
-            ></q-btn>
+            <q-tab v-for="i in maxPage" :key="i" :name="i" :label="`${numbers[i-1]}`" />
           </q-tabs>
           <q-tab-panels keep-alive v-model="tab" animated>
-            <q-tab-panel v-for="i in maxPage" :key="i" :name="i">
-              <q-img :src="image" style="width: 20rem; height: 20rem" />
-              <q-input
-                outlined
-                v-model="text"
-                placeholder="Enter image URL"
-                dense
-              >
-                <template v-slot:append>
-                  <q-btn round dense flat icon="add" />
-                </template>
-              </q-input>
+            <q-tab-panel 
+              v-for="i in maxPage"
+              :key="i" :name="i"
+              class="panel-container"
+            >
+              <div class="panel-left">
+                <q-img :src="image" style="width: 20rem; height: 20rem" />
+                <q-input
+                  v-model="url"
+                  placeholder="Enter image URL"
+                  borderless
+                  style="margin-left: 0.7rem;"
+                  color="grey-7"
+                  dense
+                >
+                  <template v-slot:append>
+                    <q-btn round dense flat icon="add" />
+                  </template>
+                </q-input>
+              </div>  
+              <q-separator color="grey-4" vertical inset />
+              <div class="panel-right">
+                <div class="photo-edits">
+                  <span class="slider-text"> Brightness </span>
+                  <q-slider
+                    v-model="imageEdits.brightness"
+                    color="pink-3"
+                    marker-labels
+                    :min="1"
+                    :step="1"
+                    :max="5"
+                  >
+                    <template v-slot:marker-label-group="scope">
+                      <div
+                        v-for="marker in scope.markerList"
+                        :key="marker.index"
+                        :class="[
+                          `text-pink-${2 + Math.ceil(marker.value / 2)}`,
+                          marker.classes,
+                        ]"
+                        :style="marker.style"
+                        @click="model = marker.value"
+                      >
+                        {{ marker.value }}
+                      </div>
+                    </template>
+                  </q-slider>
+                  <span class="slider-text"> Image-Scale </span>
+                  <q-slider
+                    v-model="postData.photos[i].imageEdits.brightness"
+                    color="pink-3"
+                    marker-labels
+                    :min="1"
+                    :step="1"
+                    :max="5"
+                  >
+                    <template v-slot:marker-label-group="scope">
+                      <div
+                        v-for="marker in scope.markerList"
+                        :key="marker.index"
+                        :class="[
+                          `text-pink-${2 + Math.ceil(marker.value / 2)}`,
+                          marker.classes,
+                        ]"
+                        :style="marker.style"
+                        @click="model = marker.value"
+                      >
+                        {{ marker.value }}
+                      </div>
+                    </template>
+                  </q-slider>
+                  <span class="slider-text"> Filter </span>
+                  <q-slider
+                    v-model="imageEdits.filter"
+                    color="pink-3"
+                    marker-labels
+                    :min="1"
+                    :step="1"
+                    :max="5"
+                  >
+                    <template v-slot:marker-label-group="scope">
+                      <div
+                        v-for="marker in scope.markerList"
+                        :key="marker.index"
+                        :class="[
+                          `text-pink-${2 + Math.ceil(marker.value / 2)}`,
+                          marker.classes,
+                        ]"
+                        :style="marker.style"
+                        @click="model = marker.value"
+                      >
+                        {{ marker.value }}
+                      </div>
+                    </template>
+                  </q-slider>
+                </div>
+                <q-select
+                  rounded
+                  clearable
+                  multiple
+                  outlined
+                  color="pink-4"
+                  bg-color="white"
+                  v-model="selected"
+                  style="width: 100%; font-size: 0.8rem"
+                  max-values="5"
+                  stack-label
+                  label="Select a tag"
+                  autofocus
+                  :options="options"
+                />
+                <div class="saveDeleteBtns"
+                    style="display:flex; justify-content: space-evenly;"
+                >
+                  <q-btn
+                  label="save"
+                  color="pink-4"
+                  style="width: 40%; margin-top: 1rem;"
+                  />
+                  <q-btn
+                    label="delete"
+                    color="pink-4"
+                    style="width: 40%; margin-top: 1rem;"
+                  />
+                </div>
+              </div>
             </q-tab-panel>
           </q-tab-panels>
-        </div>
-        <q-separator color="grey-4" vertical inset />
-        <div class="post-options" style="margin: 0 1.5rem">
-          <div class="photo-edits">
-            <span class="slider-text"> Brightness </span>
-            <q-slider
-              v-model="imageEdits.brightness"
-              color="pink-3"
-              marker-labels
-              :min="1"
-              :step="1"
-              :max="5"
-            >
-              <template v-slot:marker-label-group="scope">
-                <div
-                  v-for="marker in scope.markerList"
-                  :key="marker.index"
-                  :class="[
-                    `text-pink-${2 + Math.ceil(marker.value / 2)}`,
-                    marker.classes,
-                  ]"
-                  :style="marker.style"
-                  @click="model = marker.value"
-                >
-                  {{ marker.value }}
-                </div>
-              </template>
-            </q-slider>
-            <span class="slider-text"> Image-Scale </span>
-            <q-slider
-              v-model="imageEdits.imageScale"
-              color="pink-3"
-              marker-labels
-              :min="1"
-              :step="1"
-              :max="5"
-            >
-              <template v-slot:marker-label-group="scope">
-                <div
-                  v-for="marker in scope.markerList"
-                  :key="marker.index"
-                  :class="[
-                    `text-pink-${2 + Math.ceil(marker.value / 2)}`,
-                    marker.classes,
-                  ]"
-                  :style="marker.style"
-                  @click="model = marker.value"
-                >
-                  {{ marker.value }}
-                </div>
-              </template>
-            </q-slider>
-            <span class="slider-text"> Filter </span>
-            <q-slider
-              v-model="imageEdits.filter"
-              color="pink-3"
-              marker-labels
-              :min="1"
-              :step="1"
-              :max="5"
-            >
-              <template v-slot:marker-label-group="scope">
-                <div
-                  v-for="marker in scope.markerList"
-                  :key="marker.index"
-                  :class="[
-                    `text-pink-${2 + Math.ceil(marker.value / 2)}`,
-                    marker.classes,
-                  ]"
-                  :style="marker.style"
-                  @click="model = marker.value"
-                >
-                  {{ marker.value }}
-                </div>
-              </template>
-            </q-slider>
-          </div>
-          <q-select
-            rounded
-            clearable
-            multiple
-            outlined
-            color="pink-4"
-            bg-color="white"
-            v-model="selected"
-            style="width: 100%; font-size: 0.8rem"
-            max-values="5"
-            stack-label
-            label="Select a tag"
-            autofocus
-            :options="options"
-          />
-          <div class="saveDeleteBtns"
-              style="display:flex; justify-content: space-evenly;"
-          >
-            <q-btn
-            label="save"
-            color="pink-4"
-            style="width: 40%; margin-top: 1rem;"
-            />
-            <q-btn
-              label="delete"
-              color="pink-4"
-              style="width: 40%; margin-top: 1rem;"
-            />
-          </div>
         </div>
       </q-card-section>
     </q-card>
@@ -167,30 +166,58 @@ export default defineComponent({
     return {
       image: placeholder,
       selected: ref(null),
-      options: [
-        "feminine",
-        "preppy",
-        "girly",
-        "vintage",
-        "bohemian",
-        "chic",
-        "sexy",
-        "casual",
-        "formal",
-        "punk",
-        "rocker",
-        "tomboy",
-        "gothic",
-        "sporty",
-        "ethnic",
-      ],
+      options: [ ...Tags.fetchTags() ],
       imageEdits: {
         brightness: 3,
         imageScale: 5,
         filter: 2,
       },
-      maxPage: 1,
+      numbers: ['one', 'two', 'three', 'four'],
+      maxPage: 4,
       tab: ref(1),
+      postData: {
+        userID: ref(null),
+        tag: ref(null),
+        photos: [
+          {
+            order: 1,
+            url: ref(null),
+            imageEdits: {
+              brightness: ref(null),
+              imageScale: ref(null),
+              filter: ref(null),
+            },
+          },
+          {
+            order: 2,
+            url: ref(null),
+            imageEdits: {
+              brightness: ref(null),
+              imageScale: ref(null),
+              filter: ref(null),
+            },
+          },
+          {
+            order: 3,
+            url: ref(null),
+            imageEdits: {
+              brightness: ref(null),
+              imageScale: ref(null),
+              filter: ref(null),
+            },
+          },
+          {
+            order: 4,
+            url: ref(null),
+            imageEdits: {
+              brightness: ref(null),
+              imageScale: ref(null),
+              filter: ref(null),
+            },
+          }
+        ],
+        id: ref(null)
+      }
     };
   },
   computed: {
@@ -231,7 +258,17 @@ export default defineComponent({
 .slider-text {
   color: grey;
 }
-.post-options {
+
+.panel-container {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-evenly;
+}
+.panel-left {
+
+}
+
+.panel-right {
   display: flex;
   flex-direction: column;
   gap: 1rem;

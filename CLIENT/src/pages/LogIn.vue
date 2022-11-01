@@ -139,6 +139,9 @@ export default defineComponent({
     },
     redirectToFeedView(){
       this.$router.push("/FeedView");
+    },
+    redirectToSignUp(){
+      this.$router.push("/SignUp");
     }
   },
 });

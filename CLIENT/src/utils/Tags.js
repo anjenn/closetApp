@@ -16,6 +16,26 @@ const loadTags = (objName) => {
 
 const deleteTags = (objName) => {
   localStorage.removeItem(objName);
+};
+
+const fetchTags = () => {
+  return [
+    "feminine",
+    "preppy",
+    "girly",
+    "vintage",
+    "bohemian",
+    "chic",
+    "sexy",
+    "casual",
+    "formal",
+    "punk",
+    "rocker",
+    "tomboy",
+    "gothic",
+    "sporty",
+    "ethnic"
+  ];
 }
 
 // const checkIfSaved = (objName) => {
@@ -25,4 +45,5 @@ const deleteTags = (objName) => {
 export default {
   saveTags,
   loadTags,
+  fetchTags
 };
