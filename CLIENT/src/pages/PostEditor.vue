@@ -46,7 +46,7 @@
                   <q-img
                     :src="image[i-1]"
                     :style="`transform: scale(${1+(postData.photos[i-1].imageEdits.imageScale)/10});
-                              filter: saturate(${1+(postData.photos[i-1].imageEdits.saturation)/7});        
+                              filter: saturate(${1+(postData.photos[i-1].imageEdits.saturation)/3});        
                     `"
                   />
                 </div>
@@ -280,7 +280,7 @@ export default defineComponent({
         })
         this.$router.push("/FeedView");
               // to be implemented, when there is post id.
-      //postDataMethods.deletePost(postData.id);
+              //postDataMethods.deletePost(postData.id);
       }
     }
   },

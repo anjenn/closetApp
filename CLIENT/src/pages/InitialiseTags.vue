@@ -104,8 +104,8 @@ export default defineComponent({
 
 <style scoped>
 .my-card {
-  min-width: 0.7rem;
-  min-height: 0.5rem;
+  min-width: 28rem;
+  min-height: 10rem;
   width: 37vw;
 }
 .container {
@@ -115,11 +115,11 @@ export default defineComponent({
 }
 .buttons {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
 }
 .btn {
   margin-top: 2rem;
-  width: 5rem;
+  width: 7rem;
   font-family: fredoka one;
 }
 .btn-tags {
