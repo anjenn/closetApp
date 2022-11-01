@@ -76,23 +76,7 @@ export default defineComponent({
     return {
       selectorModel: ref(null),
       selected: ref(null),
-      options: [
-        "feminine",
-        "preppy",
-        "girly",
-        "vintage",
-        "bohemian",
-        "chic",
-        "sexy",
-        "casual",
-        "formal",
-        "punk",
-        "rocker",
-        "tomboy",
-        "gothic",
-        "sporty",
-        "ethnic",
-      ],
+      options: [ ...Tags.fetchTags() ],
     };
   },
   computed: {
@@ -122,7 +106,7 @@ export default defineComponent({
 .my-card {
   min-width: 0.7rem;
   min-height: 0.5rem;
-  width: 60vw;
+  width: 37vw;
 }
 .container {
   display: flex;

@@ -17,18 +17,18 @@
             align="justify"
             narrow-indicator
           >
-            <q-tab v-for="i in maxPage" :key="i" :name="i" :label="`${numbers[i-1]}`" />
+            <q-tab v-for="i in 4" :key="i" :name="i" :label="`${numbers[i-1]}`" />
           </q-tabs>
           <q-tab-panels keep-alive v-model="tab" animated>
             <q-tab-panel 
-              v-for="i in maxPage"
+              v-for="i in 4"
               :key="i" :name="i"
               class="panel-container"
             >
               <div class="panel-left">
                 <q-img :src="image" style="width: 20rem; height: 20rem" />
                 <q-input
-                  v-model="url"
+                  v-model="postData.photos[i-1].url"
                   placeholder="Enter image URL"
                   borderless
                   style="margin-left: 0.7rem;"
@@ -45,19 +45,20 @@
                 <div class="photo-edits">
                   <span class="slider-text"> Brightness </span>
                   <q-slider
-                    v-model="imageEdits.brightness"
+                    class="sliders"
+                    v-model="postData.photos[i-1].imageEdits.brightness"
                     color="pink-3"
                     marker-labels
-                    :min="1"
+                    :min="-2"
                     :step="1"
-                    :max="5"
+                    :max="2"
                   >
                     <template v-slot:marker-label-group="scope">
                       <div
                         v-for="marker in scope.markerList"
                         :key="marker.index"
                         :class="[
-                          `text-pink-${2 + Math.ceil(marker.value / 2)}`,
+                          `text-pink-${3 + Math.ceil(marker.value / 2)}`,
                           marker.classes,
                         ]"
                         :style="marker.style"
@@ -69,19 +70,20 @@
                   </q-slider>
                   <span class="slider-text"> Image-Scale </span>
                   <q-slider
-                    v-model="postData.photos[i].imageEdits.brightness"
+                    class="sliders"
+                    v-model="postData.photos[i-1].imageEdits.imageScale"
                     color="pink-3"
                     marker-labels
-                    :min="1"
+                    :min="-2"
                     :step="1"
-                    :max="5"
+                    :max="2"
                   >
                     <template v-slot:marker-label-group="scope">
                       <div
                         v-for="marker in scope.markerList"
                         :key="marker.index"
                         :class="[
-                          `text-pink-${2 + Math.ceil(marker.value / 2)}`,
+                          `text-pink-${3 + Math.ceil(marker.value / 2)}`,
                           marker.classes,
                         ]"
                         :style="marker.style"
@@ -93,19 +95,20 @@
                   </q-slider>
                   <span class="slider-text"> Filter </span>
                   <q-slider
-                    v-model="imageEdits.filter"
+                    class="sliders"
+                    v-model="postData.photos[i-1].imageEdits.filter"
                     color="pink-3"
                     marker-labels
-                    :min="1"
+                    :min="-2"
                     :step="1"
-                    :max="5"
+                    :max="2"
                   >
                     <template v-slot:marker-label-group="scope">
                       <div
                         v-for="marker in scope.markerList"
                         :key="marker.index"
                         :class="[
-                          `text-pink-${2 + Math.ceil(marker.value / 2)}`,
+                          `text-pink-${3 + Math.ceil(marker.value / 2)}`,
                           marker.classes,
                         ]"
                         :style="marker.style"
@@ -117,32 +120,26 @@
                   </q-slider>
                 </div>
                 <q-select
-                  rounded
                   clearable
-                  multiple
-                  outlined
                   color="pink-4"
-                  bg-color="white"
-                  v-model="selected"
-                  style="width: 100%; font-size: 0.8rem"
-                  max-values="5"
-                  stack-label
+                  bg-color="grey-4"
+                  standout
+                  v-model="postData.tag"
                   label="Select a tag"
-                  autofocus
                   :options="options"
                 />
-                <div class="saveDeleteBtns"
-                    style="display:flex; justify-content: space-evenly;"
+                <div
+                    style="display:flex; justify-content: space-between; margin-top: 0.5rem;"
                 >
                   <q-btn
                   label="save"
                   color="pink-4"
-                  style="width: 40%; margin-top: 1rem;"
+                  style="width: 45%;"
                   />
                   <q-btn
                     label="delete"
                     color="pink-4"
-                    style="width: 40%; margin-top: 1rem;"
+                    style="width: 45%;"
                   />
                 </div>
               </div>
@@ -165,15 +162,8 @@ export default defineComponent({
   data() {
     return {
       image: placeholder,
-      selected: ref(null),
       options: [ ...Tags.fetchTags() ],
-      imageEdits: {
-        brightness: 3,
-        imageScale: 5,
-        filter: 2,
-      },
       numbers: ['one', 'two', 'three', 'four'],
-      maxPage: 4,
       tab: ref(1),
       postData: {
         userID: ref(null),
@@ -183,36 +173,36 @@ export default defineComponent({
             order: 1,
             url: ref(null),
             imageEdits: {
-              brightness: ref(null),
-              imageScale: ref(null),
-              filter: ref(null),
+              brightness: 0,
+              imageScale: 0,
+              filter: 0,
             },
           },
           {
             order: 2,
             url: ref(null),
             imageEdits: {
-              brightness: ref(null),
-              imageScale: ref(null),
-              filter: ref(null),
+              brightness: 0,
+              imageScale: 0,
+              filter: 0,
             },
           },
           {
             order: 3,
             url: ref(null),
             imageEdits: {
-              brightness: ref(null),
-              imageScale: ref(null),
-              filter: ref(null),
+              brightness: 0,
+              imageScale: 0,
+              filter: 0,
             },
           },
           {
             order: 4,
             url: ref(null),
             imageEdits: {
-              brightness: ref(null),
-              imageScale: ref(null),
-              filter: ref(null),
+              brightness: 0,
+              imageScale: 0,
+              filter: 0,
             },
           }
         ],
@@ -220,18 +210,7 @@ export default defineComponent({
       }
     };
   },
-  computed: {
-    returnSelection() {
-      return this.selected;
-      // return JSON.stringify(this.selected);
-    },
-  },
   methods: {
-    increasePgNum() {
-      if (this.maxPage <= 3) {
-        this.maxPage++;
-      }
-    },
   },
 });
 </script>
@@ -239,24 +218,24 @@ export default defineComponent({
 <style scoped>
 .editor-card {
   border: 0.5rem solid #f06292;
-  min-width: 45rem;
-  min-height: 25rem;
-  height: 62vh;
-  width: 50vw;
+  min-width: 47rem;
+  min-height: 32rem;
+  height: 45vh;
+  width: 42vw;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .card-contents {
   display: flex;
   gap: 1.5rem;
   align-items: center;
 }
-.page-btn {
-  width: 0.5rem;
-  height: 0.5rem;
-}
 .slider-text {
   color: grey;
+}
+.sliders {
+  margin-bottom: 0.5rem;
 }
 
 .panel-container {
@@ -265,9 +244,11 @@ export default defineComponent({
   justify-content: space-evenly;
 }
 .panel-left {
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
 
 }
-
 .panel-right {
   display: flex;
   flex-direction: column;

@@ -9,6 +9,7 @@ In the callback, we have a res and a req. res means response, and req means requ
 exports.createPost = (req, res) => {
     // Validate request
     if (!req.body.userID) {
+      // make it fail when not only user ID is null, but also other data
       res.status(400).send({ message: "Content cannot be empty" });
       return;
     }
