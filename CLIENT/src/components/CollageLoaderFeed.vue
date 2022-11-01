@@ -46,7 +46,7 @@
 <script>
 import { defineComponent } from "vue";
 import { ref } from "vue";
-import placeholder from "/public/placeholder.png";
+import placeholder from "/public/placeholder.svg";
 
 export default defineComponent({
   name: "CollageLoader",

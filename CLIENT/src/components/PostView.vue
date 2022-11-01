@@ -79,9 +79,7 @@
 <script>
 import { defineComponent } from "vue";
 import collageLoaderFeed from "/src/components/CollageLoaderFeed";
-import placeholder from "/public/placeholder.png";
-
-import { ref } from "vue";
+import placeholder from "/public/placeholder.svg";
 
 export default defineComponent({
   name: "PostView",

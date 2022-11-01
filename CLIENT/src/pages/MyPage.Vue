@@ -51,7 +51,7 @@
 import { defineComponent } from "vue";
 import { ref } from "vue";
 import postView from "/src/components/PostView";
-import placeholder from "/public/placeholder.png";
+import placeholder from "/public/placeholder.svg";
 
 export default defineComponent({
   name: "MyPage",

@@ -6,7 +6,19 @@
       class="bg-white editor-card shadow-10"
       style="font-family: 'fredoka one'"
     >
+      <q-dialog class="question-modal q-pa-md" v-model="dialog" persistent>
+        <q-card>
+          <q-card-section class="row items-center">
+            <span>Are you sure you want to delete the post?</span>
+          </q-card-section>
+          <q-card-actions align="right">
+            <q-btn flat label="Cancel" color="pink-4" v-close-popup />
+            <q-btn flat label="Delete" color="pink-4" v-close-popup @click="deletePost" />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
       <q-card-section class="card-contents">
+
         <div class="post-contents">
           <q-tabs
             v-model="tab"
@@ -26,7 +38,18 @@
               class="panel-container"
             >
               <div class="panel-left">
-                <q-img :src="image" style="width: 20rem; height: 20rem" />
+                <div
+                  class="q-img-wrapper"
+                  :style="`width: 20rem; height: 20rem; overflow:hidden;
+                            filter: brightness(${1+(postData.photos[i-1].imageEdits.brightness)/10})`"
+                >
+                  <q-img
+                    :src="image[i-1]"
+                    :style="`transform: scale(${1+(postData.photos[i-1].imageEdits.imageScale)/10});
+                              filter: saturate(${1+(postData.photos[i-1].imageEdits.saturation)/7});        
+                    `"
+                  />
+                </div>
                 <q-input
                   v-model="postData.photos[i-1].url"
                   placeholder="Enter image URL"
@@ -36,7 +59,11 @@
                   dense
                 >
                   <template v-slot:append>
-                    <q-btn round dense flat icon="add" />
+                    <q-btn
+                      round dense flat
+                      icon="add"
+                      @click="updatePhoto(i)"
+                      />
                   </template>
                 </q-input>
               </div>  
@@ -74,16 +101,16 @@
                     v-model="postData.photos[i-1].imageEdits.imageScale"
                     color="pink-3"
                     marker-labels
-                    :min="-2"
+                    :min="0"
                     :step="1"
-                    :max="2"
+                    :max="4"
                   >
                     <template v-slot:marker-label-group="scope">
                       <div
                         v-for="marker in scope.markerList"
                         :key="marker.index"
                         :class="[
-                          `text-pink-${3 + Math.ceil(marker.value / 2)}`,
+                          `text-pink-${2 + Math.ceil(marker.value / 2)}`,
                           marker.classes,
                         ]"
                         :style="marker.style"
@@ -93,10 +120,10 @@
                       </div>
                     </template>
                   </q-slider>
-                  <span class="slider-text"> Filter </span>
+                  <span class="slider-text"> Saturation </span>
                   <q-slider
                     class="sliders"
-                    v-model="postData.photos[i-1].imageEdits.filter"
+                    v-model="postData.photos[i-1].imageEdits.saturation"
                     color="pink-3"
                     marker-labels
                     :min="-2"
@@ -132,14 +159,16 @@
                     style="display:flex; justify-content: space-between; margin-top: 0.5rem;"
                 >
                   <q-btn
-                  label="save"
-                  color="pink-4"
-                  style="width: 45%;"
+                    label="save"
+                    color="pink-4"
+                    style="width: 45%;"
+                    @click="savePost"
                   />
                   <q-btn
                     label="delete"
                     color="pink-4"
                     style="width: 45%;"
+                    @click="dialog = true"
                   />
                 </div>
               </div>
@@ -152,18 +181,21 @@
 </template>
 
 <script>
+import { Notify } from 'quasar'
+import postDataMethods from "app/api/postDataMethods";
 import { defineComponent } from "vue";
 import { ref } from "vue";
 import Tags from "../utils/Tags";
-import placeholder from "/public/placeholder.png";
+import placeholder from "/public/placeholder.svg";
 
 export default defineComponent({
   name: "PostEditor",
   data() {
     return {
-      image: placeholder,
+      dialog: ref(false),
+      image: [placeholder, placeholder, placeholder, placeholder],
       options: [ ...Tags.fetchTags() ],
-      numbers: ['one', 'two', 'three', 'four'],
+      numbers: ['first', 'second', 'third', 'fourth'],
       tab: ref(1),
       postData: {
         userID: ref(null),
@@ -175,7 +207,7 @@ export default defineComponent({
             imageEdits: {
               brightness: 0,
               imageScale: 0,
-              filter: 0,
+              saturation: 0,
             },
           },
           {
@@ -184,7 +216,7 @@ export default defineComponent({
             imageEdits: {
               brightness: 0,
               imageScale: 0,
-              filter: 0,
+              saturation: 0,
             },
           },
           {
@@ -193,7 +225,7 @@ export default defineComponent({
             imageEdits: {
               brightness: 0,
               imageScale: 0,
-              filter: 0,
+              saturation: 0,
             },
           },
           {
@@ -202,7 +234,7 @@ export default defineComponent({
             imageEdits: {
               brightness: 0,
               imageScale: 0,
-              filter: 0,
+              saturation: 0,
             },
           }
         ],
@@ -211,12 +243,60 @@ export default defineComponent({
     };
   },
   methods: {
+    updatePhoto(i){
+      this.image[i-1] = this.postData.photos[i-1].url;
+    },
+    savePost(){
+
+    },
+    deletePost(){
+      if(this.postData.id == null){
+        Notify.create({
+                message: 'Current post data was discarded',
+                color: 'pink-5',
+                icon: 'info',
+                textColor: 'white',
+                timeout: 2000,
+                progress: true,
+                position: 'bottom-right',
+                actions: [
+                  { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+                ]
+        })
+        this.$router.push("/FeedView");
+      }
+      else{
+        Notify.create({
+                message: `Post was just deleted (Post ID: ${this.postData.id})`,
+                color: 'pink-5',
+                icon: 'info',
+                textColor: 'white',
+                timeout: 2000,
+                progress: true,
+                position: 'bottom-right',
+                actions: [
+                  { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+                ]
+        })
+        this.$router.push("/FeedView");
+              // to be implemented, when there is post id.
+      //postDataMethods.deletePost(postData.id);
+      }
+    }
   },
 });
 </script>
 
 <style scoped>
+.question-modal {
+  position: absolute;
+  width: 20rem;
+  height: 10rem;
+  z-index: 2;
+  background-color: white;
+}
 .editor-card {
+  position:relative;
   border: 0.5rem solid #f06292;
   min-width: 47rem;
   min-height: 32rem;
