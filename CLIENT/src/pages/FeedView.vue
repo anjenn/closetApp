@@ -54,7 +54,6 @@ export default defineComponent({
     redirectPostEditor() {
       // this.$router.push("/PostEditor");
       this.$router.push({ name: "Post Editor w ID", params: {postID: this.postId} })
-      // this.$router.push({ path: `/PostEditor/${this.postId}` })
     },
   },
 });

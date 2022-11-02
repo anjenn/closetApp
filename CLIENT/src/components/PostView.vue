@@ -9,7 +9,44 @@
           />
           <span style="margin-left: 1rem; font-size: 1rem">User ID</span>
         </div>
-        <div class="col"><collageLoaderFeed /></div>
+        <div class="collage">
+          <div class="collage-row">
+            <q-img
+              class="image"
+              :src="image"
+              spinner-color="white"
+              spinner-size="0.3rem"
+              style="border-top-left-radius: 15px"
+            >
+            </q-img>
+            <q-img
+              class="image"
+              :src="image"
+              spinner-color="white"
+              spinner-size="0.3rem"
+              style="border-top-right-radius: 15px"
+            >
+            </q-img>
+          </div>
+          <div class="collage-row">
+            <q-img
+              class="image"
+              :src="image"
+              spinner-color="white"
+              spinner-size="0.3rem"
+              style="border-bottom-left-radius: 15px"
+            >
+            </q-img>
+            <q-img
+              class="image"
+              :src="image"
+              spinner-color="white"
+              spinner-size="0.3rem"
+              style="border-bottom-right-radius: 15px"
+            >
+            </q-img>
+          </div>
+        </div>
         <div class="buttons">
           <q-btn
             v-model="this.heartBorder"
@@ -78,14 +115,10 @@
 
 <script>
 import { defineComponent } from "vue";
-import collageLoaderFeed from "/src/components/CollageLoaderFeed";
 import placeholder from "/public/placeholder.svg";
 
 export default defineComponent({
   name: "PostView",
-  components: {
-    collageLoaderFeed,
-  },
   data() {
     return {
       heartBorder: true,
@@ -137,4 +170,24 @@ export default defineComponent({
   background-color: #e6e6fa;
   margin: 0.25rem;
 }
+
+.collage {
+  display: flex;
+  margin-top: 1rem;
+}
+.collage-row {
+  position: relative;
+  width: 8rem;
+  height: 5rem;
+  margin: auto 0;
+}
+.image {
+  position: absolute;
+  left: 50%;
+  margin-top: -2.5rem;
+  margin-left: -3.5rem;
+  top: 50%;
+  object-fit: contain;
+}
+
 </style>
