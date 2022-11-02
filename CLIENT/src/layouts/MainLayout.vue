@@ -174,6 +174,9 @@ export default defineComponent({
         this.redirectTo();
       }
     },
+    resetSelection(){
+      console.log('resetting selection to be implemented');
+    }
   },
 });
 </script>

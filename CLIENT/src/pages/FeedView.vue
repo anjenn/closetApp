@@ -46,12 +46,15 @@ export default defineComponent({
   data() {
     return {
       random: null,
+      postId: '6357ec9a4f47830e941ed0a6'
     };
   },
   methods: {
     randomNumGen() {},
     redirectPostEditor() {
-      this.$router.push("/PostEditor");
+      // this.$router.push("/PostEditor");
+      this.$router.push({ name: "Post Editor w ID", params: {postID: this.postId} })
+      // this.$router.push({ path: `/PostEditor/${this.postId}` })
     },
   },
 });

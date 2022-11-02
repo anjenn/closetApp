@@ -17,7 +17,7 @@ const routes = [
       },
       {
         path: "/LogIn",
-        name: "Log In Page",
+        name: "Log In",
         component: () => import("pages/LogIn.vue"),
       },
       {
@@ -31,8 +31,14 @@ const routes = [
         component: () => import("pages/PostEditor.vue"),
       },
       {
+        path: "/PostEditor/:postID",
+        name: "Post Editor w ID",
+        props: true,
+        component: () => import("pages/PostEditor.vue"),
+      },
+      {
         path: "/SignUp",
-        name: "Sign Up Page",
+        name: "Sign Up",
         component: () => import("pages/SignUp.vue"),
       },
     ],

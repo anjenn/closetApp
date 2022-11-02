@@ -242,6 +242,9 @@ export default defineComponent({
       }
     };
   },
+  mounted() {
+    console.log(this.$route.params);
+  },
   methods: {
     updatePhoto(i){
       this.image[i-1] = this.postData.photos[i-1].url;
