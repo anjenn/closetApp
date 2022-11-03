@@ -1,9 +1,5 @@
 const saveTags = (arr, arrName) => {
   window.localStorage.setItem(arrName, JSON.stringify(arr));
-  alert("saving function called");
-  // if (loadTags.length == 0) {
-  //   alert("No tag selected");
-  // }
 };
 
 const loadTags = (arrName) => {
@@ -34,10 +30,6 @@ const fetchTagsArray = () => {
     "ethnic"
   ];
 }
-
-// const checkIfSaved = (arrName) => {
-//   let newObj = window.localStorage.getItem(`${arrName}`);
-// };
 
 export default {
   saveTags,

@@ -59,7 +59,7 @@ import placeholder from "/public/placeholder.svg";
 export default defineComponent({
   props: ['postdata', 'index'],
   created: function() {
-    console.log(`tester ${this.postdata.userID}`);
+    //console.log(`tester ${this.postdata.userID}`);
   },
   name: "PostView",
   data() {

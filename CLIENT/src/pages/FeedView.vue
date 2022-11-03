@@ -1,15 +1,13 @@
 <!-- <postView :postdata="postdata" :index="0"/> -->
-
-<!-- <postView 
-v-for item in posts
-/> -->
-
 <template>
   <q-page padding class="container" style="background-color: #fff0f5">
     <div class="container-sub flex">
       <div class="row justify-evenly">
-
-        <postView :postdata="postdata" :index="0"/>
+        <postView 
+          v-for="post in posts"
+          :postData="post"
+          :key="post.id"
+        />
       </div>
       <div class="row justify-between" style="width: 12rem">
         <q-btn
@@ -53,14 +51,14 @@ export default defineComponent({
   },
   data() {
     return {
-      postdata: { // to be sent as a parameter
-        userID: 12345,
-        tag: '12345',
-        photos: '12345',
-        createdAt: '12345',
-        updatedAt: '12345',
-        id: '12345'
-      },
+      // postdata: { // to be sent as a parameter
+      //   userID: 12345,
+      //   tag: '12345',
+      //   photos: '12345',
+      //   createdAt: '12345',
+      //   updatedAt: '12345',
+      //   id: '12345'
+      // },
       tags: ref(null),
       posts: []
     };
@@ -73,26 +71,33 @@ export default defineComponent({
     retrieveTags(){
       const temp = Tags.loadTags("tags");
       if (!temp){
-        console.log('tags empty');
         this.tags = Tags.fetchTagsArray();
-        console.log(this.tags);
       }
       else{
-        console.log('tags non empty');
         this.tags = temp;
-        console.log(this.tags);
       }
     },
     retrievePosts(){
       postDataMethods.getAllPosts(this.tags)
       .then(response => {
-          this.posts = response.data;
-          // console.log(this.posts);
+          const temp = response.data;
+          this.posts = this.randomiseAndCut(temp);
       })
       .catch(e => {
         console.log(e);
       });
     },
+    randomiseAndCut(arr){
+      let currentIndex = arr.length, randomIndex;
+      while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [arr[currentIndex], arr[randomIndex]] = [
+          arr[randomIndex], arr[currentIndex]];
+      }
+      arr = arr.slice(0, 9);
+      return arr;
+    }
   },
 });
 </script>
