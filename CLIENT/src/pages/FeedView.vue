@@ -2,10 +2,7 @@
   <q-page padding class="container" style="background-color: #fff0f5">
     <div class="container-sub flex">
       <div class="row justify-evenly">
-        <postView />
-        <postView />
-        <postView />
-        <postView />
+        <postView :postData="postData" :index="0"/>
         <postView />
         <postView />
         <postView />
@@ -36,6 +33,7 @@
 </template>
 
 <script>
+import { ref } from "vue";
 import postView from "/src/components/PostView";
 import { defineComponent } from "vue";
 export default defineComponent({
@@ -45,15 +43,20 @@ export default defineComponent({
   },
   data() {
     return {
-      random: null,
-      postId: '6357ec9a4f47830e941ed0a6'
+      postData: {
+        userID: 12345,
+        tag: ref(null),
+        photos: ref(null),
+        createdAt: ref(null),
+        updatedAt: ref(null),
+        id: ref(null)
+      }
     };
   },
   methods: {
     randomNumGen() {},
     redirectPostEditor() {
-      // this.$router.push("/PostEditor");
-      this.$router.push({ name: "Post Editor w ID", params: {postID: this.postId} })
+      this.$router.push("/PostEditor");
     },
   },
 });
@@ -61,7 +64,7 @@ export default defineComponent({
 
 <style scoped>
 .container-sub {
-  margin: 10vh 15vw;
+  margin: 10vh 7vw;
   flex-direction: column;
   align-items: center;
 }
