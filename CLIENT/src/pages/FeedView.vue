@@ -2,18 +2,13 @@
   <q-page padding class="container" style="background-color: #fff0f5">
     <div class="container-sub flex">
       <div class="row justify-evenly">
-        <postView :postData="postData" :index="0"/>
-        <postView />
-        <postView />
-        <postView />
-        <postView />
-        <postView />
+        <postView :postdata="postdata" :index="0"/>
       </div>
-      <div class="row justify-between" style="width: 9rem">
+      <div class="row justify-between" style="width: 12rem">
         <q-btn
           push
           class="btn-bottom"
-          size="lg"
+          size="xl"
           color="pink-3"
           round
           icon="refresh"
@@ -21,7 +16,7 @@
         <q-btn
           push
           class="btn-bottom"
-          size="lg"
+          size="xl"
           color="pink-3"
           round
           icon="add"
@@ -43,13 +38,13 @@ export default defineComponent({
   },
   data() {
     return {
-      postData: {
+      postdata: { // to be sent as a parameter
         userID: 12345,
-        tag: ref(null),
-        photos: ref(null),
-        createdAt: ref(null),
-        updatedAt: ref(null),
-        id: ref(null)
+        tag: '12345',
+        photos: '12345',
+        createdAt: '12345',
+        updatedAt: '12345',
+        id: '12345'
       }
     };
   },

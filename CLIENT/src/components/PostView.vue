@@ -57,7 +57,10 @@ import { defineComponent } from "vue";
 import placeholder from "/public/placeholder.svg";
 
 export default defineComponent({
-  props: ['postData', 'index'],
+  props: ['postdata', 'index'],
+  created: function() {
+    console.log(`tester ${this.postdata.userID}`);
+  },
   name: "PostView",
   data() {
     return {
