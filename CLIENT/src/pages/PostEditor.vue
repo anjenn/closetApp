@@ -18,7 +18,6 @@
         </q-card>
       </q-dialog>
       <q-card-section class="card-contents">
-
         <div class="post-contents">
           <q-tabs
             v-model="tab"
@@ -159,16 +158,16 @@
                     style="display:flex; justify-content: space-between; margin-top: 0.5rem;"
                 >
                   <q-btn
-                    label="save"
-                    color="pink-4"
-                    style="width: 45%;"
-                    @click="savePost"
-                  />
-                  <q-btn
                     label="delete"
                     color="pink-4"
                     style="width: 45%;"
                     @click="dialog = true"
+                  />
+                  <q-btn
+                    label="save"
+                    color="pink-4"
+                    style="width: 45%;"
+                    @click="savePost"
                   />
                 </div>
               </div>
@@ -187,9 +186,20 @@ import { defineComponent } from "vue";
 import { ref } from "vue";
 import Tags from "../utils/Tags";
 import placeholder from "/public/placeholder.svg";
+import UserTemp from 'src/utils/UserTemp';
 
 export default defineComponent({
   name: "PostEditor",
+  created(){
+    //retrieving userID
+    const tempObj = UserTemp.loadUserData("currUser");
+    this.postData.userID = tempObj.id;
+    console.log(this.postData.userID);
+    if(this.$route.params.postID)
+    {
+      this.postData.id = this.$route.params.postID;
+    }
+  },
   data() {
     return {
       dialog: ref(false),
@@ -207,7 +217,7 @@ export default defineComponent({
             imageEdits: {
               brightness: 0,
               imageScale: 0,
-              saturation: 0,
+              saturation: 0
             },
           },
           {
@@ -216,7 +226,7 @@ export default defineComponent({
             imageEdits: {
               brightness: 0,
               imageScale: 0,
-              saturation: 0,
+              saturation: 0
             },
           },
           {
@@ -225,7 +235,7 @@ export default defineComponent({
             imageEdits: {
               brightness: 0,
               imageScale: 0,
-              saturation: 0,
+              saturation: 0
             },
           },
           {
@@ -234,26 +244,32 @@ export default defineComponent({
             imageEdits: {
               brightness: 0,
               imageScale: 0,
-              saturation: 0,
-            },
+              saturation: 0
+            }
           }
-        ],
-        id: ref(null)
+        ]
       }
     };
-  },
-  mounted() {
-    console.log(this.$route.params);
   },
   methods: {
     updatePhoto(i){
       this.image[i-1] = this.postData.photos[i-1].url;
     },
     savePost(){
-
+      postDataMethods.createPost(this.postData)
+      .then(response => {
+          this.postData.id = response.data.id;
+          console.log(response.data.id);
+          this.$router.push("/FeedView");
+        })
+        .catch(e => {
+          console.log(e);
+        });
+      },
     },
     deletePost(){
-      if(this.postData.id == null){
+      console.log(`testing ${this.postData.id}`);
+      if(!this.postData.id){
         Notify.create({
                 message: 'Current post data was discarded',
                 color: 'pink-5',
@@ -269,6 +285,7 @@ export default defineComponent({
         this.$router.push("/FeedView");
       }
       else{
+        console.log('testing');
         Notify.create({
                 message: `Post was just deleted (Post ID: ${this.postData.id})`,
                 color: 'pink-5',
@@ -282,12 +299,10 @@ export default defineComponent({
                 ]
         })
         this.$router.push("/FeedView");
-              // to be implemented, when there is post id.
-              //postDataMethods.deletePost(postData.id);
       }
     }
   },
-});
+);
 </script>
 
 <style scoped>

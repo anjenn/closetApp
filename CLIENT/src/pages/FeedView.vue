@@ -26,7 +26,7 @@
           color="pink-3"
           round
           icon="add"
-          v-on:click="redirectPostEditor"
+          v-on:click="redirectToPostEditor"
         />
       </div>
     </div>
@@ -43,7 +43,6 @@ import Tags from "../utils/Tags";
 export default defineComponent({
   name: "FeedView",
   created() {
-    this.retrieveTags();
     this.retrievePosts();
   },
   components: {
@@ -64,8 +63,7 @@ export default defineComponent({
     };
   },
   methods: {
-    randomNumGen() {},
-    redirectPostEditor() {
+    redirectToPostEditor() {
       this.$router.push("/PostEditor");
     },
     retrieveTags(){
@@ -78,10 +76,13 @@ export default defineComponent({
       }
     },
     retrievePosts(){
-      postDataMethods.getAllPosts(this.tags)
+      this.retrieveTags();
+      postDataMethods.getAllPosts('girly')
       .then(response => {
-          const temp = response.data;
+          let temp = response.data;
+          console.log(temp);
           this.posts = this.randomiseAndCut(temp);
+          console.log(this.posts);
       })
       .catch(e => {
         console.log(e);

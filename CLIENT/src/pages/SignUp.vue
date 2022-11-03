@@ -25,7 +25,6 @@
                 v-model="user.firstName"
                 style="width: 40%"
                 label="First Name *"
-                @update:model-value="validateData"
                 :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
               />
               <q-input
@@ -36,7 +35,6 @@
                 v-model="user.lastName"
                 style="width: 40%"
                 label="Last Name *"
-                @update:model-value="validateData"
                 :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
               />
             </template>
@@ -48,7 +46,6 @@
               v-model="user.userName"
               style="width: 90%"
               label="User ID *"
-              @update:model-value="validateData"
               :rules="[ val => val.length >= 2 || 'Use min. 2 characters']"
             />
             <q-input
@@ -60,7 +57,6 @@
               v-model="user.password"
               style="width: 90%"
               label="Password *"
-              @update:model-value="validateData"
               :rules="[ val => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(val) || 'Use min. 8 characters including number and alphabet']"
             />
             <q-btn
@@ -130,8 +126,6 @@ export default defineComponent({
         .catch(e => {
           console.log(e);
         });
-        this.saveTempUserData();
-
         setTimeout(() => {
           this.btnLoading = false
           // redirection
@@ -140,18 +134,6 @@ export default defineComponent({
     },
     saveTempUserData(){
       UserTemp.saveUserData(this.returnUser, "CurrentUser");
-    },
-    validateData(){ // change to q-form for validation
-      const ref1 = this.$refs.firstNameRef;
-      const ref2 = this.$refs.lastNameRef;
-      const ref3 = this.$refs.userNameRef;
-      const ref4 = this.$refs.passwordRef;
-      if(!ref1.modelValue||!ref2.modelValue||!ref3.modelValue||!ref4.modelValue){
-        console.log("Error");
-      }
-      else{
-        this.btnDisabled = false;
-      }
     }
   },
 });

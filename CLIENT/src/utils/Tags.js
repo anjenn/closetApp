@@ -14,20 +14,15 @@ const deleteTags = (arrName) => {
 const fetchTagsArray = () => {
   return [
     "feminine",
-    "preppy",
-    "girly",
-    "vintage",
-    "bohemian",
-    "chic",
-    "sexy",
-    "casual",
-    "formal",
-    "punk",
-    "rocker",
     "tomboy",
+    "retro",
+    "streetwear",
+    "punk",
+    "classic",
+    "formal",
     "gothic",
     "sporty",
-    "ethnic"
+    "girly"
   ];
 }
 

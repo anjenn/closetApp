@@ -55,15 +55,22 @@
 <script>
 import { defineComponent } from "vue";
 import placeholder from "/public/placeholder.svg";
+import UserTemp from "src/utils/UserTemp";
 
 export default defineComponent({
   props: ['postdata', 'index'],
   created: function() {
     //console.log(`tester ${this.postdata.userID}`);
+    if(UserTemp.checkIfSaved == true){
+      console.log('user is logged in');
+      this.currUser = UserTemp.loadUserData("currUser");
+    }
+    console.log(this.postdata);
   },
   name: "PostView",
   data() {
     return {
+      currUser: ref(null),
       heartBorder: true,
       image: placeholder,
       images: [

@@ -7,7 +7,11 @@ module.exports = mongoose => {
           {
             order: Number, // position of the photo in the post
             url: String,
-            edits: [{ type: Number }],
+            imageEdits: {
+              brightness: Number,
+              imageScale: Number,
+              saturation: Number
+            }
           }
         ]
       },
@@ -18,7 +22,6 @@ module.exports = mongoose => {
       object.id = _id;
       return object;
     });
-  
     const Post = mongoose.model("post", schema);
     return Post;
 };
@@ -33,7 +36,7 @@ module.exports = mongoose => {
             {
                 "order": 1,
                 "url": "url1",
-                "edits": [
+                "imageEdits": [
                     0,
                     1,
                     4,
