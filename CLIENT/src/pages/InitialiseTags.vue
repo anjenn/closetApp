@@ -76,7 +76,7 @@ export default defineComponent({
     return {
       selectorModel: ref(null),
       selected: ref(null),
-      options: [ ...Tags.fetchTags() ],
+      options: [ ...Tags.fetchTagsArray() ],
     };
   },
   computed: {
@@ -94,7 +94,6 @@ export default defineComponent({
         alert("Select something");
       } else {
         Tags.saveTags(this.returnSelection, "tags");
-        Tags.loadTags("tags");
         this.redirectTo();
       }
     },

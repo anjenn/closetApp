@@ -1,24 +1,21 @@
-const saveTags = (obj, objName) => {
-  window.localStorage.setItem(objName, JSON.stringify(obj));
+const saveTags = (arr, arrName) => {
+  window.localStorage.setItem(arrName, JSON.stringify(arr));
   alert("saving function called");
   // if (loadTags.length == 0) {
   //   alert("No tag selected");
   // }
-  // use lodash library to check whether the object is empty or not
-  // or use the checkIfSaved function given below
 };
 
-const loadTags = (objName) => {
-  let newObj = window.localStorage.getItem(objName);
-  //returned as object format
-  return newObj;
+const loadTags = (arrName) => {
+  let newArr = window.localStorage.getItem(arrName);
+  return newArr;
 };
 
-const deleteTags = (objName) => {
-  localStorage.removeItem(objName);
+const deleteTags = (arrName) => {
+  localStorage.removeItem(arrName);
 };
 
-const fetchTags = () => {
+const fetchTagsArray = () => {
   return [
     "feminine",
     "preppy",
@@ -38,12 +35,13 @@ const fetchTags = () => {
   ];
 }
 
-// const checkIfSaved = (objName) => {
-//   let newObj = window.localStorage.getItem(`${objName}`);
+// const checkIfSaved = (arrName) => {
+//   let newObj = window.localStorage.getItem(`${arrName}`);
 // };
 
 export default {
   saveTags,
   loadTags,
-  fetchTags
+  deleteTags,
+  fetchTagsArray
 };

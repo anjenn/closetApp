@@ -194,7 +194,7 @@ export default defineComponent({
     return {
       dialog: ref(false),
       image: [placeholder, placeholder, placeholder, placeholder],
-      options: [ ...Tags.fetchTags() ],
+      options: [ ...Tags.fetchTagsArray() ],
       numbers: ['first', 'second', 'third', 'fourth'],
       tab: ref(1),
       postData: {
