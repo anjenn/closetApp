@@ -27,22 +27,22 @@
         <q-tab-panels v-model="tab" animated>
             <q-tab-panel name="myPosts">
             <div class="row posts wrap justify-around">
-                <postView />
-                <postView />
-                <postView />
-                <postView />
-                <postView />
-                <postView />
+                <postViewMp />
+                <postViewMp />
+                <postViewMp />
+                <postViewMp />
+                <postViewMp />
+                <postViewMp />
             </div>
             </q-tab-panel>
             <q-tab-panel name="savedPosts">
             <div class="row posts wrap justify-around">
-                <postView />
-                <postView />
-                <postView />
-                <postView />
-                <postView />
-                <postView />
+                <postViewMp />
+                <postViewMp />
+                <postViewMp />
+                <postViewMp />
+                <postViewMp />
+                <postViewMp />
             </div>
             </q-tab-panel>
         </q-tab-panels>
@@ -53,7 +53,7 @@
   <script>
   import { defineComponent } from "vue";
   import { ref } from "vue";
-  import postView from "/src/components/PostView";
+  import postViewMp from "/src/components/PostViewMp";
   import placeholder from "/public/placeholder.svg";
   
   export default defineComponent({
@@ -64,7 +64,7 @@
       };
     },
     components: {
-      postView,
+      postViewMp,
     },
     setup() {
       return {

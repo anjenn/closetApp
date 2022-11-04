@@ -6,10 +6,10 @@
       class="bg-white editor-card shadow-10"
       style="font-family: 'fredoka one'"
     >
-      <q-dialog class="question-modal q-pa-md" v-model="dialog" persistent>
+      <q-dialog class="question-modal q-pa-xl" v-model="dialog" persistent>
         <q-card>
           <q-card-section class="row items-center">
-            <span>Are you sure you want to delete the post?</span>
+            <span style="font-family: 'fredoka one'">Are you sure you want to delete the post?</span>
           </q-card-section>
           <q-card-actions align="right">
             <q-btn flat label="Cancel" color="pink-4" v-close-popup />
@@ -43,7 +43,7 @@
                             filter: brightness(${1+(postData.photos[i-1].imageEdits.brightness)/10})`"
                 >
                   <q-img
-                    :src="image[i-1]"
+                    :src="images[i-1]"
                     :style="`transform: scale(${1+(postData.photos[i-1].imageEdits.imageScale)/10});
                               filter: saturate(${1+(postData.photos[i-1].imageEdits.saturation)/3});        
                     `"
@@ -203,7 +203,7 @@ export default defineComponent({
   data() {
     return {
       dialog: ref(false),
-      image: [placeholder, placeholder, placeholder, placeholder],
+      images: [placeholder, placeholder, placeholder, placeholder],
       options: [ ...Tags.fetchTagsArray() ],
       numbers: ['first', 'second', 'third', 'fourth'],
       tab: ref(1),
@@ -211,6 +211,15 @@ export default defineComponent({
         userID: ref(null),
         tag: ref(null),
         photos: [
+          {
+            order: 0,
+            url: ref(null),
+            imageEdits: {
+              brightness: 0,
+              imageScale: 0,
+              saturation: 0
+            },
+          },
           {
             order: 1,
             url: ref(null),
@@ -236,15 +245,6 @@ export default defineComponent({
               brightness: 0,
               imageScale: 0,
               saturation: 0
-            },
-          },
-          {
-            order: 4,
-            url: ref(null),
-            imageEdits: {
-              brightness: 0,
-              imageScale: 0,
-              saturation: 0
             }
           }
         ]
@@ -253,7 +253,7 @@ export default defineComponent({
   },
   methods: {
     updatePhoto(i){
-      this.image[i-1] = this.postData.photos[i-1].url;
+      this.images[i-1] = this.postData.photos[i-1].url;
     },
     savePost(){
       postDataMethods.createPost(this.postData)
@@ -307,14 +307,11 @@ export default defineComponent({
 
 <style scoped>
 .question-modal {
-  position: absolute;
   width: 20rem;
   height: 10rem;
-  z-index: 2;
   background-color: white;
 }
 .editor-card {
-  position:relative;
   border: 0.5rem solid #f06292;
   min-width: 47rem;
   min-height: 32rem;

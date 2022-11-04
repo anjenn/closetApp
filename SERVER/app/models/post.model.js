@@ -43,17 +43,6 @@ module.exports = mongoose => {
                     5
                 ],
                 "_id": "6357ff4ef3570dc984b5ec25"
-            },
-            {
-                "order": 2,
-                "url": "url2",
-                "edits": [
-                    0,
-                    1,
-                    4,
-                    5
-                ],
-                "_id": "6357ff4ef3570dc984b5ec26"
             }
         ],
         "createdAt": "2022-10-25T15:22:54.543Z",

@@ -2,19 +2,14 @@
 <template>
   <q-page padding class="container" style="background-color: #fff0f5">
     <div class="container-sub flex">
-      <div class="row justify-evenly">
-        <Suspense>
-          <template #default>
-            <postView 
-              v-for="n in 9"
-              :key="n"
-            />
-          </template>
-          <template #fallback>
-            <span>Loading...</span>
-          </template>
-        </Suspense>
-      </div>
+      <Suspense>
+      <template #default>
+        <postsContainer />
+      </template>
+      <template #fallback>
+        <span>Loading...</span>
+      </template>
+    </Suspense>
       <div class="row justify-between" style="width: 12rem">
         <q-btn
           push
@@ -40,20 +35,13 @@
 
 <script>
 import { ref } from "vue";
-import postView from "/src/components/PostView";
 import { defineComponent } from "vue";
-import UserTemp from "src/utils/UserTemp";
+import postsContainer from "/src/components/PostsContainer"
 
 export default defineComponent({
-  // created: function() {
-  //   if(UserTemp.checkIfSaved == true){
-  //     this.currUser = UserTemp.loadUserData("currUser");
-  //   }
-  //   console.log(this.currUser);
-  // },
   name: "FeedView",
   components: {
-    postView,
+    postsContainer,
   },
   data() {
     return {
@@ -69,12 +57,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.btn-bottom {
+  margin-top: 3rem;
+}
 .container-sub {
   margin: 10vh 7vw;
   flex-direction: column;
   align-items: center;
-}
-.btn-bottom {
-  margin-top: 3rem;
-}
+  }
 </style>

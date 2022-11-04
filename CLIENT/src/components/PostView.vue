@@ -2,19 +2,38 @@
 <template>
   <div class="container q-px-md q-py-lg" wrap>
     <q-card class="post-card q-pa-lg">
+      <q-dialog class="sharing-modal q-pa-xl" v-model="dialog" persistent>
+        <q-card>
+          <q-card-section class="flex flex-center" style="flex-direction:column;">
+            <span style="font-family: 'fredoka one'">Here are the links!</span>
+              <ul
+                  v-for="item in post.photos"
+                  v-bind:key="item.order"
+              ><li>{{item.url}}</li></ul>
+          </q-card-section>
+          <q-card-actions align="right">
+            <q-btn flat label="Close" color="pink-4" v-close-popup />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
       <div class="collage row">
         <div
-            v-for="item in images"
-            v-bind:key="item.index"
+            v-for="item in post.photos"
+            v-bind:key="item.order"
             class="col-6"
         >
-            <q-img
+            <div :style="`overflow:hidden;
+              filter: brightness(${1+(item.imageEdits.brightness)/10})`">
+              <q-img
               :src="item.url"
               :ratio="1"
               spinner-color="white"
               spinner-size="0.3rem"
-              :style="`${item.style}`"
+              :style="`${styles[item.order]};
+                transform: scale(${1+(item.imageEdits.imageScale)/10});
+                filter: saturate(${1+(item.imageEdits.saturation)/3});`"
               />
+            </div>
         </div>
       </div>
       <div class="buttons">
@@ -35,7 +54,7 @@
           color="grey-6"
           :ripple="false"
           icon="edit"
-          v-on:click="redirectToEdit"
+          v-on:click="redirectToEdit(post.id)"
         />
         <q-btn
           flat
@@ -44,6 +63,7 @@
           color="grey-6"
           :ripple="false"
           icon="share"
+          @click="dialog = true"
         />
       </div>
       <span style="background-color:pink">  # placeholder</span>
@@ -55,70 +75,20 @@
 <script>
 import { defineComponent } from "vue";
 import placeholder from "/public/placeholder.svg";
-import Tags from "src/utils/Tags";
+import { ref } from "vue";
 
 export default defineComponent({
-  props: ['curruser'],
+  props: ['data'],
   name: "PostView",
-  async setup() {
-    function retrieveTags(){
-      const temp = Tags.loadTags("tags");
-      var result = null;
-      if (!temp){
-        result = Tags.fetchTagsArray();
-        return result.join(',');
-      }
-      else{
-        result = temp;
-        return result.join(',');
-      }
-    }
-    var tagsStr = retrieveTags();
-    const url = (
-      'http://localhost:3000/api/FeedView?tags=' + tagsStr
-    );
-    const posts = await fetch(url)
-    .then(res => res.json())
-    .then(data => {
-    // enter you logic when the fetch is successful
-      //console.log(data)
-    })
-    .catch(error => {
-      // enter your logic for when there is an error (ex. error toast)
-    console.log(error)
-    })
-    return {
-      posts
-    }
-  },
   data() {
     return {
-      // tags: [],
+      dialog: ref(false),
       currUser: this.curruser,
       heartBorder: true,
       image: placeholder,
-      images: [
-        {
-          url: placeholder,
-          index: 1,
-          style: "border-top-left-radius: 15px"
-        },
-        {
-          url: placeholder,
-          index: 2,
-          style: "border-top-right-radius: 15px"
-        },
-        {
-          url: placeholder,
-          index: 3,
-          style: "border-bottom-left-radius: 15px"
-        },
-        {
-          url: placeholder,
-          index: 4,
-          style: "border-bottom-right-radius: 15px"
-        },
-      ]
+      styles: ["border-top-left-radius: 15px", "border-top-right-radius: 15px",
+                "border-bottom-left-radius: 15px", "border-bottom-right-radius: 15px"],
+      post: this.data //userID, tag, photos: {order, url, imageEdits, createdAt, updatedAt, id }, 
     };
   },
   methods: {
@@ -127,19 +97,8 @@ export default defineComponent({
         ? (this.heartBorder = false)
         : (this.heartBorder = true);
     },
-    redirectToEdit() {
-      this.$router.push({ name: "Post Editor w ID", params: {postID: this.postId} })
-    },
-    randomiseAndCut(arr){
-      let currentIndex = arr.length, randomIndex;
-      while (currentIndex != 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-        [arr[currentIndex], arr[randomIndex]] = [
-          arr[randomIndex], arr[currentIndex]];
-      }
-      arr = arr.slice(0, 9);
-      return arr;
+    redirectToEdit(ID) {
+      this.$router.push({ name: "Post Editor w ID", params: {postID: ID} })
     }
   },
 });
@@ -147,11 +106,21 @@ export default defineComponent({
 
 <style scoped>
 .post-card {
+  position: relative;
   height: 27rem;
   width: 24rem;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* align items in Main Axis */
+}
+
+.sharing-modal {
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  overflow: scroll;
+  z-index: 2;
+  background-color: white;
 }
 </style>
