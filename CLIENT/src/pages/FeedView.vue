@@ -3,11 +3,17 @@
   <q-page padding class="container" style="background-color: #fff0f5">
     <div class="container-sub flex">
       <div class="row justify-evenly">
-        <postView 
-          v-for="post in posts"
-          :postData="post"
-          :key="post.id"
-        />
+        <Suspense>
+          <template #default>
+            <postView 
+              v-for="n in 9"
+              :key="n"
+            />
+          </template>
+          <template #fallback>
+            <span>Loading...</span>
+          </template>
+        </Suspense>
       </div>
       <div class="row justify-between" style="width: 12rem">
         <q-btn
@@ -21,7 +27,6 @@
         <q-btn
           push
           class="btn-bottom"
-         
           size="xl"
           color="pink-3"
           round
@@ -36,68 +41,28 @@
 <script>
 import { ref } from "vue";
 import postView from "/src/components/PostView";
-import postDataMethods from "app/api/postDataMethods";
 import { defineComponent } from "vue";
-import Tags from "../utils/Tags";
+import UserTemp from "src/utils/UserTemp";
 
 export default defineComponent({
+  // created: function() {
+  //   if(UserTemp.checkIfSaved == true){
+  //     this.currUser = UserTemp.loadUserData("currUser");
+  //   }
+  //   console.log(this.currUser);
+  // },
   name: "FeedView",
-  created() {
-    this.retrievePosts();
-  },
   components: {
     postView,
   },
   data() {
     return {
-      // postdata: { // to be sent as a parameter
-      //   userID: 12345,
-      //   tag: '12345',
-      //   photos: '12345',
-      //   createdAt: '12345',
-      //   updatedAt: '12345',
-      //   id: '12345'
-      // },
-      tags: ref(null),
-      posts: []
+      tags: ref(null)
     };
   },
   methods: {
     redirectToPostEditor() {
       this.$router.push("/PostEditor");
-    },
-    retrieveTags(){
-      const temp = Tags.loadTags("tags");
-      if (!temp){
-        this.tags = Tags.fetchTagsArray();
-      }
-      else{
-        this.tags = temp;
-      }
-    },
-    retrievePosts(){
-      this.retrieveTags();
-      postDataMethods.getAllPosts('girly')
-      .then(response => {
-          let temp = response.data;
-          console.log(temp);
-          this.posts = this.randomiseAndCut(temp);
-          console.log(this.posts);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-    },
-    randomiseAndCut(arr){
-      let currentIndex = arr.length, randomIndex;
-      while (currentIndex != 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-        [arr[currentIndex], arr[randomIndex]] = [
-          arr[randomIndex], arr[currentIndex]];
-      }
-      arr = arr.slice(0, 9);
-      return arr;
     }
   },
 });

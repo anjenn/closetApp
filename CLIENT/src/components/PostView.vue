@@ -55,22 +55,37 @@
 <script>
 import { defineComponent } from "vue";
 import placeholder from "/public/placeholder.svg";
-import UserTemp from "src/utils/UserTemp";
+import Tags from "src/utils/Tags";
 
 export default defineComponent({
-  props: ['postdata', 'index'],
-  created: function() {
-    //console.log(`tester ${this.postdata.userID}`);
-    if(UserTemp.checkIfSaved == true){
-      console.log('user is logged in');
-      this.currUser = UserTemp.loadUserData("currUser");
-    }
-    console.log(this.postdata);
-  },
+  props: ['curruser'],
   name: "PostView",
+  async setup() {
+    this.retrieveTags();
+    console.log(this.tags);
+    const url = (
+      'http://localhost:8000/#/FeedView?' +
+      [new URLSearchParams({ tags: this.tags })].toString()
+    );
+    console.log(url);
+    const posts = await fetch(url)
+    .then(res => res.json())
+    .then(data => {
+    // enter you logic when the fetch is successful
+      console.log(data)
+    })
+    .catch(error => {
+      // enter your logic for when there is an error (ex. error toast)
+    console.log(error)
+    })
+    return {
+      posts
+    }
+  },
   data() {
     return {
-      currUser: ref(null),
+      tags: [],
+      currUser: this.curruser,
       heartBorder: true,
       image: placeholder,
       images: [
@@ -106,6 +121,42 @@ export default defineComponent({
     redirectToEdit() {
       this.$router.push({ name: "Post Editor w ID", params: {postID: this.postId} })
     },
+    retrieveTags(){
+      console.log('testing');
+      const temp = Tags.loadTags("tags");
+      if (!temp){
+        this.tags = Tags.fetchTagsArray();
+        console.log(this.tags);
+      }
+      else{
+        this.tags = temp;
+        console.log(this.tags);
+      }
+    },
+    retrievePosts(){
+      this.retrieveTags();
+      postDataMethods.getAllPosts('girly')
+      .then(response => {
+          let temp = response.data;
+          console.log(temp);
+          this.posts = this.randomiseAndCut(temp);
+          console.log(this.posts);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+    },
+    randomiseAndCut(arr){
+      let currentIndex = arr.length, randomIndex;
+      while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [arr[currentIndex], arr[randomIndex]] = [
+          arr[randomIndex], arr[currentIndex]];
+      }
+      arr = arr.slice(0, 9);
+      return arr;
+    }
   },
 });
 </script>

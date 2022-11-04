@@ -12,11 +12,15 @@ const loadUserData = (objName) => {
 const deleteUserData = (objName) => {
   localStorage.removeItem(objName);
 }
-// const checkIfSaved = (objName) => {
-//   let newObj = window.localStorage.getItem(`${objName}`);
-// };
+const checkIfSaved = (objName) => {
+  let newObj = window.localStorage.getItem(`${objName}`);
+  let status = null;
+  newObj ? status = true : status = false;
+  return status
+};
 export default {
   saveUserData,
   loadUserData,
-  deleteUserData
+  deleteUserData,
+  checkIfSaved
 };
