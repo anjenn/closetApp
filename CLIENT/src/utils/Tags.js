@@ -3,7 +3,7 @@ const saveTags = (arr, arrName) => {
 };
 
 const loadTags = (arrName) => {
-  let newArr = window.localStorage.getItem(arrName);
+  let newArr = JSON.parse(window.localStorage.getItem(arrName));
   return newArr;
 };
 

@@ -61,18 +61,27 @@ export default defineComponent({
   props: ['curruser'],
   name: "PostView",
   async setup() {
-    this.retrieveTags();
-    console.log(this.tags);
+    function retrieveTags(){
+      const temp = Tags.loadTags("tags");
+      var result = null;
+      if (!temp){
+        result = Tags.fetchTagsArray();
+        return result.join(',');
+      }
+      else{
+        result = temp;
+        return result.join(',');
+      }
+    }
+    var tagsStr = retrieveTags();
     const url = (
-      'http://localhost:8000/#/FeedView?' +
-      [new URLSearchParams({ tags: this.tags })].toString()
+      'http://localhost:3000/api/FeedView?tags=' + tagsStr
     );
-    console.log(url);
     const posts = await fetch(url)
     .then(res => res.json())
     .then(data => {
     // enter you logic when the fetch is successful
-      console.log(data)
+      //console.log(data)
     })
     .catch(error => {
       // enter your logic for when there is an error (ex. error toast)
@@ -84,7 +93,7 @@ export default defineComponent({
   },
   data() {
     return {
-      tags: [],
+      // tags: [],
       currUser: this.curruser,
       heartBorder: true,
       image: placeholder,
@@ -120,31 +129,6 @@ export default defineComponent({
     },
     redirectToEdit() {
       this.$router.push({ name: "Post Editor w ID", params: {postID: this.postId} })
-    },
-    retrieveTags(){
-      console.log('testing');
-      const temp = Tags.loadTags("tags");
-      if (!temp){
-        this.tags = Tags.fetchTagsArray();
-        console.log(this.tags);
-      }
-      else{
-        this.tags = temp;
-        console.log(this.tags);
-      }
-    },
-    retrievePosts(){
-      this.retrieveTags();
-      postDataMethods.getAllPosts('girly')
-      .then(response => {
-          let temp = response.data;
-          console.log(temp);
-          this.posts = this.randomiseAndCut(temp);
-          console.log(this.posts);
-      })
-      .catch(e => {
-        console.log(e);
-      });
     },
     randomiseAndCut(arr){
       let currentIndex = arr.length, randomIndex;
