@@ -6,8 +6,8 @@
       class="bg-white editor-card shadow-10"
       style="font-family: 'fredoka one'"
     >
-      <q-dialog class="question-modal q-pa-xl" v-model="dialog" persistent>
-        <q-card>
+      <q-dialog v-model="dialog" persistent>
+        <q-card class="question-modal">
           <q-card-section class="row items-center">
             <span style="font-family: 'fredoka one'">Are you sure you want to delete the post?</span>
           </q-card-section>
@@ -40,13 +40,11 @@
                 <div
                   class="q-img-wrapper"
                   :style="`width: 20rem; height: 20rem; overflow:hidden;
-                            filter: brightness(${1+(postData.photos[i-1].imageEdits.brightness)/10})`"
+                            filter: saturate(${1+(postData.photos[i-1].imageEdits.saturation)/10})`"
                 >
                   <q-img
                     :src="images[i-1]"
-                    :style="`transform: scale(${1+(postData.photos[i-1].imageEdits.imageScale)/10});
-                              filter: saturate(${1+(postData.photos[i-1].imageEdits.saturation)/3});        
-                    `"
+                    :style="`filter: brightness(${1+(postData.photos[i-1].imageEdits.brightness)/10}) contrast(${1+(postData.photos[i-1].imageEdits.contrast)/10});`"
                   />
                 </div>
                 <q-input
@@ -94,22 +92,22 @@
                       </div>
                     </template>
                   </q-slider>
-                  <span class="slider-text"> Image-Scale </span>
+                  <span class="slider-text"> Contrast </span>
                   <q-slider
                     class="sliders"
-                    v-model="postData.photos[i-1].imageEdits.imageScale"
+                    v-model="postData.photos[i-1].imageEdits.contrast"
                     color="pink-3"
                     marker-labels
-                    :min="0"
+                    :min="-2"
                     :step="1"
-                    :max="4"
+                    :max="2"
                   >
                     <template v-slot:marker-label-group="scope">
                       <div
                         v-for="marker in scope.markerList"
                         :key="marker.index"
                         :class="[
-                          `text-pink-${2 + Math.ceil(marker.value / 2)}`,
+                          `text-pink-${3 + Math.ceil(marker.value / 2)}`,
                           marker.classes,
                         ]"
                         :style="marker.style"
@@ -216,7 +214,7 @@ export default defineComponent({
             url: ref(null),
             imageEdits: {
               brightness: 0,
-              imageScale: 0,
+              contrast: 0,
               saturation: 0
             },
           },
@@ -225,7 +223,7 @@ export default defineComponent({
             url: ref(null),
             imageEdits: {
               brightness: 0,
-              imageScale: 0,
+              contrast: 0,
               saturation: 0
             },
           },
@@ -234,7 +232,7 @@ export default defineComponent({
             url: ref(null),
             imageEdits: {
               brightness: 0,
-              imageScale: 0,
+              contrast: 0,
               saturation: 0
             },
           },
@@ -243,7 +241,7 @@ export default defineComponent({
             url: ref(null),
             imageEdits: {
               brightness: 0,
-              imageScale: 0,
+              contrast: 0,
               saturation: 0
             }
           }
@@ -306,11 +304,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.question-modal {
-  width: 20rem;
-  height: 10rem;
-  background-color: white;
-}
 .editor-card {
   border: 0.5rem solid #f06292;
   min-width: 47rem;

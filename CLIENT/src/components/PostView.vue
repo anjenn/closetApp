@@ -2,14 +2,18 @@
 <template>
   <div class="container q-px-md q-py-lg" wrap>
     <q-card class="post-card q-pa-lg">
-      <q-dialog class="sharing-modal q-pa-xl" v-model="dialog" persistent>
-        <q-card>
+      <q-dialog v-model="dialog" persistent>
+        <q-card class="sharing-modal">
           <q-card-section class="flex flex-center" style="flex-direction:column;">
-            <span style="font-family: 'fredoka one'">Here are the links!</span>
-              <ul
-                  v-for="item in post.photos"
-                  v-bind:key="item.order"
-              ><li>{{item.url}}</li></ul>
+            <span style="font-family: 'fredoka one'; margin-bottom:1rem;">Here are the links!</span>
+              <q-list class="rounded-borders" dense bordered padding>
+                <q-item
+                    clickable v-ripple
+                    v-for="item in post.photos"
+                    v-bind:key="item.order"
+                ><q-item-section>{{item.url}}</q-item-section>
+                </q-item>
+              </q-list>
           </q-card-section>
           <q-card-actions align="right">
             <q-btn flat label="Close" color="pink-4" v-close-popup />
@@ -23,15 +27,15 @@
             class="col-6"
         >
             <div :style="`overflow:hidden;
-              filter: brightness(${1+(item.imageEdits.brightness)/10})`">
+            filter: saturate(${1+(item.imageEdits.saturation)/10})`">
               <q-img
               :src="item.url"
               :ratio="1"
               spinner-color="white"
               spinner-size="0.3rem"
+              placeholder-src="image"
               :style="`${styles[item.order]};
-                transform: scale(${1+(item.imageEdits.imageScale)/10});
-                filter: saturate(${1+(item.imageEdits.saturation)/3});`"
+              filter: brightness(${1+(item.imageEdits.brightness)/10}) contrast(${1+(item.imageEdits.contrast)/10});`"
               />
             </div>
         </div>
@@ -66,7 +70,7 @@
           @click="dialog = true"
         />
       </div>
-      <span style="background-color:pink">  # placeholder</span>
+      <span style="background-color:pink">#{{this.post.tag}}</span>
     </q-card>
 
   </div>
@@ -107,20 +111,15 @@ export default defineComponent({
 <style scoped>
 .post-card {
   position: relative;
-  height: 27rem;
+  height: 28rem;
   width: 24rem;
   border-radius: 15px;
   display: flex;
+  gap:0.5rem;
   flex-direction: column;
   justify-content: space-between; /* align items in Main Axis */
 }
-
 .sharing-modal {
-  position: absolute;
-  width: 10rem;
-  height: 10rem;
-  overflow: scroll;
-  z-index: 2;
-  background-color: white;
+  width:25rem;
 }
 </style>

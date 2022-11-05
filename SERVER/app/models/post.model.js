@@ -9,7 +9,7 @@ module.exports = mongoose => {
             url: String,
             imageEdits: {
               brightness: Number,
-              imageScale: Number,
+              contrast: Number,
               saturation: Number
             }
           }
