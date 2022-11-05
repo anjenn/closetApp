@@ -23,3 +23,14 @@ https://drive.google.com/file/d/1Wv8KggPDOR9V6ceiAn_LJbCoxIdcxpIe/view?usp=shari
 # User page:
 - user's own posts: retrieved via post db controller function
 - user's saved posts: retrieved by posts with the matching id in the likedBy array field as the user Id
+
+# Remaining:
+- Add authentication for *Sign-Up* (so that no existing user can sign up again)
+- Make like/unlike & refresh button interactive in the *Feed-View*
+- Make post updatable & deletable in *Post Editor*
+- Fix navigation & tags selection dialog
+- Fix *My Page* UI <- sth like instagram explore page?
+- Fix user profile, and implement deletion feature in *My Page*
+- In *Feed View* user can only edit their own post
+- Change font (ex. make small text not bold nor capitalised in *Log In* page)
+- In the end, check if all redirection works correctly
