@@ -37,6 +37,7 @@
 import { ref } from "vue";
 import { defineComponent } from "vue";
 import postsContainer from "/src/components/PostsContainer"
+import PostTemp from "src/utils/PostTemp";
 
 export default defineComponent({
   name: "FeedView",
@@ -50,6 +51,7 @@ export default defineComponent({
   },
   methods: {
     redirectToPostEditor() {
+      PostTemp.deletePostData("currPost");
       this.$router.push("/PostEditor");
     }
   },

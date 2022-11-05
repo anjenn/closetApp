@@ -13,7 +13,7 @@
           </q-card-section>
           <q-card-actions align="right">
             <q-btn flat label="Cancel" color="pink-4" v-close-popup />
-            <q-btn flat label="Delete" color="pink-4" v-close-popup @click="deletePost" />
+            <q-btn flat label="Delete" color="pink-4" v-close-popup @click="onDelete" />
           </q-card-actions>
         </q-card>
       </q-dialog>
@@ -45,7 +45,17 @@
                   <q-img
                     :src="images[i-1]"
                     :style="`filter: brightness(${1+(postData.photos[i-1].imageEdits.brightness)/10}) contrast(${1+(postData.photos[i-1].imageEdits.contrast)/10});`"
-                  />
+                    placeholder-src="images[1]"
+                  >
+                    <template v-slot:loading>
+                      <q-spinner-hearts color="white" size="3em" />
+                    </template>
+                    <template v-slot:error>
+                      <div class="absolute-full flex flex-center bg-pink-4 text-white text-h5">
+                        Cannot load image
+                      </div>
+                    </template>
+                  </q-img>
                 </div>
                 <q-input
                   v-model="postData.photos[i-1].url"
@@ -185,26 +195,37 @@ import { ref } from "vue";
 import Tags from "../utils/Tags";
 import placeholder from "/public/placeholder.svg";
 import UserTemp from 'src/utils/UserTemp';
+import PostTemp from 'src/utils/PostTemp';
 
 export default defineComponent({
   name: "PostEditor",
   created(){
-    //retrieving userID
+    // retrieving userID
     const tempObj = UserTemp.loadUserData("currUser");
     this.postData.userID = tempObj.id;
     console.log(this.postData.userID);
     if(this.$route.params.postID)
     {
-      this.postData.id = this.$route.params.postID;
+      // saving url parameter into component data 
+      this.paramID = this.$route.params.postID;
+      // retrieving post data
+      this.postData = PostTemp.loadPostData("currPost");
+      //this.postData.id = this.$route.params.postID;
+      // reading images
+      for (let i=1; i<5; i++){
+        this.updatePhoto(i);
+      }
     }
   },
   data() {
     return {
       dialog: ref(false),
+      paramID: ref(false),
       images: [placeholder, placeholder, placeholder, placeholder],
       options: [ ...Tags.fetchTagsArray() ],
       numbers: ['first', 'second', 'third', 'fourth'],
       tab: ref(1),
+      imagesAdded: [false, false, false, false],
       postData: {
         userID: ref(null),
         tag: ref(null),
@@ -252,24 +273,77 @@ export default defineComponent({
   methods: {
     updatePhoto(i){
       this.images[i-1] = this.postData.photos[i-1].url;
+      this.imagesAdded[i-1] = true;
+    },
+    checkData(){
+      var status = true;
+      if(!this.postData.tag)
+      { status = false; }
+      else{
+        for(let i=0; i<4; i++){
+          if(!this.imagesAdded[i]){
+            status = false;
+          }
+        }
+      }
+      return status
     },
     savePost(){
-      postDataMethods.createPost(this.postData)
+      if(this.checkData()){
+        // case: new post
+        if(!this.paramID){
+          postDataMethods.createPost(this.postData)
+          .then(response => {
+            this.postData.id = response.data.id;
+            this.showSaveNotif(response.data.id);
+            this.$router.push("/FeedView");
+          })
+          .catch(e => {
+            console.log(e);
+          });
+        }
+        else{ // case: existing post
+          postDataMethods.updatePost(this.postData.id, this.postData)
+          .then(response => {
+            console.log(`Updated post with ID: ${response.data.id}`)
+            this.showSaveNotif(response.data.id);
+            this.$router.push("/FeedView");
+          })
+          .catch(e => {
+            console.log(e);
+          });
+        }
+      }
+      else{
+        Notify.create({
+                message: `Failed to save the post`,
+                color: 'pink-5',
+                icon: 'info',
+                textColor: 'white',
+                timeout: 2000,
+                progress: true,
+                position: 'bottom-right',
+                actions: [
+                  { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+                ]
+        })
+      }
+    },
+    onDelete(){
+      postDataMethods.deletePost(this.postData.id)
       .then(response => {
-          this.postData.id = response.data.id;
-          console.log(response.data.id);
-          this.$router.push("/FeedView");
+          console.log(response.data);
         })
         .catch(e => {
           console.log(e);
         });
-      },
+      this.showDeleteNotif();
     },
-    deletePost(){
-      console.log(`testing ${this.postData.id}`);
-      if(!this.postData.id){
+    showSaveNotif(id){
+      // case: new post
+      if(!this.paramID){
         Notify.create({
-                message: 'Current post data was discarded',
+                message: `The post was saved successfully (ID: ${id})`,
                 color: 'pink-5',
                 icon: 'info',
                 textColor: 'white',
@@ -282,10 +356,42 @@ export default defineComponent({
         })
         this.$router.push("/FeedView");
       }
-      else{
-        console.log('testing');
+      else{ // case: existing post
         Notify.create({
-                message: `Post was just deleted (Post ID: ${this.postData.id})`,
+                message: `The post was updated successfully (ID: ${this.postData.id})`,
+                color: 'pink-5',
+                icon: 'info',
+                textColor: 'white',
+                timeout: 2000,
+                progress: true,
+                position: 'bottom-right',
+                actions: [
+                  { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+                ]
+        })
+        this.$router.push("/FeedView");
+      }
+    },
+    showDeleteNotif(){
+      // case: new post
+      if(!this.paramID){
+        Notify.create({
+                message: 'The post was deleted successfully',
+                color: 'pink-5',
+                icon: 'info',
+                textColor: 'white',
+                timeout: 2000,
+                progress: true,
+                position: 'bottom-right',
+                actions: [
+                  { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+                ]
+        })
+        this.$router.push("/FeedView");
+      }
+      else{ // case: existing post
+        Notify.create({
+                message: `The post was deleted successfully (ID: ${this.postData.id})`,
                 color: 'pink-5',
                 icon: 'info',
                 textColor: 'white',
@@ -300,6 +406,7 @@ export default defineComponent({
       }
     }
   },
+}
 );
 </script>
 

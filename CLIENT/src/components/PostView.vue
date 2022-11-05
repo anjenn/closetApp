@@ -80,6 +80,7 @@
 import { defineComponent } from "vue";
 import placeholder from "/public/placeholder.svg";
 import { ref } from "vue";
+import PostTemp from "src/utils/PostTemp";
 
 export default defineComponent({
   props: ['data'],
@@ -102,6 +103,7 @@ export default defineComponent({
         : (this.heartBorder = true);
     },
     redirectToEdit(ID) {
+      PostTemp.savePostData(this.post, "currPost");
       this.$router.push({ name: "Post Editor w ID", params: {postID: ID} })
     }
   },

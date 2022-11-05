@@ -1,13 +1,20 @@
 <template>
-    <q-page class="flex flex-center" padding style="background-color: #fff0f5">
+    <q-page class="container flex flex-center" padding style="background-color: #fff0f5">
         <div style="display:flex; flex-direction:column; align-items:center">
             <q-img
                 elevated
-                :src="image"
+                :src="image3"
                 class="user-profile"
                 style="height: 8rem; width: 8rem; border-radius: 50%"
             />
-            <span>user Name</span>
+            <span style="font-family: 'fredoka one'">{{this.user.userName}}</span>
+            <q-btn
+              push
+              color="white"
+              text-color="pink 4"
+              label="Delete Account"
+              class="btn"
+            />
         </div>
         <q-card class="cardView">
         <q-tabs
@@ -54,13 +61,24 @@
   import { defineComponent } from "vue";
   import { ref } from "vue";
   import postViewMp from "/src/components/PostViewMp";
-  import placeholder from "/public/placeholder.svg";
+  import UserTemp from "src/utils/UserTemp";
+  import butter1 from "/public/butter_p1.svg";
+  import butter2 from "/public/butter_p2.svg";
+  import butter3 from "/public/butter_p3.svg";
   
   export default defineComponent({
     name: "MyPage",
+    created() {
+      const user = UserTemp.loadUserData("currUser");
+      this.user = user;
+      console.log(this.userID);
+    },
     data() {
       return {
-        image: placeholder,
+        user: ref(null),
+        image1: butter1,
+        image2: butter2,
+        image3: butter3
       };
     },
     components: {
@@ -75,6 +93,10 @@
   </script>
   
   <style scoped>
+  .container {
+    flex-direction: column;
+
+  }
   .user-profile {
     margin-top: 5rem;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
