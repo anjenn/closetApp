@@ -277,7 +277,11 @@ export default defineComponent({
     },
     checkData(){
       var status = true;
-      if(!this.postData.tag)
+      var tempUser = UserTemp.loadUserData("currUser");
+      // append userID to post data
+      this.postData.userID = tempUser.id;
+      console.log(this.postData);
+      if(!this.postData.tag || !tempUser.id)
       { status = false; }
       else{
         for(let i=0; i<4; i++){
@@ -290,7 +294,6 @@ export default defineComponent({
     },
     savePost(){
       if(this.checkData()){
-        // case: new post
         if(!this.paramID){
           postDataMethods.createPost(this.postData)
           .then(response => {
@@ -318,7 +321,7 @@ export default defineComponent({
         Notify.create({
                 message: `Failed to save the post`,
                 color: 'pink-5',
-                icon: 'info',
+                icon: 'warning',
                 textColor: 'white',
                 timeout: 2000,
                 progress: true,
@@ -345,7 +348,7 @@ export default defineComponent({
         Notify.create({
                 message: `The post was saved successfully (ID: ${id})`,
                 color: 'pink-5',
-                icon: 'info',
+                icon: 'announcement',
                 textColor: 'white',
                 timeout: 2000,
                 progress: true,
@@ -360,7 +363,7 @@ export default defineComponent({
         Notify.create({
                 message: `The post was updated successfully (ID: ${this.postData.id})`,
                 color: 'pink-5',
-                icon: 'info',
+                icon: 'announcement',
                 textColor: 'white',
                 timeout: 2000,
                 progress: true,

@@ -6,8 +6,13 @@ const saveUserData = (obj, objName) => { //saved with obj name "currUser"
   console.log(loadUserData(objName));
 };
 const loadUserData = (objName) => {
-  let newObj = JSON.parse(window.localStorage.getItem(objName));
-  return newObj;
+  if(!checkIfSaved(objName)){
+    return null
+  }
+  else{
+    let newObj = JSON.parse(window.localStorage.getItem(objName));
+    return newObj;
+  }
 };
 const deleteUserData = (objName) => {
   localStorage.removeItem(objName);

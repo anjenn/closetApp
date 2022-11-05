@@ -81,6 +81,9 @@ import { defineComponent } from "vue";
 import placeholder from "/public/placeholder.svg";
 import { ref } from "vue";
 import PostTemp from "src/utils/PostTemp";
+import UserTemp from "src/utils/UserTemp";
+import { Notify } from 'quasar'
+
 
 export default defineComponent({
   props: ['data'],
@@ -93,18 +96,47 @@ export default defineComponent({
       image: placeholder,
       styles: ["border-top-left-radius: 15px", "border-top-right-radius: 15px",
                 "border-bottom-left-radius: 15px", "border-bottom-right-radius: 15px"],
-      post: this.data //userID, tag, photos: {order, url, imageEdits, createdAt, updatedAt, id }, 
+      post: this.data //userID, tag, photos: {order, url, imageEdits}, createdAt, updatedAt, id }, 
     };
   },
   methods: {
+    compareUser(){
+      const temp = UserTemp.loadUserData("currUser");
+      // console.log(temp.id, this.post.userID);
+      if(!temp){
+        return false
+      }
+      else if(temp.id === this.post.userID){
+        return true
+      }
+      else{
+        return false
+      }
+    },
     onHeartClick() {
       this.heartBorder == true
         ? (this.heartBorder = false)
         : (this.heartBorder = true);
     },
     redirectToEdit(ID) {
-      PostTemp.savePostData(this.post, "currPost");
-      this.$router.push({ name: "Post Editor w ID", params: {postID: ID} })
+      if(this.compareUser()){
+        PostTemp.savePostData(this.post, "currPost");
+        this.$router.push({ name: "Post Editor w ID", params: {postID: ID} })
+      }
+      else{
+        Notify.create({
+                message: `No permission to modify the post`,
+                color: 'pink-5',
+                icon: 'warning',
+                textColor: 'white',
+                timeout: 2000,
+                progress: true,
+                position: 'bottom-right',
+                actions: [
+                  { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+                ]
+        })
+      }
     }
   },
 });
