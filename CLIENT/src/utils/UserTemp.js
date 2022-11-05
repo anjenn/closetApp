@@ -2,12 +2,11 @@
 
 const saveUserData = (obj, objName) => { //saved with obj name "currUser"
   window.localStorage.setItem(objName, JSON.stringify(obj));
-  alert("saving function called");
   console.log(loadUserData(objName));
 };
 const loadUserData = (objName) => {
   if(!checkIfSaved(objName)){
-    return null
+    return {}
   }
   else{
     let newObj = JSON.parse(window.localStorage.getItem(objName));

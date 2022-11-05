@@ -15,14 +15,9 @@
                 <q-tooltip> Feed </q-tooltip>
               </q-btn>
             </router-link>
-            <router-link
-              :to="{ path: '/MyPage' }"
-              style="text-decoration: none"
-            >
-              <q-btn flat round color="white" icon="account_circle">
-                <q-tooltip> MyPage </q-tooltip>
-              </q-btn>
-            </router-link>
+            <q-btn flat round color="white" icon="account_circle" @click="redirectToMyPage">
+              <q-tooltip> MyPage </q-tooltip>
+            </q-btn>
             <q-btn
               flat
               round
@@ -85,7 +80,8 @@
 <script>
 import { defineComponent, ref } from "vue";
 import navigation from "components/Navigation.vue";
-
+import Tags from "src/utils/Tags";
+import UserTemp from "src/utils/UserTemp";
 
 const linksList = [
   {
@@ -126,31 +122,14 @@ export default defineComponent({
   data() {
     return {
       selected: ref(null),
-      options: [
-        "feminine",
-        "preppy",
-        "girly",
-        "vintage",
-        "bohemian",
-        "chic",
-        "sexy",
-        "casual",
-        "formal",
-        "punk",
-        "rocker",
-        "tomboy",
-        "gothic",
-        "sporty",
-        "ethnic",
-      ],
+      options: [...Tags.fetchTagsArray()],
     };
   },
   components: {
-    navigation,
+    navigation
   },
   setup() {
     const leftDrawerOpen = ref(false);
-
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
@@ -170,8 +149,17 @@ export default defineComponent({
       if (this.returnSelection == null) {
         alert("Select something");
       } else {
-        Tags.saveTags(this.returnSelection);
+        Tags.saveTags(this.returnSelection, "tags");
         this.redirectTo();
+      }
+    },
+    redirectToMyPage(){
+      const user = UserTemp.loadUserData("currUser");
+      if(!user.id){
+        this.$router.push("/LogIn");
+      }
+      else{
+        this.$router.push("/MyPage");
       }
     },
     resetSelection(){

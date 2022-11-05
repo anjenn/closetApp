@@ -125,7 +125,7 @@ export default defineComponent({
       }
       else{
         Notify.create({
-                message: `No permission to modify the post`,
+                message: `You have no permission to modify the post`,
                 color: 'pink-5',
                 icon: 'warning',
                 textColor: 'white',

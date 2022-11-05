@@ -26,7 +26,7 @@ https://drive.google.com/file/d/1Wv8KggPDOR9V6ceiAn_LJbCoxIdcxpIe/view?usp=shari
 
 # Remaining:
 - Add authentication for *Sign-Up* (so that no existing user can sign up again)
-- Make like/unlike & refresh button interactive in the *Feed-View*
+- Make like/unlike & refresh button interactive in the *Feed-View* (or infinite scroll)?
 - Fix navigation & tags selection dialog
 - Fix *My Page* UI <- sth like instagram explore page?
 - Fix user profile, and implement deletion feature in *My Page*

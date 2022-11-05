@@ -308,7 +308,7 @@ export default defineComponent({
         else{ // case: existing post
           postDataMethods.updatePost(this.postData.id, this.postData)
           .then(response => {
-            console.log(`Updated post with ID: ${response.data.id}`)
+            console.log(`The post was updated successfully (post ID: ${response.data.id}`)
             this.showSaveNotif(response.data.id);
             this.$router.push("/FeedView");
           })
@@ -336,17 +336,17 @@ export default defineComponent({
       postDataMethods.deletePost(this.postData.id)
       .then(response => {
           console.log(response.data);
+          this.showDeleteNotif();
         })
         .catch(e => {
           console.log(e);
         });
-      this.showDeleteNotif();
     },
     showSaveNotif(id){
       // case: new post
       if(!this.paramID){
         Notify.create({
-                message: `The post was saved successfully (ID: ${id})`,
+                message: `The post was saved successfully (post ID: ${id})`,
                 color: 'pink-5',
                 icon: 'announcement',
                 textColor: 'white',
@@ -361,7 +361,7 @@ export default defineComponent({
       }
       else{ // case: existing post
         Notify.create({
-                message: `The post was updated successfully (ID: ${this.postData.id})`,
+                message: `The post was updated successfully (post ID: ${this.postData.id})`,
                 color: 'pink-5',
                 icon: 'announcement',
                 textColor: 'white',
@@ -379,7 +379,7 @@ export default defineComponent({
       // case: new post
       if(!this.paramID){
         Notify.create({
-                message: 'The post was deleted successfully',
+                message: 'The post was discarded successfully',
                 color: 'pink-5',
                 icon: 'info',
                 textColor: 'white',
@@ -394,7 +394,7 @@ export default defineComponent({
       }
       else{ // case: existing post
         Notify.create({
-                message: `The post was deleted successfully (ID: ${this.postData.id})`,
+                message: `The post was deleted successfully (post ID: ${this.postData.id})`,
                 color: 'pink-5',
                 icon: 'info',
                 textColor: 'white',
