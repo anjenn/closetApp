@@ -16,7 +16,7 @@
               </q-btn>
             </router-link>
             <q-btn flat round color="white" icon="account_circle" @click="redirectToMyPage">
-              <q-tooltip> MyPage </q-tooltip>
+              <q-tooltip> My Page </q-tooltip>
             </q-btn>
             <q-btn
               flat
@@ -39,7 +39,6 @@
               v-model="selected"
               hide-selected
               hide-dropdown-icon
-              @clear="resetSelection"
               @popup-hide="saveSelection"
               :options="options"
             >
@@ -119,14 +118,11 @@ const linksList = [
 
 export default defineComponent({
   name: "MainLayout",
-  data() {
-    return {
-      selected: ref(null),
-      options: [...Tags.fetchTagsArray()],
-    };
-  },
   components: {
     navigation
+  },
+  created(){
+    this.selected = Tags.loadTags("currTags")
   },
   setup() {
     const leftDrawerOpen = ref(false);
@@ -135,25 +131,17 @@ export default defineComponent({
       leftDrawerOpen,
     };
   },
-  computed: {
-    returnSelection() {
-      return this.selected;
-      // return JSON.stringify(this.selected);
-    },
+  data() {
+    return {
+      selected: ref(null),
+      options: [...Tags.fetchTagsArray()],
+    };
   },
   methods: {
     toggleNav() {
       this.leftDrawerOpen = !this.leftDrawerOpen;
     },
-    saveSelection() {
-      if (this.returnSelection == null) {
-        alert("Select something");
-      } else {
-        Tags.saveTags(this.returnSelection, "tags");
-        this.redirectTo();
-      }
-    },
-    redirectToMyPage(){
+    redirectToMyPage() {
       const user = UserTemp.loadUserData("currUser");
       if(!user.id){
         this.$router.push("/LogIn");
@@ -162,8 +150,8 @@ export default defineComponent({
         this.$router.push("/MyPage");
       }
     },
-    resetSelection(){
-      console.log('resetting selection to be implemented');
+    saveSelection(){
+      Tags.saveTags(this.selected, "currTags");
     }
   },
 });

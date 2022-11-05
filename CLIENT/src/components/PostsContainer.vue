@@ -20,7 +20,7 @@ export default defineComponent({
     },
     async setup () {
         function retrieveTags(){
-        const temp = Tags.loadTags("tags");
+        const temp = Tags.loadTags("currTags");
         var result = null;
         if (!temp){
             result = Tags.fetchTagsArray();
