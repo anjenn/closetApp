@@ -85,20 +85,26 @@ import UserTemp from "src/utils/UserTemp";
 import { Notify } from 'quasar'
 import userDataMethods from "app/api/userDataMethods";
 
-
 export default defineComponent({
   props: ['data'],
   name: "PostView",
   created(){
     this.currUser = UserTemp.loadUserData("currUser");
-    //console.log(this.currUser);
+    console.log(this.currUser);
+    if(this.currUser.savedPosts){
+      for(let i=0;i<this.currUser.savedPosts.length;i++){
+        if(this.post.id === this.currUser.savedPosts[i]){
+          this.heartBorder = false;
+        }
+      }
+    }
+    else{this.currUser.savedPosts = [];}
   },
   data() {
     return {
       dialog: ref(false),
       currUser: ref(false),
       heartBorder: true,
-      savedPosts: [],
       image: placeholder,
       styles: ["border-top-left-radius: 15px", "border-top-right-radius: 15px",
                 "border-bottom-left-radius: 15px", "border-bottom-right-radius: 15px"],
@@ -135,19 +141,19 @@ export default defineComponent({
         this.$router.push("/LogIn");
       }
       else if(!this.heartBorder){
-        this.heartBorder = true;
+        let tempUser = UserTemp.loadUserData("currUser");
+        if(tempUser.savedPosts){
+          tempUser = tempUser.savedPosts.filter(item => item !== this.post.id)
+          this.currUser.savedPosts = tempUser.savedPosts;
+          UserTemp.saveUserData(this.currUser, "currUser");
+          this.heartBorder = true;
+        }
       }
       else if(this.heartBorder){
-        this.savedPosts.push(`${this.post.id}`);
-        this.currUser.savedPosts = this.savedPosts;
-        console.log(`list of saved posts copied to user obj ${this.currUser.savedPosts}`);
-        userDataMethods.updateUserInfo(this.currUser.id, this.currUser)
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
+        let tempUser = UserTemp.loadUserData("currUser");
+        tempUser.savedPosts.push(`${this.post.id}`);
+        this.currUser.savedPosts = tempUser.savedPosts;
+        UserTemp.saveUserData(this.currUser, "currUser");
         this.heartBorder = false;
       }
     },

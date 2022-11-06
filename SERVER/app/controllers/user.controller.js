@@ -87,7 +87,7 @@ exports.updateUserInfo = (req, res) => {
       message: "Error updating User with id=" + userID
     });
   });
-  /*
+  /* // sth like only updating a specific field, but this doesn't work now for unknown reason
   User.findByIdAndUpdate(userID, { $set: {savedPosts}}, { useFindAndModify: false })
     .then(data => {
       if (!data) {
