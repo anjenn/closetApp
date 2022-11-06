@@ -1,31 +1,56 @@
-# Closet Collage
+# App pages description
 
-0. Initial page: displays different categories of styles (via tags).
-Selection of tags can be edited later through the menu panel.
-The selection will be saved to local storage. 
-1. Users must log in first in order to post and save posts.
-2. Users must upload 4 photos for each collage, which will be added as url.
-3. Photos within the collage are editable.
-4. Posts can be edited, and deleted, and saved to a user's page.
-5. Posts and user data will be saved to databases.
-6. Main page: it will load randomised posts whenever the page is loaded, or user hits the refresh button.
-
+- Initialisation: User can select the tags (styles of clothing) they like, and proceed to the Feed without log in. There is no internal redirection to come back to this page once user leaves this page, but tags selection can still be modified via toolbar
+- Log In & Sign Up: required for user to access 'My Page' or 'like (save)' & edit features in the Feed. Selection of tags is resetted when user reaches this page
+- Feed: it loads randomised selection of 9 post cards (along with a tag, and 4 photos assembled in a collage) whenever the page is reloaded, or the 'refresh' button has been hit, the posts shall match the user's selection of tags. Users may only edit the posts that belong to them, but save any post here. The posts selection will be reloaded whenever user likes, or unlikes any post.
+- Post Editor: User can either create a new post, or edit existing posts. All field of url, and tag must be filled in order to save the post. In the editor mode, user can change the brightness, saturation, and contrast of each image.
+- My Page: Only logged in users can access this page. Here, user can log out of the session, or permanantly delete their account. Also, all post that are created and saved can also be seen here.
 
 # Preview:
-https://drive.google.com/file/d/1Wv8KggPDOR9V6ceiAn_LJbCoxIdcxpIe/view?usp=sharing
-
+https://drive.google.com/file/d/1Ad45y3TeSRsuuOEn7YK5z-0D1sYK2dLP/view?usp=sharing
 
 # Database:
-- user: (userID), userName, password, email, savedPosts[] (postIds), 
-- post: (postID), userID, photoIDs[], tag (only one), photoObj, timestamp
-    --> photoObj: (photoId), postID, order, url, edits (array)
+- user: (ID), firstName, lastName, password, userName, savedPosts[{postIDs}]
+--> {
+    "firstName": "JeongHyun",
+    "lastName": "An",
+    "password": "abc12345",
+    "userName": "Jenn",
+    "savedPosts": [
+        "6357ec9a4f47830e941ed0a6",
+        "6357ff334f47830e941ed0aa",
+        "6357ff4ef3570dc984b5ec24"
+    ],
+    "id": "635820a640d88fdcda137cb5"
+}
 
-# User page:
-- user's own posts: retrieved via post db controller function
-- user's saved posts: retrieved by posts with the matching id in the likedBy array field as the user Id
+- post: (ID), userID, tag, photos[{order, url, imageEdits[]}], timestamps, id
+--> {
+        "userID": 4,
+        "tag": "tag1",
+        "photos": [
+            {
+                "order": 1,
+                "url": "url1",
+                "imageEdits": [
+                    0,
+                    1,
+                    4
+                ],
+                "_id": "6357ff4ef3570dc984b5ec25"
+            }
+        ],
+        "createdAt": "2022-10-25T15:22:54.543Z",
+        "updatedAt": "2022-10-25T15:22:54.543Z",
+        "id": "6357ff4ef3570dc984b5ec24"
+    }
 
-# Remaining:
-- Fix *My Page* UI <- sth like instagram explore page? <- 3 days
+# To-do list:
+- Fix *My Page* UI <- sth like instagram explore page? <- (Main) 3 days
 
+// other ideas
 - Change font (ex. make small text not bold nor capitalised in *Log In* page)
-- In the end, check if all redirection works correctly, and delete navigation bar\
+- Add dialog for account deletion & log out
+- do sth with timestamps?
+- In the end, check if all redirection works correctly, and delete navigation bar
+
