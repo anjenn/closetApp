@@ -83,14 +83,13 @@ import { ref } from "vue";
 import PostTemp from "src/utils/PostTemp";
 import UserTemp from "src/utils/UserTemp";
 import { Notify } from 'quasar'
-import userDataMethods from "app/api/userDataMethods";
 
 export default defineComponent({
   props: ['data'],
   name: "PostView",
   created(){
     this.currUser = UserTemp.loadUserData("currUser");
-    console.log(this.currUser);
+    //console.log(this.currUser);
     if(this.currUser.savedPosts){
       for(let i=0;i<this.currUser.savedPosts.length;i++){
         if(this.post.id === this.currUser.savedPosts[i]){
@@ -140,21 +139,19 @@ export default defineComponent({
         })
         this.$router.push("/LogIn");
       }
-      else if(!this.heartBorder){
-        let tempUser = UserTemp.loadUserData("currUser");
-        if(tempUser.savedPosts){
-          tempUser = tempUser.savedPosts.filter(item => item !== this.post.id)
-          this.currUser.savedPosts = tempUser.savedPosts;
+      else {
+        if(!this.heartBorder){
+          this.currUser.savedPosts = this.currUser.savedPosts.filter(item => item !== this.post.id)
           UserTemp.saveUserData(this.currUser, "currUser");
           this.heartBorder = true;
         }
-      }
-      else if(this.heartBorder){
-        let tempUser = UserTemp.loadUserData("currUser");
-        tempUser.savedPosts.push(`${this.post.id}`);
-        this.currUser.savedPosts = tempUser.savedPosts;
-        UserTemp.saveUserData(this.currUser, "currUser");
-        this.heartBorder = false;
+        else if(this.heartBorder){
+          this.currUser.savedPosts.push(`${this.post.id}`);
+          UserTemp.saveUserData(this.currUser, "currUser");
+          this.heartBorder = false;
+        }
+        // refresh container
+        this.$emit('on-heart-click', 1);
       }
     },
     redirectToEdit(ID) {

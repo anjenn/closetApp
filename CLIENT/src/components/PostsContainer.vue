@@ -4,6 +4,7 @@
             v-for="post in posts"
             :key="post.id"
             :data="post"
+            @on-heart-click="onHeartClick"
         />
     </div>  
 </template>
@@ -58,6 +59,17 @@ export default defineComponent({
         // console.log(posts);
         return {
             posts
+        }
+    },
+    data() {
+        return {
+            shouldRefresh: 0
+        }
+    },
+    methods: {
+        onHeartClick(value){
+            this.shouldRefresh +=value;
+            if(this.shouldRefresh){this.$emit('on-refVal-change', 1);}
         }
     }
 });

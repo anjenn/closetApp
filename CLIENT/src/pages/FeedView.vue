@@ -4,7 +4,7 @@
     <div class="container-sub flex">
       <Suspense>
       <template #default>
-        <postsContainer v-if="renderComp" />
+        <postsContainer v-if="renderComp" @on-refVal-change="refreshPosts"/>
       </template>
       <template #fallback>
         <span>Loading...</span>

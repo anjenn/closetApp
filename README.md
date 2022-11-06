@@ -25,7 +25,6 @@ https://drive.google.com/file/d/1Wv8KggPDOR9V6ceiAn_LJbCoxIdcxpIe/view?usp=shari
 - user's saved posts: retrieved by posts with the matching id in the likedBy array field as the user Id
 
 # Remaining:
-- Make like/unlike interactive in the *Feed-View*? <- 1 day
 - Fix *My Page* UI <- sth like instagram explore page? <- 3 days
 
 - Change font (ex. make small text not bold nor capitalised in *Log In* page)
