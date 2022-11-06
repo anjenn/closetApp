@@ -20,40 +20,19 @@ export default defineComponent({
     },
     async setup () {
         function retrieveTags(){
-        const temp = Tags.loadTags("currTags");
-        var result = null;
-        if (!temp){
-            result = Tags.fetchTagsArray();
-            return result.join(',');
-        }
-        else{
-            result = temp;
-            return result.join(',');
-        }
-        }
-        var tagsStr = retrieveTags();
-        const url = (
-        'http://localhost:3000/api/FeedView?tags=' + tagsStr
-        );
-        const posts = await fetch(url)
-        .then(res => res.json())
-        // .then(data => {console.log(data)})
-        .catch(error => {
-        // enter your logic for when there is an error (ex. error toast)
-        console.log(error)
-        })
-        return {
-        posts
-        }
-    },
-    data() {
-        return {
-            sth: [1, 2, 3, 4, 5]
+            const temp = Tags.loadTags("currTags");
+            var result = null;
+            if (!temp){
+                result = Tags.fetchTagsArray();
+                return result.join(',');
+            }
+            else{
+                result = temp;
+                return result.join(',');
+            }
         };
-    },
-    methods: {
-        randomiseAndCut(arr){
-            console.log(arr);
+        function randomiseAndCut(arr){
+            // console.log(arr);
             let currentIndex = arr.length, randomIndex;
             while (currentIndex != 0) {
                 randomIndex = Math.floor(Math.random() * currentIndex);
@@ -63,6 +42,22 @@ export default defineComponent({
             }
             arr = arr.slice(0, 9);
             return arr;
+        };
+        var tagsStr = retrieveTags();
+        const url = (
+        'http://localhost:3000/api/FeedView?tags=' + tagsStr
+        );
+        let posts = await fetch(url)
+        .then(res => res.json())
+        // .then(data => {console.log(data)})
+        .catch(error => {
+        // enter your logic for when there is an error (ex. error toast)
+            console.log(error)
+        })
+        posts = randomiseAndCut(posts);
+        // console.log(posts);
+        return {
+            posts
         }
     }
 });

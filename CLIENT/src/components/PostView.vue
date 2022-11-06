@@ -58,7 +58,7 @@
           color="grey-6"
           :ripple="false"
           icon="edit"
-          v-on:click="redirectToEdit(post.id)"
+          @click="redirectToEdit(post.id)"
         />
         <q-btn
           flat

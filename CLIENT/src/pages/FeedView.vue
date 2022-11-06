@@ -4,7 +4,7 @@
     <div class="container-sub flex">
       <Suspense>
       <template #default>
-        <postsContainer />
+        <postsContainer v-if="renderComp" />
       </template>
       <template #fallback>
         <span>Loading...</span>
@@ -18,6 +18,7 @@
           color="pink-3"
           round
           icon="refresh"
+          @click="refreshPosts"
         />
         <q-btn
           push
@@ -26,7 +27,7 @@
           color="pink-3"
           round
           icon="add"
-          v-on:click="redirectToPostEditor"
+          @click="redirectToPostEditor"
         />
       </div>
     </div>
@@ -34,7 +35,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { nextTick, ref } from "vue";
 import { defineComponent } from "vue";
 import postsContainer from "/src/components/PostsContainer"
 import PostTemp from "src/utils/PostTemp";
@@ -46,13 +47,19 @@ export default defineComponent({
   },
   data() {
     return {
-      tags: ref(null)
+      tags: ref(null),
+      renderComp: ref(true)
     };
   },
   methods: {
     redirectToPostEditor() {
       PostTemp.deletePostData("currPost");
       this.$router.push("/PostEditor");
+    },
+    async refreshPosts(){
+      this.renderComp = false;
+      await nextTick();
+      this.renderComp = true;
     }
   },
 });

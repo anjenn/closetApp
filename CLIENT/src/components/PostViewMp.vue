@@ -3,12 +3,12 @@
   <div class="container q-px-md q-py-lg" wrap>
       <div class="collage row">
         <div
-            v-for="item in images"
-            v-bind:key="item.index"
+            v-for="i in 4"
+            v-bind:key="i"
             class="col-6"
         >
             <q-img
-              :src="item.url"
+              src="image"
               :ratio="1"
               spinner-color="white"
               spinner-size="0.3rem"
@@ -34,7 +34,7 @@
           color="grey-6"
           :ripple="false"
           icon="edit"
-          v-on:click="redirectToEdit"
+          @click="redirectToEdit"
         />
         <q-btn
           flat
@@ -46,7 +46,6 @@
         />
       </div>
       <span style="background-color:pink">  # placeholder</span>
-
   </div>
 </template>
 
@@ -94,5 +93,11 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* align items in Main Axis */
+}
+.buttons{
+  display:none
+}
+.collage:hover .buttons{
+  display:block
 }
 </style>

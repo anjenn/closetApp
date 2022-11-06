@@ -49,7 +49,7 @@
           text-color="pink 4"
           label="Skip"
           class="btn"
-          v-on:click="redirectTo"
+          @click="redirectTo"
         />
         <q-btn
           push
@@ -58,7 +58,7 @@
           label="save"
           class="btn"
           :value="selected"
-          v-on:click="saveSelection"
+          @click="saveSelection"
         />
       </div>
     </div>

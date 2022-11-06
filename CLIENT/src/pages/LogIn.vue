@@ -64,7 +64,7 @@
               text-color="pink 4"
               label="Sign Up"
               style="text-shadow: 0 0 7px white;"
-              v-on:click="redirectToSignUp"
+              @click="redirectToSignUp"
             />
           </span>
         </q-card-section>

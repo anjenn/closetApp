@@ -7,13 +7,22 @@
                 class="user-profile"
                 style="height: 8rem; width: 8rem; border-radius: 50%"
             />
-            <span style="font-family: 'fredoka one'">{{this.user.userName}}</span>
+            <span style="font-family: 'fredoka one'">{{this.userNameDisp}}</span>
             <q-btn
               push
               color="white"
               text-color="pink 4"
               label="Delete Account"
               class="btn"
+              @click="deleteUser"
+            />
+            <q-btn
+              push
+              color="white"
+              text-color="pink 4"
+              label="Log Out"
+              class="btn"
+              @click="logOut"
             />
         </div>
         <q-card class="cardView">
@@ -58,9 +67,12 @@
   </template>
   
   <script>
+  import { Notify } from 'quasar'
   import { defineComponent } from "vue";
   import { ref } from "vue";
+  import userDataMethods from "app/api/userDataMethods";
   import postViewMp from "/src/components/PostViewMp";
+  import Tags from "src/utils/Tags";
   import UserTemp from "src/utils/UserTemp";
   import butter1 from "/public/butter_p1.svg";
   import butter2 from "/public/butter_p2.svg";
@@ -71,14 +83,32 @@
     created() {
       const user = UserTemp.loadUserData("currUser");
       this.user = user;
+      this.user.userName? this.userNameDisp = this.user.userName : this.userNameDisp = "NULL";
       console.log(this.userID);
+
+      /*
+        userDataMethods.updateUserInfo(this.currUser.id, this.currUser)
+        .then(response => {
+          this.currUser = response.data
+          console.log(this.currUser);
+          UserTemp.saveUserData(this.currUser, "currUser");
+        })
+        .catch(e => {
+          console.log(e);
+        });
+        // load saved posts info before elements are rendered
+      */
+
+
+
     },
     data() {
       return {
         user: ref(null),
         image1: butter1,
         image2: butter2,
-        image3: butter3
+        image3: butter3,
+        userNameDisp: ref(null)
       };
     },
     components: {
@@ -89,6 +119,35 @@
         tab: ref("myPosts"),
       };
     },
+    methods: {
+      logOut(){
+        Tags.deleteTags("tags");
+        UserTemp.deleteUserData("currUser");
+        this.$router.push("/FeedView");
+      },
+      deleteUser(){
+        this.logOut();
+        userDataMethods.deleteUserInfo(this.user.id)
+        .then(response => {
+            console.log(response.data);
+            Notify.create({
+              message: `Your account was deleted successfully (user ID: ${this.user.id})`,
+              color: 'pink-5',
+              icon: 'info',
+              textColor: 'white',
+              timeout: 2000,
+              progress: true,
+              position: 'bottom-right',
+              actions: [
+                { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+              ]
+            });
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      }
+    }
   });
   </script>
   
