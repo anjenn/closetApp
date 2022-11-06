@@ -72,6 +72,7 @@ import { defineComponent, ref } from "vue";
 import navigation from "components/Navigation.vue";
 import Tags from "src/utils/Tags";
 import UserTemp from "src/utils/UserTemp";
+import userDataMethods from "app/api/userDataMethods";
 
 const linksList = [
   {
@@ -114,7 +115,6 @@ export default defineComponent({
   },
   created(){
     this.selected = Tags.loadTags("currTags");
-    this.currUser = UserTemp.loadUserData("currUser");
   },
   setup() {
     const leftDrawerOpen = ref(false);
@@ -135,11 +135,12 @@ export default defineComponent({
       this.leftDrawerOpen = !this.leftDrawerOpen;
     },
     redirectToMyPage() {
+      this.currUser = UserTemp.loadUserData("currUser");
       if(!this.currUser.id){
         this.$router.push("/LogIn");
       }
       else{
-        this.$router.push("/MyPage");
+        this.$router.push({ name: "My Page", params: {userID: this.currUser.id} })
       }
     },
     redirectToFeedView(){

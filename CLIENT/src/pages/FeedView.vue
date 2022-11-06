@@ -3,13 +3,13 @@
   <q-page padding class="container" style="background-color: #fff0f5">
     <div class="container-sub flex">
       <Suspense>
-      <template #default>
-        <postsContainer v-if="renderComp" @on-refVal-change="refreshPosts"/>
-      </template>
-      <template #fallback>
-        <span>Loading...</span>
-      </template>
-    </Suspense>
+        <template #default>
+          <postsContainer v-if="renderComp" @on-refVal-change="refreshPosts" />
+        </template>
+        <template #fallback>
+          <span>Loading...</span>
+        </template>
+      </Suspense>
       <div class="row justify-between" style="width: 12rem">
         <q-btn
           push
@@ -37,7 +37,7 @@
 <script>
 import { nextTick, ref } from "vue";
 import { defineComponent } from "vue";
-import postsContainer from "/src/components/PostsContainer"
+import postsContainer from "/src/components/PostsContainer";
 import PostTemp from "src/utils/PostTemp";
 
 export default defineComponent({
@@ -48,7 +48,7 @@ export default defineComponent({
   data() {
     return {
       tags: ref(null),
-      renderComp: ref(true)
+      renderComp: ref(true),
     };
   },
   methods: {
@@ -56,11 +56,11 @@ export default defineComponent({
       PostTemp.deletePostData("currPost");
       this.$router.push("/PostEditor");
     },
-    async refreshPosts(){
+    async refreshPosts() {
       this.renderComp = false;
       await nextTick();
       this.renderComp = true;
-    }
+    },
   },
 });
 </script>
@@ -73,5 +73,5 @@ export default defineComponent({
   margin: 10vh 7vw;
   flex-direction: column;
   align-items: center;
-  }
+}
 </style>

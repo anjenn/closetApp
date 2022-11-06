@@ -21,7 +21,7 @@ const routes = [
         component: () => import("pages/LogIn.vue"),
       },
       {
-        path: "/MyPage",
+        path: "/MyPage/:userID",
         name: "My Page",
         component: () => import("pages/MyPage.vue"),
       },
