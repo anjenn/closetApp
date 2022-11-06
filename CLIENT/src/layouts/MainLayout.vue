@@ -39,7 +39,7 @@
             >
               <q-tooltip> Filter </q-tooltip>
               <template v-slot:prepend>
-                <q-icon name="tune" color="white" />
+                <q-icon name="tune" color="white" @click="returnSelection" />
               </template>
             </q-select>
           </div>
@@ -147,7 +147,10 @@ export default defineComponent({
     },
     saveSelection(){
       Tags.saveTags(this.selected, "currTags");
-    }
+    },
+    returnSelection() {
+      this.selected = Tags.loadTags("currTags");
+    },
   },
 });
 </script>

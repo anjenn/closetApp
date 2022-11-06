@@ -8,10 +8,7 @@
         style="font-family: 'fredoka one'"
       >
         <q-card-section class="container sub">
-          <q-form
-            @submit="onSubmit"
-            class="q-gutter-md"
-          >
+          <q-form @submit="onSubmit" class="q-gutter-md">
             <q-input
               filled
               v-model="input.userName"
@@ -37,8 +34,12 @@
               label="Reveal password"
               color="pink"
               keep-color
-              @update:model-value="(this.revealPwd) ? (this.revealPwd = true) : (this.revealPwd = false)"
-              />
+              @update:model-value="
+                this.revealPwd
+                  ? (this.revealPwd = true)
+                  : (this.revealPwd = false)
+              "
+            />
             <q-btn
               push
               color="white"
@@ -53,9 +54,9 @@
               </template>
             </q-btn>
           </q-form>
-          </q-card-section>
-          <q-separator dark inset />
-          <q-card-section class="container sub">
+        </q-card-section>
+        <q-separator dark inset />
+        <q-card-section class="container sub">
           <span style="margin: auto">
             Have no account?
             <q-btn
@@ -63,7 +64,7 @@
               flat
               text-color="pink 4"
               label="Sign Up"
-              style="text-shadow: 0 0 7px white;"
+              style="text-shadow: 0 0 7px white"
               @click="redirectToSignUp"
             />
           </span>
@@ -74,72 +75,83 @@
 </template>
 
 <script>
-import { Notify } from 'quasar'
+import { Notify } from "quasar";
 import userDataMethods from "app/api/userDataMethods";
 import { defineComponent } from "vue";
 import { ref } from "vue";
-import userTemp from "src/utils/UserTemp";
+import UserTemp from "src/utils/UserTemp";
+import Tags from "src/utils/Tags";
 
 export default defineComponent({
   name: "LogIn",
+  created() {
+    Tags.deleteTags("currTags");
+    UserTemp.deleteUserData("currUser");
+  },
   data() {
     return {
       input: {
         userName: ref(null),
-        password: ref(null)
+        password: ref(null),
       },
       userData: [],
       currUser: ref(null), // to be used as a container for retrieved data
       revealPwd: ref(false),
-      btnLoading: ref(null)
-    }
+      btnLoading: ref(null),
+    };
   },
   methods: {
-    onSubmit(){
+    onSubmit() {
       this.btnLoading = true;
       const id = this.input.userName;
       const pw = this.input.password;
-      userDataMethods.getUserInfo(id)
-      .then(response => {
+      userDataMethods
+        .getUserInfo(id)
+        .then((response) => {
           this.userData = response.data;
-          for (const curr of this.userData){
-            if (curr.userName == id && curr.password == pw){
+          for (const curr of this.userData) {
+            if (curr.userName == id && curr.password == pw) {
               this.currUser = curr;
             }
           }
-          if(this.currUser == null){
+          if (this.currUser == null) {
             setTimeout(() => {
-              this.btnLoading = false
+              this.btnLoading = false;
               console.log("Invalid User");
               Notify.create({
-                message: 'Invalid User',
-                color: 'pink-5',
-                icon: 'warning',
-                textColor: 'white',
+                message: "Invalid User",
+                color: "pink-5",
+                icon: "warning",
+                textColor: "white",
                 timeout: 2000,
                 progress: true,
-                position: 'bottom-right',
+                position: "bottom-right",
                 actions: [
-                  { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
-                ]
-              })
-            }, 500)
-          }
-          else {
+                  {
+                    label: "Dismiss",
+                    color: "white",
+                    handler: () => {
+                      /* ... */
+                    },
+                  },
+                ],
+              });
+            }, 500);
+          } else {
             setTimeout(() => {
-              this.btnLoading = false
-              userTemp.saveUserData(this.currUser, "currUser");
+              this.btnLoading = false;
+              UserTemp.saveUserData(this.currUser, "currUser");
               this.$router.push("/FeedView");
-            }, 500)
+            }, 500);
           }
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
         });
     },
-    redirectToSignUp(){
+    redirectToSignUp() {
       this.$router.push("/SignUp");
-    }
+    },
   },
 });
 </script>
