@@ -14,7 +14,7 @@ module.exports = app => {
     // (one) Retrieve a single Post with id
     router.get("/PostEditor/:id", posts.getOnePost); // works
     // (many) Retrieve posts with multiple IDs
-    router.get("/MyPage", posts.getSavedPosts); // works
+    router.get("/MyPage/:id", posts.getSavedPosts); // works
     // (many) Get users' posts
     router.get("/MyPage/:id", posts.getUserPosts); // works
   

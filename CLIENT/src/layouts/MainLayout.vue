@@ -48,7 +48,6 @@
     </q-header>
     <q-drawer
       v-model="leftDrawerOpen"
-      width="50rem"
       side="left"
       bordered
     >

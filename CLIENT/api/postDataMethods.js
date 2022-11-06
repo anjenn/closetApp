@@ -24,8 +24,8 @@ class postDataMethods {
   getOnePost(postID) { // load a post via PostID
     return http.get(`/PostEditor/${postID}`);
   }
-  getSavedPosts(postIDs) { // retrieve all posts saved by a user
-    return http.get(`/MyPage?postIDs=${postIDs}`) // '_id' instead of 'id' in api
+  getSavedPosts(userID, postIDs) { // retrieve all posts saved by a user
+    return http.get(`/MyPage/${userID}?postIDs=${postIDs}`) // '_id' instead of 'id' in api
   } // needs to be tested
   getUserPosts(userID) { // retrieve all posts in myPage
     return http.get(`/MyPage/${userID}`); // SAVED/LIKED
