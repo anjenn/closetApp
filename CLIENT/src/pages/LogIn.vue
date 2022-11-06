@@ -129,16 +129,13 @@ export default defineComponent({
             setTimeout(() => {
               this.btnLoading = false
               userTemp.saveUserData(this.currUser, "currUser");
-              this.redirectToFeedView();
+              this.$router.push("/FeedView");
             }, 500)
           }
         })
         .catch(e => {
           console.log(e);
         });
-    },
-    redirectToFeedView(){
-      this.$router.push("/FeedView");
     },
     redirectToSignUp(){
       this.$router.push("/SignUp");

@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hhh lpR lFf">
     <q-header elevated>
       <q-toolbar class="bg-pink-4">
         <q-toolbar-title
@@ -7,14 +7,9 @@
         >
           <q-img src="../../public/collageit.svg" style="height: 2rem; width: 11rem; object-fit: contain;"/>
           <div class="toolbar-btns">
-            <router-link
-              :to="{ path: '/FeedView' }"
-              style="text-decoration: none"
-            >
-              <q-btn flat round color="white" icon="home">
-                <q-tooltip> Feed </q-tooltip>
-              </q-btn>
-            </router-link>
+            <q-btn flat round color="white" icon="home" @click="redirectToFeedView">
+              <q-tooltip> Feed </q-tooltip>
+            </q-btn>
             <q-btn flat round color="white" icon="account_circle" @click="redirectToMyPage">
               <q-tooltip> My Page </q-tooltip>
             </q-btn>
@@ -51,16 +46,12 @@
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
-
     <q-drawer
       v-model="leftDrawerOpen"
-      style="width: 150px"
-      show-if-above
+      width="50rem"
+      side="left"
       bordered
     >
-      <span wrap style="font-size: 2rem; font-family: fredoka one"
-        >NAVIGATION FOR DEVELOPMENTAL PURPOSE! DELETE LATER!</span
-      >
       <q-list>
         <navigation
           v-for="link in essentialLinks"
@@ -122,7 +113,8 @@ export default defineComponent({
     navigation
   },
   created(){
-    this.selected = Tags.loadTags("currTags")
+    this.selected = Tags.loadTags("currTags");
+    this.currUser = UserTemp.loadUserData("currUser");
   },
   setup() {
     const leftDrawerOpen = ref(false);
@@ -134,6 +126,7 @@ export default defineComponent({
   data() {
     return {
       selected: ref(null),
+      currUser: ref(null),
       options: [...Tags.fetchTagsArray()],
     };
   },
@@ -142,13 +135,15 @@ export default defineComponent({
       this.leftDrawerOpen = !this.leftDrawerOpen;
     },
     redirectToMyPage() {
-      const user = UserTemp.loadUserData("currUser");
-      if(!user.id){
+      if(!this.currUser.id){
         this.$router.push("/LogIn");
       }
       else{
         this.$router.push("/MyPage");
       }
+    },
+    redirectToFeedView(){
+      this.$router.push("/FeedView");
     },
     saveSelection(){
       Tags.saveTags(this.selected, "currTags");

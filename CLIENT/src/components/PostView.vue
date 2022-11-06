@@ -48,7 +48,7 @@
           dense
           color="grey-6"
           :ripple="false"
-          :icon="this.heartBorder ? 'favorite' : 'favorite_border'"
+          :icon="this.heartBorder ? 'favorite_border' : 'favorite'"
           @click="onHeartClick"
         />
         <q-btn
@@ -83,16 +83,22 @@ import { ref } from "vue";
 import PostTemp from "src/utils/PostTemp";
 import UserTemp from "src/utils/UserTemp";
 import { Notify } from 'quasar'
+import userDataMethods from "app/api/userDataMethods";
 
 
 export default defineComponent({
   props: ['data'],
   name: "PostView",
+  created(){
+    this.currUser = UserTemp.loadUserData("currUser");
+    //console.log(this.currUser);
+  },
   data() {
     return {
       dialog: ref(false),
-      currUser: this.curruser,
+      currUser: ref(false),
       heartBorder: true,
+      savedPosts: [],
       image: placeholder,
       styles: ["border-top-left-radius: 15px", "border-top-right-radius: 15px",
                 "border-bottom-left-radius: 15px", "border-bottom-right-radius: 15px"],
@@ -101,12 +107,11 @@ export default defineComponent({
   },
   methods: {
     compareUser(){
-      const temp = UserTemp.loadUserData("currUser");
       // console.log(temp.id, this.post.userID);
-      if(!temp){
+      if(!this.currUser.id){
         return false
       }
-      else if(temp.id === this.post.userID){
+      else if(this.currUser.id === this.post.userID){
         return true
       }
       else{
@@ -114,9 +119,37 @@ export default defineComponent({
       }
     },
     onHeartClick() {
-      this.heartBorder == true
-        ? (this.heartBorder = false)
-        : (this.heartBorder = true);
+      if(!this.currUser.id){
+        Notify.create({
+                message: `You must log in first to like the posts`,
+                color: 'pink-5',
+                icon: 'info',
+                textColor: 'white',
+                timeout: 2000,
+                progress: true,
+                position: 'bottom-right',
+                actions: [
+                  { label: 'Dismiss', color: 'white', handler: () => { /* ... */ } }
+                ]
+        })
+        this.$router.push("/LogIn");
+      }
+      else if(!this.heartBorder){
+        this.heartBorder = true;
+      }
+      else if(this.heartBorder){
+        this.savedPosts.push(`${this.post.id}`);
+        this.currUser.savedPosts = this.savedPosts;
+        console.log(`list of saved posts copied to user obj ${this.currUser.savedPosts}`);
+        userDataMethods.updateUserInfo(this.currUser.id, this.currUser)
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+        this.heartBorder = false;
+      }
     },
     redirectToEdit(ID) {
       if(this.compareUser()){

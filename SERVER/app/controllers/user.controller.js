@@ -74,7 +74,20 @@ exports.updateUserInfo = (req, res) => {
     });
   }
   const {userID} = req.query;
-  // User.findByIdAndUpdate(userID, req.body, { useFindAndModify: false })
+  User.findByIdAndUpdate(userID, req.body, { useFindAndModify: false })
+  .then(data => {
+    if (!data) {
+      res.status(404).send({
+        message: `Cannot update User with id=${userID}. Maybe User was not found!`
+      });
+    } else res.send({ message: "User was updated successfully." });
+  })
+  .catch(err => {
+    res.status(500).send({
+      message: "Error updating User with id=" + userID
+    });
+  });
+  /*
   User.findByIdAndUpdate(userID, { $set: {savedPosts}}, { useFindAndModify: false })
     .then(data => {
       if (!data) {
@@ -88,6 +101,7 @@ exports.updateUserInfo = (req, res) => {
         message: "Error updating User with id=" + userID
       });
     });
+  */
 }
 
 exports.updateUserInfo2 = (req, res) => {

@@ -16,6 +16,11 @@ const routes = [
         component: () => import("pages/FeedView.vue"),
       },
       {
+        path: "/FeedView/:userID",
+        name: "Feed View w ID",
+        component: () => import("pages/FeedView.vue"),
+      },
+      {
         path: "/LogIn",
         name: "Log In",
         component: () => import("pages/LogIn.vue"),
