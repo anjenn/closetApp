@@ -1,10 +1,19 @@
 <template>
     <div class="row justify-evenly">
-        <postViewMp
-            v-for="post in posts"
-            :key="post.id"
-            :data="post"
-        />
+        <template v-if="postType == 'users'">
+            <postViewMp
+                v-for="post in userPosts"
+                :key="post.id"
+                :data="post"
+            />
+        </template>
+        <template v-else-if="postType=='saved'">
+            <postViewMp
+                v-for="post in savedPosts"
+                :key="post.id"
+                :data="post"
+            />
+        </template>
     </div>  
 </template>
 
@@ -15,14 +24,12 @@ import UserTemp from "src/utils/UserTemp";
 
 export default defineComponent({
     name: "PostsContainer",
+    props: ['postType'],
     components: {
         postViewMp,
     },
     async setup () {
-        let currUser = UserTemp.loadUserData("currUser");
-        let tempIDArr = retrieveSavedIDs(currUser.savedPosts);
-        // let userPosts = ref(null);
-        // let likedPosts = ref(null);
+        const currUser = UserTemp.loadUserData("currUser");
         function retrieveSavedIDs(){
             const temp = currUser.savedPosts;
             var result = null;
@@ -35,6 +42,8 @@ export default defineComponent({
                 return result.join(',');
             }
         };
+        const tempIDArr = retrieveSavedIDs(currUser.savedPosts);
+        console.log(`tempIDArr:${tempIDArr}`);
         const url = (
             "http://localhost:3000/api/MyPage/" + currUser.id
         );
@@ -42,11 +51,13 @@ export default defineComponent({
         .then(res => res.json())
         //.then(data => {console.log(data)})
         .catch(error => {
-        // enter your logic for when there is an error (ex. error toast)
             console.log(error)
         })
+        const userPosts = allPosts.filter(post => post.userID == currUser.id);
+        const savedPosts = allPosts.filter(post => tempIDArr.includes(post.id));
         return {
-
+            userPosts,
+            savedPosts
         }
     },
     data() {

@@ -56,6 +56,7 @@ import UserTemp from "src/utils/UserTemp";
 import { ref } from "vue";
 
 export default defineComponent({
+  props: ['data'],
   created: function() {
     if(UserTemp.checkIfSaved == true){
       console.log('user is logged in');
