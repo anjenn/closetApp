@@ -1,20 +1,42 @@
 <template>
-    <div class="row justify-evenly">
-        <template v-if="postType == 'users'">
-            <postViewMp
-                v-for="post in userPosts"
-                :key="post.id"
-                :data="post"
+    <div v-if="postType == 'users'">
+        <div class="panel q-pa-sm flex flex-center">
+            <div class ="row justify-evenly collage-container">
+                <postViewMp
+                    v-for="post in userPosts"
+                    :key="post.id"
+                    :data="post"
+                />
+            </div>
+            <q-pagination
+                v-model="pagination.myPosts"
+                max="5"
+                direction-links
+                flat
+                color="grey"
+                active-color="pink-4"
             />
-        </template>
-        <template v-else-if="postType=='saved'">
-            <postViewMp
-                v-for="post in savedPosts"
-                :key="post.id"
-                :data="post"
+        </div>
+    </div>
+    <div v-else-if="postType=='saved'">
+        <div class="panel q-pa-sm flex flex-center">
+            <div class = "row justify-evenly collage-container">
+                <postViewMp
+                    v-for="post in savedPosts"
+                    :key="post.id"
+                    :data="post"
+                />
+            </div>
+            <q-pagination
+                v-model="pagination.myPosts"
+                max="5"
+                direction-links
+                flat
+                color="grey"
+                active-color="pink-4"
             />
-        </template>
-    </div>  
+        </div>
+    </div>
 </template>
 
 <script>
@@ -62,14 +84,20 @@ export default defineComponent({
     },
     data() {
         return {
+            pagination:{
+                myPosts: ref(1),
+                likedPosts: ref(1)
+                },
         }
     },
     methods: {
-
     }
 });
 </script>
     
 <style scoped>
-
+.panel {
+    gap: 2rem;
+    flex-direction: column;
+}
 </style>
