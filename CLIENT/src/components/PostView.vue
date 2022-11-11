@@ -45,7 +45,7 @@
             >
               <template v-slot:error>
                 <div
-                  class="absolute-full flex flex-center bg-negative text-white"
+                  class="absolute-full flex flex-center bg-pink-4 text-white text-h5"
                 >
                   Cannot load image
                 </div>

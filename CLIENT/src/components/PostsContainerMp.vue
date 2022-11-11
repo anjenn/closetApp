@@ -1,6 +1,6 @@
 <template>
     <div v-if="postType == 'users'">
-        <div class="panel q-pa-sm flex flex-center">
+        <div class="q-pa-sm flex flex-center">
             <div class ="row justify-evenly collage-container">
                 <postViewMp
                     v-for="post in userPosts"
@@ -8,18 +8,10 @@
                     :data="post"
                 />
             </div>
-            <q-pagination
-                v-model="pagination.myPosts"
-                max="5"
-                direction-links
-                flat
-                color="grey"
-                active-color="pink-4"
-            />
         </div>
     </div>
     <div v-else-if="postType=='saved'">
-        <div class="panel q-pa-sm flex flex-center">
+        <div class="q-pa-sm flex flex-center">
             <div class = "row justify-evenly collage-container">
                 <postViewMp
                     v-for="post in savedPosts"
@@ -27,14 +19,6 @@
                     :data="post"
                 />
             </div>
-            <q-pagination
-                v-model="pagination.myPosts"
-                max="5"
-                direction-links
-                flat
-                color="grey"
-                active-color="pink-4"
-            />
         </div>
     </div>
 </template>
@@ -69,7 +53,7 @@ export default defineComponent({
         const url = (
             "http://localhost:3000/api/MyPage/" + currUser.id
         );
-        let allPosts = await fetch(url)
+        const allPosts = await fetch(url)
         .then(res => res.json())
         //.then(data => {console.log(data)})
         .catch(error => {
@@ -77,6 +61,10 @@ export default defineComponent({
         })
         const userPosts = allPosts.filter(post => post.userID == currUser.id);
         const savedPosts = allPosts.filter(post => tempIDArr.includes(post.id));
+        //this.$emit('event', […args])
+        function postsTrimmer (pgNum, posts) {
+            return newPosts = posts.slice(0+(pgNum*16), 16+(pgNum*16));
+        };
         return {
             userPosts,
             savedPosts
@@ -87,7 +75,7 @@ export default defineComponent({
             pagination:{
                 myPosts: ref(1),
                 likedPosts: ref(1)
-                },
+            },
         }
     },
     methods: {
@@ -96,8 +84,4 @@ export default defineComponent({
 </script>
     
 <style scoped>
-.panel {
-    gap: 2rem;
-    flex-direction: column;
-}
 </style>

@@ -20,9 +20,7 @@
                   :style="`filter: brightness(${1+(item.imageEdits.brightness)/10}) contrast(${1+(item.imageEdits.contrast)/10});`"
                 >
                   <template v-slot:error>
-                    <div
-                      class="absolute-full flex flex-center bg-negative text-white"
-                    >
+                    <div class="absolute-full flex flex-center bg-pink-4 text-white text-h7">
                       Cannot load image
                     </div>
                   </template>
