@@ -13,10 +13,7 @@ module.exports = app => {
     router.put("/PostEditor/:id", posts.updatePost); // works (sent the entire output object including id & timestampe. All field was modifiable)
     // (one) Retrieve a single Post with id
     router.get("/PostEditor/:id", posts.getOnePost); // works
-    // (many) Retrieve posts with multiple IDs
-    router.get("/MyPage/:id", posts.getSavedPosts); // works
-    // (many) Get users' posts
-    router.get("/MyPage/:id", posts.getUserPosts); // works
-  
+
+    router.get("/MyPage/:id", posts.getAllPostsMp);
     app.use('/api', router);
   };

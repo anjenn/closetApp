@@ -12,7 +12,6 @@
 import { defineComponent, ref } from "vue";
 import postViewMp from "/src/components/PostViewMp"
 import UserTemp from "src/utils/UserTemp";
-import postDataMethods from "app/api/postDataMethods";
 
 export default defineComponent({
     name: "PostsContainer",
@@ -36,21 +35,18 @@ export default defineComponent({
                 return result.join(',');
             }
         };
-        const responses = async () => {
-            try {
-            const res = await Promise.all([
-                axios.get("http://localhost:3000/api/FeedView"+currUser.id),
-                axios.get("http://localhost:3000/api/FeedView"+currUser.id+"?postIDs="+tempIDArr)
-            ]);
-            const data = res.map((res) => res.data);
-            console.log(data.flat());
-            } catch {
-            throw Error("Promise failed");
-            }
-        };
-        console.log(responses());
+        const url = (
+            "http://localhost:3000/api/MyPage/" + currUser.id
+        );
+        let allPosts = await fetch(url)
+        .then(res => res.json())
+        //.then(data => {console.log(data)})
+        .catch(error => {
+        // enter your logic for when there is an error (ex. error toast)
+            console.log(error)
+        })
         return {
-            currUser,
+
         }
     },
     data() {

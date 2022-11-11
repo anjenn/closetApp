@@ -119,10 +119,8 @@ exports.getOnePost = (req, res) => {
     });
 }
 
-exports.getUserPosts = (req, res) => {
-  const userID = req.params.id;
-  // console.log(userID)
-  Post.find({"userID": userID})
+exports.getAllPostsMp = (req, res) => {
+  Post.find()
     .then(data => {
       res.send(data);
     })
@@ -132,26 +130,4 @@ exports.getUserPosts = (req, res) => {
           err.message || "Some error occurred while retrieving posts."
       });
     });
-}
-
-exports.getSavedPosts = (req, res) => {
-  const {postIDs} = req.query;
-  const idArr = postIDs.split(',');
-  if(idArr[0]!=null){
-    console.log("filter scenario executed");
-    Post.find({"_id": {$in: idArr}})
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving posts."
-        });
-      });
-  }
-  else{
-    res.status(400).send({ message: "post ID is not valid" });
-      return;
-  }
-}
+};
