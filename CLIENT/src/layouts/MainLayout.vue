@@ -8,10 +8,10 @@
           <q-img src="../../public/collageit.svg" style="height: 2rem; width: 11rem; object-fit: contain;"/>
           <div class="toolbar-btns">
             <q-btn flat round color="white" icon="home" @click="redirectToFeedView">
-              <q-tooltip> Feed </q-tooltip>
+              <q-tooltip class="mainFont"> Feed </q-tooltip>
             </q-btn>
             <q-btn flat round color="white" icon="account_circle" @click="redirectToMyPage">
-              <q-tooltip> My Page </q-tooltip>
+              <q-tooltip class="mainFont"> My Page </q-tooltip>
             </q-btn>
             <q-btn
               flat
@@ -20,7 +20,7 @@
               icon="navigation"
               @click="toggleNav"
             >
-              <q-tooltip> Navigation </q-tooltip>
+              <q-tooltip class="mainFont"> Navigation </q-tooltip>
             </q-btn>
             <q-select
               behavior="dialog"
@@ -37,7 +37,7 @@
               @popup-hide="saveSelection"
               :options="options"
             >
-              <q-tooltip> Filter </q-tooltip>
+              <q-tooltip class="mainFont"> Filter </q-tooltip>
               <template v-slot:prepend>
                 <q-icon name="tune" color="white" @click="returnSelection" />
               </template>

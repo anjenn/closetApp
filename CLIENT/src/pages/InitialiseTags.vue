@@ -3,11 +3,10 @@
     <div class="container">
       <q-card
         dark
-        class="bg-pink-3 my-card shadow-10"
-        style="font-family: 'fredoka one'"
+        class="mainFont bg-pink-3 my-card shadow-10"
       >
         <q-card-section>
-          <div class="text-h6" style="text-align: center">
+          <div class="thickFont text-h5" style="text-align: center;">
             Tell me what you like!
           </div>
         </q-card-section>
@@ -48,7 +47,8 @@
           color="white"
           text-color="pink 4"
           label="Skip"
-          class="btn"
+          class="mainFont btn"
+          style="font-size: 1rem;"
           @click="redirectTo"
         />
         <q-btn
@@ -56,7 +56,8 @@
           color="white"
           text-color="pink 4"
           label="save"
-          class="btn"
+          class="mainFont btn"
+          style="font-size: 1rem;"
           :value="selected"
           @click="saveSelection"
         />
@@ -119,7 +120,6 @@ export default defineComponent({
 .btn {
   margin-top: 2rem;
   width: 7rem;
-  font-family: fredoka one;
 }
 .btn-tags {
   margin-top: 1rem;

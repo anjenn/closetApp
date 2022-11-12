@@ -6,7 +6,7 @@
           class="flex flex-center"
           style="flex-direction: column"
         >
-          <span style="font-family: 'fredoka one'; margin-bottom: 1rem">
+          <span class="mainFont" style="margin-bottom: 1rem">
             Here are the links!</span>
           <q-list class="rounded-borders" dense bordered padding>
             <q-item
@@ -47,9 +47,11 @@
                   width:13rem; height:13rem;`"
                 >
                   <template v-slot:error>
-                    <div class="absolute-full flex flex-center bg-pink-4 text-white text-h7">
+                    <span
+                      class="mainFont absolute-full flex flex-center bg-pink-4 text-white text-h6"
+                    >
                       Cannot load image :(
-                    </div>
+                    </span>
                   </template>
                 </q-img>
               </div>

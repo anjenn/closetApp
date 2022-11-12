@@ -3,7 +3,6 @@
 ////////////////////////
 // pink-4
 // grey-6
-// fredoka one
 // philosopher
 
 // <q-space />
@@ -59,4 +58,28 @@
 // input text, border highlight when the field is active
 .q-field__control.relative-position{
   color: #616161;
+}
+
+
+////////////////////////
+/* Q-LABEL FONT */
+////////////////////////
+.q-item__label {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+}
+
+
+////////////////////////
+/* DEFAULT FONT SETTINGS */
+////////////////////////
+.mainFont {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 600;
+}
+.thinFont {
+  font-weight: 500;
+}
+.thickFont {
+  font-weight: 900;
 }

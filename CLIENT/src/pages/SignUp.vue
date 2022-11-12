@@ -4,11 +4,10 @@
       <q-card
         dark
         bordered
-        class="bg-pink-3 my-card shadow-10"
-        style="font-family: 'fredoka one'"
+        class="mainFont bg-pink-3 my-card shadow-10"
       >
         <q-card-section>
-          <div class="text-h5" style="text-align: center">
+          <div class="thickFont text-h5" style="text-align: center">
             Create Your Account!
           </div>
         </q-card-section>
@@ -72,7 +71,7 @@
               unelevated
               color="white"
               text-color="white"
-              style="width: 90%; margin-bottom: 0.5rem"
+              style="width: 90%; margin-bottom: 0.5rem; font-size:1rem;"
               label="Next ➜"
               :loading="btnLoading"
               type="submit"
@@ -153,7 +152,7 @@ export default defineComponent({
 
 <style scoped>
 .my-card {
-  min-width: 0.7rem;
+  min-width: 20rem;
   max-width: 25rem;
   min-height: 0.5rem;
   width: 60vw;

@@ -7,7 +7,7 @@
           class="flex flex-center"
           style="flex-direction: column"
         >
-          <span style="font-family: 'fredoka one'; margin-bottom: 1rem">
+          <span class="mainFont" style="margin-bottom: 1rem">
             Here are the links!</span>
           <q-list class="rounded-borders" dense bordered padding>
             <q-item
@@ -43,11 +43,12 @@
               }) contrast(${1 + item.imageEdits.contrast / 10});`"
             >
               <template v-slot:error>
-                <div
-                  class="absolute-full flex flex-center bg-pink-4 text-white text-h5"
+                <span
+                  class="mainFont absolute-full flex flex-center bg-pink-4 text-white text-h6"
+                  style="padding-left:1rem;"
                 >
                   Cannot load image :(
-                </div>
+                </span>
               </template>
             </q-img>
           </div>
@@ -83,7 +84,7 @@
           @click="dialog = true"
         />
       </div>
-      <span style="background-color: pink">#{{ this.post.tag }}</span>
+      <span class="thinFont" style="background-color: pink">#{{ this.post.tag }}</span>
     </q-card>
   </div>
 </template>

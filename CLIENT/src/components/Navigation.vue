@@ -38,7 +38,8 @@ export default defineComponent({
 a, a:hover, a:visited, a:active{
   color: white;
   text-decoration: none;
-  font-family: monospace;
-  font-size: 1rem;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 </style>

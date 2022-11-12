@@ -4,8 +4,7 @@
       <q-card
         dark
         bordered
-        class="bg-pink-3 my-card shadow-10"
-        style="font-family: 'fredoka one'"
+        class="mainFont bg-pink-3 my-card shadow-10"
       >
         <q-card-section class="container sub">
           <q-form @submit="onSubmit" class="q-gutter-md">
@@ -31,6 +30,7 @@
             />
             <q-toggle
               v-model="revealPwd"
+              class="thinFont"
               label="Reveal password"
               color="pink"
               keep-color
@@ -46,7 +46,7 @@
               text-color="pink 4"
               label="Log In"
               type="submit"
-              class="btn"
+              class="thickFont btn"
               :loading="btnLoading"
             >
               <template v-slot:loading>
@@ -57,14 +57,15 @@
         </q-card-section>
         <q-separator dark inset />
         <q-card-section class="container sub">
-          <span style="margin: auto">
+          <span style="margin: auto" class="thinFont">
             Have no account?
             <q-btn
               push
               flat
               text-color="pink 4"
+              class="thickFont"
               label="Sign Up"
-              style="text-shadow: 0 0 7px white"
+              style="text-shadow: 0 0 7px white; font-size:1.1rem"
               @click="redirectToSignUp"
             />
           </span>
@@ -158,7 +159,7 @@ export default defineComponent({
 
 <style scoped>
 .my-card {
-  min-width: 0.7rem;
+  min-width: 20rem;
   max-width: 25rem;
   min-height: 0.5rem;
   width: 60vw;
@@ -171,7 +172,6 @@ export default defineComponent({
   justify-content: center;
 }
 .btn {
-  font-family: fredoka one;
   margin-top: 1.5rem;
   height: 2rem;
   font-size: 1.15rem;

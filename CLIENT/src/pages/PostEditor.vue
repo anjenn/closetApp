@@ -3,13 +3,12 @@
     <q-card
       dark
       bordered
-      class="bg-white editor-card shadow-10"
-      style="font-family: 'fredoka one'"
+      class="mainFont bg-white editor-card shadow-10"
     >
       <q-dialog v-model="dialog" persistent>
         <q-card class="question-modal">
           <q-card-section class="row items-center">
-            <span style="font-family: 'fredoka one'">Are you sure you want to delete the post?</span>
+            <span class="mainFont">Are you sure you want to delete the post?</span>
           </q-card-section>
           <q-card-actions align="right">
             <q-btn flat label="Cancel" color="pink-4" v-close-popup />
