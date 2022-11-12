@@ -46,7 +46,7 @@
                 <div
                   class="absolute-full flex flex-center bg-pink-4 text-white text-h5"
                 >
-                  Cannot load image
+                  Cannot load image :(
                 </div>
               </template>
             </q-img>

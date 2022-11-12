@@ -48,7 +48,7 @@
                 >
                   <template v-slot:error>
                     <div class="absolute-full flex flex-center bg-pink-4 text-white text-h7">
-                      Cannot load image
+                      Cannot load image :(
                     </div>
                   </template>
                 </q-img>
@@ -81,7 +81,7 @@
                 >
                   <template v-slot:error>
                     <div class="absolute-full flex flex-center bg-pink-4 text-white text-h7">
-                      Cannot load image
+                      Cannot load image :(
                     </div>
                   </template>
                 </q-img>

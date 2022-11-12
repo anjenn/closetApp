@@ -45,11 +45,6 @@ https://drive.google.com/file/d/1Ad45y3TeSRsuuOEn7YK5z-0D1sYK2dLP/view?usp=shari
         "id": "6357ff4ef3570dc984b5ec24"
     }
 
-# To-do list:
-// Fixing *My Page*
-- Add dialog for account deletion & log out & magnify
-
-// other ideas
+# Future ideas:
+- doing something with timestamps
 - Change font (ex. make small text not bold nor capitalised in *Log In* page)
-- do sth with timestamps?
-- In the end, check if all redirection works correctly, and delete or make navigation bar prettier

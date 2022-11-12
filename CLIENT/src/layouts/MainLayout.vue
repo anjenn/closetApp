@@ -50,8 +50,13 @@
       v-model="leftDrawerOpen"
       side="left"
       bordered
+      :width="200"
+      :breakpoint="700"
+      class="bg-pink-3 text-white q-py-sm"
     >
-      <q-list>
+      <span style="font-size:1.2rem; text-align: center;">
+        ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡</span>
+      <q-list separator>
         <navigation
           v-for="link in essentialLinks"
           :key="link.title"
@@ -71,37 +76,36 @@ import { defineComponent, ref } from "vue";
 import navigation from "components/Navigation.vue";
 import Tags from "src/utils/Tags";
 import UserTemp from "src/utils/UserTemp";
-import userDataMethods from "app/api/userDataMethods";
 
 const linksList = [
   {
-    title: "FeedView",
-    caption: ".",
+    title: "Feed",
+    icon: "home",
     link: "/FeedView",
   },
   {
-    title: "LogIn",
-    caption: ".",
+    title: "Log In",
+    icon: "key",
     link: "/LogIn",
   },
   {
-    title: "MyPage",
-    caption: ".",
+    title: "My Page",
+    icon: "face_3",
     link: "/MyPage",
   },
   {
-    title: "PostEditor",
-    caption: ".",
+    title: "New Post",
+    icon: "add_circle",
     link: "/PostEditor",
   },
   {
-    title: "SignUp",
-    caption: ".",
+    title: "Sign Up",
+    icon: "account_circle",
     link: "/SignUp",
   },
   {
-    title: "Main",
-    caption: ".",
+    title: "Initial Pg",
+    icon: "sell",
     link: "/",
     // href = link
   },
