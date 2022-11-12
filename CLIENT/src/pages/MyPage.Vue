@@ -20,54 +20,52 @@
             align="justify"
             narrow-indicator
         >
-            <q-tab name="myPosts" label="My Posts" />
+            <q-tab name="userPosts" label="My Posts" />
             <q-tab name="savedPosts" label="Saved" />
         </q-tabs>
         <q-separator />
         <q-tab-panels v-model="tab" animated>
-            <q-tab-panel name="myPosts">
-            <div class="row posts wrap justify-around">
-              <Suspense>
-                <template #default>
-                  <postsContainerMp v-if="renderComp" />
-                </template>
-                <template #fallback>
-                  <span>Loading...</span>
-                </template>
-              </Suspense>
-            </div>
-            <div class="q-pa-lg flex flex-center">
-              <q-pagination
-                v-model="pagination.myPosts"
-                max="5"
-                direction-links
-                flat
-                color="grey"
-                active-color="pink-4"
-              />
-            </div>
-            </q-tab-panel>
-            <q-tab-panel name="savedPosts">
-            <div class="q-pa-lg flex flex-center">
+            <q-tab-panel name="userPosts" class="panel flex flex-center">
               <div class="row posts wrap justify-around">
                 <Suspense>
                   <template #default>
-                    <postsContainerMp v-if="renderComp" />
+                    <postsContainerMp v-if="renderComp.user" post-type="users" :pg-num="pagination.userPosts" />
                   </template>
                   <template #fallback>
                     <span>Loading...</span>
                   </template>
                 </Suspense>
               </div>
-            </div>
-            <q-pagination
-              v-model="pagination.likedPosts"
-              max="5"
-              direction-links
-              flat
-              color="grey"
-              active-color="pink-4"
-            />
+              <q-pagination
+                  v-model="pagination.userPosts"
+                  :max="maxPg.userPosts"
+                  direction-links
+                  flat
+                  color="grey"
+                  active-color="pink-4"
+                  @update:model-value="renderUser"
+              />
+            </q-tab-panel>
+            <q-tab-panel name="savedPosts" class="panel flex flex-center">
+              <div class="row posts wrap justify-around">
+                <Suspense>
+                  <template #default>
+                    <postsContainerMp v-if="renderComp.saved" post-type="saved" :pg-num="pagination.savedPosts" />
+                  </template>
+                  <template #fallback>
+                    <span>Loading...</span>
+                  </template>
+                </Suspense>
+              </div>
+              <q-pagination
+                  v-model="pagination.savedPosts"
+                  :max="maxPg.savedPosts"
+                  direction-links
+                  flat
+                  color="grey"
+                  active-color="pink-4"
+                  @update:model-value="renderSaved"
+              />
             </q-tab-panel>
         </q-tab-panels>
         </q-card>
@@ -76,9 +74,9 @@
             color="white"
             outline 
             text-color="pink 4"
-            label="Deactivate"
+            label="Delete Acc"
             class="btn"
-            @click="deactivate"
+            @click="deleteAcc"
           />
           <q-btn
             color="white"
@@ -93,10 +91,10 @@
   </template>
   
   <script>
-  import { Notify } from 'quasar'
-  import { defineComponent } from "vue";
-  import { ref } from "vue";
+  import { Notify, useQuasar } from 'quasar'
+  import { defineComponent, ref, nextTick } from "vue";
   import userDataMethods from "app/api/userDataMethods";
+  import postDataMethods from 'app/api/postDataMethods';
   import postsContainerMp from 'src/components/PostsContainerMp.vue';
 
   import Tags from "src/utils/Tags";
@@ -109,7 +107,7 @@
     name: "MyPage",
     setup(){
       return{
-        tab: ref("myPosts"),
+        tab: ref("userPosts")
       }
     },
     created () {
@@ -127,21 +125,43 @@
         .catch(e => {
           console.log(e);
         });
+      // pagination setup
+      postDataMethods.getAllPostsMp(this.currUser.id)
+        .then(response => {
+          const tempPosts= response.data;
+          const tempUserPosts = tempPosts.filter(post => post.userID == this.currUser.id);
+          const tempSavedPosts = tempPosts.filter(post => this.currUser.savedPosts.includes(post.id));
+          const userPostsNum = tempUserPosts.length;
+          const savedPostsNum = tempSavedPosts.length;
+          this.maxPg.userPosts = Math.ceil(userPostsNum/12);
+          this.maxPg.savedPosts = Math.ceil(savedPostsNum/12);
+          //console.log(userPostsNum, savedPostsNum, this.maxPg.userPosts, this.maxPg.savedPosts);
+        })
+        .catch(e => {
+          console.log(e);
+        });
     },
     data() {
       return {
         currUser: {},
-        pagination:{
-          myPosts: ref(1),
-          likedPosts: ref(1)
-        },
         profileImages:{
           image1: butter1,
           image2: butter2,
           image3: butter3,
         },      
         userNameDisp: ref(null),
-        renderComp: ref(true)
+        renderComp: {
+          user: ref(true),
+          saved: ref(true)
+        },
+        pagination:{
+          userPosts: ref(1),
+          savedPosts: ref(1)
+        },
+        maxPg: {
+          userPosts: ref(null),
+          savedPosts: ref(null)
+        }
       };
     },
     components: {
@@ -153,7 +173,7 @@
         UserTemp.deleteUserData("currUser");
         this.$router.push("/FeedView");
       },
-      deactivate(){
+      deleteAcc(){
         this.logOut();
         userDataMethods.deleteUserInfo(this.user.id)
         .then(response => {
@@ -174,7 +194,19 @@
           .catch(e => {
             console.log(e);
           });
-      }
+      },
+      async renderSaved(val){
+        //console.log(`check if model value ${val}`); // this returns current pgNum
+        this.renderComp.saved = false;
+        await nextTick();
+        this.renderComp.saved = true;
+      },
+      async renderUser(val){
+        //console.log(`check if model value ${val}`); // this returns current pgNum
+        this.renderComp.user = false;
+        await nextTick();
+        this.renderComp.user = true;
+      },
     }
   });
   </script>
@@ -197,8 +229,11 @@
     align-items: center;
   }
   .btn {
-    width: 9rem;
+    width: 11rem;
     font-family: fredoka one;
+  }
+  .panel{
+    flex-direction: column;
   }
   </style>
   

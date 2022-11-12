@@ -48,8 +48,7 @@ https://drive.google.com/file/d/1Ad45y3TeSRsuuOEn7YK5z-0D1sYK2dLP/view?usp=shari
 # To-do list:
 // Fixing *My Page*
 - Add dialog for account deletion & log out
-- link pagination & posts
-- make it possible to load max 16 posts per page, and 
+- link pagination & posts (make it possible to load max 16 posts per page)
 - create a pop up when user clicks a post? -> that shows the collage in a bigger scale 
 - make buttons apppear when user hovers over a post
 
@@ -57,4 +56,4 @@ https://drive.google.com/file/d/1Ad45y3TeSRsuuOEn7YK5z-0D1sYK2dLP/view?usp=shari
 // other ideas
 - Change font (ex. make small text not bold nor capitalised in *Log In* page)
 - do sth with timestamps?
-- In the end, check if all redirection works correctly, and delete navigation bar
+- In the end, check if all redirection works correctly, and delete or make navigation bar prettier

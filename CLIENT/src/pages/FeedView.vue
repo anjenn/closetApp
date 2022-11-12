@@ -35,8 +35,7 @@
 </template>
 
 <script>
-import { nextTick, ref } from "vue";
-import { defineComponent } from "vue";
+import { nextTick, ref, defineComponent } from "vue";
 import postsContainer from "/src/components/PostsContainer";
 import PostTemp from "src/utils/PostTemp";
 

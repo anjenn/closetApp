@@ -30,26 +30,12 @@ import UserTemp from "src/utils/UserTemp";
 
 export default defineComponent({
     name: "PostsContainer",
-    props: ['postType'],
+    props: ['postType', 'pgNum'],
     components: {
         postViewMp,
     },
-    async setup () {
+    async setup (props) {
         const currUser = UserTemp.loadUserData("currUser");
-        function retrieveSavedIDs(){
-            const temp = currUser.savedPosts;
-            var result = null;
-            if (!temp){
-                result = Tags.fetchTagsArray();
-                return result.join(',');
-            }
-            else{
-                result = temp;
-                return result.join(',');
-            }
-        };
-        const tempIDArr = retrieveSavedIDs(currUser.savedPosts);
-        console.log(`tempIDArr:${tempIDArr}`);
         const url = (
             "http://localhost:3000/api/MyPage/" + currUser.id
         );
@@ -59,12 +45,16 @@ export default defineComponent({
         .catch(error => {
             console.log(error)
         })
-        const userPosts = allPosts.filter(post => post.userID == currUser.id);
-        const savedPosts = allPosts.filter(post => tempIDArr.includes(post.id));
-        //this.$emit('event', […args])
+        var userPosts = allPosts.filter(post => post.userID == currUser.id);
+        var savedPosts = allPosts.filter(post => currUser.savedPosts.includes(post.id));
+
         function postsTrimmer (pgNum, posts) {
-            return newPosts = posts.slice(0+(pgNum*16), 16+(pgNum*16));
+            console.log(`pgNum: ${pgNum}, calc: ${0+((pgNum-1)*12)}`);
+            return posts.slice(0+((pgNum-1)*12), 12+((pgNum-1)*12));
         };
+        // doesn't need to specify which pgNum it belongs to because it will only render one gallery with matching post type
+        userPosts = postsTrimmer(props.pgNum, userPosts);
+        savedPosts = postsTrimmer(props.pgNum, savedPosts);
         return {
             userPosts,
             savedPosts
