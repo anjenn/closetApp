@@ -15,7 +15,12 @@
               v-ripple
               v-for="item in post.photos"
               v-bind:key="item.order"
-              ><q-item-section>{{ item.url }}</q-item-section>
+            >
+              <q-item-section >
+                <span style="overflow-wrap: break-word; inline-size: 18rem;">
+                  {{ item.url }}
+                </span>
+              </q-item-section>
             </q-item>
           </q-list>
         </q-card-section>
