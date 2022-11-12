@@ -2,7 +2,7 @@
 <template>
   <div class="container" wrap>
     <q-card class="post-card" flat>
-      <q-card-section>
+      <q-card-section class="collage-btn-cont">
         <div class="collage row" style="border: 0.1rem solid 	#E0E0E0;">
           <div
               v-for="item in post.photos"
@@ -28,13 +28,14 @@
               </div>
           </div>
         </div>
-        <div class="buttons">
+        <div class="buttons-hide" style="backdrop-filter: blur(1px);">
           <q-btn
             v-model="this.heartBorder"
             flat
             unelevated
             dense
-            color="grey-6"
+            color="white"
+            style="text-shadow: 0 0 5px #b5123f;"
             :ripple="false"
             :icon="this.heartBorder ? 'favorite_border' : 'favorite'"
             @click="onHeartClick"
@@ -43,7 +44,8 @@
             flat
             unelevated
             dense
-            color="grey-6"
+            color="white"
+            style="text-shadow: 0 0 5px #b5123f	;"
             :ripple="false"
             icon="edit"
             @click="redirectToEdit(post.id)"
@@ -52,7 +54,8 @@
             flat
             unelevated
             dense
-            color="grey-6"
+            color="white"
+            style="text-shadow: 0 0 5px #b5123f	;"
             :ripple="false"
             icon="share"
             @click="dialog = true"
@@ -61,7 +64,8 @@
             flat
             unelevated
             dense
-            color="grey-6"
+            color="white"
+            style="text-shadow: 0 0 5px #b5123f	;"
             :ripple="false"
             icon="loupe"
             @click="dialog = true"
@@ -78,9 +82,8 @@ import placeholder from "/public/placeholder.svg";
 import { ref } from "vue";
 
 export default defineComponent({
-  props: ['data'],
+  props: ['data', 'postType'],
   created: function() {
-
   },
   name: "PostView",
   data() {
@@ -88,10 +91,13 @@ export default defineComponent({
       currUser: ref(null),
       heartBorder: true,
       image: placeholder,
-      post: this.data
+      post: this.data,
     };
   },
   methods: {
+    onHeartClick(){
+      this.$emit("on-heart-click", this.postType);
+    }
   },
 });
 </script>
@@ -105,10 +111,16 @@ export default defineComponent({
   flex-direction: column;
   justify-content: space-between; /* align items in Main Axis */
 }
-.buttons{
-  display:none
+.collage-btn-cont .buttons-hide{
+  visibility: hidden;
+  position:absolute;
+  bottom:7%;
+  left:7%;
 }
-.collage:hover .buttons{
-  display:block
+.collage-btn-cont:hover .buttons-hide {
+  visibility: visible;
+}
+.collage-btn-cont{
+  position:relative;
 }
 </style>

@@ -1,11 +1,13 @@
 <template>
-    <div v-if="postType == 'users'">
+    <div v-if="postType == 'user'">
         <div class="q-pa-sm flex flex-center">
             <div class ="row justify-evenly collage-container">
                 <postViewMp
                     v-for="post in userPosts"
                     :key="post.id"
                     :data="post"
+                    :post-type="postType"
+                    @on-heart-click="onHeartClick"
                 />
             </div>
         </div>
@@ -17,6 +19,8 @@
                     v-for="post in savedPosts"
                     :key="post.id"
                     :data="post"
+                    :post-type="postType"
+                    @on-heart-click="onHeartClick"
                 />
             </div>
         </div>
@@ -49,10 +53,10 @@ export default defineComponent({
         var savedPosts = allPosts.filter(post => currUser.savedPosts.includes(post.id));
 
         function postsTrimmer (pgNum, posts) {
-            console.log(`pgNum: ${pgNum}, calc: ${0+((pgNum-1)*12)}`);
+            // console.log(`pgNum: ${pgNum}, calc: ${0+((pgNum-1)*12)}`);
             return posts.slice(0+((pgNum-1)*12), 12+((pgNum-1)*12));
         };
-        // doesn't need to specify which pgNum it belongs to because it will only render one gallery with matching post type
+        // no need to specify which pgNum it belongs to because it will only render one gallery with matching post type
         userPosts = postsTrimmer(props.pgNum, userPosts);
         savedPosts = postsTrimmer(props.pgNum, savedPosts);
         return {
@@ -64,11 +68,15 @@ export default defineComponent({
         return {
             pagination:{
                 myPosts: ref(1),
-                likedPosts: ref(1)
+                likedPosts: ref(1),
+                shouldRefresh: 0
             },
         }
     },
     methods: {
+        onHeartClick(value){
+            this.$emit("on-heart-click", value);
+        }
     }
 });
 </script>
