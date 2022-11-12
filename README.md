@@ -48,8 +48,6 @@ https://drive.google.com/file/d/1Ad45y3TeSRsuuOEn7YK5z-0D1sYK2dLP/view?usp=shari
 # To-do list:
 // Fixing *My Page*
 - Add dialog for account deletion & log out & magnify
-- modify place holder in post editor
-
 
 // other ideas
 - Change font (ex. make small text not bold nor capitalised in *Log In* page)

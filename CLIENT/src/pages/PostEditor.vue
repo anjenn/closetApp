@@ -13,7 +13,7 @@
           </q-card-section>
           <q-card-actions align="right">
             <q-btn flat label="Cancel" color="pink-4" v-close-popup />
-            <q-btn flat label="Delete" color="pink-4" v-close-popup @click="onDelete" />
+            <q-btn flat label="confirm" color="pink-4" v-close-popup @click="onDelete" />
           </q-card-actions>
         </q-card>
       </q-dialog>
@@ -44,16 +44,15 @@
                 >
                   <q-img
                     :src="images[i-1]"
-                    :style="`filter: brightness(${1+(postData.photos[i-1].imageEdits.brightness)/10}) contrast(${1+(postData.photos[i-1].imageEdits.contrast)/10});`"
+                    :style="`filter: brightness(${1+(postData.photos[i-1].imageEdits.brightness)/10}) contrast(${1+(postData.photos[i-1].imageEdits.contrast)/10});
+                    object-fit: cover; width:100%; height:100%`"
                     placeholder-src="images[1]"
                   >
                     <template v-slot:loading>
                       <q-spinner-hearts color="white" size="3em" />
                     </template>
                     <template v-slot:error>
-                      <div class="absolute-full flex flex-center bg-pink-4 text-white text-h5">
-                        Cannot load image
-                      </div>
+                      <q-img :src="imageError"/>
                     </template>
                   </q-img>
                 </div>
@@ -194,6 +193,7 @@ import { defineComponent } from "vue";
 import { ref } from "vue";
 import Tags from "../utils/Tags";
 import placeholder from "/public/placeholder.svg";
+import imageError from "/public/imageError.svg";
 import UserTemp from 'src/utils/UserTemp';
 import PostTemp from 'src/utils/PostTemp';
 
@@ -222,6 +222,7 @@ export default defineComponent({
       dialog: ref(false),
       paramID: ref(false),
       images: [placeholder, placeholder, placeholder, placeholder],
+      imageError: imageError,
       options: [ ...Tags.fetchTagsArray() ],
       numbers: ['first', 'second', 'third', 'fourth'],
       tab: ref(1),
@@ -333,7 +334,8 @@ export default defineComponent({
       }
     },
     onDelete(){
-      postDataMethods.deletePost(this.postData.id)
+      if(this.postData.id){
+              postDataMethods.deletePost(this.postData.id)
       .then(response => {
           console.log(response.data);
           this.showDeleteNotif();
@@ -341,6 +343,10 @@ export default defineComponent({
         .catch(e => {
           console.log(e);
         });
+      }
+      else{
+        this.showDeleteNotif();
+      }
     },
     showSaveNotif(id){
       // case: new post
