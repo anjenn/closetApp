@@ -38,6 +38,8 @@
 import { nextTick, ref, defineComponent } from "vue";
 import postsContainer from "/src/components/PostsContainer";
 import PostTemp from "src/utils/PostTemp";
+import UserTemp from "src/utils/UserTemp";
+import { Notify } from "quasar";
 
 export default defineComponent({
   name: "FeedView",
@@ -48,12 +50,37 @@ export default defineComponent({
     return {
       tags: ref(null),
       renderComp: ref(true),
+      currUser: ref(null)
     };
   },
   methods: {
     redirectToPostEditor() {
-      PostTemp.deletePostData("currPost");
-      this.$router.push("/PostEditor");
+      this.currUser = UserTemp.loadUserData("currUser");
+      if(!this.currUser.id){
+        Notify.create({
+          message: `You must log in first to create a post`,
+          color: "pink-5",
+          icon: "info",
+          textColor: "white",
+          timeout: 2000,
+          progress: true,
+          position: "bottom-right",
+          actions: [
+            {
+              label: "Dismiss",
+              color: "white",
+              handler: () => {
+                /* ... */
+              },
+            },
+          ],
+        });
+        this.$router.push("/LogIn");
+      }
+      else {
+        PostTemp.deletePostData("currPost");
+        this.$router.push("/PostEditor");
+      }
     },
     async refreshPosts() {
       this.renderComp = false;

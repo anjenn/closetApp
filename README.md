@@ -47,4 +47,3 @@ https://drive.google.com/file/d/1Ad45y3TeSRsuuOEn7YK5z-0D1sYK2dLP/view?usp=shari
 
 # Future ideas:
 - doing something with timestamps
-- Change font (ex. make small text not bold nor capitalised in *Log In* page)
