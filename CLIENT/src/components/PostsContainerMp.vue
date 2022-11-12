@@ -7,7 +7,7 @@
                     :key="post.id"
                     :data="post"
                     :post-type="postType"
-                    @on-heart-click="onHeartClick"
+                    @on-x-click="onXClick"
                 />
             </div>
         </div>
@@ -20,7 +20,7 @@
                     :key="post.id"
                     :data="post"
                     :post-type="postType"
-                    @on-heart-click="onHeartClick"
+                    @on-x-click="onXClick"
                 />
             </div>
         </div>
@@ -74,8 +74,8 @@ export default defineComponent({
         }
     },
     methods: {
-        onHeartClick(value){
-            this.$emit("on-heart-click", value);
+        onXClick(value){
+            this.$emit("on-x-click", value);
         }
     }
 });

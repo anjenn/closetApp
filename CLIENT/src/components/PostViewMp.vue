@@ -30,17 +30,6 @@
         </div>
         <div class="buttons-hide" style="backdrop-filter: blur(1px);">
           <q-btn
-            v-model="this.heartBorder"
-            flat
-            unelevated
-            dense
-            color="white"
-            style="text-shadow: 0 0 5px #b5123f;"
-            :ripple="false"
-            :icon="this.heartBorder ? 'favorite_border' : 'favorite'"
-            @click="onHeartClick"
-          />
-          <q-btn
             flat
             unelevated
             dense
@@ -70,6 +59,18 @@
             icon="loupe"
             @click="dialog = true"
           />
+          <q-btn
+            v-if="postType=='saved'"
+            v-model="this.heartBorder"
+            flat
+            unelevated
+            dense
+            color="white"
+            style="text-shadow: 0 0 5px #b5123f;"
+            :ripple="false"
+            icon="close"
+            @click="onXClick"
+          />
         </div>
       </q-card-section>
     </q-card>
@@ -80,6 +81,8 @@
 import { defineComponent } from "vue";
 import placeholder from "/public/placeholder.svg";
 import { ref } from "vue";
+import UserTemp from "src/utils/UserTemp";
+import userDataMethods from "app/api/userDataMethods";
 
 export default defineComponent({
   props: ['data', 'postType'],
@@ -95,8 +98,18 @@ export default defineComponent({
     };
   },
   methods: {
-    onHeartClick(){
-      this.$emit("on-heart-click", this.postType);
+    onXClick(){
+      this.currUser = UserTemp.loadUserData("currUser");
+      this.currUser.savedPosts = this.currUser.savedPosts.filter(item => item !== this.post.id)
+      userDataMethods.updateUserInfo(this.currUser.id, this.currUser)
+        .then(response => {
+          console.log(response.data);
+          UserTemp.saveUserData(this.currUser, "currUser");
+          this.$emit("on-x-click", true);
+        })
+        .catch(e => {
+          console.log(e);
+        });
     }
   },
 });
