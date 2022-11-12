@@ -2,7 +2,7 @@
 <template>
   <div class="container q-px-md q-py-lg" wrap>
     <q-dialog v-model="dialog" persistent>
-      <q-card class="sharing-modal">
+      <q-card class="sharing-modal q-pa-sm">
         <q-card-section
           class="flex flex-center"
           style="flex-direction: column"

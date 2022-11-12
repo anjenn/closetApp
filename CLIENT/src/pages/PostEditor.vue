@@ -6,7 +6,7 @@
       class="mainFont bg-white editor-card shadow-10"
     >
       <q-dialog v-model="dialog" persistent>
-        <q-card class="question-modal">
+        <q-card class="question-modal q-pa-sm">
           <q-card-section class="row items-center">
             <span class="mainFont">Are you sure you want to delete the post?</span>
           </q-card-section>

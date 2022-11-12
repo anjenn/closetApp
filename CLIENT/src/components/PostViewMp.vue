@@ -1,7 +1,7 @@
 <template>
   <div class="container" wrap>
     <q-dialog v-model="dialogs.share" persistent>
-      <q-card class="sharing-modal">
+      <q-card class="sharing-modal q-pa-sm">
         <q-card-section
           class="flex flex-center"
           style="flex-direction: column"
@@ -29,7 +29,7 @@
       </q-card>
     </q-dialog>
     <q-dialog v-model="dialogs.magnify" persistent>
-      <q-card class="magnifying-modal">
+      <q-card class="magnifying-modal q-pa-sm">
         <q-card-section
           class="flex flex-center"
           style="flex-direction: column"
