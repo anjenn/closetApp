@@ -1,6 +1,66 @@
-/// q-col full width: 12, write q-col-xs if spacing needed 
 <template>
   <div class="container" wrap>
+    <q-dialog v-model="dialogs.share" persistent>
+      <q-card class="sharing-modal">
+        <q-card-section
+          class="flex flex-center"
+          style="flex-direction: column"
+        >
+          <span style="font-family: 'fredoka one'; margin-bottom: 1rem">
+            Here are the links!</span>
+          <q-list class="rounded-borders" dense bordered padding>
+            <q-item
+              clickable
+              v-ripple
+              v-for="item in post.photos"
+              v-bind:key="item.order"
+              ><q-item-section>{{ item.url }}</q-item-section>
+            </q-item>
+          </q-list>
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn flat label="Close" color="pink-4" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+    <q-dialog v-model="dialogs.magnify" persistent>
+      <q-card class="magnifying-modal">
+        <q-card-section
+          class="flex flex-center"
+          style="flex-direction: column"
+        >
+        <div class="collage row" style="border: 0.1rem solid 	#E0E0E0;">
+          <div
+              v-for="item in post.photos"
+              v-bind:key="item.order"
+              class="col-6"
+          >
+              <div :style="`overflow:hidden;
+              filter: saturate(${1+(item.imageEdits.saturation)/10})`" class="flex flex-center">
+                <q-img
+                  :src="item.url"
+                  :ratio="1"
+                  spinner-color="white"
+                  spinner-size="0.3rem"
+                  placeholder-src="image"
+                  :style="`filter: brightness(${1+(item.imageEdits.brightness)/10}) contrast(${1+(item.imageEdits.contrast)/10});
+                  width:13rem; height:13rem;`"
+                >
+                  <template v-slot:error>
+                    <div class="absolute-full flex flex-center bg-pink-4 text-white text-h7">
+                      Cannot load image
+                    </div>
+                  </template>
+                </q-img>
+              </div>
+          </div>
+        </div>
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn flat label="Close" color="pink-4" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
     <q-card class="post-card" flat>
       <q-card-section class="collage-btn-cont">
         <div class="collage row" style="border: 0.1rem solid 	#E0E0E0;">
@@ -30,6 +90,7 @@
         </div>
         <div class="buttons-hide" style="backdrop-filter: blur(1px);">
           <q-btn
+            v-if="postType=='user'"
             flat
             unelevated
             dense
@@ -47,7 +108,7 @@
             style="text-shadow: 0 0 5px #b5123f	;"
             :ripple="false"
             icon="share"
-            @click="dialog = true"
+            @click="dialogs.share = true"
           />
           <q-btn
             flat
@@ -57,7 +118,7 @@
             style="text-shadow: 0 0 5px #b5123f	;"
             :ripple="false"
             icon="loupe"
-            @click="dialog = true"
+            @click="dialogs.magnify = true"
           />
           <q-btn
             v-if="postType=='saved'"
@@ -83,6 +144,7 @@ import placeholder from "/public/placeholder.svg";
 import { ref } from "vue";
 import UserTemp from "src/utils/UserTemp";
 import userDataMethods from "app/api/userDataMethods";
+import PostTemp from "src/utils/PostTemp";
 
 export default defineComponent({
   props: ['data', 'postType'],
@@ -95,6 +157,10 @@ export default defineComponent({
       heartBorder: true,
       image: placeholder,
       post: this.data,
+      dialogs: {
+        share: ref(false),
+        magnify: ref(false)
+      }
     };
   },
   methods: {
@@ -110,7 +176,11 @@ export default defineComponent({
         .catch(e => {
           console.log(e);
         });
-    }
+    },
+    redirectToEdit(ID) {
+      PostTemp.savePostData(this.post, "currPost");
+      this.$router.push({ name: "Post Editor w ID", params: { postID: ID } });
+    },
   },
 });
 </script>
@@ -135,5 +205,11 @@ export default defineComponent({
 }
 .collage-btn-cont{
   position:relative;
+}
+.sharing-modal {
+  width: 25rem;
+}
+.magnifying-modal{
+  width: 28rem;
 }
 </style>

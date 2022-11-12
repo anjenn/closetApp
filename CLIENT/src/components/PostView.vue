@@ -1,31 +1,30 @@
 // q-col full width: 12, write q-col-xs if spacing needed
 <template>
   <div class="container q-px-md q-py-lg" wrap>
+    <q-dialog v-model="dialog" persistent>
+      <q-card class="sharing-modal">
+        <q-card-section
+          class="flex flex-center"
+          style="flex-direction: column"
+        >
+          <span style="font-family: 'fredoka one'; margin-bottom: 1rem">
+            Here are the links!</span>
+          <q-list class="rounded-borders" dense bordered padding>
+            <q-item
+              clickable
+              v-ripple
+              v-for="item in post.photos"
+              v-bind:key="item.order"
+              ><q-item-section>{{ item.url }}</q-item-section>
+            </q-item>
+          </q-list>
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn flat label="Close" color="pink-4" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
     <q-card class="post-card q-pa-lg">
-      <q-dialog v-model="dialog" persistent>
-        <q-card class="sharing-modal">
-          <q-card-section
-            class="flex flex-center"
-            style="flex-direction: column"
-          >
-            <span style="font-family: 'fredoka one'; margin-bottom: 1rem"
-              >Here are the links!</span
-            >
-            <q-list class="rounded-borders" dense bordered padding>
-              <q-item
-                clickable
-                v-ripple
-                v-for="item in post.photos"
-                v-bind:key="item.order"
-                ><q-item-section>{{ item.url }}</q-item-section>
-              </q-item>
-            </q-list>
-          </q-card-section>
-          <q-card-actions align="right">
-            <q-btn flat label="Close" color="pink-4" v-close-popup />
-          </q-card-actions>
-        </q-card>
-      </q-dialog>
       <div class="collage row">
         <div v-for="item in post.photos" v-bind:key="item.order" class="col-6">
           <div
