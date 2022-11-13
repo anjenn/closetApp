@@ -7,7 +7,7 @@
 - My Page: Only logged in users can access this page. Here, user can log out of the session, or permanantly delete their account. Also, all post that are created and saved can also be seen here.
 
 # Preview:
-https://drive.google.com/file/d/1Ad45y3TeSRsuuOEn7YK5z-0D1sYK2dLP/view?usp=sharing
+https://drive.google.com/file/d/1r714UjyahR4l56ZkNoSrztEOTz85jgd_/view?usp=share_link
 
 # Database:
 - user: (ID), firstName, lastName, password, userName, savedPosts[{postIDs}]
