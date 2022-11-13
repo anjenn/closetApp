@@ -92,7 +92,7 @@ export default defineComponent({
     },
     saveSelection() {
       if (this.returnSelection == null) {
-        alert("Select something");
+        //alert("Select something");
       } else {
         Tags.saveTags(this.returnSelection, "currTags");
         this.redirectTo();
