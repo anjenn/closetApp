@@ -1,92 +1,126 @@
 <template>
-    <q-page class="container flex flex-center" padding style="background-color: #fff0f5">
-        <div class="profile-section q-pa-md q-gutter-sm" style="display:flex; flex-direction:column; align-items:center">
-            <q-img
-                elevated
-                :src="profileImages.image3"
-                class="user-profile"
-                style="height: 8rem; width: 8rem; border-radius: 50%"
-            />
-            <span style="font-family: 'fredoka one'">{{this.userNameDisp}}</span>
-        </div>
-        <q-card class="cardView">
-        <q-tabs
-            v-model="tab"
-            dense
-            class="text-grey-7"
-            active-color="bg-pink-4 shadow-10"
-            style="font-family: 'fredoka one'"
-            indicator-color="pink-4"
-            align="justify"
-            narrow-indicator
-        >
-            <q-tab name="userPosts" label="My Posts" />
-            <q-tab name="savedPosts" label="Saved" />
-        </q-tabs>
-        <q-separator />
-        <q-tab-panels v-model="tab" animated>
-            <q-tab-panel name="userPosts" class="panel flex flex-center">
-              <div class="row posts wrap justify-around">
-                <Suspense>
-                  <template #default>
-                    <postsContainerMp v-if="renderComp.user" post-type="users" :pg-num="pagination.userPosts" />
-                  </template>
-                  <template #fallback>
-                    <span>Loading...</span>
-                  </template>
-                </Suspense>
-              </div>
-              <q-pagination
-                  v-model="pagination.userPosts"
-                  :max="maxPg.userPosts"
-                  direction-links
-                  flat
-                  color="grey"
-                  active-color="pink-4"
-                  @update:model-value="renderUser"
+  <q-page class="mainFont container q-pa-xl flex flex-center" padding style="background-color: #fff0f5">
+    <q-dialog v-model="dialogs.deleteAcc" persistent>
+      <q-card class="question-modal q-pa-sm">
+        <q-card-section class="row items-center">
+          <span class="mainFont">Are you sure you want to delete your account?</span>
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn flat label="Cancel" color="pink-4" v-close-popup />
+          <q-btn flat label="Confirm" color="pink-4" v-close-popup @click="deleteAcc" />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+    <q-dialog v-model="dialogs.signOut" persistent>
+      <q-card class="question-modal q-pa-sm">
+        <q-card-section class="row items-center">
+          <span class="mainFont">Are you sure you want to sign out?</span>
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn flat label="Cancel" color="pink-4" v-close-popup />
+          <q-btn flat label="Confirm" color="pink-4" v-close-popup @click="signOut" />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+    <div class="profile-section q-gutter-sm" style="display:flex; flex-direction:column; align-items:center">
+      <q-img
+          elevated
+          :src="profileImages.image3"
+          class="user-profile"
+          style="height: 8rem; width: 8rem; border-radius: 50%"
+      />
+      <span 
+        class="thickFont"
+        style="font-size: 1.3rem; font-weight:700; color: grey; text-shadow: 0 0 10px white;"
+      >{{this.userNameDisp}}</span>
+    </div>
+    <q-card class="cardView">
+    <q-tabs
+        v-model="tab"
+        dense
+        class="mainFont text-grey-7"
+        active-color="bg-pink-4 shadow-10"
+        indicator-color="pink-4"
+        align="justify"
+        narrow-indicator
+    >
+      <q-tab name="userPosts" label="My Posts" />
+      <q-tab name="savedPosts" label="Saved" />
+    </q-tabs>
+    <q-separator />
+    <q-tab-panels v-model="tab" animated>
+      <q-tab-panel name="userPosts" class="panel flex flex-center">
+        <div class="row posts wrap justify-around">
+          <Suspense>
+            <template #default>
+              <postsContainerMp
+                v-if="renderComp.user"
+                post-type="user"
+                :pg-num="pagination.userPosts"
+                @on-x-click="renderUser"
               />
-            </q-tab-panel>
-            <q-tab-panel name="savedPosts" class="panel flex flex-center">
-              <div class="row posts wrap justify-around">
-                <Suspense>
-                  <template #default>
-                    <postsContainerMp v-if="renderComp.saved" post-type="saved" :pg-num="pagination.savedPosts" />
-                  </template>
-                  <template #fallback>
-                    <span>Loading...</span>
-                  </template>
-                </Suspense>
-              </div>
-              <q-pagination
-                  v-model="pagination.savedPosts"
-                  :max="maxPg.savedPosts"
-                  direction-links
-                  flat
-                  color="grey"
-                  active-color="pink-4"
-                  @update:model-value="renderSaved"
-              />
-            </q-tab-panel>
-        </q-tab-panels>
-        </q-card>
-        <div class="buttons flex q-px-md q-gutter-sm" style="gap:1rem;">
-          <q-btn
-            color="white"
-            outline 
-            text-color="pink 4"
-            label="Delete Acc"
-            class="btn"
-            @click="deleteAcc"
-          />
-          <q-btn
-            color="white"
-            outline 
-            text-color="pink 4"
-            label="Sign Out"
-            class="btn"
-            @click="signOut"
-          />
+            </template>
+            <template #fallback>
+              <span>Loading...</span>
+            </template>
+          </Suspense>
         </div>
+        <q-pagination
+            v-model="pagination.userPosts"
+            :max="maxPg.userPosts"
+            direction-links
+            flat
+            color="grey"
+            active-color="pink-4"
+            @update:model-value="renderUser"
+        />
+      </q-tab-panel>
+      <q-tab-panel name="savedPosts" class="panel flex flex-center">
+        <div class="row posts wrap justify-around">
+          <Suspense>
+            <template #default>
+              <postsContainerMp
+                v-if="renderComp.saved"
+                post-type="saved"
+                :pg-num="pagination.savedPosts"
+                @on-x-click="renderSaved"
+              />
+            </template>
+            <template #fallback>
+              <span>Loading...</span>
+            </template>
+          </Suspense>
+        </div>
+        <q-pagination
+          v-model="pagination.savedPosts"
+          :max="maxPg.savedPosts"
+          direction-links
+          flat
+          color="grey"
+          active-color="pink-4"
+          @update:model-value="renderSaved"
+        />
+      </q-tab-panel>
+    </q-tab-panels>
+    </q-card>
+    <div class="buttons flex q-px-md q-gutter-sm" style="gap:1rem;">
+      <q-btn
+        color="white"
+        outline 
+        text-color="pink 4"
+        label="Delete Acc"
+        class="mainFont btn"
+        @click="dialogs.deleteAcc = true"
+      />
+      <q-btn
+        color="white"
+        outline 
+        text-color="pink 4"
+        label="Sign Out"
+        class="mainFont btn"
+        @click="dialogs.signOut = true"
+      />
+    </div>
     </q-page>
   </template>
   
@@ -115,26 +149,24 @@
       // updating user info from the temp cached data on the db
       // getting rid of null data on the db
       this.currUser = UserTemp.loadUserData("currUser");
+      this.currUser.userName? this.userNameDisp = this.currUser.userName : this.$router.push("/LogIn");
       this.currUser.savedPosts = this.currUser.savedPosts.filter(item => item !== "null")
       userDataMethods.updateUserInfo(this.currUser.id, this.currUser)
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           UserTemp.saveUserData(this.currUser, "currUser");
-          this.currUser.userName? this.userNameDisp = this.currUser.userName : this.$router.push("/LogIn");
         })
         .catch(e => {
           console.log(e);
         });
-      // pagination setup
+      // pagination setup & linking between pagination and container
       postDataMethods.getAllPostsMp(this.currUser.id)
         .then(response => {
           const tempPosts= response.data;
           const tempUserPosts = tempPosts.filter(post => post.userID == this.currUser.id);
           const tempSavedPosts = tempPosts.filter(post => this.currUser.savedPosts.includes(post.id));
-          const userPostsNum = tempUserPosts.length;
-          const savedPostsNum = tempSavedPosts.length;
-          this.maxPg.userPosts = Math.ceil(userPostsNum/12);
-          this.maxPg.savedPosts = Math.ceil(savedPostsNum/12);
+          this.maxPg.userPosts = Math.ceil(tempUserPosts.length/12);
+          this.maxPg.savedPosts = Math.ceil(tempSavedPosts.length/12);
           //console.log(userPostsNum, savedPostsNum, this.maxPg.userPosts, this.maxPg.savedPosts);
         })
         .catch(e => {
@@ -159,8 +191,12 @@
           savedPosts: ref(1)
         },
         maxPg: {
-          userPosts: ref(null),
-          savedPosts: ref(null)
+          userPosts: 1,
+          savedPosts: 1
+        },
+        dialogs: {
+          deleteAcc: ref(false),
+          signOut: ref(false)
         }
       };
     },
@@ -195,18 +231,19 @@
             console.log(e);
           });
       },
-      async renderSaved(val){
+      async renderSaved(){
         //console.log(`check if model value ${val}`); // this returns current pgNum
         this.renderComp.saved = false;
         await nextTick();
+        //alert('this works');
         this.renderComp.saved = true;
       },
-      async renderUser(val){
+      async renderUser(){
         //console.log(`check if model value ${val}`); // this returns current pgNum
         this.renderComp.user = false;
         await nextTick();
         this.renderComp.user = true;
-      },
+      }
     }
   });
   </script>
@@ -214,10 +251,9 @@
   <style scoped>
   .container {
     flex-direction: column;
-
   }
   .user-profile {
-    margin-top: 5rem;
+    margin-top: 3rem;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   }
   .cardView {
@@ -230,10 +266,11 @@
   }
   .btn {
     width: 11rem;
-    font-family: fredoka one;
   }
   .panel{
     flex-direction: column;
+    max-width: 65vw;
   }
+ 
   </style>
   
