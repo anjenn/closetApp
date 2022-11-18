@@ -7,9 +7,7 @@
 ### TBA / to-do
 
 - Functional and non-functional requirements
-- Mind map
 - Use case diagram
-- Class diagram
 - Component tree structure diagram
 - Refactoring before inserting code snippets
 -------
@@ -24,13 +22,28 @@
 ----------------------------------------------------------------------
 
 ### Abstract
-TBA
+In present day, the field of web application development is flooded with various tools, and technologies,
+where each one of them has wide range of features with its own strengths and limitations in comparison to other technologies.
+Meanwhile, it is also important to note that selection of such technologies also highly depend on the situation surrounding the project,
+such as its aim, timeframe, and expected outcome. Therefore, one can say that it is essential to examine and compare the available options
+and choose a stack well-tailored for the project, in order for the development to be more efficient.
+
+The purpose of this paper is to investigate a development process of a Single Page Web Application,
+taking into consideration the target users, and essential features that users might expect.
+The app provides a tool for user to compose outfit coordinations, with a possibility to share the coordinations,
+and to view others' creations for inspiration.
+As a result of the work, the implementation of a working web application will be described,
+followed by a review on its performance.
+
+The thesis finally concludes with the reflection on how the outcomes of the preliminary search
+was applied throughout the work, verification of the approach, and thoughts on further works.
+
 
 ##### keywords:
-- list item 2
-- list item 3
-- list item 4
-- list item 5
+- Web application
+- RESTful API
+- MEVN stack
+- Fashion App
 
 
 ------------
@@ -65,7 +78,8 @@ TBA
   - https://www.scnsoft.com/blog/web-application-architecture
 </details>
 <br />
-3. Technical Consideration & Research (Planning stage)<br />
+
+3. Technological Analysis (Planning stage)<br />
     3.1. Web vs Mobile app<br />
     3.2. Programming language<br />
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.1. FrontEnd -> Javascript, html, CSS<br />
@@ -76,7 +90,7 @@ TBA
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.1. FrontEnd -> Vue js<br />
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.2. BackEnd -> Express.js (+ REST API?)<br />
     3.5. Database<br />
-4. Implementation & Results<br />
+4. Implementation of the Solution<br />
     4.1. UI/UX -> Quasar + Customised design for target user group<br />
     4.2. Architecture<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.1. SPAs mechanism within the app<br />
@@ -99,12 +113,12 @@ TBA
 6. Conclusion<br />
     6.1. critical analysis of the results (strengths and limitations)<br />
     6.2. Comparison with other services<br />
-    6.3. possible works<br />
-&nbsp;&nbsp;&nbsp;&nbsp;6.3.1. Adding mobile platform version<br />
-&nbsp;&nbsp;&nbsp;&nbsp;6.3.3. Adding more editing features<br />
+    6.3. Further developments<br />
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.1. Conversion to cross-platform version <br />
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.3. Adding more post editing features<br />
 &nbsp;&nbsp;&nbsp;&nbsp;6.3.3. Using other framework for easier maintenance<br />
 &nbsp;&nbsp;&nbsp;&nbsp;6.3.4. Uploading local image files instead of urls<br />
-&nbsp;&nbsp;&nbsp;&nbsp;6.3.5. Uploading local photos instead of urls<br />
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.5. Delpoyment<br />
 7. References<br />
 8. List of Symbols and Abbreviations<br />
 9. List of Figures<br />
