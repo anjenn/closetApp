@@ -1,10 +1,20 @@
-- to be later transferred to overleaf
-- writing in md in order to track the progress better
-- Content of this draft will follow the official requirement provided by the university
 
+###### - to be later transferred to overleaf
+###### - writing in md in order to track the progress better
+###### - Content of this draft will follow the official requirement provided by the university
+
+
+### TBA / to-do
+
+- Functional and non-functional requirements
+- Mind map
+- Use case diagram
+- Class diagram
+- Component tree structure diagram
+- Refactoring before inserting code snippets
 -------
 
-# Project title
+# Implementation of a CRUD Web application using MEVN stack
 **Name:** JeongHyun An
 
 **Category:** Web application
@@ -14,13 +24,104 @@
 ----------------------------------------------------------------------
 
 ### Abstract
-Cupcake ipsum dolor. Sit amet jelly tart cake dragée jelly beans sweet roll chocolate cake. Sweet roll halvah I love. Unerdwear.com topping tart I love marzipan. Brownie sugar plum I love sesame snaps oat cake. Apple pie lemon drops chocolate danish topping dessert marshmallow dessert. Tart candy canes unerdwear.com ice cream tiramisu dragée applicake. Apple pie brownie sesame snaps oat cake caramels halvah danish pudding jelly beans. Gummies chocolate cake I love croissant cookie.
+TBA
 
-- list item 1
+##### keywords:
 - list item 2
 - list item 3
 - list item 4
 - list item 5
+
+
+------------
+
+### Contents
+
+1. Introduction
+    1.1. Motivation (Personal experience)
+    1.2. Breief background & problem statement (Demands, and target range, related industry)
+    1.3. Technologies used 
+    1.4. Key achievements
+    1.5. System Architecture (with a figure)
+    1.6. Thesis organisation & objectives
+2. Analysis
+    2.1. Application Requirements.
+        &nbsp;&nbsp;&nbsp;2.1.1. Functional Requirements
+        &nbsp;&nbsp;&nbsp;2.1.2. Non-functional Requirements
+    2.2. Smilar Services
+<details>
+  <summary>Notes - chapter 3</summary>
+
+  ### Break Down Chapter 3 into 3 parts
+  - What's expected
+  - Comparison of Different Technologies
+  - My Choice
+  ### References
+  #### Platform
+  - https://www.scnsoft.com/blog/mobile-web-app-types
+  - https://www.scnsoft.com/blog/web-application-vs-website-finally-answered
+  #### Architecture
+  - Single-page web app architecture 
+  - https://www.scnsoft.com/blog/web-application-architecture
+</details>
+
+3. Technical Consideration & Research (Planning stage)
+    3.1. Web vs Mobile app
+    3.2. Programming language
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.1. FrontEnd -> Javascript, html, CSS
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.2. BackEnd -> Node.js
+    3.3. Architecture
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.1. Single-page web app architecture (SPAs)
+    3.4. Frameworks
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.1. FrontEnd -> Vue js
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.2. BackEnd -> Express.js (+ REST API?)
+    3.5. Database
+4. Implementation & Results
+    4.1. UI/UX -> Quasar + Customised design for target user group
+    4.2. Architecture
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. SPAs mechanism within the app 
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.2. Use case diagram
+    4.3. FrontEnd
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. Components structure
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. Pages Navigation (+ Navigation & toolbar)
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Routing
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Data Handling (Local Storage)
+    4.4. BackEnd
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. Database (models & controllers)
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. routing
+5. Performance
+    5.1. Tags Selection
+    5.2. Sign Up
+    5.3. Log In
+    5.4. Post Manipulation
+    5.5. Loading posts
+    5.6. User account actions
+6. Conclusion
+    6.1. critical analysis of the results (strengths and limitations)
+    6.2. Comparison with other services
+    6.3. possible works
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.1. Adding mobile platform version
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.3. Adding more editing features
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.3. Using other framework for easier maintenance
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.4. Uploading local image files instead of urls
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.5. Uploading local photos instead of urls
+7. References
+8. List of Symbols and Abbreviations
+9. List of Figures
+10. List of Tables
+11. List of Appendices
+
+
+
+
+
+
+
+
+.
+.
+.
+.
 
 _I love I love muffin candy canes marshmallow muffin powder. Jelly chupa chups oat cake cotton candy dessert bonbon chocolate biscuit. Powder I love bear claw. Caramels chupa chups pastry powder. Cookie macaroon muffin lemon drops carrot cake sweet roll tiramisu. Donut gummi bears gingerbread donut powder marzipan. Sesame snaps apple pie chocolate cake I love chocolate bar. Tootsie roll croissant halvah I love cheesecake dragée danish applicake. Jelly-o tart fruitcake._
 
@@ -35,9 +136,6 @@ _I love I love muffin candy canes marshmallow muffin powder. Jelly chupa chups o
 3. list item 
 4. list item 
 5. list item 
-
-**Image**
-![Minion](http://octodex.github.com/images/minion.png)
 
 
 ## Write your code or tutorial
