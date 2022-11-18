@@ -37,18 +37,18 @@ TBA
 
 ### Contents
 
-1. Introduction
-    1.1. Motivation (Personal experience)
-    1.2. Breief background & problem statement (Demands, and target range, related industry)
-    1.3. Technologies used 
-    1.4. Key achievements
-    1.5. System Architecture (with a figure)
-    1.6. Thesis organisation & objectives
-2. Analysis
-    2.1. Application Requirements.
-        &nbsp;&nbsp;&nbsp;2.1.1. Functional Requirements
-        &nbsp;&nbsp;&nbsp;2.1.2. Non-functional Requirements
-    2.2. Smilar Services
+1. Introduction<br />
+    1.1. Motivation (Personal experience)<br />
+    1.2. Breief background & problem statement (Demands, and target range, related industry)<br />
+    1.3. Technologies used<br />
+    1.4. Key achievements<br />
+    1.5. System Architecture (with a figure)<br />
+    1.6. Thesis organisation & objectives<br />
+2. Analysis<br />
+    2.1. Application Requirements.<br />
+        &nbsp;&nbsp;&nbsp;2.1.1. Functional Requirements<br />
+        &nbsp;&nbsp;&nbsp;2.1.2. Non-functional Requirements<br />
+    2.2. Smilar Services<br />
 <details>
   <summary>Notes - chapter 3</summary>
 
@@ -64,52 +64,52 @@ TBA
   - Single-page web app architecture 
   - https://www.scnsoft.com/blog/web-application-architecture
 </details>
-
-3. Technical Consideration & Research (Planning stage)
-    3.1. Web vs Mobile app
-    3.2. Programming language
-&nbsp;&nbsp;&nbsp;&nbsp;3.2.1. FrontEnd -> Javascript, html, CSS
-&nbsp;&nbsp;&nbsp;&nbsp;3.2.2. BackEnd -> Node.js
-    3.3. Architecture
-&nbsp;&nbsp;&nbsp;&nbsp;3.3.1. Single-page web app architecture (SPAs)
-    3.4. Frameworks
-&nbsp;&nbsp;&nbsp;&nbsp;3.4.1. FrontEnd -> Vue js
-&nbsp;&nbsp;&nbsp;&nbsp;3.4.2. BackEnd -> Express.js (+ REST API?)
-    3.5. Database
-4. Implementation & Results
-    4.1. UI/UX -> Quasar + Customised design for target user group
-    4.2. Architecture
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. SPAs mechanism within the app 
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.2. Use case diagram
-    4.3. FrontEnd
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. Components structure
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. Pages Navigation (+ Navigation & toolbar)
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Routing
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Data Handling (Local Storage)
-    4.4. BackEnd
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. Database (models & controllers)
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. routing
-5. Performance
-    5.1. Tags Selection
-    5.2. Sign Up
-    5.3. Log In
-    5.4. Post Manipulation
-    5.5. Loading posts
-    5.6. User account actions
-6. Conclusion
-    6.1. critical analysis of the results (strengths and limitations)
-    6.2. Comparison with other services
-    6.3. possible works
-&nbsp;&nbsp;&nbsp;&nbsp;6.3.1. Adding mobile platform version
-&nbsp;&nbsp;&nbsp;&nbsp;6.3.3. Adding more editing features
-&nbsp;&nbsp;&nbsp;&nbsp;6.3.3. Using other framework for easier maintenance
-&nbsp;&nbsp;&nbsp;&nbsp;6.3.4. Uploading local image files instead of urls
-&nbsp;&nbsp;&nbsp;&nbsp;6.3.5. Uploading local photos instead of urls
-7. References
-8. List of Symbols and Abbreviations
-9. List of Figures
-10. List of Tables
-11. List of Appendices
+<br />
+3. Technical Consideration & Research (Planning stage)<br />
+    3.1. Web vs Mobile app<br />
+    3.2. Programming language<br />
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.1. FrontEnd -> Javascript, html, CSS<br />
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.2. BackEnd -> Node.js<br />
+    3.3. Architecture<br />
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.1. Single-page web app architecture (SPAs)<br />
+    3.4. Frameworks<br />
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.1. FrontEnd -> Vue js<br />
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.2. BackEnd -> Express.js (+ REST API?)<br />
+    3.5. Database<br />
+4. Implementation & Results<br />
+    4.1. UI/UX -> Quasar + Customised design for target user group<br />
+    4.2. Architecture<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. SPAs mechanism within the app<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.2. Use case diagram<br />
+    4.3. FrontEnd<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. Components structure<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. Pages Navigation (+ Navigation & toolbar)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Routing<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Data Handling (Local Storage)<br />
+    4.4. BackEnd<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. Database (models & controllers)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. routing<br />
+5. Performance<br />
+    5.1. Tags Selection<br />
+    5.2. Sign Up<br />
+    5.3. Log In<br />
+    5.4. Post Manipulation<br />
+    5.5. Loading posts<br />
+    5.6. User account actions<br />
+6. Conclusion<br />
+    6.1. critical analysis of the results (strengths and limitations)<br />
+    6.2. Comparison with other services<br />
+    6.3. possible works<br />
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.1. Adding mobile platform version<br />
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.3. Adding more editing features<br />
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.3. Using other framework for easier maintenance<br />
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.4. Uploading local image files instead of urls<br />
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.5. Uploading local photos instead of urls<br />
+7. References<br />
+8. List of Symbols and Abbreviations<br />
+9. List of Figures<br />
+10. List of Tables<br />
+11. List of Appendices<br />
 
 
 
