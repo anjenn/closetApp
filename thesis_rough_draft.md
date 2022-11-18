@@ -3,6 +3,17 @@
 ###### - writing in md in order to track the progress better
 ###### - Content of this draft will follow the official requirement provided by the university
 
+
+### TBA / to-do
+
+- Functional and non-functional requirements
+- Mind map
+- Use case diagram
+- Class diagram
+- Component tree structure diagram
+- Refactoring before inserting code snippets
+-------
+
 # Implementation of a CRUD Web application using MEVN stack
 **Name:** JeongHyun An
 
@@ -13,44 +24,31 @@
 ----------------------------------------------------------------------
 
 ### Abstract
-In present day, the field of web application development is flooded with various tools, and technologies,
-where each one of them has wide range of features with its own strengths and limitations in comparison to other technologies.
-Meanwhile, it is also important to note that selection of such technologies also highly depend on the situation surrounding the project,
-such as its aim, timeframe, and expected outcome. Therefore, one can say that it is essential to examine and compare the available options
-and choose a stack well-tailored for the project, in order for the development to be more efficient.
-
-The purpose of this paper is to investigate a development process of a Single Page Web Application,
-taking into consideration the target users, and essential features that users might expect.
-The app provides a tool for user to compose outfit coordinations, with a possibility to share the coordinations,
-and to view others' creations for inspiration.
-As a result of the work, the implementation of a working web application will be described,
-followed by a review on its performance.
-
-The thesis finally concludes with the reflection on how the outcomes of the preliminary search
-was applied throughout the work, verification of the approach, and thoughts on further works.
-
+TBA
 
 ##### keywords:
-- Web application
-- RESTful API
-- MEVN stack
-- Fashion App
+- list item 2
+- list item 3
+- list item 4
+- list item 5
 
 
 ------------
 
 ### Contents
 
-1. Introduction<br />
-    1.1. Project description<br />
-    1.2. Background & problem statement (Demands, and target range, related industry)<br />
-    1.3. Thesis organisation & objectives<br />
-2. Analysis<br />
-    2.1. Application Requirements.<br />
-        &nbsp;&nbsp;&nbsp;2.1.1. Functional Requirements<br />
-        &nbsp;&nbsp;&nbsp;2.1.2. Non-functional Requirements<br />
-    2.2. Smilar Services<br />
-    2.3 System Architecture (use case diagram?)<br />
+1. Introduction
+    1.1. Motivation (Personal experience)
+    1.2. Breief background & problem statement (Demands, and target range, related industry)
+    1.3. Technologies used 
+    1.4. Key achievements
+    1.5. System Architecture (with a figure)
+    1.6. Thesis organisation & objectives
+2. Analysis
+    2.1. Application Requirements.
+        &nbsp;&nbsp;&nbsp;2.1.1. Functional Requirements
+        &nbsp;&nbsp;&nbsp;2.1.2. Non-functional Requirements
+    2.2. Smilar Services
 <details>
   <summary>Notes - chapter 3</summary>
 
@@ -67,82 +65,56 @@ was applied throughout the work, verification of the approach, and thoughts on f
   - https://www.scnsoft.com/blog/web-application-architecture
 </details>
 
-<br />
-
-3. Technological Analysis (Planning stage)<br />
-    3.1. Web vs Mobile app<br />
-    3.2. Programming language<br />
-&nbsp;&nbsp;&nbsp;&nbsp;3.2.1. FrontEnd -> Javascript, html, CSS<br />
-&nbsp;&nbsp;&nbsp;&nbsp;3.2.2. BackEnd -> Node.js<br />
-    3.3. Architecture<br />
-&nbsp;&nbsp;&nbsp;&nbsp;3.3.1. Single-page web app architecture (SPAs)<br />
-    3.4. Frameworks<br />
-&nbsp;&nbsp;&nbsp;&nbsp;3.4.1. FrontEnd -> Vue js<br />
-&nbsp;&nbsp;&nbsp;&nbsp;3.4.2. BackEnd -> Express.js (+ REST API?)<br />
-    3.5. Database<br />
-4. Implementation of the Solution<br />
-    4.1. UI/UX -> Quasar + Customised design for target user group<br />
-    4.2. Architecture<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. SPAs mechanism within the app<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.2. Use case diagram<br />
-    4.3. FrontEnd<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. Components structure (tree)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. Pages Navigation (+ Navigation & toolbar)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Routing<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Data Handling (Local Storage)<br />
-    4.4. BackEnd<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. Database (models & controllers)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. routing<br />
-5. Performance<br />
-    5.1. Tags Selection<br />
-    5.2. Sign Up<br />
-    5.3. Log In<br />
-    5.4. Post Manipulation<br />
-    5.5. Loading posts<br />
-    5.6. User account actions<br />
-6. Conclusion<br />
-    6.1. critical analysis of the results (strengths and limitations)<br />
-    6.2. Comparison with other services<br />
-    6.3. Further developments<br />
-&nbsp;&nbsp;&nbsp;&nbsp;6.3.1. Conversion to cross-platform version <br />
-&nbsp;&nbsp;&nbsp;&nbsp;6.3.3. Adding more post editing features<br />
-&nbsp;&nbsp;&nbsp;&nbsp;6.3.3. Using other framework for easier maintenance<br />
-&nbsp;&nbsp;&nbsp;&nbsp;6.3.4. Uploading local image files instead of urls<br />
-&nbsp;&nbsp;&nbsp;&nbsp;6.3.5. Delpoyment<br />
-7. References<br />
-8. List of Symbols and Abbreviations<br />
-9. List of Figures<br />
-10. List of Tables<br />
-11. List of Appendices<br />
+3. Technical Consideration & Research (Planning stage)
+    3.1. Web vs Mobile app
+    3.2. Programming language
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.1. FrontEnd -> Javascript, html, CSS
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.2. BackEnd -> Node.js
+    3.3. Architecture
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.1. Single-page web app architecture (SPAs)
+    3.4. Frameworks
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.1. FrontEnd -> Vue js
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.2. BackEnd -> Express.js (+ REST API?)
+    3.5. Database
+4. Implementation & Results
+    4.1. UI/UX -> Quasar + Customised design for target user group
+    4.2. Architecture
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. SPAs mechanism within the app 
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.2. Use case diagram
+    4.3. FrontEnd
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. Components structure
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. Pages Navigation (+ Navigation & toolbar)
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Routing
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Data Handling (Local Storage)
+    4.4. BackEnd
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. Database (models & controllers)
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. routing
+5. Performance
+    5.1. Tags Selection
+    5.2. Sign Up
+    5.3. Log In
+    5.4. Post Manipulation
+    5.5. Loading posts
+    5.6. User account actions
+6. Conclusion
+    6.1. critical analysis of the results (strengths and limitations)
+    6.2. Comparison with other services
+    6.3. possible works
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.1. Adding mobile platform version
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.3. Adding more editing features
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.3. Using other framework for easier maintenance
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.4. Uploading local image files instead of urls
+&nbsp;&nbsp;&nbsp;&nbsp;6.3.5. Uploading local photos instead of urls
+7. References
+8. List of Symbols and Abbreviations
+9. List of Figures
+10. List of Tables
+11. List of Appendices
 
 
---------
-##1. Introduction<br />
-
-The early generation of front end developers suffered from limited solutions, and technologies for development. This means they had to rely on a more primitive methodologies, and implement even minor features from the scratch. 
-The evolution in technologies over the past decades has been truly significant, and it is undoubtful that the currently accesible tools and technologies makes the transfer from the logic to functional codes much more conveinent and efficient nowadays.
-
-However, now the current generation encounters another barrier to explore this field ironically.
-According to the research paper of Abubaker Kashada from Surman college of Science and Technology, when a person experiences 'information overload' it is highly likely that their process of decision making will be impaired. 
-This finding reinforces the importance of preliminary research preceding development. It is essential to anaylyze and to figure out the characteristics of the project, and then to examine what would be the most appropriate tools and technologies, prior to the developmental stage. Thorough research will be conducted for each requirement, weighing strengths and limitations of the available tools.
-
->1.1 Project "Collage It"
-
-"Collage It" is an application where its users can create a fashion coordination - a collage composed of 4 images - and share it with other users. 
 
 
-- Brief description (what can be done with it), technologies used, key achievements
 
-_Collage It_ is an application used for 
-<br />
-
->1.2 Problem statement
-
-- brief background, industry, target and demands
-
->1.3 Thesis Organisation and objectvies
-
-This thesis aims to describe the process of developing a web application. It includes an analysis of the project requirements, research and decision for selecting a technology stack, design and plan for the application, and performance review of the final product.
 
 
 
