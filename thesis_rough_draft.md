@@ -77,6 +77,7 @@ was applied throughout the work, verification of the approach, and thoughts on f
   - Single-page web app architecture 
   - https://www.scnsoft.com/blog/web-application-architecture
 </details>
+
 <br />
 
 3. Technological Analysis (Planning stage)<br />
