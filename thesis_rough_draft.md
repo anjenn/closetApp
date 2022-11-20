@@ -3,6 +3,14 @@
 ###### - writing in md in order to track the progress better
 ###### - Content of this draft will follow the official requirement provided by the university
 
+
+<details>
+  <summary>To-do list</summary>
+
+  ### disable right-click on images
+  ### refactor the codes before inserting code snippets
+</details>
+
 # Implementation of a CRUD Web application using MEVN stack
 **Name:** JeongHyun An
 
@@ -46,10 +54,10 @@ was applied throughout the work, verification of the approach, and thoughts on f
     1.2. Background & problem statement (Demands, and target range, related industry)<br />
     1.3. Thesis organisation & objectives<br />
 2. Analysis<br />
-    2.1. Application Requirements.<br />
+    2.1. Similar Services<br />
+    2.2. Application Requirements.<br />
         &nbsp;&nbsp;&nbsp;2.1.1. Functional Requirements<br />
         &nbsp;&nbsp;&nbsp;2.1.2. Non-functional Requirements<br />
-    2.2. Smilar Services<br />
     2.3 System Architecture (use case diagram?)<br />
 <details>
   <summary>Notes - chapter 3</summary>
@@ -154,11 +162,123 @@ This thesis aims to describe the process of developing a web application, taking
 3. Application's performance review.
 
 --------
+##2. Analysis<br />
+
+In this section, a thorough analysis of the business, and existing services will be carried out.
+Afterwards, functional requirements and non-functional requirements will be drawn in order to narrow down the features needed for the application. Based on the analysis, a more specific plan and design of the system can be created utilising tools dedicated for such tasks.
+
+>2.1 Similar Services
+
+
+>2.2 Application Requirements
+
+Specifying project requirements is a funcamental part of software engineering. Although software and web applications are not identical, they share many similar characteristics, and therefore this strategy can as well be applied to the process of web application development.
+The CEO of Enkonix states in an article that 68% of IT projects fail, and that one of the main reasons for the failure is poor definition of requirements at the start. He also provides definitions of 'Functional Requirements', and 'Non-functional requirements' in an article. The definitions are as follows:
+(https://enkonix.com/blog/functional-requirements-vs-non-functional/)
+
+- Functional Requirement: can be defined as 'Something the system must do.' If the system does not meet a functional requirement, it will fail. Functional requirements specify what the system must do in response to different inputs, and what should be the outputs.
+- Non-functional Requirement: can be defined as 'Requirements that describe how the system works.' They are focused on how the systme goes about delivering a specific function.
+
+>2.2.1 Functional Requirements
+
+Functional requirements can be divided into 2 types: Signed-in user, and guest-user. Meanwhile, since they are both of type 'user', there are several requirements commonly shared between the two types. Thes will be written in one place.
+Priorities of these requirements will be ranked from the scale of 1 to 3, where 1 is the highest, and 3 is the lowest. Those with the lowest priorty are not strictly required for the program to meet the basic needs of the users, but rather for resulting in greate user satisfaction. They were written altogether to provide a bigger picture, but timeframe is also a key factor in developmental process. The implementation can be postponed to be done for the future releases.
+
+##### Both types of users are able to:
+- Access the Feed (library of collages)
+- Filter viewable posts
+- Share, and view the existing users' posts
+
+##### Signed-in users are able to:
+- Log out of the application
+- Delete own account from the database
+- Create a post
+- Delete own post
+- Access user page (also reffered to as *My page* in the app)
+- Save/like posts they are interested in
+- Edit their account details
+- Customise user page
+- Edit photos while creating a post
+
+##### Guest users are able to:
+- Log In to the application
+- Register to the application
+- Provide Personal information upon sign-up
+
+>2.2.2 Non-functional Requirements
+
+This section describes non-functional requirements of this project followed by discussion for realistic application and solution. Technological aspects will be briefly stated, but they will be discussed more in depth in a later chapter.
+
+- Accesibilitiy: The application is accesible on any browser.
+
+
+
+https://www.w3schools.com/js/js_es6.asp
+- Adaptibility: The application can be used for various purposes.
+- Security: the user data must be protected against cyber attacks, and handled anonymously on the client level.
+- Ethics: As the application deals with photos, copyright infringement should be avoided.
+- Usability: The application should provide friendly, and intuitive user interface. 
+- Response time: Loading time of each component and page on the application should be minimal.
+- Storage capacity: The server should be able to handle the users' data.
+
+Further discussions:
+
+Although the initial aim was to create an application for fashion coordinations, the collage editor feature and the way how the collages are displayed is rather universal. This means the app may not only server as a creator tool for coordinations, but also for collage of any type.
+
+However, in order to stick to the organisation of the app, it will be important to think of how these non-relevant posts can be accesible to users. A future idea could be to 
+- Disable right-click in order to save copyright infringement should be a
+- More secure means of authentication
+- Provide possibilty to upload photos of any type
+- Internationalisation
+
+
+>2.3 System Architecture (use case diagram?)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .
 .
 .
 .
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+
+--------------------------
+# Everything below is a template
 
 _I love I love muffin candy canes marshmallow muffin powder. Jelly chupa chups oat cake cotton candy dessert bonbon chocolate biscuit. Powder I love bear claw. Caramels chupa chups pastry powder. Cookie macaroon muffin lemon drops carrot cake sweet roll tiramisu. Donut gummi bears gingerbread donut powder marzipan. Sesame snaps apple pie chocolate cake I love chocolate bar. Tootsie roll croissant halvah I love cheesecake dragée danish applicake. Jelly-o tart fruitcake._
 
@@ -272,12 +392,6 @@ You can mark some lines as important so they appear highlighted. You can specify
 ### Add some notes for the editor
 
 Cupcake ipsum dolor sit amet. Danish muffin tart bear claw chupa chups I love. Gingerbread gummies chocolate bar I love halvah dessert.
-
-Toffee sweet roll pastry jelly-o. Dragée danish fruitcake applicake icing wafer chocolate bar. Bear claw candy tootsie roll tart cheesecake cake marshmallow gingerbread. Liquorice jelly-o cheesecake cake wafer halvah.
-
-I love cookie wafer gingerbread sweet roll tootsie roll jujubes lollipop. I love carrot cake dragée wafer cotton candy lemon drops cotton candy. Pudding chocolate bar candy chocolate tart soufflé cake I love. Sugar plum pastry tootsie roll bonbon.
-
-Halvah cotton candy danish jelly-o sweet roll muffin carrot cake. Jelly gummies soufflé dragée chocolate bar tart sesame snaps. Bear claw icing topping ice cream bear claw I love. Cake pudding sweet roll sesame snaps chocolate cake croissant bonbon topping.
 
 I love donut chupa chups. Marzipan cookie apple pie chocolate cookie. Muffin cookie halvah chocolate bar. Croissant toffee dragée unerdwear.com tiramisu dragée.
 
@@ -307,7 +421,7 @@ _I love I love muffin candy canes marshmallow muffin powder. Jelly chupa chups o
 5. list item 
 
 **Image**
-![Minion](http://octodex.github.com/images/minion.png)
+![Minion](link)
 
 
 ## Write your code or tutorial
@@ -393,25 +507,3 @@ class ntp {
         }
 }
 </pre>
-
-**Supported languages**
-Here is a complete list of supported languages:
-
-1c-zapros, 1c-kod, abap, as, ada, amigados, apache, applescript, arduino, asp, asm, autoit, bash, c, c#, c++, coffee, css, default, delphi, dws, diff, erlang, go, haskell, ini, ilogic, java, js, less, lisp, lua, matlab, reg, miva, monkey, batch, mysql, objc, plsql, perl, pgsql, php, ps, python, r, ruby, rust, sass, scala, scheme, sh, swift, tex, tsql, vim, vb, vbnet, xhtml, yaml, zsh
-
-**Note: marking lines as important**
-You can mark some lines as important so they appear highlighted. You can specify single numbers, comma separted, a range, or a combination.	
-<pre lang="js" mark="5-10,12"> ... </pre>
-
-----------------------------------------------------------------------
-### Add some notes for the editor
-
-Cupcake ipsum dolor sit amet. Danish muffin tart bear claw chupa chups I love. Gingerbread gummies chocolate bar I love halvah dessert.
-
-Toffee sweet roll pastry jelly-o. Dragée danish fruitcake applicake icing wafer chocolate bar. Bear claw candy tootsie roll tart cheesecake cake marshmallow gingerbread. Liquorice jelly-o cheesecake cake wafer halvah.
-
-I love cookie wafer gingerbread sweet roll tootsie roll jujubes lollipop. I love carrot cake dragée wafer cotton candy lemon drops cotton candy. Pudding chocolate bar candy chocolate tart soufflé cake I love. Sugar plum pastry tootsie roll bonbon.
-
-Halvah cotton candy danish jelly-o sweet roll muffin carrot cake. Jelly gummies soufflé dragée chocolate bar tart sesame snaps. Bear claw icing topping ice cream bear claw I love. Cake pudding sweet roll sesame snaps chocolate cake croissant bonbon topping.
-
-I love donut chupa chups. Marzipan cookie apple pie chocolate cookie. Muffin cookie halvah chocolate bar. Croissant toffee dragée unerdwear.com tiramisu dragée.
