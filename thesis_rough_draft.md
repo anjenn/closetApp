@@ -3,15 +3,6 @@
 ###### - writing in md in order to track the progress better
 ###### - Content of this draft will follow the official requirement provided by the university
 
-
-### TBA / to-do
-
-- Functional and non-functional requirements
-- Use case diagram
-- Component tree structure diagram
-- Refactoring before inserting code snippets
--------
-
 # Implementation of a CRUD Web application using MEVN stack
 **Name:** JeongHyun An
 
@@ -51,17 +42,15 @@ was applied throughout the work, verification of the approach, and thoughts on f
 ### Contents
 
 1. Introduction<br />
-    1.1. Motivation (Personal experience)<br />
-    1.2. Breief background & problem statement (Demands, and target range, related industry)<br />
-    1.3. Technologies used<br />
-    1.4. Key achievements<br />
-    1.5. System Architecture (with a figure)<br />
-    1.6. Thesis organisation & objectives<br />
+    1.1. Project description<br />
+    1.2. Background & problem statement (Demands, and target range, related industry)<br />
+    1.3. Thesis organisation & objectives<br />
 2. Analysis<br />
     2.1. Application Requirements.<br />
         &nbsp;&nbsp;&nbsp;2.1.1. Functional Requirements<br />
         &nbsp;&nbsp;&nbsp;2.1.2. Non-functional Requirements<br />
     2.2. Smilar Services<br />
+    2.3 System Architecture (use case diagram?)<br />
 <details>
   <summary>Notes - chapter 3</summary>
 
@@ -97,7 +86,7 @@ was applied throughout the work, verification of the approach, and thoughts on f
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.1. SPAs mechanism within the app<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.2. Use case diagram<br />
     4.3. FrontEnd<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. Components structure<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. Components structure (tree)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.2. Pages Navigation (+ Navigation & toolbar)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Routing<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Data Handling (Local Storage)<br />
@@ -127,9 +116,33 @@ was applied throughout the work, verification of the approach, and thoughts on f
 11. List of Appendices<br />
 
 
+--------
+##1. Introduction<br />
+
+The early generation of front end developers suffered from limited solutions, and technologies for development. This means they had to rely on a more primitive methodologies, and implement even minor features from the scratch. 
+The evolution in technologies over the past decades has been truly significant, and it is undoubtful that the currently accesible tools and technologies makes the transfer from the logic to functional codes much more conveinent and efficient nowadays.
+
+However, now the current generation encounters another barrier to explore this field ironically.
+According to the research paper of Abubaker Kashada from Surman college of Science and Technology, when a person experiences 'information overload' it is highly likely that their process of decision making will be impaired. 
+This finding reinforces the importance of preliminary research preceding development. It is essential to anaylyze and to figure out the characteristics of the project, and then to examine what would be the most appropriate tools and technologies, prior to the developmental stage. Thorough research will be conducted for each requirement, weighing strengths and limitations of the available tools.
+
+>1.1 Project "Collage It"
+
+"Collage It" is an application where its users can create a fashion coordination - a collage composed of 4 images - and share it with other users. 
 
 
+- Brief description (what can be done with it), technologies used, key achievements
 
+_Collage It_ is an application used for 
+<br />
+
+>1.2 Problem statement
+
+- brief background, industry, target and demands
+
+>1.3 Thesis Organisation and objectvies
+
+This thesis aims to describe the process of developing a web application. It includes an analysis of the project requirements, research and decision for selecting a technology stack, design and plan for the application, and performance review of the final product.
 
 
 
