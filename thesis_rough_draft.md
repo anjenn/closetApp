@@ -128,23 +128,32 @@ This finding reinforces the importance of preliminary research preceding develop
 
 >1.1 Project "Collage It"
 
-"Collage It" is an application where its users can create a fashion coordination - a collage composed of 4 images - and share it with other users. 
-
-
-- Brief description (what can be done with it), technologies used, key achievements
-
-_Collage It_ is an application used for 
-<br />
+_Collage It_ is an application where its users can create a fashion coordination - a collage composed of 4 images - and share it with other users. In addition, users can filter the posts (collalges) to find the coordinations that specifically match their styles. The collages can be edited to enhance the visual aspects. The posts can also be saved so that user can find their favourite posts any time, in their own customised section.
+The application is buit with MEVN (MongoDB, Express.JS, Vue.js, Node.js) stack, and REST API. The combination of database, framework, and web server allows for creation of a user-interactive website with various functionalities.
 
 >1.2 Problem statement
 
-- brief background, industry, target and demands
+Aside from the technical aspects, the choice of 'fashion app' was made among a list of possible business ideas, based on commercial considerations.
+Clothing has always been a concern of human kind since the ancient days, and today, it is not only a basic need but also a medium to express one's personality and characteristics. 
 
->1.3 Thesis Organisation and objectvies
+_image in this link (https://www.morganstanley.com.au/ideas/peak-clothing)_
 
-This thesis aims to describe the process of developing a web application. It includes an analysis of the project requirements, research and decision for selecting a technology stack, design and plan for the application, and performance review of the final product.
+The figure above is a graph provided by Moran Stanley showing the trend in apparel consumption of UK population over the past 30 years. Although the quantity has peaked, and stayed steady for around 10 years, it has not declined significantly either. It suggests that people have growing interest in fashion lately, and therefore there is a lot of room for sustainable business opprotunities.
 
+Unfortunately, not everyone can create the looks they would like to achieve regardless of their amount of interest. Just like in any other fields or areas of interests, it requires various skills such as visualisation, organisation, attention to details, and artistic abilities. Since the industry is also hugely influenced by trends, it additionally requires time and efforts to catch up with the newest trends. Thus it could be assumed that a tool to facilitate such coordination making process can be widely enjoyed by the population.
 
+According to a survey conducted in the United Kingdom, the consumption rate of fashion items was marked the highest among the young female group. 
+https://www.statista.com/statistics/286096/clothes-and-sports-goods-online-purchasing-in-great-britain-by-demographic/
+A post from HuffPost (https://www.huffpost.com/entry/different-brains-differen_b_9480952) states that women (the target user of this application) pays more attention to details, and favor more emotional activities. Thus, friendly UI, detailed features will be considered with greater emphasis in this project.  
+
+>1.3 Thesis objectives and organisation
+
+This thesis aims to describe the process of developing a web application, taking both the business requirements, and technological requirements into consideration. The main body is divided into 3 parts:
+1. Analysis of the project requirements, and a resulting blueprint.
+2. Research and selection of adequate technologies
+3. Application's performance review.
+
+--------
 
 .
 .
