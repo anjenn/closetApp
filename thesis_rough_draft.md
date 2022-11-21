@@ -9,6 +9,14 @@
 
   ### disable right-click on images
   ### refactor the codes before inserting code snippets
+
+  ## In conclusion
+  ### Ad the following to future work (and reflect on non-functional requirements part)
+  - More secure means of authentication
+  - Provide possibilty to upload photos of any type
+  - Internationalisation
+  - Making feed section more relevant (sort out posts without valid images, posts don't match the tags)
+
 </details>
 
 # Implementation of a CRUD Web application using MEVN stack
@@ -167,7 +175,51 @@ This thesis aims to describe the process of developing a web application, taking
 In this section, a thorough analysis of the business, and existing services will be carried out.
 Afterwards, functional requirements and non-functional requirements will be drawn in order to narrow down the features needed for the application. Based on the analysis, a more specific plan and design of the system can be created utilising tools dedicated for such tasks.
 
->2.1 Similar Services
+>2.1 Similar Services //include images!
+
+1. Pinterest
+
+Pinterest is a popular source of fashion inspirations. It is tool where users share photos, and in the app there is a category for fashion, and serves mainly for users that are looking for massive inspirations. One post can hold many images, but as one post card section is filled with one image at a time, and the next images are only accessed after a click of a button, and indeed in a detailed view, it is hard to think that the next images will make a one 'output' together with the current image.
+There are people that share coordination images, and even collages too, but it requires other tool to render and join the images into one. Hence, even though this application is great for finding single-image inspirations and showcase works of the users, there is little room for creation on the site.
+
+2. Instagram
+
+Instagram is another photo sharing application. Recently, many users have been using this as a tool to share fahsion coordinations. One strength is that, the accounts with popular posts have higher rate of exposure, and the application introduces accounts with similar styles. Thus, when a user has strong preference in their mind, it is a great tool to find the inspirations specific to their preference.
+On the other hand, as this application was not originally built for sharing coordinations, it is hard to only search for outfits and coordinations. The search system in instagram solely depends on the custom tags attached by users, and often times, the use of tags are not very precise. Also, just like the case with Pinterest, instagram also displays one image per post card. Thus this application may not be the most conveninent option for those who would like to view many different styles with little efforts into search,
+or would also like to build their own coordinations along with viewing others' works.
+
+3. Smart Closet
+
+Smart Closet is an application with a dedicated feature for coordinations, which can be created by the users. It also has integrated mall, where users may find the same item they can see in the coordination.
+The application also has clean, and generally likeable UI.
+One thing to note though, is that the posts are of many mixed styles. Also, the formats of the posts are not unified. Some have 2 or 3 items, while some have around 10 items.
+Also, few items are synched with the internal shopping mall, but rest of the items are left with unknown sources.
+It is also hard to share the posts unless a user downloads images and save the images to their device.
+
+<br />
+##### Summary
+This Market Analysis gives insight into existing solutions in the market, and what can be done better to make this application more competitive by serving as a more efficient tool.
+The ultimate goal of this application will be to satisfy the users with the fulfilling their demands that could not be fulfilled using other applications.
+This project specifically targets users with the following demands: 'Being able to browse coordinations of various styles', 'little efforts, and time for creation', 'consistency in the created posts by different users (pleasant looking UI)'
+Based on the target user, and the business analysis, the following points can be drawn:
+
+- The app must be dedicated for creating and sharing outfit coordination of various styles, with a possibility to filter the styles.
+- Displaying adequate number of images (of different fashion items) per post card, and making it a requirement to upload an image for all section of the collage can ensure completeness of the posts, and consistency in their display. 
+- Linking the URL to the item can yield greater satisfaction, because one disadvantage of exploring coordinations in photo sharing applications is that it is hard to identify the source. This does not only impose a problem regarding copyright, but also results in making the users frustrated as they cannot find out more information about what they like.
+
+<pre lang="html">
+    <code>
+        <article>
+            <section>Maybe add a table here? to compare the traits
+            ex. single vs multiple items per post card
+            fashion app, or fashion as one category among many, or photo sharing app (user decides how to use the app)
+            Can search style by filter vs recommendation
+            
+            </section>
+        </article>
+    </code>
+</pre>
+_This is an note_
 
 
 >2.2 Application Requirements
@@ -211,40 +263,53 @@ This section describes non-functional requirements of this project followed by d
 
 - Accesibilitiy: The application is accesible on any browser.
 
+This application can be written with framework that supports ES6 (ECMAScript 6, https://www.w3schools.com/js/js_es6.asp). ES6 is currently supported by Chrome 58, Edge 14, Firefox 54, Safari 1-, and Opera 55. Except for Opera 55, all the other browsers had been supporting ES6 at least for approximately 5 years. This suggests that many potential users, considering that they have last updated their browser within the past 5 years are not likely to have issues with accesibility. This requirement will be reflected in chapter 3.
 
-
-https://www.w3schools.com/js/js_es6.asp
-- Adaptibility: The application can be used for various purposes.
 - Security: the user data must be protected against cyber attacks, and handled anonymously on the client level.
+
+Instead of handling database on the client side, Utilising database can help secure the data better.
+
 - Ethics: As the application deals with photos, copyright infringement should be avoided.
+
+This application will fetch and share images via url, so that original address of the images can be attached to the image all the time. Also, blocking right-click can add additional layer of protection, as it can prevent users from donwloading the photos without the original publishes' permission.
+
 - Usability: The application should provide friendly, and intuitive user interface. 
+
+The application will use vibrant colors in order to appeal to most of the users as a user-friendly website.
+Also, displaying many informational alerts, adding tool-tips, sticking to intuitive and universal symbols, and employing consistency in ways of visualising and displaying the objects/messages in the same context will be important.
+
 - Response time: Loading time of each component and page on the application should be minimal.
-- Storage capacity: The server should be able to handle the users' data.
 
-Further discussions:
+Finding a time-efficient way of fetching and displaying data will be a vital in this criteria. This topic will be revisited in chapter 3.
 
-Although the initial aim was to create an application for fashion coordinations, the collage editor feature and the way how the collages are displayed is rather universal. This means the app may not only server as a creator tool for coordinations, but also for collage of any type.
+>2.3 Use Case Diagram
 
-However, in order to stick to the organisation of the app, it will be important to think of how these non-relevant posts can be accesible to users. A future idea could be to 
-- Disable right-click in order to save copyright infringement should be a
-- More secure means of authentication
-- Provide possibilty to upload photos of any type
-- Internationalisation
+Based on the market, the target user, and the requirements analysis we can draw now visualise a plan that shows the essential features and functionalities of the application.
 
+##TBA
 
->2.3 System Architecture (use case diagram?)
+--------
+##3. Technological Analysis <br />
 
+>3.1. Web vs Mobile app<br />
 
+>3.2. Programming language<br />
 
+>3.2.1. FrontEnd -> Javascript, html, CSS<br />
 
+>3.2.2. BackEnd -> Node.js<br />
 
+> 3.3. Architecture<br />
 
+>3.3.1. Single-page web app architecture (SPAs)<br />
 
+>3.4. Frameworks<br />
 
+>3.4.1. FrontEnd -> Vue js<br />
 
+>3.4.2. BackEnd -> Express.js (+ REST API?)<br />
 
-
-
+>3.5. Database<br />
 
 
 
