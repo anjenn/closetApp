@@ -219,7 +219,6 @@ Based on the target user, and the business analysis, the following points can be
         </article>
     </code>
 </pre>
-_This is an note_
 
 
 >2.2 Application Requirements
@@ -289,9 +288,49 @@ Based on the market, the target user, and the requirements analysis we can draw 
 ##TBA
 
 --------
-##3. Technological Analysis <br />
+##3. Design <br />
 
->3.1. Web vs Mobile app<br />
+While market and business analysis is crucial for building a competitive product, technological analysis associates with a rather practical part of the development, as technologies are what render the final output of the project. This section will break down the technical part into 5 sections as follows: operating platfrom, programming languages, type of page architecture, framework, and database.
+Each section comprises of expectations of the project, comparison of different options, and reasoning behind a choice.
+
+>3.1. Platform<br />
+
+Decision for application type, and its operating platform is essential in developing a program.
+Competitiveness in the market can heavily depend on this aspect. For instance, if the purpose of application, and the way how media is presented and consumed in the app do not suit for the platform type, the output will not yield the cost (time and efforts) spent into the development process. Also, potential users may have varying preference in their usage of technology. Thus, comparing the project specifications with the available options, and also considering the necessity, and developmental constraints will be needed at this stage.
+
+References: https://www.springboard.com/blog/design/mobile-vs-website-app/#h0,
+https://codeinstitute.net/global/blog/web-app-vs-mobile-app/
+https://sagaratechnology.medium.com/mobile-apps-vs-web-apps-which-is-the-better-option-868106c88730
+
+###### Web application
+
+The list belows illustrates the characterestics of Web Application:
+
+- Program stored on a remote server, and delivered to the use via a browser.
+- Serves for multiple purposes (ex. can designed to fit for both small and big screen devices)
+- Usually have more functionalities than mobile apps
+- Does not require additional stage 
+- Can be accessed via any browser on mobile and desktop
+- Accesing the application requires searching through a browser
+- Do not need to be updated nor installed manually
+- Cannot be used offline
+- Relatively slower than movile application
+
+###### Mobile(Native) application
+
+The list belows illustrates the characteristics of Mobile application 
+- Specifically designed for use on mobile & touchable devices 
+- Should be downloaded from store ex. play store, windows store, apple store.
+- Easily discoverable as they are listed, and categorised in the store. Once downloaded, it only takes a single click to access lauch the application.
+- Usage data (ex. display settings, favourites, etc) can be easily saved and accessed in the app.
+- Typically have limited functionalities, and instead focuses on a single purpose
+- Requires frequent updates
+- Must go through authorisation stage in order to be registered to app stores
+
+
+
+
+
 
 >3.2. Programming language<br />
 
