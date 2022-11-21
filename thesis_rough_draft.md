@@ -2,7 +2,7 @@
 ###### - to be later transferred to overleaf
 ###### - writing in md in order to track the progress better
 ###### - Content of this draft will follow the official requirement provided by the university
-
+###### - This is a rough draft full of typos & wordy sentences <- to be fixed later when proof reading it
 
 <details>
   <summary>To-do list</summary>
@@ -11,7 +11,7 @@
   ### refactor the codes before inserting code snippets
 
   ## In conclusion
-  ### Ad the following to future work (and reflect on non-functional requirements part)
+  ### Add the following to future work (and reflect on non-functional requirements part)
   - More secure means of authentication
   - Provide possibilty to upload photos of any type
   - Internationalisation
@@ -309,7 +309,6 @@ The list belows illustrates the characterestics of Web Application:
 - Program stored on a remote server, and delivered to the use via a browser.
 - Serves for multiple purposes (ex. can designed to fit for both small and big screen devices)
 - Usually have more functionalities than mobile apps
-- Does not require additional stage 
 - Can be accessed via any browser on mobile and desktop
 - Accesing the application requires searching through a browser
 - Do not need to be updated nor installed manually
@@ -318,7 +317,7 @@ The list belows illustrates the characterestics of Web Application:
 
 ###### Mobile(Native) application
 
-The list belows illustrates the characteristics of Mobile application 
+The list below illustrates the characteristics of Mobile application 
 - Specifically designed for use on mobile & touchable devices 
 - Should be downloaded from store ex. play store, windows store, apple store.
 - Easily discoverable as they are listed, and categorised in the store. Once downloaded, it only takes a single click to access lauch the application.
@@ -327,16 +326,33 @@ The list belows illustrates the characteristics of Mobile application
 - Requires frequent updates
 - Must go through authorisation stage in order to be registered to app stores
 
-
-
-
-
+Although photo editing applications can be found on mobile phones, it has limitation as such that it is difficult to perform detailed task, nor to view multiple photos in one window due to small viewport size.
+Since the application is expected to load multiple collages, and to offer photo editing feature, web application can serve as a better platform for the purpose of this app. Even though web application can be slower, and makes it harder for user to access,
+this format can be beneficial since many users find it bothersome to install mobile application, and to keep track of its updates and to mange storage space.
+Also, not having to wait for authorisation on the stores is a one less thing to be concerned with, when the application is ready to publish.
+However, it's hard to claim that web application is absolutely better than mobile application.
+As the modern people's reliance on mobile devices is increasing nowadays, additionally having mobile version of the website can be a huge plus. In this case, web application can still be an option, be cause it provides a possibility to be transformed to PWA (Progressive Web Apps). PWA refers to the type of application, where the functionality of Native Application, and the accessibility of Website is combined. (https://www.magestore.com/blog/pwa-vs-native-app-and-how-to-choose-between-them/)
 
 >3.2. Programming language<br />
 
 >3.2.1. FrontEnd -> Javascript, html, CSS<br />
 
+HTML, and CSS are 
+
+Javascript - 
+It is a scripting langauge that enables 
+
+
+Most popular combination for frontend programming lanauges.
+
+statistics suggests that it is used as client-side programming language by 97.6% of all websites https://w3techs.com/technologies/details/cp-javascript
+Survey of stackoverflow provided similar result in a different aspect. I (https://survey.stackoverflow.co/2022/#most-popular-technologies-language-prof)
+
+
 >3.2.2. BackEnd -> Node.js<br />
+
+Node.js was ranked as the most widely used technology by 46.31% in the Web frameworks and technologies category.
+https://survey.stackoverflow.co/2022/#most-popular-technologies-webframe-prof
 
 > 3.3. Architecture<br />
 
@@ -346,10 +362,15 @@ The list belows illustrates the characteristics of Mobile application
 
 >3.4.1. FrontEnd -> Vue js<br />
 
+_Write about statistics, and also add the importance of timeframe and learning curve. How the application can be achieved with basic knowledge shared on forum (React and angular have more users so its commonly thought that there are higher chance to get the solutions to any problem) and features can be easily implemented. V-model, v-bind for example reduce the extra step dealing with state and hook_
+
 >3.4.2. BackEnd -> Express.js (+ REST API?)<br />
+
+Most popular apparently
 
 >3.5. Database<br />
 
+SQL vs No SQL
 
 
 
