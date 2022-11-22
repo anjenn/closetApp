@@ -223,7 +223,7 @@ Based on the target user, and the business analysis, the following points can be
 
 >2.2 Application Requirements
 
-Specifying project requirements is a funcamental part of software engineering. Although software and web applications are not identical, they share many similar characteristics, and therefore this strategy can as well be applied to the process of web application development.
+Specifying project requirements is a funcamental part of software engineering.
 The CEO of Enkonix states in an article that 68% of IT projects fail, and that one of the main reasons for the failure is poor definition of requirements at the start. He also provides definitions of 'Functional Requirements', and 'Non-functional requirements' in an article. The definitions are as follows:
 (https://enkonix.com/blog/functional-requirements-vs-non-functional/)
 
@@ -335,300 +335,81 @@ As the modern people's reliance on mobile devices is increasing nowadays, additi
 
 >3.2. Programming language<br />
 
+Components of web application can be broken down into 2 parts - server side, and client side - and so are programming languages.
+In this section, the choice of programming languages of each side of this application will be explained.
+
 >3.2.1. FrontEnd -> Javascript, html, CSS<br />
 
-HTML, and CSS are 
+HTML, Javascript and CSS make a standard combination of the modern frontend languages.
+Definitions of these languages can be found on MDN documentation. (https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
+According to their definitions, HTML is a markup langauge that is used to structure and give meaning to web content (ex. paragraphs, media, headings, etc). CSS is a language of styles used to apply styling to the HTML content. Javascript is a scripting lanaguage that skips the compilation and is instead interpreted one by one at a runtime (https://www.javatpoint.com/what-is-a-scripting-language). It enables developers to create dynamically updating content, control multimedia, and aminate images.
 
-Javascript - 
-It is a scripting langauge that enables 
-
-
-Most popular combination for frontend programming lanauges.
-
-statistics suggests that it is used as client-side programming language by 97.6% of all websites https://w3techs.com/technologies/details/cp-javascript
-Survey of stackoverflow provided similar result in a different aspect. I (https://survey.stackoverflow.co/2022/#most-popular-technologies-language-prof)
-
+Survey result by stackoverflow(https://survey.stackoverflow.co/2022/#most-popular-technologies-language-prof) also supports the popularity and reliability of these combination.
+In the 'Programming, scriptiong, and markup langauges section' Javascript won the first place, as the most commonly used markup language by all respondents. Indeed, it marked 67.9% by the professional Developers group. The report emphasises that the record has been consistent for the past 10 years in a row.
+The next place was taken by HTML/CSS, marking 54.93% by professional developers.
+Considering that the candidates of this category not only includes langauges popular for frontend, but also those that are used for managing backend, and database, we can say the percentages of the 3 langauges are remarkably high.
 
 >3.2.2. BackEnd -> Node.js<br />
 
 Node.js was ranked as the most widely used technology by 46.31% in the Web frameworks and technologies category.
 https://survey.stackoverflow.co/2022/#most-popular-technologies-webframe-prof
 
-> 3.3. Architecture<br />
+> 3.3. Model and Architecture<br />
 
->3.3.1. Single-page web app architecture (SPAs)<br />
+Web application architecture is a pattern of interaction between the web application components. Typical web applications have the server and the clident side, which are supposed to run concurrently.
+On the client side, code lives in the browerse and responds to user input. On the server side, the code lives on th server and responds to HTTP requests (https://stackify.com/web-application-architecture/).
+The way how their interaction is planned out determines the resilience, performance and security of the final work (https://www.scnsoft.com/blog/
+
+>3.3.1. Building a model of web application components
+
+Before moving on to the decision making step for application architecture, we first need to draw a big picture of the components of this web application.
+In this context, the term 'component' refers to big fragments of the system, which are Web broswer, web server, and database server. There are variety of options with ranging number of servers and databasese, or even serveless and databaseless system.
+From the options, a model with one web server and database was chosen, due to the fact that this project is considreably simple.
+If the application updates in the future, for more complex system and functionality, the number of server and database would as well need to increase, so we can avoide a problem like the whole application malfunctioing when the server goes down. Many articles suggest that a combination of multiple web servers and multiple databases can serve as the most stable form. (https://www.cleveroad.com/blog/web-application-architecture/)
+
+>3.3.2. Architecture<br />
+
+For Frontend side, there are 2 typical architectures: Single-page web application, and multi-page web application.
+Single-page web app architecture between the two was chosen as the final architecture for the system.
+
+#####
+Single-page web app architecture, among monolithic architectures, was chosen as the final architecture for the system. Monolithic architecture refers to the tranditional model, where the entire software is developed as a songle piece of code. In this architecture, all components are interdependent and interconnected. Thus, for change or update of a specific feature to take place, the entire code should be rewriteen and compiled. Meanwhile, as the entire code is treated as a single program, building a new project, applying frameworks, scrips and templates and testing is as well easy. (https://www.clickittech.com/devops/web-application-architecture/#h-web-application-architecture-components)
+Since this project is is created with entry level of knowledge and experience in programming, this architecture was thought to be adequate. For more complex programs, microservices architecture or serverless architecture could be used.
+
+###### Single Page Web App (SPAs)
+
+SPAs was introduced to overocome the traditional limitations to achieve smooth app performance, intuitive and interactive user experience (https://www.simform.com/blog/web-application-architecture/).
+This architecture allows for dynamic interaction and updates of contents to the current page without reloading a new page each time. (https://hackr.io/blog/web-application-architecture-definition-models-types-and-more).
+This architecture can be developed by using javascript frameworks, which will be discussed in the frontend side's framework section of this chapter (3.4.1).
+
+
+
+
+
+
 
 >3.4. Frameworks<br />
 
 >3.4.1. FrontEnd -> Vue js<br />
 
+
+Programming langauges comparison and api (https://www.clickittech.com/devops/web-application-architecture/#h-web-application-architecture-components)
+
 _Write about statistics, and also add the importance of timeframe and learning curve. How the application can be achieved with basic knowledge shared on forum (React and angular have more users so its commonly thought that there are higher chance to get the solutions to any problem) and features can be easily implemented. V-model, v-bind for example reduce the extra step dealing with state and hook_
 
 >3.4.2. BackEnd -> Express.js (+ REST API?)<br />
+
+In fact, any code that can respond to HTTP requests has the capability to run on a server. Here are a few other attributes of server-side code: (https://stackify.com/web-application-architecture/)
+
+Is never seen by the user (except within a rare malfunction)
+Stores data such as user profiles, tweets, pages, etc…
+Creates the page the user requested
+
+
+JS API (https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
 
 Most popular apparently
 
 >3.5. Database<br />
 
 SQL vs No SQL
-
-
-
-
-
-
-
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
---------------------------
-# Everything below is a template
-
-_I love I love muffin candy canes marshmallow muffin powder. Jelly chupa chups oat cake cotton candy dessert bonbon chocolate biscuit. Powder I love bear claw. Caramels chupa chups pastry powder. Cookie macaroon muffin lemon drops carrot cake sweet roll tiramisu. Donut gummi bears gingerbread donut powder marzipan. Sesame snaps apple pie chocolate cake I love chocolate bar. Tootsie roll croissant halvah I love cheesecake dragée danish applicake. Jelly-o tart fruitcake._
-
-**Dragée wafer pudding chocolate tiramisu cupcake gummies. Carrot cake tiramisu marzipan cotton candy. Danish tiramisu chocolate bar chocolate bar jelly beans bear claw chocolate. Jelly beans lollipop tiramisu pudding donut croissant. Bonbon chocolate cake I love. Sweet roll pudding I love gingerbread caramels dragée.**
-
->I love I love muffin candy canes marshmallow muffin powder. Jelly chupa chups oat cake cotton candy dessert bonbon chocolate biscuit. Powder I love bear claw. Caramels chupa chups pastry powder. Cookie macaroon muffin lemon drops carrot cake sweet roll tiramisu. Donut gummi bears gingerbread donut powder marzipan. Sesame snaps apple pie chocolate cake I love chocolate bar. Tootsie roll croissant halvah I love cheesecake dragée danish applicake. Jelly-o tart fruitcake.
-
-[This is an link](http://assemble.io)
-
-1. list item 
-2. list item 
-3. list item 
-4. list item 
-5. list item 
-
-
-## Write your code or tutorial
-
-**CSS**
-<pre lang="css">
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  body:first-of-type pre::after {
-    content: 'highlight: ' attr(class);
-  }
-  body {
-    background: linear-gradient(45deg, blue, red);
-  }
-}
-
-@import url('print.css');
-@page:right {
- margin: 1cm 2cm 1.3cm 4cm;
-}
-
-@font-face {
-  font-family: Chunkfive; src: url('Chunkfive.otf');
-}
-
-div.text,
-#content,
-li[lang=ru] {
-  font: Tahoma, Chunkfive, sans-serif;
-  background: url('hatch.png') /* wtf? */;  color: #F0F0F0 !important;
-  width: 100%;
-}
-</pre>
-
-**HTML**
-<pre lang="html">
-    <code>
-        <article>
-            <section></section>
-        </article>
-    </code>
-</pre>
-_This is an note_
-
-**Javascript**
-<pre lang="js">
-(function(){
-    var init, ed, qt, first_init, DOM, el, i, mce = 0;
-};
-</pre>
-
-**Other**
-<pre lang="bash">
-class ntp {
-    case $operatingsystem {
-        centos, sles, redhat: {
-        $service_name = 'ntpd'
-        $conf_template = 'ntp.conf.erb'
-        $default_servers = [ "192.168.100.10","192.168.100.20", ]                                   }
-                    }
-    if $servers == undef {
-        $servers_real = $default_servers
-                }
-        else {
-            $servers_real = $servers
-            }
-
-    package { 'ntp':
-            ensure => installed,
-            }
-
-    service { 'ntp':
-            name => $service_name,
-            ensure => running,
-            enable => true,
-            subscribe => File['ntp.conf'],
-        }
-
-    file { 'ntp.conf':
-            path => '&frasl;etc&frasl;ntp.conf',
-            ensure => file,
-            require => Package['ntp'],
-            content => template("ntp/${conf_template}"),
-        }
-}
-</pre>
-
-**Supported languages**
-Here is a complete list of supported languages:
-
-1c-zapros, 1c-kod, abap, as, ada, amigados, apache, applescript, arduino, asp, asm, autoit, bash, c, c#, c++, coffee, css, default, delphi, dws, diff, erlang, go, haskell, ini, ilogic, java, js, less, lisp, lua, matlab, reg, miva, monkey, batch, mysql, objc, plsql, perl, pgsql, php, ps, python, r, ruby, rust, sass, scala, scheme, sh, swift, tex, tsql, vim, vb, vbnet, xhtml, yaml, zsh
-
-**Note: marking lines as important**
-You can mark some lines as important so they appear highlighted. You can specify single numbers, comma separted, a range, or a combination.	
-<pre lang="js" mark="5-10,12"> ... </pre>
-
-----------------------------------------------------------------------
-### Add some notes for the editor
-
-Cupcake ipsum dolor sit amet. Danish muffin tart bear claw chupa chups I love. Gingerbread gummies chocolate bar I love halvah dessert.
-
-I love donut chupa chups. Marzipan cookie apple pie chocolate cookie. Muffin cookie halvah chocolate bar. Croissant toffee dragée unerdwear.com tiramisu dragée.
-
-----------------------------------------------------------------------
-
-### Technical Report description
-Cupcake ipsum dolor. Sit amet jelly tart cake dragée jelly beans sweet roll chocolate cake. Sweet roll halvah I love. Unerdwear.com topping tart I love marzipan. Brownie sugar plum I love sesame snaps oat cake. Apple pie lemon drops chocolate danish topping dessert marshmallow dessert. Tart candy canes unerdwear.com ice cream tiramisu dragée applicake. Apple pie brownie sesame snaps oat cake caramels halvah danish pudding jelly beans. Gummies chocolate cake I love croissant cookie.
-
-- list item 1
-- list item 2
-- list item 3
-- list item 4
-- list item 5
-
-_I love I love muffin candy canes marshmallow muffin powder. Jelly chupa chups oat cake cotton candy dessert bonbon chocolate biscuit. Powder I love bear claw. Caramels chupa chups pastry powder. Cookie macaroon muffin lemon drops carrot cake sweet roll tiramisu. Donut gummi bears gingerbread donut powder marzipan. Sesame snaps apple pie chocolate cake I love chocolate bar. Tootsie roll croissant halvah I love cheesecake dragée danish applicake. Jelly-o tart fruitcake._
-
-**Dragée wafer pudding chocolate tiramisu cupcake gummies. Carrot cake tiramisu marzipan cotton candy. Danish tiramisu chocolate bar chocolate bar jelly beans bear claw chocolate. Jelly beans lollipop tiramisu pudding donut croissant. Bonbon chocolate cake I love. Sweet roll pudding I love gingerbread caramels dragée.**
-
->I love I love muffin candy canes marshmallow muffin powder. Jelly chupa chups oat cake cotton candy dessert bonbon chocolate biscuit. Powder I love bear claw. Caramels chupa chups pastry powder. Cookie macaroon muffin lemon drops carrot cake sweet roll tiramisu. Donut gummi bears gingerbread donut powder marzipan. Sesame snaps apple pie chocolate cake I love chocolate bar. Tootsie roll croissant halvah I love cheesecake dragée danish applicake. Jelly-o tart fruitcake.
-
-[This is an link](http://assemble.io)
-
-1. list item 
-2. list item 
-3. list item 
-4. list item 
-5. list item 
-
-**Image**
-![Minion](link)
-
-
-## Write your code or tutorial
-
-**CSS**
-<pre lang="css">
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  body:first-of-type pre::after {
-    content: 'highlight: ' attr(class);
-  }
-  body {
-    background: linear-gradient(45deg, blue, red);
-  }
-}
-
-@import url('print.css');
-@page:right {
- margin: 1cm 2cm 1.3cm 4cm;
-}
-
-@font-face {
-  font-family: Chunkfive; src: url('Chunkfive.otf');
-}
-
-div.text,
-#content,
-li[lang=ru] {
-  font: Tahoma, Chunkfive, sans-serif;
-  background: url('hatch.png') /* wtf? */;  color: #F0F0F0 !important;
-  width: 100%;
-}
-</pre>
-
-**HTML**
-<pre lang="html">
-    <code>
-        <article>
-            <section></section>
-        </article>
-    </code>
-</pre>
-_This is an note_
-
-**Javascript**
-<pre lang="js">
-(function(){
-    var init, ed, qt, first_init, DOM, el, i, mce = 0;
-};
-</pre>
-
-**Other**
-<pre lang="bash">
-class ntp {
-    case $operatingsystem {
-        centos, sles, redhat: {
-        $service_name = 'ntpd'
-        $conf_template = 'ntp.conf.erb'
-        $default_servers = [ "192.168.100.10","192.168.100.20", ]                                   }
-                    }
-    if $servers == undef {
-        $servers_real = $default_servers
-                }
-        else {
-            $servers_real = $servers
-            }
-
-    package { 'ntp':
-            ensure => installed,
-            }
-
-    service { 'ntp':
-            name => $service_name,
-            ensure => running,
-            enable => true,
-            subscribe => File['ntp.conf'],
-        }
-
-    file { 'ntp.conf':
-            path => '&frasl;etc&frasl;ntp.conf',
-            ensure => file,
-            require => Package['ntp'],
-            content => template("ntp/${conf_template}"),
-        }
-}
-</pre>
