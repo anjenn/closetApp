@@ -430,10 +430,11 @@ Now we can narrow down the options to the frameworks with popularity above 10%, 
 - 2-way data-binding: YES (https://www.sam-solutions.com/blog/angular-vs-react-vs-vue/)
 - Applications written in Angular: Google, Wix, Forbes, Angular  (https://www.codeinwp.com/blog/angular-vs-vue-vs-react/)
 
-Further analysis: Angular is the oldest framework among the 3 candidates, which ensures good backing for any issues that their developers may encounter. In addition, Google is also in charge of its maintenance and improving. It is also the biggest framework among the 3, providing a wide range of choice of in-buid features. Thus, it can be a great option for large scale app with in-build features. It also provides a framework for developing web apps so that it does not require eany other library. (https://javascript.plainenglish.io/angular-vs-react-vs-vue-js-which-is-the-best-choice-for-2022-5ef83f2257ab)
+Further analysis: Angular is the oldest framework among the 3 candidates, which ensures good backing for any issues that their developers may encounter. In addition, Google is also in charge of its maintenance and improving. It is also the biggest framework among the 3, providing a wide range of choice of in-buid features. Thus, it can be a great option for large scale app with in-build features. Moreover, Angular is a framework for developing web apps so it does not require eany other library. (https://javascript.plainenglish.io/angular-vs-react-vs-vue-js-which-is-the-best-choice-for-2022-5ef83f2257ab)
 
-According to the official documentation, it is a comonent-based framework for building scalable web applications. It is a collection of well-integrated libraries covering a wide variety of features, including routing, forms managements, client-server communication and etc. It also provides a suit of developer tools to help develop, build, test and update the code.
-With Angular, developers can take advantage of a platfrom that can scale from single-developer project to enterprise level applications. (https://angular.io/guide/what-is-angular)
+According to the official documentation, its component-based property also makes Angular suitable for building scalable web applications. With Angular, developers can take advantage of a platfrom that can scale from single-developer project to enterprise level applications. (https://angular.io/guide/what-is-angular)
+It is a collection of well-integrated libraries covering a wide variety of features, including routing, forms managements, client-server communication and etc. It also provides a suit of developer tools to help develop, build, test and update the code.
+
 
 #####React
 
@@ -450,8 +451,10 @@ With Angular, developers can take advantage of a platfrom that can scale from si
 
 Further analysis: 
 React is a Javascript Library for building user interfaces. It is the most universal and prevalent framework among developers, and thanks to having the biggest community of developers, and having a dedicated team from Facebook that improves and developes the technology, React developers can enjoy the greatest amount of technical support in developing.
-React -although is referred to as framework for convenience- is in fact as library, not a framework.
-It is a library, not a framework, and thus cannot build web app without the support of other libraries (https://javascript.plainenglish.io/angular-vs-react-vs-vue-js-which-is-the-best-choice-for-2022-5ef83f2257ab). Considering that Vue.js and Angular.js can be built without libraries, this drawback only associates with React.js
+While it is often referred to as, and grouped as framework for conveinence, React is technically not a framework.
+In fact, it is a library, and thus cannot build web app without the support of other libraries (https://javascript.plainenglish.io/angular-vs-react-vs-vue-js-which-is-the-best-choice-for-2022-5ef83f2257ab). Considering that Vue.js and Angular.js can be built without libraries, this drawback only associates with React.
+
+Nonetheless, React with its biggest user community among the group of frameworks, offers the median solution in nearly most of the important aspects, including learning curve, quantity of features, newness, and etc. As there is no one absolute answer for choice in frameworks, being the median solution can make it exceptionally appealing to developers.
 
 #####Vue
 
@@ -471,67 +474,60 @@ Vue is a versatile framework with adoptable ecosystem that scales between a liba
 One can see that this framework marked the lowest in the ranking in any survey for popularity, but one counterclaim to a criticism for its lack of popularity could be that this is a newest framework out of the 3 options. Indeed, the latest version release (Vue 3) introduced a new feature called _Compositoin API_. This feature manages state management on its own, and no external state management libary is needed anymore (https://thecodest.co/blog/pros-and-cons-of-vue). Furthermore, Vue is a standalone framework so it does not need to be used with other libraries like React. These can make Vue.Js a very competitive candidate in addition to its easy learning curve.
 
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+###Conclusion
 
 Vue js was finally selected among the 3.
-Although this framework is not backed by a large corporation like it is for React, and Angular, but instead, it is backed by a huge chinese community (https://fireart.studio/blog/vue-vs-react-in-2022/). Also, the recent statistics show gradually increasing interest in Vue.js. The data has high significance, because it has gained such results while many enterprises are still writing their codes using React and Angular. We can confidently say that Vue is a framework that is gaining momentum.
+Although this framework is not backed by a large corporation like it is for React, and Angular, but instead, it is backed by a huge chinese community (https://fireart.studio/blog/vue-vs-react-in-2022/). Also, the recent statistics show gradually increasing interest in Vue.js. The data has high significance, because it has gained such results while many enterprises are still writing their codes using React and Angular. It may not be the most preferred framework at the moment, but one can't deny that it's a framework that is gaining momentum in the market.
 
-As it offers high flexibility, its learning curve is not as steep as the other two, but it is important to keep in mind when using Vue that high flexibility can leave bigger room for errors and difference in approaches between project/team members, or even between community members. Still, most of the potential issues are covered in the official documentation.
+It does not provide a great number of features (https://devoxsoftware.com/blog/vue-vs-react-which-one-to-choose-for-2022/), but for a simple project like this, it is not highly likely that there will be any issue with limiation of feature.
+Also, the flexibility this framework offers can help dealing with such issue in case there will be any.
+Finally yet importantly, personal factors cannot be overlooked. By the time of designing for this project, approximation of reamining time assigned for the project was around half a year. Considering that there were other technologies that were yet to learn, Vue was the most familiar framework among the 3 due to prior experience, and it has the lowest learning curve among the 3 options, this framework decided to be the most suitable for this project.
 
-It can be used to develop SPA. Personal familiarity <- Limited timeframe
+Meanwhile, there are a few drawbacks to be considered. First, the high flexibility it offers can also mean the code can be error-prone and more buggy compared to other frameworks. Also difference in approaches between project/team members or even between community members. (https://thecodest.co/blog/pros-and-cons-of-vue)
 
+Therefore, it will be a good option to also start the project from Vue, and test its performance since it fulfills current requirement, but consider migratting to other framework like Angular when the project is ready to grow bigger, and more efficiency, organisation, featrues and error detection is required. 
 
-
-Cons of Vue.js
-There is a report that when when developing PWA out of vue.js, ios support for PWA isn't on the same page as it for Android (https://www.netguru.com/blog/vue-js-and-pwa) but there is enough solutions within the community, and it is fairly easy to implement the PWA version. Also its biggest community is located in China sharing the majority of language in their mother-tongue. Its flexibility can also make the code more buggy and error-prone. (https://thecodest.co/blog/pros-and-cons-of-vue)
-
-Restricted for features (https://devoxsoftware.com/blog/vue-vs-react-which-one-to-choose-for-2022/)
-
-Recommendations generally suggest that Angular is suitable for big projects, react or vue for smaller projects (https://2muchcoffee.com/blog/react-vs-angular-vs-vue-which-framework-to-choose-in-2022/)
-
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+Many experienced developers including Sara Zapico Fernandez, a senior fullstack software engineer recommend that Angular can be the strongest framework for big project (https://www.zartis.com/angular-vs-react-vs-vuejs/, https://2muchcoffee.com/blog/react-vs-angular-vs-vue-which-framework-to-choose-in-2022/).
+This can be left as possibility for further development and implementation.
 
 >3.4.2. BackEnd -> Express.js (+ REST API?)<br />
 
-Here, node.js frameworks were considered.
-
-3 types -> MVC frameworks, full-stack mvc frameworks, rest api frameworks (https://www.simform.com/blog/best-nodejs-frameworks/)
+In section 3.2.2, the decision to use Node.js as programming language for the back end side had been made.
+To run Javascript on the server, a virtual machine executes JS in the server, and node behaves as a wrapper around virtual machines, with built-in modules providing rich features through easy to use asynchronous API (https://hackr.io/blog/nodejs-frameworks).
+Backend services like Applications Programming Interfaces (APIs) use Node to build their services. The services power client applications like web apps or mobile apps (https://hackr.io/blog/nodejs-frameworks). 
+Node.js alone is sufficient enough to implement the server side of the program, but a framework will be added in order to facilitate the developing process.
 
 Options: Nest.js, express.js, socket.io, meteor.js, koa.js, loopback.io (comparison: https://www.simplilearn.com/tutorials/nodejs-tutorial/nodejs-backend)
 
--most used (https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/)
-
-
-In fact, any code that can respond to HTTP requests has the capability to run on a server. Here are a few other attributes of server-side code: (https://stackify.com/web-application-architecture/)
-
-Is never seen by the user (except within a rare malfunction)
-Stores data such as user profiles, tweets, pages, etc…
-Creates the page the user requested
-
-
-JS API (https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
-
-Most popular apparently
+##### Express
+Express is a prebuilt Node Js framework that helps creating server-side web applications faster and smarter.
+It is often referred to as un-opnionated framework. With a minimalism and flexbility Node.js framework that provides a robust set of features for web and mobile applications.
+This serves as a huge benefit because it does not apply any of the prevalent design patterns such as MBV, MVP, MVVM, so its gives freedome to develops to use it depending on their onw preference, and eliminates unnecessary learning curve (https://www.toptal.com/nodejs/nodejs-frameworks-comparison)
+It also allows for quick and easy creation of API, and provides high quality performance. It as well includes useful features like simplified multiple routing, database integration, template engines, and etc (https://blog.bitsrc.io/top-10-nodejs-frameworks-every-developer-should-know-f6eea8021eb0). 
+Due to its strengths, many popular frameworks are also built based on Express (https://expressjs.com/en/resources/frameworks.html).
+It marks 20M+ weekly downloads count every week (https://www.npmjs.com/package/express).
+(https://survey.stackoverflow.co/2022/#worked-with-vs-want-to-work-with-webframe-worked-want-prof)This survey result also supports it, as it absolutely highest percentage including all frontend and backend frameworks and technologies.
+Thanks to its popularity and long history, many projects for reference using Express as part of the technology stack could be found. 
 
 >3.5. Database<br />
 
-Database system can be broken into 2 categories that are Relation Database (SQL), and Non-relational database (No-SQL).
+Database system can be broken into 2 categories that are Relation Database (RDBMS, SQL), and Non-relational database (No-SQL).
+**- SQL** defines and manipulates data based on Structured Query Language, which is the most versatile and widely-used language optoins available (https://www.geeksforgeeks.org/sql-vs-nosql-which-one-is-better-to-use/). They have fixed, or static, or predefined schema. The databases are not suitable for hierarchical data storage, but are best suited for complex queries. SQL is vertically scalable (https://www.geeksforgeeks.org/difference-between-sql-and-nosql/).
+**- NO SQL** with dynamic schema have the following characteristics: suitable database for hierarchical data storage, but not for complex queries, and horizontal scalability (https://www.geeksforgeeks.org/difference-between-sql-and-nosql/). It can be seen as a type of database consisting of opposite characteristics of SQL.
 
+###### Conclusion
+While SQL is a safe choice for complex queries, it is also restrictive. This means that, in order to use SQL, structure of data must be determined in advance of working on the data (https://www.geeksforgeeks.org/sql-vs-nosql-which-one-is-better-to-use/).
+Scalability can be an important factor in a development in a long run too. 'Vertical Scalability' means that the load on a single server can be increased by migrating to a larger server that adds more RAM, CPU, or SSD cpabilities (https://www.ibm.com/cloud/blog/sql-vs-nosql).
+On the other hand, Horizontal scalability means more traffic ccan be handled by sharding or adding more servers in the NoSQL database (https://www.geeksforgeeks.org/sql-vs-nosql-which-one-is-better-to-use/).
+SQL databases can also scale horizontally through sharding or partitioning logic, it is not as well supported as No-SQL databases are (https://www.ibm.com/cloud/blog/sql-vs-nosql). 
+This suggests that for a simple project with a possibility for further development in the future, and starting with entry-level knowledge and experience for technologies and system design, No-SQL can be a better option. 
 
--SQL: Called Relational Databases (RDBMS). Defines and manipulates data based on Structured Query Language (SQL). They have fixed, or static, or predefined schema 
--NO SQL: Called Non-relational Databases
+###### MongoDB
+NoSQL, and MongoDB among NoSQL options for database was selected as final decision.
+MongoDB is an open-source document database. Its database is a document described in BSON, which is sent to applications in JSON format. The flexibility of documentation type database allows for variations in the structure of documents and storing partially incomplete documents. This can serve as a huge advantage in exploring and studying database mechanism and its interaction with applications (https://www.mongodb.com/why-use-mongodb).
+It is also available in any major public cloud such as AWS, Azure, and Google Cloud. This gurantees the next steps in this development (https://www.mongodb.com/why-use-mongodb). 
 
-SQL vs No SQL
+In 2022, MongoDB won 5th place in among the list of databases currently used by professional developers, with 28.29%.
+Meanwhile, the upper places were taken by PostgreSQL, MySQL, SQLite, and Microsoft SQL Server, which are all RDBMS.
+This means that MongoDB is the most popular database among No SQL databases.
+Also, out of all databases, it ranked the 2nd highest by 31.32% following MySQL (58.4%)
