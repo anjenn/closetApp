@@ -100,9 +100,10 @@ was applied throughout the work, verification of the approach, and thoughts on f
     4.1. UI/UX -> Quasar + Customised design for target user group<br />
     4.2. Architecture<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.1. SPAs mechanism within the app<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.2. Use case diagram<br />
     4.3. FrontEnd<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.1. Components structure (tree)<br />
+talk about Options API & Composition API (https://vuejs.org/guide/introduction.html#what-is-vue)
+
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.2. Pages Navigation (+ Navigation & toolbar)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Routing<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Data Handling (Local Storage)<br />
@@ -364,7 +365,7 @@ The way how their interaction is planned out determines the resilience, performa
 
 Before moving on to the decision making step for application architecture, we first need to draw a big picture of the components of this web application.
 In this context, the term 'component' refers to big fragments of the system, which are Web broswer, web server, and database server. There are variety of options with ranging number of servers and databasese, or even serveless and databaseless system.
-From the options, a model with one web server and database was chosen, due to the fact that this project is considreably simple.
+From the list of options, a model with one web server and database was chosen, due to the fact that this project is considreably simple.
 If the application updates in the future, for more complex system and functionality, the number of server and database would as well need to increase, so we can avoide a problem like the whole application malfunctioing when the server goes down. Many articles suggest that a combination of multiple web servers and multiple databases can serve as the most stable form. (https://www.cleveroad.com/blog/web-application-architecture/)
 
 >3.3.2. Architecture<br />
@@ -383,21 +384,136 @@ This architecture allows for dynamic interaction and updates of contents to the 
 This architecture can be developed by using javascript frameworks, which will be discussed in the frontend side's framework section of this chapter (3.4.1).
 
 
+Other types of architecture include microservice architecture, serverless architecture and progressive web applications(PWA). These wer e not chosen, because they are more complicated compared to SPAs, providing solutions for problems that are not covered in the scope of the project needs, or overcomplicate the tasks. For example, serverless architecture allows applications to execute the code logic without bothering with the infrastructure-related tasks, but concerns with third-party cloud service. (https://hackr.io/blog/web-application-architecture-definition-models-types-and-more)
+Microservices applications can have independent components, and do not require to be built using the same programming language. This can be a huge benefit in a bigger project, but for this particular project it is unnecessary.
+Last type is PWA. PWA can be described as SPA with additional features (https://www.scnsoft.com/blog/web-application-architecture). As stated in the section 3.1, this project will eventually adapt the SPA architecture with a room for further modification to PWA.
+
+>3.4. Framework<br />
+
+Since selection of programming languages has been made, now framework can be selected too based on the language selection.
+Dictionary defines framework as a 'basic structure underlying a system (https://www.igi-global.com/dictionary/in-the-pursuit-of-happiness/11494).' In the case with programming, a framework is a tool that provide ready-made components or solutions that are customised in order to speed up development (https://www.netsolutions.com/insights/what-is-a-framework-in-programming/).
+
+Meanwhile, time constraint, and efficiency are key components in planning for any project. Therefore it is important to weigh the ressulting quality and efficiency of using a particular framework, and the cost to use a framework. For instance, each framework has differing shape of learning curve, and they are likely to have their own libraries including UI library, and state management library that are not compatible with other frameworks.
+
+There are many more considerations to make mainly including functionality, learning curve, and popularity (https://www.sitepoint.com/6-things-to-consider-when-choosing-a-framework/, https://www.zirous.com/2019/01/23/considerations-when-choosing-a-development-framework/).
+Unlike certain component of application, like frontend programming language discussed in the earlier section -for which majority of developers choose javascript, html, and css, as statistics suggests- frameworks do have a more varying preferences.
+
+In this section, the above mentioned points will be evaluated one by one in a group of competitive frameworks.
+
+>3.4.1. FrontEnd <br />
+
+As javascript was chosen as a programming language for the front end side, its javascript frameworks can be considered here.
+The following criteria will be taken in the consideration here: popularity, release date, author/developer, quality of documentation, active user community, functionality, learning curve, familiarity. Among these, familiarity is a personal factor. 
+
+Available options can be initially narrowed down by the popularity of available frameworks at the current time. The 2022's survey by stackoverflow shows that among javascript frameworks, React.js, Angular, Vue.js, Angular.js and Svelte was listed in the ranking (https://survey.stackoverflow.co/2022/#most-popular-technologies-webframe-prof, https://mindmajix.com/react-vs-vue#comparison). The percentage of their preference by professional developers were 44.31% (react.js), 23.06% (angular), 19.9%(vue.js), 9.94%(angular.js), and 4.11%(Svelte) 
+
+## !! Jetbrain Ecosystem survey showed a rather differernt survey results (https://mindmajix.com/react-vs-vue#comparison)
+## Also 'Most Wanted' section in the survey shows that Vue ranked 2nd place
+## State of JS survey shows that they were all Vue and React had similar satisfaction (https://2020.stateofjs.com/en-US/, https://2muchcoffee.com/blog/react-vs-angular-vs-vue-which-framework-to-choose-in-2022/)
+
+It is important to note that Angular and Angular.js are two different frameworks. Although they share many common characteristics das that they were both developed by Google, Angular is the enhanced version of Angular.js, supporting both typescript and javascript while Angular.js supports only javascript. (https://www.interviewbit.com/blog/difference-between-angular-and-angularjs/). Due to this fact, Angular will be selected for comparison instead of Angular.js.
+
+In the meantime, Github statistics show an interesting result from their repositories analysis.
+According to the statistics, Angular had 3.1k watches, 78.4k stars, React had 6.7k watchers and 180k stars, and Vue had 6.3k watchers, and 218k stars. Meanwhile, the number of contributers for Angular and React were above 1.5k and for Vue it was above 400 (https://www.codeinwp.com/blog/angular-vs-vue-vs-react/, https://star-history.com/#facebook/react&vuejs/vue&angular/angular, https://javascript.plainenglish.io/angular-vs-react-vs-vue-js-which-is-the-best-choice-for-2022-5ef83f2257ab). Despite the number of contributers, the numbers for watchers and stars counts are surprising, as it is not exactly identical to the preference survey result. One possible explanation could be that Angular, and React have more contributions counted from the employees from enterprises, but this still shows that Vue as well have numerous active projects on Github.
+
+Now we can narrow down the options to the frameworks with popularity above 10%, which leaves 3 candidates: React.js, Angular and Vue.js. These frameworks have 
+
+#####Angular
+- Popularity: 23.06%
+- Released year: 2010 (https://thecodest.co/blog/pros-and-cons-of-vue)
+- Developer: Google (https://thecodest.co/blog/pros-and-cons-of-vue)
+- Learning curve: Medium difficulty
+- Size of framework/features: biggest
+- Type of DOM: Incremental
+- Does it require other library: No
+- Scalability: yes
+- 2-way data-binding: YES (https://www.sam-solutions.com/blog/angular-vs-react-vs-vue/)
+- Applications written in Angular: Google, Wix, Forbes, Angular  (https://www.codeinwp.com/blog/angular-vs-vue-vs-react/)
+
+Further analysis: Angular is the oldest framework among the 3 candidates, which ensures good backing for any issues that their developers may encounter. In addition, Google is also in charge of its maintenance and improving. It is also the biggest framework among the 3, providing a wide range of choice of in-buid features. Thus, it can be a great option for large scale app with in-build features. It also provides a framework for developing web apps so that it does not require eany other library. (https://javascript.plainenglish.io/angular-vs-react-vs-vue-js-which-is-the-best-choice-for-2022-5ef83f2257ab)
+
+According to the official documentation, it is a comonent-based framework for building scalable web applications. It is a collection of well-integrated libraries covering a wide variety of features, including routing, forms managements, client-server communication and etc. It also provides a suit of developer tools to help develop, build, test and update the code.
+With Angular, developers can take advantage of a platfrom that can scale from single-developer project to enterprise level applications. (https://angular.io/guide/what-is-angular)
+
+#####React
+
+- Popularity: 44.31% (stack overflow survey)
+- Release date: 2013 (https://thecodest.co/blog/pros-and-cons-of-vue)
+- Developer: Facebook (https://thecodest.co/blog/pros-and-cons-of-vue)
+- Learning curve: Difficult
+- Size of framework/features: medium
+- Type of DOM: Virtual (https://www.sam-solutions.com/blog/angular-vs-react-vs-vue/) <- improves performance
+- Does it require other library: Yes
+- Scalability: yes
+- 2-way data-binding: NO (https://www.sam-solutions.com/blog/angular-vs-react-vs-vue/, https://2muchcoffee.com/blog/react-vs-angular-vs-vue-which-framework-to-choose-in-2022/) 
+- Applications written in React: Facebook, Uber, Netflix, Paypal (https://thecodest.co/blog/pros-and-cons-of-vue)
+
+Further analysis: 
+React is a Javascript Library for building user interfaces. It is the most universal and prevalent framework among developers, and thanks to having the biggest community of developers, and having a dedicated team from Facebook that improves and developes the technology, React developers can enjoy the greatest amount of technical support in developing.
+React -although is referred to as framework for convenience- is in fact as library, not a framework.
+It is a library, not a framework, and thus cannot build web app without the support of other libraries (https://javascript.plainenglish.io/angular-vs-react-vs-vue-js-which-is-the-best-choice-for-2022-5ef83f2257ab). Considering that Vue.js and Angular.js can be built without libraries, this drawback only associates with React.js
+
+#####Vue
+
+- Popularity: 19.9%
+- Release year: 2014 (https://thecodest.co/blog/pros-and-cons-of-vue)
+- Developer: ex-Google employee (Evan You) (https://thecodest.co/blog/pros-and-cons-of-vue)
+- Learning curve: Easy
+- Size of framework/features: smallest
+- Type of DOM: Virtual
+- Does it require other library: No
+- Scalability: yes
+- 2-way data-binding: YES (https://www.sam-solutions.com/blog/angular-vs-react-vs-vue/)
+- Applications written in Vue.js: Alibaba, Gitlab, Grammarly, Nintendo
+
+Further analysis:
+Vue is a versatile framework with adoptable ecosystem that scales between a libarary and a full-featured framework. It provides declarative and component-based programming model. It has 2 core features that are declarative rendering, and reactivity. With declarative rendering, vue extends standard HTML with a template syntax allowing us to declaratively describe HTML output based on Javascript state (https://vuejs.org/guide/introduction.html#what-is-vue). Reactivity refers to vue's ability to automatically track javascript state changes and to efficiently update the DOM when changes happen.
+One can see that this framework marked the lowest in the ranking in any survey for popularity, but one counterclaim to a criticism for its lack of popularity could be that this is a newest framework out of the 3 options. Indeed, the latest version release (Vue 3) introduced a new feature called _Compositoin API_. This feature manages state management on its own, and no external state management libary is needed anymore (https://thecodest.co/blog/pros-and-cons-of-vue). Furthermore, Vue is a standalone framework so it does not need to be used with other libraries like React. These can make Vue.Js a very competitive candidate in addition to its easy learning curve.
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+Vue js was finally selected among the 3.
+Although this framework is not backed by a large corporation like it is for React, and Angular, but instead, it is backed by a huge chinese community (https://fireart.studio/blog/vue-vs-react-in-2022/). Also, the recent statistics show gradually increasing interest in Vue.js. The data has high significance, because it has gained such results while many enterprises are still writing their codes using React and Angular. We can confidently say that Vue is a framework that is gaining momentum.
+
+As it offers high flexibility, its learning curve is not as steep as the other two, but it is important to keep in mind when using Vue that high flexibility can leave bigger room for errors and difference in approaches between project/team members, or even between community members. Still, most of the potential issues are covered in the official documentation.
+
+It can be used to develop SPA. Personal familiarity <- Limited timeframe
 
 
 
+Cons of Vue.js
+There is a report that when when developing PWA out of vue.js, ios support for PWA isn't on the same page as it for Android (https://www.netguru.com/blog/vue-js-and-pwa) but there is enough solutions within the community, and it is fairly easy to implement the PWA version. Also its biggest community is located in China sharing the majority of language in their mother-tongue. Its flexibility can also make the code more buggy and error-prone. (https://thecodest.co/blog/pros-and-cons-of-vue)
+
+Restricted for features (https://devoxsoftware.com/blog/vue-vs-react-which-one-to-choose-for-2022/)
+
+Recommendations generally suggest that Angular is suitable for big projects, react or vue for smaller projects (https://2muchcoffee.com/blog/react-vs-angular-vs-vue-which-framework-to-choose-in-2022/)
 
 
->3.4. Frameworks<br />
-
->3.4.1. FrontEnd -> Vue js<br />
-
-
-Programming langauges comparison and api (https://www.clickittech.com/devops/web-application-architecture/#h-web-application-architecture-components)
-
-_Write about statistics, and also add the importance of timeframe and learning curve. How the application can be achieved with basic knowledge shared on forum (React and angular have more users so its commonly thought that there are higher chance to get the solutions to any problem) and features can be easily implemented. V-model, v-bind for example reduce the extra step dealing with state and hook_
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 >3.4.2. BackEnd -> Express.js (+ REST API?)<br />
+
+Here, node.js frameworks were considered.
+
+3 types -> MVC frameworks, full-stack mvc frameworks, rest api frameworks (https://www.simform.com/blog/best-nodejs-frameworks/)
+
+Options: Nest.js, express.js, socket.io, meteor.js, koa.js, loopback.io (comparison: https://www.simplilearn.com/tutorials/nodejs-tutorial/nodejs-backend)
+
+-most used (https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/)
+
 
 In fact, any code that can respond to HTTP requests has the capability to run on a server. Here are a few other attributes of server-side code: (https://stackify.com/web-application-architecture/)
 
@@ -411,5 +527,11 @@ JS API (https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Wh
 Most popular apparently
 
 >3.5. Database<br />
+
+Database system can be broken into 2 categories that are Relation Database (SQL), and Non-relational database (No-SQL).
+
+
+-SQL: Called Relational Databases (RDBMS). Defines and manipulates data based on Structured Query Language (SQL). They have fixed, or static, or predefined schema 
+-NO SQL: Called Non-relational Databases
 
 SQL vs No SQL
