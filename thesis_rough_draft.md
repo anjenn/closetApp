@@ -32,7 +32,7 @@
 In present day, the field of web application development is flooded with various tools, and technologies,
 where each one of them has wide range of features with its own strengths and limitations in comparison to other technologies.
 Meanwhile, it is also important to note that selection of such technologies also highly depend on the situation surrounding the project,
-such as its aim, timeframe, and expected outcome. Therefore, one can say that it is essential to examine and compare the available options
+such as its aim, timeframe, and existing skills. Therefore, one can say that it is essential to examine and compare the available options
 and choose a stack well-tailored for the project, in order for the development to be more efficient.
 
 The purpose of this paper is to investigate a development process of a Single Page Web Application,
@@ -84,7 +84,7 @@ was applied throughout the work, verification of the approach, and thoughts on f
 </details>
 
 <br />
-
+## 3.2 and 3.4 could perhaps merge? or 3.2 3.3 can change their order
 3. Technological Analysis (Planning stage)<br />
     3.1. Web vs Mobile app<br />
     3.2. Programming language<br />
@@ -531,3 +531,31 @@ In 2022, MongoDB won 5th place in among the list of databases currently used by 
 Meanwhile, the upper places were taken by PostgreSQL, MySQL, SQLite, and Microsoft SQL Server, which are all RDBMS.
 This means that MongoDB is the most popular database among No SQL databases.
 Also, out of all databases, it ranked the 2nd highest by 31.32% following MySQL (58.4%)
+
+
+--------
+##4. Implementation  <br />
+This chapter will display overall implementation of the solution for this project.
+It will not only cover the technological considerations, but also other details that deals with user experience,
+components and layout of the work.
+
+
+>4.1. UI/UX -> Quasar + Customised design for target user group<br />
+
+As can be seen application analysis written in the chapter 2,
+the target group of users for this application is young females, that are interested in fashion, and potentially as well interested in aesthetics.
+
+
+
+>4.2. Architecture<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. SPAs mechanism within the app<br />
+    4.3. FrontEnd<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. Components structure (tree)<br />
+talk about Options API & Composition API (https://vuejs.org/guide/introduction.html#what-is-vue)
+
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. Pages Navigation (+ Navigation & toolbar)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Routing<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Data Handling (Local Storage)<br />
+    4.4. BackEnd<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. Database (models & controllers)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. routing<br />
