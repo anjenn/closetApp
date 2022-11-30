@@ -78,9 +78,6 @@ was applied throughout the work, verification of the approach, and thoughts on f
   #### Platform
   - https://www.scnsoft.com/blog/mobile-web-app-types
   - https://www.scnsoft.com/blog/web-application-vs-website-finally-answered
-  #### Architecture
-  - Single-page web app architecture 
-  - https://www.scnsoft.com/blog/web-application-architecture
 </details>
 
 <br />
@@ -98,16 +95,14 @@ was applied throughout the work, verification of the approach, and thoughts on f
     3.5. Database<br />
 4. Implementation of the Solution<br />
     4.1. UI/UX -> Quasar + Customised design for target user group<br />
-    4.2. Architecture<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. SPAs mechanism within the app<br />
-    4.3. FrontEnd<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. Components structure (tree)<br />
+    4.2. FrontEnd<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. Components structure (tree)<br />
 talk about Options API & Composition API (https://vuejs.org/guide/introduction.html#what-is-vue)
 
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. Pages Navigation (+ Navigation & toolbar)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Routing<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Data Handling (Local Storage)<br />
-    4.4. BackEnd<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.2. Pages Navigation (+ Navigation & toolbar)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.3. Routing<br />
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.3. Data Handling (Local Storage)<br />
+    4.3. BackEnd<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.1. Database (models & controllers)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.1. routing<br />
 5. Performance<br />
@@ -377,7 +372,7 @@ Single-page web app architecture between the two was chosen as the final archite
 Single-page web app architecture, among monolithic architectures, was chosen as the final architecture for the system. Monolithic architecture refers to the tranditional model, where the entire software is developed as a songle piece of code. In this architecture, all components are interdependent and interconnected. Thus, for change or update of a specific feature to take place, the entire code should be rewriteen and compiled. Meanwhile, as the entire code is treated as a single program, building a new project, applying frameworks, scrips and templates and testing is as well easy. (https://www.clickittech.com/devops/web-application-architecture/#h-web-application-architecture-components)
 Since this project is is created with entry level of knowledge and experience in programming, this architecture was thought to be adequate. For more complex programs, microservices architecture or serverless architecture could be used.
 
-###### Single Page Web App (SPAs)
+###### Single Page Web App (SPAs) <- add a diagram here
 
 SPAs was introduced to overocome the traditional limitations to achieve smooth app performance, intuitive and interactive user experience (https://www.simform.com/blog/web-application-architecture/).
 This architecture allows for dynamic interaction and updates of contents to the current page without reloading a new page each time. (https://hackr.io/blog/web-application-architecture-definition-models-types-and-more).
@@ -400,7 +395,7 @@ Unlike certain component of application, like frontend programming language disc
 
 In this section, the above mentioned points will be evaluated one by one in a group of competitive frameworks.
 
->3.4.1. FrontEnd <br />
+>3.4.1. FrontEnd <br /> <- add a table of comparison here.
 
 As javascript was chosen as a programming language for the front end side, its javascript frameworks can be considered here.
 The following criteria will be taken in the consideration here: popularity, release date, author/developer, quality of documentation, active user community, functionality, learning curve, familiarity. Among these, familiarity is a personal factor. 
@@ -544,18 +539,21 @@ components and layout of the work.
 
 As can be seen application analysis written in the chapter 2,
 the target group of users for this application is young females, that are interested in fashion, and potentially as well interested in aesthetics.
+In order to make UX/UI design easier, a user interface library called 'Quasar' was used.
+According to the documentation, it is compatible with different types of platform including SPA, SSR, PWA, etc.
+Since there is a possibility of adopting supports for a mobile view, Quasar can be a right-fit for the purpose (https://quasar.dev/introduction-to-quasar).
+It employs 'material design' as its default style, thanks to its high customizability,
+design properties could be manipulated to be more appealing to the target users.
 
+// Attach some scss code snippet, here.
 
-
->4.2. Architecture<br />
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. SPAs mechanism within the app<br />
-    4.3. FrontEnd<br />
+>4.2. FrontEnd<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.1. Components structure (tree)<br />
 talk about Options API & Composition API (https://vuejs.org/guide/introduction.html#what-is-vue)
 
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.2. Pages Navigation (+ Navigation & toolbar)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Routing<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.3. Data Handling (Local Storage)<br />
-    4.4. BackEnd<br />
+    4.3. BackEnd<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.1. Database (models & controllers)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.1. routing<br />
