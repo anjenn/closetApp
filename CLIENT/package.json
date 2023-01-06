@@ -1,17 +1,17 @@
 {
   "name": "collage_it",
   "version": "0.0.1",
-  "description": "thesis project",
-  "productName": "CollageIt",
-  "author": "anjenn <93240896+anjenn@users.noreply.github.com>",
   "private": true,
+  "description": "thesis project",
+  "author": "anjenn <93240896+anjenn@users.noreply.github.com>",
   "scripts": {
-    "lint": "eslint --ext .js,.vue ./",
-    "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",
-    "test": "echo \"No test specified\" && exit 0",
-    "start": "quasar dev",
     "build": "quasar build --dest build",
-    "build:pwa": "quasar build -m pwa"
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "eslint --ext .js,.vue ./",
+    "build:pwa": "quasar build -m pwa",
+    "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "start": "quasar dev",
+    "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "@egjs/vue3-infinitegrid": "^4.5.0",
@@ -26,10 +26,15 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
     "@quasar/app-webpack": "^3.0.0",
+    "@vue/cli-plugin-unit-jest": "~5.0.0",
+    "@vue/test-utils": "^2.0.0-0",
+    "@vue/vue3-jest": "^27.0.0-alpha.1",
+    "babel-jest": "^27.0.6",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^9.0.0",
     "eslint-webpack-plugin": "^3.1.1",
+    "jest": "^27.0.5",
     "prettier": "^2.5.1"
   },
   "browserslist": [
@@ -47,5 +52,6 @@
     "node": ">= 12.22.1",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
-  }
+  },
+  "productName": "CollageIt"
 }
