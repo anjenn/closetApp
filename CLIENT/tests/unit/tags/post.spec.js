@@ -45,7 +45,7 @@ const post = {
     ]
 }
 
-describe('Test for the tagging system used with localstorage', () => {
+describe('Test for the temporal post data storage system used with localstorage', () => {
     it('Tests if post object data was stored correctly', () =>{
         postTemp.savePostData(post, 'post1');
         // console.log(`comparison: ${_.isEqual(postTemp.loadPostData('post1'), post)}`);

@@ -10,7 +10,7 @@ const loadUserData = (objName) => {
   }
   else{
     let newObj = JSON.parse(window.localStorage.getItem(objName));
-    console.log(`util function result: ${JSON.stringify(newObj)}`);
+    //console.log(`util function result: ${JSON.stringify(newObj)}`);
     return newObj;
   }
 };
