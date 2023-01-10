@@ -213,7 +213,7 @@
         this.logOut();
         userDataMethods.deleteUserInfo(this.user.id)
         .then(response => {
-            console.log(response.data);
+            //console.log(response.data);
             Notify.create({
               message: `Your account was deleted successfully (user ID: ${this.user.id})`,
               color: 'pink-5',

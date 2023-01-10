@@ -2,7 +2,7 @@
 
 const savePostData = (obj, objName) => { //saved with obj name "currUser"
   window.localStorage.setItem(objName, JSON.stringify(obj));
-  // console.log(loadPostData(objName));
+  //console.log(loadPostData(objName));
 };
 const loadPostData = (objName) => {
   let newObj = JSON.parse(window.localStorage.getItem(objName));

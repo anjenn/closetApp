@@ -1,4 +1,5 @@
 const saveTags = (arr, arrName) => {
+  //console.log(arr);
   window.localStorage.setItem(arrName, JSON.stringify(arr));
 };
 

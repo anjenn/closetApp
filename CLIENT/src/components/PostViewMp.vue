@@ -176,7 +176,7 @@ export default defineComponent({
       this.currUser.savedPosts = this.currUser.savedPosts.filter(item => item !== this.post.id)
       userDataMethods.updateUserInfo(this.currUser.id, this.currUser)
         .then(response => {
-          console.log(response.data);
+          //console.log(response.data);
           UserTemp.saveUserData(this.currUser, "currUser");
           this.$emit("on-x-click", true);
         })

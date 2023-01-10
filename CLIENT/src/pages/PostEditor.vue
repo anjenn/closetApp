@@ -202,7 +202,7 @@ export default defineComponent({
     // retrieving userID
     const tempObj = UserTemp.loadUserData("currUser");
     this.postData.userID = tempObj.id;
-    console.log(this.postData.userID);
+    //console.log(this.postData.userID);
     if(this.$route.params.postID)
     {
       // saving url parameter into component data 
@@ -280,7 +280,7 @@ export default defineComponent({
       var tempUser = UserTemp.loadUserData("currUser");
       // append userID to post data
       this.postData.userID = tempUser.id;
-      console.log(this.postData);
+      //console.log(this.postData);
       if(!this.postData.tag || !tempUser.id)
       { status = false; }
       else{
@@ -308,7 +308,7 @@ export default defineComponent({
         else{ // case: existing post
           postDataMethods.updatePost(this.postData.id, this.postData)
           .then(response => {
-            console.log(`The post was updated successfully (post ID: ${response.data.id}`)
+            //console.log(`The post was updated successfully (post ID: ${response.data.id}`)
             this.showSaveNotif(response.data.id);
             this.$router.push("/FeedView");
           })
@@ -336,7 +336,7 @@ export default defineComponent({
       if(this.postData.id){
               postDataMethods.deletePost(this.postData.id)
       .then(response => {
-          console.log(response.data);
+          //console.log(response.data);
           this.showDeleteNotif();
         })
         .catch(e => {
