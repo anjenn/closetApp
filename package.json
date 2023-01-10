@@ -1,8 +1,4 @@
 {
-  "scripts": {
-    "start:server": "nodemon index.js --ignore '../client/'",
-    "start:client": "npm run serve --prefix '../client/'"
-  },
   "dependencies": {
     "dotenv": "^16.0.3"
   },
