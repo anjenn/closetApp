@@ -3,15 +3,15 @@ module.exports = app => {
   
     var router = require("express").Router();
   
-    // Create a new User
+    // Create a new user
     router.post("/SignUp", users.createUser); // works
-    // Retrieve one User info
+    // Retrieve one user info
     router.get("/LogIn", users.getUserInfo); // works
-    // Delete a User info with id
+    // Delete a user info with id
     router.delete("/MyPage/:id", users.deleteUserInfo); // works
-    // Update a User info with id
+    // Update a user info with id
     router.put("/FeedView", users.updateUserInfo); // works
-    // Update a User info with id
+    // Update a user info with id
     router.put("/MyPage/:id", users.updateUserInfo2); // works
   
     app.use('/api', router);
