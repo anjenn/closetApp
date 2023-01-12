@@ -33,9 +33,15 @@ require("./app/routes/users.routes")(app); // needs it before listen()
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+if (process.env.NODE_ENV !== "test"){
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+  });
+}
+/*app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
-});
+});*/
+
 
 // calling connect() method
 mongoose.connect(mongoString, {
@@ -49,3 +55,5 @@ database.on('error', (error) => {
 database.once('connected', () => {
     console.log('Database Connected');
 })
+
+module.exports = app;
