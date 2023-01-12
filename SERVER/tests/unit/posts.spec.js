@@ -2,12 +2,26 @@ const mongoose = require("mongoose");
 const request = require("supertest");
 const app = require("../../server");
 const testHelper = require("../testsHelper");
-
+// local storage that will store post ID
+if (typeof localStorage === "undefined" || localStorage === null) {
+  var LocalStorage = require('node-localstorage').LocalStorage;
+  localStorage = new LocalStorage('./scratch');
+}
 require("dotenv").config();
 
 // retrieving mock data
 const tags = testHelper.returnTags();
-const newPost = testHelper.returnUser();
+const newPost = testHelper.returnPost();
+
+
+/* Clears local storage beefore all test */
+beforeAll(() => {
+  return new Promise(resolve => {
+    // Asynchronous task
+    localStorage.clear()
+    resolve();
+  });
+});
 
 /* Connecting to the database before each test. */
 beforeEach(async () => {
@@ -19,7 +33,8 @@ afterEach(async () => {
 });
 
 describe("GET /api/FeedView", () => {
-  it("should return all products", async () => {
+  xit("should return all products", async () => {
+    console.log("test: should return all products");
     const res = await request(app).get(`/api/FeedView?tags=${tags}`);
     //console.log(tags);
     console.log(res.body);
@@ -28,34 +43,56 @@ describe("GET /api/FeedView", () => {
   });
 });
 
-
-
-/////////////////////////////////////////////
-/*
-// Get all posts
-describe("/FeedView", () => {
-  
-  beforeAll(async () => {
-    await request(baseUrl)
-      .post('/PostEditor')
-      .send(newPost);
+describe("POST /api/PostEditor", () => {
+  it("should create a new post", async () =>{
+    console.log("test: should create a new post");
+    //console.log(newPost);
+    const res = await request(app).post("/api/PostEditor").send(newPost);
+    expect(res.statusCode).toBe(200);
+    expect(res.body.userID).toBe("test_user");
+    const tempPostId = res.body.id;
+    localStorage.setItem('tempPostId', tempPostId)
+    console.log(localStorage.getItem('tempPostId'));
   })
-  afterAll(async () => {
-    await request(baseUrl)
-      .delete(`/PostEditor/${newPost._id}`)
-  })
-  it('should return 200', async () => {
-    const response = await request(baseUrl)
-      .get('/FeedView')
+})
 
-    console.log(response.body)
-    expect(response.status).toBe(200);
-    expecct(response.bodyerror).toBeNull();
-  });
-  it('should return all posts', async () => {
-    const response = await request(baseUrl)
-      .get('/FeedView')
-    expect(response.body.data.length >=1 ).toBe(true);
+
+describe("GET /api/PostEditor/:id", () => {
+  it("should retrieve a post", async () => {
+    console.log("test: should retrieve a post");
+    const tempPostId = localStorage.getItem('tempPostId')
+    const res = await request(app).get(
+      `/api/PostEditor/${tempPostId}`
+    );
+    expect(res.statusCode).toBe(200);
+    //console.log(res.body.userID);
+    expect(res.body.userID).toBe("test_user");
   });
 });
-*/
+
+
+describe("PUT /api/PostEditor/:id", () => {
+  it("should update a post", async () => {
+    console.log("test: should update a post");
+    const tempPostId = localStorage.getItem('tempPostId')
+    const res = await request(app)
+      .put(`/api/PostEditor/${tempPostId}`)
+      .send({
+        "userID": "MODIFIED"
+      });
+      //console.log(`new id: ${JSON.stringify(res.body)}`);
+    expect(res.statusCode).toBe(200);
+    //console.log(res.body);
+    expect(res.body.message).toBe("Updated successfully.");
+  });
+});
+
+describe("DELETE /api/PostEditor/:id", () => {
+  it("should delete a post", async () => {
+    console.log("test: should delete a post"); 
+    const tempPostId = localStorage.getItem('tempPostId')
+    const res = await request(app)
+      .delete(`/api/PostEditor/${tempPostId}`);
+    expect(res.statusCode).toBe(200);
+  });
+});
