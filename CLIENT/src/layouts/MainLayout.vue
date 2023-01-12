@@ -63,6 +63,9 @@
           v-bind="link"
         />
       </q-list>
+      <p id="warning">
+        <b>Warning: </b> redirection to My Page, Log In, and Sign Up pages automatically signs you out from this application
+      </p>
     </q-drawer>
 
     <q-page-container>
@@ -171,5 +174,13 @@ export default defineComponent({
 }
 .filter-btn {
   position: relative;
+}
+#warning {
+  position: fixed;
+  bottom: 0;
+  font-style: italic;
+  font-size:0.7rem;
+  text-align: center;
+  padding: 0.5rem 0.5rem;
 }
 </style>
