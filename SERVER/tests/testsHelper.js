@@ -14,12 +14,12 @@ exports.returnTags = () => {
 }
 exports.returnPost = () => {
   return {
-    "userID": "test_user",
-    "tag": "test_tag",
+    "userID": "testUser",
+    "tag": "testTag",
     "photos": [
         {
             "order": 0,
-            "url": "test_url_1",
+            "url": "testUrl1",
             "imageEdits": {
                 brightness: 0,
                 contrast: 1,
@@ -28,7 +28,7 @@ exports.returnPost = () => {
         },
         {
             "order": 1,
-            "url": "test_url_2",
+            "url": "testUrl2",
             "imageEdits": {
                 brightness: 1,
                 contrast: 1,
@@ -37,7 +37,7 @@ exports.returnPost = () => {
         },
         {
             "order": 2,
-            "url": "test_url_3",
+            "url": "testUrl3",
             "imageEdits": {
                 brightness: 0,
                 contrast: 0,
@@ -46,7 +46,7 @@ exports.returnPost = () => {
         },
         {
             "order": 3,
-            "url": "test_url_4",
+            "url": "testUrl4",
             "imageEdits": {
                 brightness: 0,
                 contrast: 0,
@@ -59,10 +59,10 @@ exports.returnPost = () => {
 
 exports.returnUser = () => {
   return {
-    "firstName": "test_first",
-    "lastName": "test_last",
-    "password": "test_pw",
-    "userName": "test_user",
+    "firstName": "testFirst",
+    "lastName": "testLast",
+    "password": "testPw",
+    "userName": "testUser",
     "savedPosts": [
         "null"
     ]

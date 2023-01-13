@@ -33,18 +33,19 @@ exports.createUser = (req, res) => {
     });
 };
 exports.getUserInfo = (req, res) => {
+  // IT'S USERNAME, DO NOT CONFUSE WITH OBJECT ID!!!!
     const {userName} = req.query;
     // console.log(userName);
     User.find({"userName": {$in: userName}})
     .then(data => {
       if (!data)
-        res.status(404).send({ message: "Not found User with id " + userID });
+        res.status(404).send({ message: "Not found User with id " + userName });
       else res.send(data);
     })
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Error retrieving User with id=" + userID });
+        .send({ message: "Error retrieving User with id=" + userName });
     });
 };
 exports.deleteUserInfo = (req, res) => {

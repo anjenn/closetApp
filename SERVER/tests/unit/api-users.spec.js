@@ -39,33 +39,26 @@ describe("POST /api/SignUp", () => {
     expect(res.statusCode).toBe(200);
     expect(res.body.userName).toBe("test_user");
     const tempUserId = res.body.id;
+    const tempUserName = res.body.userName;
     localStorage.setItem('tempUserId', tempUserId)
+    localStorage.setItem('tempUserName', tempUserName)
     console.log(localStorage.getItem('tempUserId'));
+    console.log(localStorage.getItem('tempUserName'));
   })
 })
 
-////////////////////////////////////////////////////////////////
-/* Retrieving user info,
-Updating a user info (for 2)
-remaining
-*/
-//////////////////////////////////////////////////////////////////
-
-
-/*
 describe("GET /api/LogIn", () => {
   it("should retrieve one user info", async () => {
     console.log("test 2: should retrieve one user info");
-    const tempUserId = localStorage.getItem('tempUserId')
+    const tempUserName = localStorage.getItem('tempUserName')
+    console.log(tempUserName);
     const res = await request(app).get(
-      `/api/LogIn/?userID=${tempUserId}`
+      `/api/LogIn?userName=${tempUserName}`
     );
-    expect(res.statusCode).toBe(200);
-    //console.log(res.body.userID);
     expect(res.body.userName).toBe("test_user");
+    expect(res.statusCode).toBe(200);
   });
 });
-*/
 
 /*
 describe("PUT /api/PostEditor/:id", () => {
@@ -85,6 +78,7 @@ describe("PUT /api/PostEditor/:id", () => {
 });
 */
 
+/*
 describe("DELETE /api/MyPage/:id", () => {
   it("should delete a user info with id", async () => {
     console.log("test 5: should delete a user info with id"); 
@@ -94,3 +88,4 @@ describe("DELETE /api/MyPage/:id", () => {
     expect(res.statusCode).toBe(200);
   });
 });
+*/

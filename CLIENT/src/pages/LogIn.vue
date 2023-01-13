@@ -104,14 +104,14 @@ export default defineComponent({
   methods: {
     onSubmit() {
       this.btnLoading = true;
-      const id = this.input.userName;
+      const usNm = this.input.userName;
       const pw = this.input.password;
       userDataMethods
-        .getUserInfo(id)
+        .getUserInfo(usNm)
         .then((response) => {
           this.userData = response.data;
           for (const curr of this.userData) {
-            if (curr.userName == id && curr.password == pw) {
+            if (curr.userName == usNm && curr.password == pw) {
               this.currUser = curr;
             }
           }
