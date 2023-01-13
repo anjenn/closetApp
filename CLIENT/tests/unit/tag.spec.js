@@ -1,18 +1,8 @@
 import Tags from '@/utils/Tags.js';
 import { error } from "console";
+import testsHelper from '../testsHelper';
 
-const arr = [
-    "tomboy",
-    "retro",
-    "streetwear",
-    "punk",
-    "casual",
-    "y2k",
-    "formal",
-    "gothic",
-    "sporty",
-    "girly"
-];
+const arr = testsHelper.returnTags();
 
 describe('Test for the tagging system used with localstorage', () => {
     it('Tests if tag array was saved correctly', () =>{

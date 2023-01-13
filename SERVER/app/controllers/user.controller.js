@@ -112,6 +112,30 @@ exports.updateUserInfo2 = (req, res) => {
       });
     }
     const id = req.params.id;
+
+    User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot update User with id=${id}. Maybe User was not found!`
+        });
+      } else res.send({ message: "User was updated successfully." });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating User with id=" + id
+      });
+    });
+  }
+/*
+Version that only updates the 'savedPosts' field (doesn't work)
+exports.updateUserInfo2 = (req, res) => {
+    if (!req.body) {
+      return res.status(400).send({
+        message: "Data to update can not be empty!"
+      });
+    }
+    const id = req.params.id;
     User.findByIdAndUpdate(id, { $set: {savedPosts}}, { useFindAndModify: false })
       .then(data => {
         if (!data) {
@@ -125,5 +149,4 @@ exports.updateUserInfo2 = (req, res) => {
           message: "Error updating User with id=" + id
         });
       });
-  }
-  
+*/

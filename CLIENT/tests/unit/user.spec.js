@@ -1,15 +1,9 @@
 import userTemp from '@/utils/userTemp.js';
 import { error } from "console";
 import _ from 'lodash';
+import testsHelper from '../testsHelper';
 
-const user = {
-    "firstName":"Shelby",
-    "lastName":"Talldown",
-    "password":"afjlskdfj8",
-    "userName":"Sh0822",
-    "savedPosts": "637024e6ff6669360a224046",
-    "id":"63701f6fff6669360a22403b"
-}
+const user = testsHelper.returnUser();
 
 describe('Test for the temporal user data storage system used with localstorage', () => {
     it('Tests if user object data was stored correctly', () =>{

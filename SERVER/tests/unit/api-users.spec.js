@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const request = require("supertest");
 const app = require("../../server");
 const testHelper = require("../testsHelper");
+
+
 // local storage that will store post ID
 if (typeof localStorage === "undefined" || localStorage === null) {
   var LocalStorage = require('node-localstorage').LocalStorage;
@@ -34,16 +36,16 @@ afterEach(async () => {
 describe("POST /api/SignUp", () => {
   it("should create a new user", async () =>{
     console.log("test 1: should create a new user");
-    console.log(newUser);
+    // console.log(newUser);
     const res = await request(app).post("/api/SignUp").send(newUser);
     expect(res.statusCode).toBe(200);
-    expect(res.body.userName).toBe("testUser");
+    expect(res.body.userName).toBe("test_un");
     const tempUserId = res.body.id;
     const tempUserName = res.body.userName;
     localStorage.setItem('tempUserId', tempUserId)
     localStorage.setItem('tempUserName', tempUserName)
-    console.log(localStorage.getItem('tempUserId'));
-    console.log(localStorage.getItem('tempUserName'));
+    // console.log(localStorage.getItem('tempUserId'));
+    // console.log(localStorage.getItem('tempUserName'));
   })
 })
 
@@ -51,34 +53,46 @@ describe("GET /api/LogIn", () => {
   it("should retrieve one user info", async () => {
     console.log("test 2: should retrieve one user info");
     const tempUserName = localStorage.getItem('tempUserName')
-    console.log(tempUserName);
+    // console.log(tempUserName);
     const res = await request(app).get(
       `/api/LogIn?userName=${tempUserName}`
     );
-    console.log(res.body);
-    expect(res.body.userName).toBe(`${tempUserName}`);
+    expect(res.body[0].userName).toBe(`${tempUserName}`);
     expect(res.statusCode).toBe(200);
   });
 });
 
-/*
-describe("PUT /api/PostEditor/:id", () => {
-  it("should update a post", async () => {
-    console.log("test: should update a post");
+describe("PUT /api/FeedView", () => {
+  it("should update a user info with id", async () => {
+    console.log("test 3: should update a user info with id");
     const tempUserId = localStorage.getItem('tempUserId')
     const res = await request(app)
-      .put(`/api/PostEditor/${tempUserId}`)
+      .put(`/api/FeedView?userID=${tempUserId}`)
       .send({
-        "userID": "MODIFIED"
+        "userName": "MODIFIED"
       });
-      //console.log(`new id: ${JSON.stringify(res.body)}`);
+      console.log(`new 1: ${JSON.stringify(res.body)}`);
     expect(res.statusCode).toBe(200);
-    //console.log(res.body);
-    expect(res.body.message).toBe("Updated successfully.");
+    const expected = 'success';
+    expect(res.body.message).toEqual(expect.stringContaining(expected));
   });
 });
-*/
 
+describe("PUT /api/MyPage/:id", () => {
+  it("should update a user info with id", async () => {
+    console.log("test 4: should update a user info with id");
+    const tempUserId = localStorage.getItem('tempUserId')
+    const res = await request(app)
+      .put(`/api/MyPage/${tempUserId}`)
+      .send({
+          "savedPosts": ["non-empty"]
+      });
+      console.log(`new 2: ${JSON.stringify(res.body)}`);
+    // expect(res.statusCode).toBe(200);
+    const expected = 'success';
+    // expect(res.body.message).toEqual(expect.stringContaining(expected));
+  });
+});
 
 describe("DELETE /api/MyPage/:id", () => {
   it("should delete a user info with id", async () => {

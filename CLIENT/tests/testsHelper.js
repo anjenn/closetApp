@@ -1,4 +1,4 @@
-exports.returnTags = () => {
+const returnTags = () => {
   return [
     "tomboy",
     "retro",
@@ -12,7 +12,7 @@ exports.returnTags = () => {
     "girly"
   ];
 }
-exports.returnPost = () => {
+const returnPost = () => {
   return {
     "userID": "test_user",
     "tag": "test_tag",
@@ -56,7 +56,7 @@ exports.returnPost = () => {
     ]
   };
 }
-exports.returnUser = () => {
+const returnUser = () => {
   return {
     "firstName": "test_first",
     "lastName": "test_last",
@@ -67,3 +67,9 @@ exports.returnUser = () => {
     ]
   };
 }
+
+export default {
+  returnTags,
+  returnPost,
+  returnUser
+};
