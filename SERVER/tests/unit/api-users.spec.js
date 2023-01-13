@@ -35,7 +35,7 @@ afterEach(async () => {
 
 describe("POST /api/SignUp", () => {
   it("should create a new user", async () =>{
-    console.log("test 1: should create a new user");
+    console.log("Test Suite 1: should create a new user");
     // console.log(newUser);
     const res = await request(app).post("/api/SignUp").send(newUser);
     expect(res.statusCode).toBe(200);
@@ -51,7 +51,7 @@ describe("POST /api/SignUp", () => {
 
 describe("GET /api/LogIn", () => {
   it("should retrieve one user info", async () => {
-    console.log("test 2: should retrieve one user info");
+    console.log("Test Suite 2: should retrieve one user info");
     const tempUserName = localStorage.getItem('tempUserName')
     // console.log(tempUserName);
     const res = await request(app).get(
@@ -64,7 +64,7 @@ describe("GET /api/LogIn", () => {
 
 describe("PUT /api/FeedView", () => {
   it("should update a user info with id", async () => {
-    console.log("test 3: should update a user info with id");
+    console.log("Test Suite 3: should update a user info with id");
     const tempUserId = localStorage.getItem('tempUserId')
     const res = await request(app)
       .put(`/api/FeedView?userID=${tempUserId}`)
@@ -80,7 +80,7 @@ describe("PUT /api/FeedView", () => {
 
 describe("PUT /api/MyPage/:id", () => {
   it("should update a user info with id", async () => {
-    console.log("test 4: should update a user info with id");
+    console.log("Test Suite 4: should update a user info with id");
     const tempUserId = localStorage.getItem('tempUserId')
     const res = await request(app)
       .put(`/api/MyPage/${tempUserId}`)
@@ -96,7 +96,7 @@ describe("PUT /api/MyPage/:id", () => {
 
 describe("DELETE /api/MyPage/:id", () => {
   it("should delete a user info with id", async () => {
-    console.log("test 5: should delete a user info with id"); 
+    console.log("Test Suite 5: should delete a user info with id"); 
     const tempUserId = localStorage.getItem('tempUserId')
     const res = await request(app)
       .delete(`/api/MyPage/${tempUserId}`);
