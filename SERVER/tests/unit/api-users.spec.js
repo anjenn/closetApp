@@ -37,7 +37,7 @@ describe("POST /api/SignUp", () => {
     console.log(newUser);
     const res = await request(app).post("/api/SignUp").send(newUser);
     expect(res.statusCode).toBe(200);
-    expect(res.body.userName).toBe("test_user");
+    expect(res.body.userName).toBe("testUser");
     const tempUserId = res.body.id;
     const tempUserName = res.body.userName;
     localStorage.setItem('tempUserId', tempUserId)
@@ -55,7 +55,8 @@ describe("GET /api/LogIn", () => {
     const res = await request(app).get(
       `/api/LogIn?userName=${tempUserName}`
     );
-    expect(res.body.userName).toBe("test_user");
+    console.log(res.body);
+    expect(res.body.userName).toBe(`${tempUserName}`);
     expect(res.statusCode).toBe(200);
   });
 });
@@ -78,7 +79,7 @@ describe("PUT /api/PostEditor/:id", () => {
 });
 */
 
-/*
+
 describe("DELETE /api/MyPage/:id", () => {
   it("should delete a user info with id", async () => {
     console.log("test 5: should delete a user info with id"); 
@@ -88,4 +89,3 @@ describe("DELETE /api/MyPage/:id", () => {
     expect(res.statusCode).toBe(200);
   });
 });
-*/
