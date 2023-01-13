@@ -1,50 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1673391992155" clover="3.2.0">
-  <project timestamp="1673391992155" name="All files">
-    <metrics statements="35" coveredstatements="35" conditionals="6" coveredconditionals="6" methods="12" coveredmethods="12" elements="53" coveredelements="53" complexity="0" loc="35" ncloc="35" packages="1" files="3" classes="3"/>
-    <file name="PostTemp.js" path="C:\Users\anjen\Documents\Github\closetApp\CLIENT\src\utils\PostTemp.js">
-      <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
-      <line num="3" count="1" type="stmt"/>
-      <line num="4" count="2" type="stmt"/>
-      <line num="7" count="1" type="stmt"/>
-      <line num="8" count="2" type="stmt"/>
-      <line num="9" count="2" type="stmt"/>
-      <line num="11" count="1" type="stmt"/>
-      <line num="12" count="2" type="stmt"/>
-      <line num="14" count="1" type="stmt"/>
-      <line num="15" count="2" type="stmt"/>
-      <line num="16" count="2" type="stmt"/>
-      <line num="17" count="2" type="cond" truecount="2" falsecount="0"/>
-      <line num="18" count="2" type="stmt"/>
-    </file>
-    <file name="Tags.js" path="C:\Users\anjen\Documents\Github\closetApp\CLIENT\src\utils\Tags.js">
-      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
-      <line num="1" count="1" type="stmt"/>
-      <line num="3" count="1" type="stmt"/>
-      <line num="6" count="1" type="stmt"/>
-      <line num="7" count="2" type="stmt"/>
-      <line num="8" count="2" type="stmt"/>
-      <line num="11" count="1" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
-      <line num="15" count="1" type="stmt"/>
-      <line num="16" count="1" type="stmt"/>
-    </file>
-    <file name="UserTemp.js" path="C:\Users\anjen\Documents\Github\closetApp\CLIENT\src\utils\UserTemp.js">
-      <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
-      <line num="3" count="1" type="stmt"/>
-      <line num="4" count="2" type="stmt"/>
-      <line num="7" count="1" type="stmt"/>
-      <line num="8" count="2" type="cond" truecount="2" falsecount="0"/>
-      <line num="9" count="1" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
-      <line num="14" count="1" type="stmt"/>
-      <line num="17" count="1" type="stmt"/>
-      <line num="18" count="2" type="stmt"/>
-      <line num="20" count="1" type="stmt"/>
-      <line num="21" count="4" type="stmt"/>
-      <line num="22" count="4" type="stmt"/>
-      <line num="23" count="4" type="cond" truecount="2" falsecount="0"/>
-      <line num="24" count="4" type="stmt"/>
-    </file>
+<coverage generated="1673632745014" clover="3.2.0">
+  <project timestamp="1673632745014" name="All files">
+    <metrics statements="41" coveredstatements="41" conditionals="6" coveredconditionals="6" methods="15" coveredmethods="15" elements="62" coveredelements="62" complexity="0" loc="41" ncloc="41" packages="2" files="4" classes="4"/>
+    <package name="src.utils">
+      <metrics statements="35" coveredstatements="35" conditionals="6" coveredconditionals="6" methods="12" coveredmethods="12"/>
+      <file name="PostTemp.js" path="C:\Users\anjen\Documents\Github\closetApp\CLIENT\src\utils\PostTemp.js">
+        <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="2" type="stmt"/>
+      </file>
+      <file name="Tags.js" path="C:\Users\anjen\Documents\Github\closetApp\CLIENT\src\utils\Tags.js">
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+      </file>
+      <file name="UserTemp.js" path="C:\Users\anjen\Documents\Github\closetApp\CLIENT\src\utils\UserTemp.js">
+        <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="tests">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="testsHelper.js" path="C:\Users\anjen\Documents\Github\closetApp\CLIENT\tests\testsHelper.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

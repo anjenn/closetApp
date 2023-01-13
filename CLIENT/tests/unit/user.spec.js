@@ -7,16 +7,19 @@ const user = testsHelper.returnUser();
 
 describe('Test for the temporal user data storage system used with localstorage', () => {
     it('Tests if user object data was stored correctly', () =>{
+        console.log("Test Suite 1: tests if user object data was stored correctly");
         userTemp.saveUserData(user, 'user1');
         // console.log(`comparison: ${_.isEqual(postTemp.loadPostData('post1'), post)}`);
         expect(_.isEqual(userTemp.loadUserData('user1'), user)).toEqual(true);
     });
     it('Tests if user object data was deleted correctly', () =>{
+        console.log("Test Suite 2: tests if user object data was deleted correctly");
         // error(`post: ${post}`);
         userTemp.deleteUserData('user2');
         expect(userTemp.loadUserData('user2')).toEqual({});
     });
     it('Tests if checkIfSaved() function works', () =>{
+        console.log("Test Suite 3: tests if checkIfSaved() function works");
         userTemp.saveUserData(user, 'user3');
         expect(userTemp.checkIfSaved('user3')).toEqual(true);
         userTemp.deleteUserData('user3');
