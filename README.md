@@ -9,41 +9,56 @@
 # Preview:
 https://drive.google.com/file/d/1r714UjyahR4l56ZkNoSrztEOTz85jgd_/view?usp=share_link
 
-# Database:
-- user: (ID), firstName, lastName, password, userName, savedPosts[{postIDs}]
---> {
-    "firstName": "JeongHyun",
-    "lastName": "An",
-    "password": "abc12345",
-    "userName": "Jenn",
-    "savedPosts": [
-        "6357ec9a4f47830e941ed0a6",
-        "6357ff334f47830e941ed0aa",
-        "6357ff4ef3570dc984b5ec24"
-    ],
-    "id": "635820a640d88fdcda137cb5"
-}
+# Connect to the database:
+- Connect to the database
+ * This method does not uses '.env' file for simplicity. Please beware of the potential security issue
+ * Create a cluster on 'https://cloud.mongodb.com'
+ * Click the 'Connect' button on the Database page
+ * Select the 'Connect to [Cluster\_Name]' option
+ * Copy the connection string
+ * Go to \texttt{.$\backslash$ClosetApp$\backslash$SERVER$\backslash$server.js}
+ * Find the line \texttt{const mongoString = process.env.DATABASE\_URL}
+ * Replace the value of the variable 'mongoString' with the previoulsy copied string
+ 
+# How to run the app
+- Client-side
 
-- post: (ID), userID, tag, photos[{order, url, imageEdits[]}], timestamps, id
---> {
-        "userID": 4,
-        "tag": "tag1",
-        "photos": [
-            {
-                "order": 1,
-                "url": "url1",
-                "imageEdits": [
-                    0,
-                    1,
-                    4
-                ],
-                "_id": "6357ff4ef3570dc984b5ec25"
-            }
-        ],
-        "createdAt": "2022-10-25T15:22:54.543Z",
-        "updatedAt": "2022-10-25T15:22:54.543Z",
-        "id": "6357ff4ef3570dc984b5ec24"
-    }
+Still editing
 
-# Future ideas:
-- doing something with timestamps
+
+# Connect to the database:Go to \texttt{.$\backslash$ClosetApp}
+            \item[→] \texttt{cd CLIENT}
+            \item[→] \texttt{npm i}
+            \item[→] \texttt{npm start}
+            \item[→] Check if the app is running on \texttt{'http://localhost:8000'}
+        \end{itemize}
+    \item Server-side
+        \begin{itemize}
+            \item[→] Go to \texttt{.$\backslash$ClosetApp}
+            \item[→] \texttt{cd SERVER}
+            \item[→] \texttt{npm i}
+            \item[→] \texttt{npm start}
+            \item[→] Check if the server is running on \texttt{'http://localhost:3000'}
+        \end{itemize}
+\end{enumerate}
+\textbf{How to test the app} \
+\vspace{3mm} %5mm vertical space
+\begin{enumerate}
+    \item Execute the following commands on the client-side
+        \begin{itemize}
+            \item[→] Go to \texttt{.$\backslash$ClosetApp}
+            \item[→] \texttt{cd CLIENT}
+            \item[→] \texttt{jest -{}-coverage}
+        \end{itemize}
+    \item Execute the following commands on the Server-side
+        \begin{itemize}
+            \item[→] Go to \texttt{.$\backslash$ClosetApp}
+            \item[→] \texttt{cd SERVER}
+           \item[→] \texttt{jest -{}-coverage}
+        \end{itemize}
+\end{enumerate}
+
+% Template Reference
+% \input{tex/Ref} 
+
+\end{document} % Dobranoc.
