@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1673632745014" clover="3.2.0">
-  <project timestamp="1673632745014" name="All files">
+<coverage generated="1674510506378" clover="3.2.0">
+  <project timestamp="1674510506378" name="All files">
     <metrics statements="41" coveredstatements="41" conditionals="6" coveredconditionals="6" methods="15" coveredmethods="15" elements="62" coveredelements="62" complexity="0" loc="41" ncloc="41" packages="2" files="4" classes="4"/>
     <package name="src.utils">
       <metrics statements="35" coveredstatements="35" conditionals="6" coveredconditionals="6" methods="12" coveredmethods="12"/>
@@ -33,20 +33,20 @@
       </file>
       <file name="UserTemp.js" path="C:\Users\anjen\Documents\Github\closetApp\CLIENT\src\utils\UserTemp.js">
         <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
         <line num="21" count="4" type="stmt"/>
-        <line num="22" count="4" type="stmt"/>
-        <line num="23" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="24" count="4" type="stmt"/>
+        <line num="22" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="4" type="stmt"/>
       </file>
     </package>
     <package name="tests">

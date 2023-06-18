@@ -16,4 +16,4 @@ module.exports = app => {
 
     router.get("/MyPage/:id", posts.getAllPostsMp);
     app.use('/api', router);
-  };
+};

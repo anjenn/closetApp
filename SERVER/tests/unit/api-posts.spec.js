@@ -34,7 +34,7 @@ afterEach(async () => {
 
 describe("GET /api/FeedView", () => {
   it("should retrieve all posts", async () => {
-    console.log("Test Suite 1: should retrieve all posts");
+    console.log("Test Case 1: should retrieve all posts");
     const res = await request(app).get(`/api/FeedView?tags=${tags}`);
     //console.log(tags);
     //console.log(res.body);
@@ -45,7 +45,7 @@ describe("GET /api/FeedView", () => {
 
 describe("POST /api/PostEditor", () => {
   it("should create a new post", async () =>{
-    console.log("Test Suite 2: should create a new post");
+    console.log("Test Case 2: should create a new post");
     //console.log(newPost);
     const res = await request(app).post("/api/PostEditor").send(newPost);
     expect(res.statusCode).toBe(200);
@@ -59,7 +59,7 @@ describe("POST /api/PostEditor", () => {
 
 describe("GET /api/PostEditor/:id", () => {
   it("should retrieve a single post with id", async () => {
-    console.log("Test Suite 3: should retrieve a single post with id");
+    console.log("Test Case 3: should retrieve a single post with id");
     const tempPostId = localStorage.getItem('tempPostId')
     const res = await request(app).get(
       `/api/PostEditor/${tempPostId}`
@@ -73,7 +73,7 @@ describe("GET /api/PostEditor/:id", () => {
 
 describe("PUT /api/PostEditor/:id", () => {
   it("should update a post with id", async () => {
-    console.log("Test Suite 4: should update a post with id");
+    console.log("Test Case 4: should update a post with id");
     const tempPostId = localStorage.getItem('tempPostId')
     const res = await request(app)
       .put(`/api/PostEditor/${tempPostId}`)
@@ -92,7 +92,7 @@ describe("PUT /api/PostEditor/:id", () => {
 
 describe("DELETE /api/PostEditor/:id", () => {
   it("should delete a post with id", async () => {
-    console.log("Test Suite 5: should delete a post with id"); 
+    console.log("Test Case 5: should delete a post with id"); 
     const tempPostId = localStorage.getItem('tempPostId')
     const res = await request(app)
       .delete(`/api/PostEditor/${tempPostId}`);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1673632632732" clover="3.2.0">
-  <project timestamp="1673632632732" name="All files">
+<coverage generated="1674511044275" clover="3.2.0">
+  <project timestamp="1674511044275" name="All files">
     <metrics statements="154" coveredstatements="120" conditionals="40" coveredconditionals="16" methods="47" coveredmethods="30" elements="241" coveredelements="166" complexity="0" loc="154" ncloc="154" packages="5" files="8" classes="8"/>
     <package name="SERVER">
       <metrics statements="23" coveredstatements="20" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="1"/>
@@ -145,14 +145,14 @@
       </file>
       <file name="user.model.js" path="C:\Users\anjen\Documents\Github\closetApp\SERVER\app\models\user.model.js">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
         <line num="18" count="2" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
       </file>
     </package>
     <package name="SERVER.app.routes">

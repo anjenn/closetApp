@@ -1,5 +1,4 @@
-// Stores the data for a session
-
+// This file is used to save user data to local storage
 const saveUserData = (obj, objName) => { //saved with obj name "currUser"
   window.localStorage.setItem(objName, JSON.stringify(obj));
   // console.log(`util function result: ${loadUserData(objName)}`);

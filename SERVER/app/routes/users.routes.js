@@ -15,4 +15,4 @@ module.exports = app => {
     router.put("/MyPage/:id", users.updateUserInfo2); // works
   
     app.use('/api', router);
-  };
+};

@@ -3,9 +3,9 @@ module.exports = mongoose => {
       {
         userID: String,
         tag: String,
-        photos: [ // should be checked
+        photos: [
           {
-            order: Number, // position of the photo in the post
+            order: Number,
             url: String,
             imageEdits: {
               brightness: Number,
